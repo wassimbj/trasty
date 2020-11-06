@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "trusti api",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./server/index.js"
+  },
+  "author": "wassimbj",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "connect-redis": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^4.2.0",
+    "ioredis": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

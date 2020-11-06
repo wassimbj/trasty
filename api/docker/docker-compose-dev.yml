@@ -1,0 +1,49 @@
+version: "3"
+
+services: 
+   
+   # pg_db: 
+   #    build: 
+   #       context: ../
+   #       dockerfile: ./docker/Dockerfile.pgdb
+   #    container_name: trusti_db
+   #    env_file: ../.env
+   #    restart: always
+   #    volumes: 
+   #       - ../docker-dev-data/pg-data:/var/lib/postgresql/data
+   #    ports: 
+   #       - 5432:5432
+
+   # redis: 
+   #    image: redis
+   #    restart: always
+   #    container_name: trusti_redis
+   #    volumes: 
+   #       - ../docker-dev-data/redis-data:/var/lib/redis
+   #    command: redis-server
+   #    ports:
+   #       - 6379:6379
+   
+   trusti_node_server:
+      build: 
+         context: ../
+         dockerfile: ./docker/Dockerfile.server
+      container_name: trusti_server
+      restart: always
+      env_file: ../.env
+      # depends_on:
+      #    - "pg_db"
+      #    - "redis"
+      volumes:
+         - ..:/trusti/app
+      ports: 
+         - 7000:7000
+      
+   # adminer: 
+   #    image: adminer
+   #    restart: always
+   #    ports: 
+   #       - 8080:8080
+   #    container_name: adminer
+   #    environment: 
+   #       ADMINER_DEFAULT_SERVER: pg_db

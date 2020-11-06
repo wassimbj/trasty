@@ -1,0 +1,8 @@
+FROM postgres:13
+
+COPY ./docker-dev-data/sql-data ./docker-entrypoint-initdb.d
+
+# disable strict mode in mysql
+# CMD mysqld --sql_mode="" --character-set-server=utf8 --collation-server=utf8_slovenian_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
+
+EXPOSE 3306

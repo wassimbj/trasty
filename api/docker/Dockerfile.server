@@ -1,0 +1,6 @@
+FROM node:12-slim
+WORKDIR /trusti/app
+COPY . .
+RUN npm install
+CMD node ./server/index.js --color=true
+EXPOSE 7000
