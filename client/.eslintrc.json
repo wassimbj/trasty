@@ -29,6 +29,7 @@
         "no-extra-boolean-cast": 1,
         "react/prop-types": 0,
         "react/no-deprecated": 0,
+        "react/jsx-indent": 0,
         "react/display-name": 0,
         "react/no-find-dom-node": 1,
         "react/no-unescaped-entities": "warn",

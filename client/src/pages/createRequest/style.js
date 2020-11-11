@@ -168,3 +168,74 @@ export const NextBtn = styled.button`
   width: 100%;
   margin-top: 1rem;
 `;
+
+export const PriceSummaryTitle = styled.span`
+   font-weight: bold;
+   font-size: 20px;
+   display: block;
+   margin: 1.5rem 0;
+`;
+
+export const ProductDetails = styled.div`
+   display: flex;
+   align-items: end;
+   margin: 1.5rem 0 0.5rem;
+   & > div { width: 100% }
+   & img { 
+      border-radius: 5px;
+      max-width: 150px;
+      margin-right: 0.75rem;
+      border: 1px solid rgba(0,0,0,0.12);
+      display: block;
+      object-fit: cover;
+   }
+   & > div > p { font-size: 14px; }
+   & > div > p span { color: #8f8f95; }
+
+   & h2 { font-weight: bold; font-size: 17px; margin-bottom: 0.5rem;}
+
+   @media(max-width: 500px){
+      // flex-wrap: wrap;
+      & img{ max-width: 100px; max-height: 100px; }
+      // & > div > p { font-size: 13px; }
+      // & h2 { font-size: 16px; }
+   }
+`;
+
+export const PriceSummaryInfo = styled.div`
+   color: #8f8f95;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 1rem;
+   padding: 0 0.75rem;
+`;
+
+export const EstimatedTotal = styled.div`
+   display: flex;
+   align-items: center;
+   border-top: 1px solid rgba(0,0,0,0.1);
+   justify-content: space-between;
+   margin-top: 1.5rem;
+   padding: 1.5rem 0 0.75rem;
+   & p { display: flex; align-items: center; }
+   & strong { font-size: 22px; }
+`;
+
+export const InfoIcon = styled.span`
+   color: #555;
+   background: rgba(0,0,0,0.15);
+   padding: 0.25rem;
+   border-radius: 30px;
+   margin-left: 0.75rem;
+   display: inline-block;
+`;
+
+export const Notice = styled.div`
+   background: rgb(38,80,255,0.15);
+   // color: rgb(38,80,255,0.75);
+   color: rgb(0,0,0,0.65);
+   padding: 1rem;
+   border-radius: 5px;
+   margin: 1rem 0.5rem;
+`;

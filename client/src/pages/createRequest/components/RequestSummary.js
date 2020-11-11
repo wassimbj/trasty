@@ -1,53 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import Icon from 'spectrum-icons';
+import Icon from '../../../components/icons';
 import Tip from '../../../components/tip';
-import { ProductDetails } from '../../requestsList/style';
-
-const PriceSummaryTitle = styled.span`
-   font-weight: bold;
-   font-size: 20px;
-   display: block;
-   margin: 1.5rem 0;
-`;
-
-const PriceSummaryInfo = styled.div`
-   color: #8f8f95;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   margin-bottom: 1rem;
-   padding: 0 0.75rem;
-`;
-
-const EstimatedTotal = styled.div`
-   display: flex;
-   align-items: center;
-   border-top: 1px solid rgba(0,0,0,0.1);
-   justify-content: space-between;
-   margin-top: 1.5rem;
-   padding: 1.5rem 0 0.75rem;
-   & p { display: flex; align-items: center; }
-   & strong { font-size: 22px; }
-`;
-
-const InfoIcon = styled.span`
-   color: #555;
-   background: rgba(0,0,0,0.15);
-   padding: 0.25rem;
-   border-radius: 30px;
-   margin-left: 0.75rem;
-   display: inline-block;
-`;
-
-const Notice = styled.div`
-   background: rgb(38,80,255,0.15);
-   // color: rgb(38,80,255,0.75);
-   color: rgb(0,0,0,0.65);
-   padding: 1rem;
-   border-radius: 5px;
-   margin: 1rem 0.5rem;
-`;
+import {
+  EstimatedTotal, InfoIcon, Notice, PriceSummaryInfo, PriceSummaryTitle, ProductDetails,
+} from '../style';
 
 export default function RequestSummary() {
   return (

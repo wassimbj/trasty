@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   ProductDetails, ProductPrice, RequesterInfo, UserRequestCardWrapper,
-} from '../style';
+} from './style';
 
 export default function UserRequestCard() {
   return (
-    <UserRequestCardWrapper to="/request/ID">
+    <UserRequestCardWrapper to="/request/view/ID">
       <RequesterInfo>
         <img src="https://s3.amazonaws.com/uifaces/faces/twitter/carlosgavina/128.jpg" alt="" />
         <div>

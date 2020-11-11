@@ -1,7 +1,7 @@
 // import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Icon from 'spectrum-icons';
+import Icon from '../icons';
 
 export const StyledLink = styled(Link)`
   display: inline-block;
@@ -15,6 +15,12 @@ export const NavWrapper = styled.div`
    width: 100%;
    padding: 3px 0;
    z-index: 9999;
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const LoginLink = styled(Icon)`

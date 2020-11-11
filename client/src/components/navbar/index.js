@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../logo';
 import MainContainer from '../mainContainer';
 import {
-  NavWrapper, LoginLink, StyledLink, Divider,
+  NavWrapper, LoginLink, StyledLink, Divider, Nav,
 } from './style';
 
 export default function NavBar() {
@@ -12,8 +12,8 @@ export default function NavBar() {
     <>
       <NavWrapper>
         <MainContainer>
-          <div className="flex items-center justify-between">
-            <Link to="/"><Logo width="80pt" height="40pt" /></Link>
+          <Nav>
+            <Link to="/"><Logo width="70pt" height="35pt" /></Link>
             <div>
               <StyledLink to="/login">
                 <LoginLink glyph="explore" size={40} />
@@ -22,7 +22,7 @@ export default function NavBar() {
                 <LoginLink glyph="door-enter" size={40} />
               </StyledLink>
             </div>
-          </div>
+          </Nav>
         </MainContainer>
       </NavWrapper>
       {/* divider */}

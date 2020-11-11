@@ -1,20 +1,21 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import MdContainer from '../../components/mdContainer';
+import SmContainer from '../../components/smContainer';
 import ProductDetails from './components/ProductDetails';
 import DeliveryDetails from './components/DeliveryDetails';
 import {
-  CreateRequestWrapper, ProductSummaryContainer, NextBtn, ProductDetailsContainer,
+  CreateRequestWrapper, ProductSummaryContainer, ProductDetailsContainer,
 } from './style';
 import RequestSummary from './components/RequestSummary';
+import { Button } from '../../components/button';
 
 export default function CreateRequest() {
   const [activeTab, setActiveTab] = useState(1);
 
   return (
     <>
-      <MdContainer>
+      <SmContainer>
         <CreateRequestWrapper>
           <ProductDetailsContainer>
             {
@@ -42,13 +43,13 @@ export default function CreateRequest() {
                 <span> Product price </span>
                 <span> 100DT </span>
               </div>
-              <NextBtn onClick={() => (activeTab < 3 ? setActiveTab(activeTab + 1) : false)}>
+              <Button onClick={() => (activeTab < 3 ? setActiveTab(activeTab + 1) : false)}>
                 { activeTab < 3 ? 'Next' : 'Create Request' }
-              </NextBtn>
+              </Button>
             </div>
           </ProductSummaryContainer>
         </CreateRequestWrapper>
-      </MdContainer>
+      </SmContainer>
     </>
   );
 }

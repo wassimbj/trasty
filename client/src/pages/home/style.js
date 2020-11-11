@@ -53,7 +53,7 @@ export const BannerPostLink = styled(Link)`
   background: #2650ff;
   color: white;
   border: 1px solid #0f3eff;
-  border-radius: 7px;
+  border-radius: 30px;
   padding: 0.75rem 1.5rem;
   display: inline-block;
   margin-right: 2rem;
@@ -72,7 +72,7 @@ export const BannerPostLink = styled(Link)`
 export const BannerTravelLink = styled(Link)`
   border: 1px solid #2650ff;
   color: #2650ff;
-  border-radius: 7px;
+  border-radius: 30px;
   padding: 0.75rem 1.75rem;
   display: inline-block;
   margin-top: 2rem;
