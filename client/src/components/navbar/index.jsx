@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import Icon from 'spectrum-icons';
 import Logo from '../logo';
 import MainContainer from '../mainContainer';
@@ -13,7 +13,7 @@ export default function NavBar() {
       <NavWrapper>
         <MainContainer>
           <div className="flex items-center justify-between">
-            <Logo />
+            <Link to="/"><Logo width="80pt" height="40pt" /></Link>
             <div>
               <StyledLink to="/login">
                 <LoginLink glyph="explore" size={40} />

@@ -50,5 +50,6 @@ export const SignupLink = styled.span`
 `;
 
 export const Divider = styled.div`
-  margin-top: 53px;
+  margin-top: 4rem;
+  display: flex;
 `;

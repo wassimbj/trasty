@@ -2,15 +2,24 @@ import React from 'react';
 // import MainContainer from './components/mainContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navbar';
+import CreateRequest from './pages/createRequest';
 // import MobileNavBar from './components/mobileNavbar';
 import HomePage from './pages/home';
+import RequestsList from './pages/requestsList';
 
 function App() {
   return (
     <Router>
-      {/* { window.innerWidth >= 800 ? <NavBar /> : <MobileNavBar /> } */}
+      {/* Start of Routes */}
       <NavBar />
+
       <Route exact path="/" component={HomePage} />
+
+      <Route exact path="/requests" component={RequestsList} />
+
+      <Route exact path="/request/new" component={CreateRequest} />
+
+      {/* End of Routes */}
     </Router>
   );
 }

@@ -5,6 +5,9 @@ import App from './App';
 import './styles/tailwind.main.css';
 
 const GlobalStyle = createGlobalStyle`
+  html, body {
+    overflow-x: hidden !important;
+  }
   body{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }

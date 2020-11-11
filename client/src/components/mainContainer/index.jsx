@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const Container = styled.div`
    margin: 0 auto;
-   padding: 0 8px;
-      
+   padding: 0 0.35rem;
    @media (min-width: 980px){
-      // padding: 30px 20px 64px;
-      max-width: 980px;
-      position: relative;
+      max-width: 1020px;
+   }
+   @media (min-width: 1320px){
+      max-width: 1300px;
    }
 `;
 

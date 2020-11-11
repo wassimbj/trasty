@@ -1,16 +1,14 @@
 import React from 'react';
+import InlineInput from '../inlineInput';
 import {
-  Wrapper, LocationsSeachCard, SearchBtn, SwitchIcon, SelectLocation, Location, Span,
+  Wrapper, LocationsSeachCard, SearchBtn, SwitchIcon,
 } from './style';
 
-export default function FindTravelerCard() {
+export default function FindTravelerCard({ marginTop, customStyle, btnText }) {
   return (
-    <Wrapper>
+    <Wrapper marginTop={marginTop} customStyle={customStyle}>
       <LocationsSeachCard>
-        <SelectLocation>
-          <Span> From </Span>
-          <Location> USA </Location>
-        </SelectLocation>
+        <InlineInput text="From" placeholder="City or Country" width="35%" />
         <SwitchIcon>
           <svg
             width="24"
@@ -29,14 +27,11 @@ export default function FindTravelerCard() {
             />
           </svg>
         </SwitchIcon>
-        <SelectLocation>
-          <Span> To </Span>
-          <Location> Sousse, TN </Location>
-        </SelectLocation>
+        <InlineInput text="To" placeholder="City or Country" width="35%" />
+        <SearchBtn to="/search">
+          {btnText}
+        </SearchBtn>
       </LocationsSeachCard>
-      <SearchBtn to="/search">
-        FIND
-      </SearchBtn>
     </Wrapper>
   );
 }

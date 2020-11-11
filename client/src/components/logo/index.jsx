@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function Logo({ color }) {
+export default function Logo({ color, width, height }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.0"
-      width="50pt"
-      height="35pt"
+      width={width || '50pt'}
+      height={height || '35pt'}
       viewBox="0 0 174 99"
       preserveAspectRatio="xMidYMid meet"
     >

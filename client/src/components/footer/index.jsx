@@ -16,6 +16,26 @@ export default function Footer() {
       </div>
       <LeftSideLinks>
         <LinksWrapper>
+          <LinksTitle> Links </LinksTitle>
+          <ul>
+            <li>
+              <LeftSideLink to="/signup">Sign up</LeftSideLink>
+            </li>
+            <li>
+              <LeftSideLink to="/login">Login</LeftSideLink>
+            </li>
+            <li>
+              <LeftSideLink to="/shops">Shops</LeftSideLink>
+            </li>
+            <li>
+              <LeftSideLink to="/requests">Requests</LeftSideLink>
+            </li>
+            <li>
+              <LeftSideLink to="/trips">Trips</LeftSideLink>
+            </li>
+          </ul>
+        </LinksWrapper>
+        <LinksWrapper>
           <LinksTitle> Support </LinksTitle>
           <ul>
             <li>

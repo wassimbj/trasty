@@ -5,9 +5,9 @@ export const Wrapper = styled.footer`
    display: flex;
    justify-content: space-between;
    flex-wrap: wrap;
-   margin-top: 5rem;
+   // margin-top: 5rem;
    padding: 2rem 5rem;
-   border-top: 1px solid #dfdfdf;
+   background: #000000;
    @media(max-width: 500px){
      padding: 2rem 2rem;
    }
@@ -19,7 +19,7 @@ export const SocialLink = styled.a`
    color: #555555;
    transition: 250ms;
    &:hover{
-      color: #222222;
+      color: #666666;
    }
 `;
 
@@ -36,11 +36,10 @@ export const LinksTitle = styled.span`
 `;
 
 export const LeftSideLink = styled(Link)`
-   // font-weight: bold;
    color: #717e8f;
    transition: 250ms;
    &:hover{
-      color: #222222;
+      color: #999999;
    }
    line-height: 1.8;
 `;
