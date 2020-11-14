@@ -1,5 +1,5 @@
 import React from 'react';
-import { RequesterInfoWrapper, SendMsgButton } from '../style';
+import { RequesterInfoWrapper } from '../style';
 
 export default function RequesterInfo() {
   return (
@@ -9,9 +9,6 @@ export default function RequesterInfo() {
           <b> Jaquelin Kuhn </b>
           <small> requested 2 min ago </small>
         </div>
-        <SendMsgButton>
-          Send Message
-        </SendMsgButton>
     </RequesterInfoWrapper>
   );
 }

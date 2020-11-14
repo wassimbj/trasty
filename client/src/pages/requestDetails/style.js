@@ -58,7 +58,7 @@ export const RequestSummaryContainer = styled.div`
 export const RequesterInfoWrapper = styled.div`
    text-align: center;
    border-bottom: 1px solid rgba(0,0,0,0.1);
-   padding: 1rem 0;
+   padding: 0 0 1rem 0;
    & img {
       width: 85px;
       height: 85px;
@@ -68,26 +68,26 @@ export const RequesterInfoWrapper = styled.div`
    & small { display: block; color: gray; }
 `;
 
-export const SendMsgButton = styled.button`
-  margin-top: 1rem;
-  padding: 0.5rem;
-  width: 100%;
-  max-width: 125px;
-  border-radius: 50px;
-  display: inline-block;
-  text-align: center;
-  color: rgb(38, 80, 255);
-  background: transparent;
-  border: 1px solid rgb(38, 80, 255);
-  outline: none;
-  transition: all 250ms ease-in-out 0s;
-  font-size: 13px;
+// export const SendMsgButton = styled.button`
+//   margin-top: 1rem;
+//   padding: 0.5rem;
+//   width: 100%;
+//   max-width: 125px;
+//   border-radius: 50px;
+//   display: inline-block;
+//   text-align: center;
+//   color: rgb(38, 80, 255);
+//   background: transparent;
+//   border: 1px solid rgb(38, 80, 255);
+//   outline: none;
+//   transition: all 250ms ease-in-out 0s;
+//   font-size: 13px;
 
-  &:hover{
-    background: rgb(38, 80, 255);
-    color: white;
-  }
-`;
+//   &:hover{
+//     background: rgb(38, 80, 255);
+//     color: white;
+//   }
+// `;
 
 export const DeliveryDetailsWrapper = styled.div`
    border-top: 1px solid rgba(0,0,0,0.1);
@@ -163,7 +163,7 @@ export const OffersWrapper = styled.div`
   width: 100%;
   @media(min-width: 992px){
     width: 63.5%;
-    margin-top: -9.5rem;
+    margin-top: -5rem;
     margin-left: 0.5rem;
   }
 `;

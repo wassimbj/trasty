@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const UserRequestCardWrapper = styled(Link)`
+export const UserRequestCardLink = styled(Link)`
+   display: block;
+`;
+
+export const UserRequestCardWrapper = styled.div`
    padding: 0.75rem;
    border-radius: 5px;
    margin-bottom: 1.5rem;
