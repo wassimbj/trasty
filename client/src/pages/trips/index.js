@@ -4,18 +4,15 @@ import FindTravelerCard from '../../components/findTravelerCard';
 import Footer from '../../components/footer';
 import MainContainer from '../../components/mainContainer';
 import TravelerTripCard from '../../components/travelerTripCard';
-import UserRequestCard from '../../components/userRequestCard';
 
 const RequestCardsContainer = styled.div`
   // display: grid;
   // grid-template-rows: 1fr 1fr 1fr;
   // gap: 1em 1em;
-  // @media(min-width: 768px){
+  // @media(min-width: 850px){
   //   grid-template-columns: 1fr 1fr;
   // }
-  // // @media(min-width: 1020px){
-  // //   grid-template-columns: 1fr 1fr 1fr;
-  // // }
+  // max-width: 950px;
   max-width: 850px;
   margin: 0 auto;
 `;

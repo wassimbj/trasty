@@ -17,6 +17,7 @@ const CardHeader = styled.div`
   display: flex;
   align-items: end;
   justify-content: space-between;
+  // flex-wrap: wrap;
 `;
 
 const TravelerInfo = styled.div`
@@ -74,6 +75,8 @@ const TravelLocations = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    & .date { color: #a1a1a1; font-size: 15px; }
   }
 `;
 
@@ -94,11 +97,13 @@ export default function TravelerTripCard() {
         <div>
           <small>From</small>
           <p>New york, United States</p>
+          <span className="date"> 10 Dec `20 </span>
         </div>
         <Icon glyph="enter" color="#2650ff" size={35} />
         <div>
           <small>To</small>
           <p>Sousse, TN</p>
+          <span className="date"> 10 Dec `20 </span>
         </div>
       </TravelLocations>
     </TravelTripCardWrapper>
