@@ -1,6 +1,5 @@
 import React from 'react';
-import { WhiteButton } from '../../../components/button';
-import { RequesterInfoWrapper } from '../style';
+import { RequesterInfoWrapper, SendMsgButton } from '../style';
 
 export default function RequesterInfo() {
   return (
@@ -10,9 +9,9 @@ export default function RequesterInfo() {
           <b> Jaquelin Kuhn </b>
           <small> requested 2 min ago </small>
         </div>
-        <WhiteButton customStyles="margin-top: 1rem; padding: 0.5rem; max-width: 165px; border-radius: 50px; border-width: 1px;">
+        <SendMsgButton>
           Send Message
-        </WhiteButton>
+        </SendMsgButton>
     </RequesterInfoWrapper>
   );
 }

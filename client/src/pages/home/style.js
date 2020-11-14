@@ -56,14 +56,16 @@ export const BannerPostLink = styled(Link)`
   border-radius: 30px;
   padding: 0.75rem 1.5rem;
   display: inline-block;
-  margin-right: 2rem;
   margin-top: 2rem;
   text-align: center;
   transition: 500ms;
-  // width: 40%;
   &:hover {
     background: #0f3eff;
   }
+  @media(min-width: 401px){
+    margin-right: 2rem;
+  }
+
   @media (max-width: 400px) {
     width: 100%;
   }
@@ -78,7 +80,6 @@ export const BannerTravelLink = styled(Link)`
   margin-top: 2rem;
   text-align: center;
   transition: 500ms;
-  // width: 40%;
   &:hover {
     background: #0f3eff;
     color: white;
@@ -227,12 +228,14 @@ export const WhatYouCanDoWrapper = styled.div`
 `;
 
 export const WhatYouCanDoCard = styled.div`
-  width: 33%;
+  width: 50%;
   margin: 2rem 0;
   padding: 0 1.5rem;
   & .col-head {
      display: flex;
      align-items: center;
+
+     & img { max-width: 75px; }
    }
    @media (max-width: 768px) {
       width: 100%;

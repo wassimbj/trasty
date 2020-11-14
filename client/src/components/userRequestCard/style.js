@@ -14,20 +14,20 @@ export const UserRequestCardWrapper = styled(Link)`
 export const RequesterInfo = styled.div`
    display: flex;
    align-items: center;
-
+    margin-bottom: 1rem;
    & img { border-radius: 30px; max-width: 45px; }
 
    & > div { 
       margin-left: 0.5rem;
       & span { display: block; font-size: 15px; }
-      & span:nth-child(2) { color: #999; font-size: 14px; }
+      & span:nth-child(2) { color: #999; font-size: 13px; }
    }
 `;
 
 export const ProductDetails = styled.div`
    display: flex;
    align-items: end;
-   margin: 1.5rem 0 0.5rem;
+   margin: 0 0 0.5rem;
    & > div { width: 100% }
    & img { 
       border-radius: 5px;

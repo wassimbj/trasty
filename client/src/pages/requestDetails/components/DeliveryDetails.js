@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../../components/icons';
+import Icon from '@hackclub/icons';
 import { DeliveryDetailsWrapper } from '../style';
 
 export default function DeliveryDetails() {
@@ -16,7 +16,7 @@ export default function DeliveryDetails() {
           Germany
         </p>
         <p>
-          <Icon glyph="calendar" color="gray" size={22} />
+          <Icon glyph="clock" color="gray" size={22} />
           <span> Before </span>
           March 21, 2021
         </p>

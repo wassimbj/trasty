@@ -68,6 +68,27 @@ export const RequesterInfoWrapper = styled.div`
    & small { display: block; color: gray; }
 `;
 
+export const SendMsgButton = styled.button`
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 125px;
+  border-radius: 50px;
+  display: inline-block;
+  text-align: center;
+  color: rgb(38, 80, 255);
+  background: transparent;
+  border: 1px solid rgb(38, 80, 255);
+  outline: none;
+  transition: all 250ms ease-in-out 0s;
+  font-size: 13px;
+
+  &:hover{
+    background: rgb(38, 80, 255);
+    color: white;
+  }
+`;
+
 export const DeliveryDetailsWrapper = styled.div`
    border-top: 1px solid rgba(0,0,0,0.1);
    padding: 1rem 0;
@@ -172,19 +193,6 @@ export const OfferCardhead = styled.div`
     }
     & .userName > b, & .userName > small { display: block; }
     & .userName small { color: gray; }
-  }
-
-  & .rating{
-    background: #ffd6d6;
-    border-radius: 50px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    max-width: 100px;
-    margin-top: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    color: #ff3030;
-    & svg{ display: inline-block; }
   }
 `;
 

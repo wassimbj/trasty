@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../../components/icons';
+import Icon from '@hackclub/icons';
 import Tip from '../../../components/tip';
 import {
   EstimatedTotal, InfoIcon, Notice, PriceSummaryInfo, PriceSummaryTitle, ProductDetails,

@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../icons';
+import Icon from '@hackclub/icons';
 import Logo from '../logo';
 import {
   LeftSideLink, LeftSideLinks, LinksTitle, LinksWrapper, SocialLink, Wrapper,

@@ -10,7 +10,7 @@ export default function UserRequestCard() {
         <img src="https://s3.amazonaws.com/uifaces/faces/twitter/carlosgavina/128.jpg" alt="" />
         <div>
           <span> Hortense McClure </span>
-          <span> 6 min ago </span>
+          <span> Requested 6 min ago </span>
         </div>
       </RequesterInfo>
       <ProductDetails>

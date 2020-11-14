@@ -1,9 +1,10 @@
 import React from 'react';
+import Icon from '@hackclub/icons';
 import BigDot from '../../../components/bigDot';
-import Icon from '../../../components/icons';
 import {
   UserOfferCardWrapper, OfferCardhead, OfferDeliveryInfo, OfferReward,
 } from '../style';
+import RatingStars from '../../../components/ratingStars';
 
 export default function UserOfferCard() {
   return (
@@ -17,18 +18,12 @@ export default function UserOfferCard() {
               <BigDot />
               <small> 5 hours ago </small>
             </div>
-            <div className="rating">
-              <Icon glyph="like-fill" size={20} />
-              <Icon glyph="like-fill" size={20} />
-              <Icon glyph="like-fill" size={20} />
-              <Icon glyph="like-fill" size={20} />
-              <Icon glyph="like-fill" size={20} />
-            </div>
+            <RatingStars />
           </div>
         </div>
       </OfferCardhead>
       <OfferDeliveryInfo>
-        <Icon glyph="calendar" />
+        <Icon glyph="event-check" />
         <span className="static"> I will deliver it on </span>
         <b> February 4, 2021 </b>
         <span> from New York, NY, US </span>

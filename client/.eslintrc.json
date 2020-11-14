@@ -35,6 +35,7 @@
         "react/no-unescaped-entities": "warn",
         "react/no-string-refs": "warn",
         "react/jsx-no-target-blank": "warn",
+        "react/jsx-boolean-value": 0,
         "react/no-children-prop": 0,
         "import/extensions": 0,
         "import/no-unresolved": 0
