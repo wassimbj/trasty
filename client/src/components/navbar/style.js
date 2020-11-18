@@ -22,6 +22,8 @@ export const StyledLink = styled(NavLink)`
   &:hover {
     background: rgb(38,80,255, 0.18);
   }
+
+  &:active{ transform: scale(0.95); }
 `;
 
 export const CenteredStyledLink = styled(NavLink)`
@@ -53,7 +55,7 @@ export const NavWrapper = styled.div`
    top: 0;
    width: 100%;
   //  padding: 3px 0;
-   z-index: 9999;
+   z-index: 999999;
 `;
 
 export const Nav = styled.nav`
@@ -61,9 +63,9 @@ export const Nav = styled.nav`
   // align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 700px){
-    & a:not(.dontHide) { display: none; }
-  }
+  // @media (max-width: 700px){
+  //   & a:not(.dontHide) { display: none; }
+  // }
   
   & > .centeredItems { display: flex; }
   & > .leftSideItems { display: flex; align-items: center; position: relative; }

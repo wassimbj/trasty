@@ -7,7 +7,7 @@ import Tip from '../tip';
 import {
   NavWrapper, CenteredStyledLink, StyledLink, Divider, Nav,
 } from './style';
-import ProfileDropdown from './components/ProfileDropdown';
+import AuthNavItems from './components/AuthNavItems';
 
 export default function NavBar() {
   const isAuth = true;
@@ -17,18 +17,22 @@ export default function NavBar() {
         <MainContainer>
           <Nav>
             <Link to="/" className="dontHide"><Logo width="70pt" height="35pt" /></Link>
-            <div className="centeredItems">
-              <Tip content="Trips">
-                <CenteredStyledLink to="/trips">
-                  <Icon glyph="briefcase" size={35} />
-                </CenteredStyledLink>
-              </Tip>
-              <Tip content="Requests">
-                <CenteredStyledLink to="/requests">
-                  <Icon glyph="explore" size={35} />
-                </CenteredStyledLink>
-              </Tip>
-            </div>
+            {
+              window.innerWidth > 600 ? (
+                <div className="centeredItems">
+                  <Tip content="Trips">
+                    <CenteredStyledLink to="/trips">
+                      <Icon glyph="briefcase" size={35} />
+                    </CenteredStyledLink>
+                  </Tip>
+                  <Tip content="Requests">
+                    <CenteredStyledLink to="/requests">
+                      <Icon glyph="explore" size={35} />
+                    </CenteredStyledLink>
+                  </Tip>
+                </div>
+              ) : null
+            }
             <div className="leftSideItems">
               {
                 !isAuth ? (
@@ -40,29 +44,7 @@ export default function NavBar() {
                     </Tip>
                   </>
                 ) : (
-                  <>
-                    <Tip content="Add">
-                      <StyledLink to="#">
-                        <Icon glyph="plus" size={35} />
-                      </StyledLink>
-                    </Tip>
-                    <Tip content="Notifications">
-                      <StyledLink to="#" className="dontHide">
-                        <Icon glyph="notification" size={35} />
-                      </StyledLink>
-                    </Tip>
-                    <Tip content="Messages">
-                      <StyledLink to="#" className="dontHide">
-                        <Icon glyph="message" size={35} />
-                      </StyledLink>
-                    </Tip>
-                    <Tip content="Profile">
-                      <StyledLink to="#" className="dontHide">
-                        <Icon glyph="profile" size={35} />
-                      </StyledLink>
-                    </Tip>
-                    <ProfileDropdown />
-                  </>
+                  <AuthNavItems />
                 )
               }
             </div>

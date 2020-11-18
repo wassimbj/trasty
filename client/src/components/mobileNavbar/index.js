@@ -1,7 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import Icon from '@hackclub/icons';
-import { NavItems, NavWrapper, StyledLink } from './style';
+import {
+  NavItems, NavWrapper, StyledLink, StyledSilentLink,
+} from './style';
+import AuthNavItems from './components/AuthNavItems';
 
 export default function MobileNavBar() {
   const isAuth = true;
@@ -12,10 +14,6 @@ export default function MobileNavBar() {
           {
             !isAuth ? (
               <>
-                <StyledLink to="/request/new">
-                  <Icon glyph="plus" size={26} />
-                  <span> Add </span>
-                </StyledLink>
                 <StyledLink to="/trips">
                   <Icon glyph="briefcase" size={26} />
                   <span> Trips </span>
@@ -30,34 +28,11 @@ export default function MobileNavBar() {
                 </StyledLink>
               </>
             ) : (
-              <>
-                <StyledLink to="/login">
-                  <Icon glyph="message" size={26} />
-                  <span>Messages</span>
-                </StyledLink>
-                <StyledLink to="/request/new">
-                  <Icon glyph="notification" size={26} />
-                  <span> Notifs </span>
-                </StyledLink>
-                <StyledLink to="/request/new">
-                  <Icon glyph="plus" size={26} />
-                  <span> Add </span>
-                </StyledLink>
-                <StyledLink to="/trips">
-                  <Icon glyph="briefcase" size={26} />
-                  <span> Trips </span>
-                </StyledLink>
-                <StyledLink to="/requests">
-                  <Icon glyph="explore" size={26} />
-                  <span> Requests </span>
-                </StyledLink>
-              </>
+              <AuthNavItems />
             )
           }
         </NavItems>
       </NavWrapper>
-      {/* divider */}
-      <div className="mt-24" />
     </>
   );
 }
