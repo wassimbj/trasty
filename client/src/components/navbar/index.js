@@ -7,9 +7,10 @@ import Tip from '../tip';
 import {
   NavWrapper, CenteredStyledLink, StyledLink, Divider, Nav,
 } from './style';
+import ProfileDropdown from './components/ProfileDropdown';
 
 export default function NavBar() {
-  const isAuth = false;
+  const isAuth = true;
   return (
     <>
       <NavWrapper>
@@ -46,12 +47,12 @@ export default function NavBar() {
                       </StyledLink>
                     </Tip>
                     <Tip content="Notifications">
-                      <StyledLink to="#">
+                      <StyledLink to="#" className="dontHide">
                         <Icon glyph="notification" size={35} />
                       </StyledLink>
                     </Tip>
                     <Tip content="Messages">
-                      <StyledLink to="#">
+                      <StyledLink to="#" className="dontHide">
                         <Icon glyph="message" size={35} />
                       </StyledLink>
                     </Tip>
@@ -60,6 +61,7 @@ export default function NavBar() {
                         <Icon glyph="profile" size={35} />
                       </StyledLink>
                     </Tip>
+                    <ProfileDropdown />
                   </>
                 )
               }

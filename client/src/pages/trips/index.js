@@ -23,7 +23,7 @@ export default function Trips() {
       <MainContainer>
         <FindTravelerCard customStyle="margin: 3rem auto 5rem;" btnText="Find Requests" />
         <RequestCardsContainer>
-          { [...Array(5)].map(() => <TravelerTripCard />) }
+          { [...Array(5)].map(() => <TravelerTripCard displayUser />) }
         </RequestCardsContainer>
       </MainContainer>
       <Footer />

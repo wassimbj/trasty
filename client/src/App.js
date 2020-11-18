@@ -9,6 +9,7 @@ import HomePage from './pages/home';
 import RequestDetails from './pages/requestDetails';
 import RequestsList from './pages/requestsList';
 import Trips from './pages/trips';
+import UserProfile from './pages/userProfile';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
       <Route exact path="/request/new" component={CreateRequest} />
 
       <Route exact path="/trips" component={Trips} />
+
+      <Route exact path={['/user/:id', '/user/:id/:tab']} component={UserProfile} />
 
       {/* End of Routes */}
     </Router>

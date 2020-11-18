@@ -5,6 +5,10 @@ export default function AdditionalProductDetails() {
   return (
     <AdditionalProductDetailsWrapper>
         <p>
+          <span> Unit Price </span>
+          <span> 200 TD </span>
+        </p>
+        <p>
           <span> Quantity </span>
           <span> 1 </span>
         </p>

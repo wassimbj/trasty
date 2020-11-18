@@ -4,7 +4,7 @@ import Icon from '@hackclub/icons';
 import { NavItems, NavWrapper, StyledLink } from './style';
 
 export default function MobileNavBar() {
-  const isAuth = false;
+  const isAuth = true;
   return (
     <>
       <NavWrapper>

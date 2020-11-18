@@ -2,14 +2,17 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.footer`
-   display: flex;
-   justify-content: space-between;
-   flex-wrap: wrap;
    // margin-top: 5rem;
    padding: 2rem 5rem;
    background: #000000;
    @media(max-width: 500px){
      padding: 2rem 2rem;
+   }
+
+   & .flexit{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
    }
 `;
 

@@ -91,7 +91,7 @@ export const RequesterInfoWrapper = styled.div`
 
 export const DeliveryDetailsWrapper = styled.div`
    border-top: 1px solid rgba(0,0,0,0.1);
-   padding: 1rem 0;
+   padding: 1rem 0 0;
    & p {
       display: flex;
       align-items: center;
@@ -103,15 +103,21 @@ export const DeliveryDetailsWrapper = styled.div`
 export const AdditionalProductDetailsWrapper = styled.div`
    border-top: 1px solid rgba(0,0,0,0.1);
    padding: 1.5rem 0 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
    & p {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       margin-bottom: 0.5rem;   
-      & span:first-child { color: gray; }
+      & span { display: block; text-align: center; }
+      & span:first-child { color: #a7a7a7; font-size: 14px;}
       & a {
          color: #5b7bff; 
          &:hover { color: #2650ff }
+      }
+
+      @media(max-width: 415px){
+        margin: 0.75rem 1rem;
       }
    }
 `;
@@ -129,15 +135,14 @@ export const ProductTitle = styled.h2`
 `;
 
 export const ProductDescription = styled.p`
-   padding: 1rem 0 0.5rem;
+   padding: 1rem 0;
    border-top: 1px solid rgba(0,0,0,0.1);
 
    & span { color: #a7a7a7; display: block; margin-bottom: 0.5rem; font-size: 14px; }
 `;
 
 export const RequestAmountsDetailsWrapper = styled.div`
-   margin: 0.7rem 0;
-   padding-top: 1rem;
+   margin: 0.75rem 0;
 `;
 
 export const TravelerReward = styled.div`
@@ -149,84 +154,32 @@ export const ProductPrice = styled.p`
    margin: 0.5rem 0;
 `;
 
-export const OffersNumber = styled.div`
-   color: #2650ff
-`;
-
-export const OffersWrapper = styled.div`
-  order: 2;
-  & > span {
-    padding: 1.5rem 0;
-    display: block;
-    text-align: center;
-  }
-  width: 100%;
-  @media(min-width: 992px){
-    width: 63.5%;
-    margin-top: -5rem;
-    margin-left: 0.5rem;
-  }
-`;
-
-export const UserOfferCardWrapper = styled.div`
-  border: 1px solid rgba(0,0,0,0.13);
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-`;
-
-export const OfferCardhead = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  & .userInfo {
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 1rem;
-    & img {
-      margin-right: 0.5rem;
-      width: 45px;
-      height: 45px; 
-      border-radius: 50px;
-      box-shadow: 0 0 3px rgba(0,0,0,0.5);
-    }
-    & .userName > b, & .userName > small { display: block; }
-    & .userName small { color: gray; }
-  }
-`;
-
-export const OfferDeliveryInfo = styled.div`
+export const RequestAmounts = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  & b { margin: 0 0.5rem; }
-  padding: 1rem 0;
+  justify-content: space-between;
+  font-size: 17px;
+  color: #757575;
+  // font-weight: 500;
+  &:not(:last-child) { margin-bottom: 0.75rem; }
 
-  & svg {
-    // color: #2650ff;
-    // background: #2650ff36;
-    color: gray;
-    border-radius: 50px;
-    padding: 0.15rem;
-    margin-right: 0.25rem;
-  }
-
-  & .static{ color: gray; }
+  & p svg { display: inline-block; }
 `;
 
-export const OfferReward = styled.p`
-  padding-top: 1rem;
-  font-size: 14px;
-  border-top: 1px solid rgba(0,0,0,0.1);
+export const TotalAmount = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+  color: #2650ff;
+  margin-top: 0.75rem;
+  font-weight: 500;
+
+  & p svg { display: inline-block; }
+
+  &:last-child { color: #000 }
 `;
 
-export const NoOffersMsg = styled.p`
-  background: white;
-  padding: 1rem;
-  color: gray;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 5px;
-  margin: 1rem 0;
-  text-align: center;
+export const OffersNumber = styled.div`
+   color: #2650ff
 `;

@@ -11,8 +11,8 @@ export const StyledLink = styled(NavLink)`
   background: rgb(38,80,255, 0.11);
   border-radius: 50px;
   color: #2650ff;
-  font-weight: bold;
   transition: 250ms;
+  position: relative;
 
   & svg { padding: 3px; }
   &:not(:last-child){
@@ -66,7 +66,7 @@ export const Nav = styled.nav`
   }
   
   & > .centeredItems { display: flex; }
-  & > .leftSideItems { display: flex; align-items: center; }
+  & > .leftSideItems { display: flex; align-items: center; position: relative; }
 `;
 
 // export const StyledIcon = styled(Icon)`

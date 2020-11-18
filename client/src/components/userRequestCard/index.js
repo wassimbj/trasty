@@ -1,54 +1,45 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import {
-  ProductDetails, ProductPrice, RequesterInfo, UserRequestCardWrapper, UserRequestCardLink,
+  ProductDetails, ProductPrice, UserRequestCardLink, DetailsWrapper,
 } from './style';
-import { Button } from '../button';
 
 export default function UserRequestCard() {
   return (
-    <UserRequestCardWrapper>
-      <UserRequestCardLink to="/request/view/ID">
-        <RequesterInfo>
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/carlosgavina/128.jpg" alt="" />
-          <div>
-            <span> Hortense McClure </span>
-            <span> Requested 6 min ago </span>
-          </div>
-        </RequesterInfo>
-        <ProductDetails>
-          <img src="https://media.direct.playstation.com/is/image/sierialto/DS4_ElectricPurple_Product%20hero1_900x900?$Background_Large$" alt="" />
-          <div>
-            <h2> Fantastic Steel Sausages </h2>
-            <p>
-              <span>Deliver to </span>
-              Sousse, TN
-            </p>
-            <p>
-              <span>From </span>
-              Germany
-            </p>
-            <p>
-              <span>Before </span>
-              11 Nov, 2020
-            </p>
-          </div>
-        </ProductDetails>
-        <ProductPrice>
-          <p className="price">
-            <span>Product price </span>
-            <span> 25DT </span>
-          </p>
-          <p className="reward">
-            <span>Traveler Reward </span>
-            <span> 0DT </span>
-          </p>
-          <p className="buyLocation">
-            <span>Buy it from </span>
-            <span>www.amazon.com</span>
-          </p>
-        </ProductPrice>
-      </UserRequestCardLink>
-      <Button customStyles="margin-top: 1rem;"> Make Offer </Button>
-    </UserRequestCardWrapper>
+    <UserRequestCardLink to="/request/view/558">
+        <DetailsWrapper>
+          <ProductDetails>
+            <LazyLoad once>
+              <img
+                src="https://media.direct.playstation.com/is/image/sierialto/DemonsSouls_ProductHero1_900X900?$Background_Large$"
+                alt=""
+              />
+            </LazyLoad>
+            <div className="requestDetails">
+              <h2> Fantastic Steel Sausages </h2>
+              <p>
+                <span>Deliver to </span>
+                Sousse, TN
+              </p>
+              <p>
+                <span>From </span>
+                Germany
+              </p>
+              <p>
+                <span>Before </span>
+                11 Nov, 2020
+              </p>
+              <p>
+                <span>Product price </span>
+                25 TND
+              </p>
+            </div>
+          </ProductDetails>
+          <ProductPrice>
+              <span>Estimated reward </span>
+              <strong> 50 TND </strong>
+          </ProductPrice>
+        </DetailsWrapper>
+    </UserRequestCardLink>
   );
 }
