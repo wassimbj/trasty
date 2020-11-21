@@ -4,15 +4,17 @@ Crowd Shipping website:
 
 Tech stack: 
   Back-end: Express.js, PostgreSQL. (Rest API)
-  Front-end: React.js, TailwindCss.
+  Front-end: React.js, Styled components
 
 Functionality:
 - users can post somethings that they want from other people that are coming from some place to their place
 - people that are coming from some place to tunisia, can post (inform) that they are coming, and users can request something from them
-- people can submit something they want to ship from place to place
+// - people can submit something they want to ship from place to place
 
 How will i earn money
-- urgent people who want to stick theirs at the top, must pay me (for 3 days => 3DT, 1 week => 5DT)
+- pay fees when they accept travelers offers
+- pay fees to confirm the traveler request acceptance.
+// - urgent people who want to stick theirs at the top, must pay me (for 3 days => 3DT, 1 week => 5DT)
 
 Payment methods
 - use ClickToPay (for CC checkout), GPG checkout (for e-dinar)

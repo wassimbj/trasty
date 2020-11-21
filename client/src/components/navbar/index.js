@@ -1,7 +1,8 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@hackclub/icons';
-import Logo from '../logo';
+import { Logo, SymbolLogo } from '../logo';
 import MainContainer from '../mainContainer';
 import Tip from '../tip';
 import {
@@ -16,15 +17,23 @@ export default function NavBar() {
       <NavWrapper>
         <MainContainer>
           <Nav>
-            <Link to="/" className="dontHide"><Logo width="70pt" height="35pt" /></Link>
+            <Link to="/">
+              {
+              window.innerWidth > 600
+                ? (
+                  <Logo width="75pt" height="35pt" />
+                )
+                : <SymbolLogo width="67pt" height="26pt" />
+              }
+            </Link>
             {
               window.innerWidth > 600 ? (
                 <div className="centeredItems">
-                  <Tip content="Trips">
+                  {/* <Tip content="Trips">
                     <CenteredStyledLink to="/trips">
                       <Icon glyph="briefcase" size={35} />
                     </CenteredStyledLink>
-                  </Tip>
+                  </Tip> */}
                   <Tip content="Requests">
                     <CenteredStyledLink to="/requests">
                       <Icon glyph="explore" size={35} />
@@ -36,15 +45,19 @@ export default function NavBar() {
             <div className="leftSideItems">
               {
                 !isAuth ? (
-                  <>
-                    <Tip content="Login or Signup">
-                      <StyledLink to="/login">
-                        <Icon glyph="door-enter" size={35} />
-                      </StyledLink>
-                    </Tip>
-                  </>
+                  window.innerWidth > 600
+                    ? (
+                      <Tip content="Login or Signup">
+                        <StyledLink to="/login">
+                          <Icon glyph="door-enter" size={35} />
+                        </StyledLink>
+                      </Tip>
+                    )
+                    : null
                 ) : (
-                  <AuthNavItems />
+                  window.innerWidth > 600
+                    ? <AuthNavItems />
+                    : null
                 )
               }
             </div>

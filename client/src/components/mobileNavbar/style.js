@@ -52,6 +52,7 @@ export const NavWrapper = styled.div`
    position: fixed;
    bottom: 0;
    width: 100%;
+   z-index: 99999;
   //  padding: 5px 0;
 
   @media(min-width: 600px){

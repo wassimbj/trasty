@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import Icon from '@hackclub/icons';
@@ -42,8 +43,8 @@ export default function UserProfile({ match }) {
         <ReviewBadge rating={5} />
       </ReviewSummary>
       <ProfileTabs>
-        <Tab to="/user/888/requests" className={`${activeTab === 'requests' || !activeTab ? 'active' : ''}`}> 0 Requests </Tab>
-        <Tab to="/user/888/trips" className={`${activeTab === 'trips' ? 'active' : ''}`}> 2 Upcoming trips </Tab>
+        <Tab to="/user/888/requests" className={`${activeTab !== 'reviews' ? 'active' : ''}`}> 0 Requests </Tab>
+        {/* <Tab to="/user/888/trips" className={`${activeTab === 'trips' ? 'active' : ''}`}> 2 Upcoming trips </Tab> */}
         <Tab to="/user/888/reviews" className={`${activeTab === 'reviews' ? 'active' : ''}`}> 3 Reviews </Tab>
       </ProfileTabs>
       <TabContent>

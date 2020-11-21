@@ -34,13 +34,13 @@ export default function AuthNavItems() {
         </Tip>
       ) : null
     }
-    <Tip content="Notifications">
+    {/* <Tip content="Notifications">
       <StyledLink to="#">
         <Icon glyph="notification" size={35} />
       </StyledLink>
-    </Tip>
+    </Tip> */}
     <Tip content="Messages">
-      <StyledLink to="#">
+      <StyledLink to="/messages">
         <Icon glyph="message" size={35} />
       </StyledLink>
     </Tip>

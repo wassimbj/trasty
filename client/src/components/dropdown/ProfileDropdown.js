@@ -5,23 +5,23 @@ import { DropDown, DropdownItem, ItemIcon } from './style';
 export default function ProfileDropdown({ isOpen }) {
   return (
     <DropDown isOpen={isOpen}>
-      <DropdownItem>
+      <DropdownItem to="/user/588">
         <ItemIcon><Icon glyph="person" size={26} /></ItemIcon>
-        <span> Profile </span>
+        <span> My Profile </span>
       </DropdownItem>
-      <DropdownItem>
+      <DropdownItem to="/my/requests">
         <ItemIcon><Icon glyph="explore" size={26} /></ItemIcon>
-        <span> Requests </span>
+        <span> My Requests </span>
       </DropdownItem>
-      <DropdownItem>
+      {/* <DropdownItem to="/my/trips">
         <ItemIcon><Icon glyph="briefcase" size={26} /></ItemIcon>
-        <span> Trips </span>
-      </DropdownItem>
-      <DropdownItem>
+        <span> My Trips </span>
+      </DropdownItem> */}
+      <DropdownItem to="/my/settings">
         <ItemIcon><Icon glyph="settings" size={26} /></ItemIcon>
-        <span> Settings </span>
+        <span> My Settings </span>
       </DropdownItem>
-      <DropdownItem>
+      <DropdownItem to="/logout">
         <ItemIcon><Icon glyph="door-leave" size={26} /></ItemIcon>
         <span> Logout </span>
       </DropdownItem>

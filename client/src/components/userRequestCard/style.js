@@ -48,9 +48,9 @@ export const ProductDetails = styled.div`
   }
    & img { 
       border-radius: 5px;
-      max-width: 150px;
-      width: 150px;
-      height: 150px;
+      max-width: 190px;
+      width: 190px;
+      height: 190px;
       border: 1px solid rgba(0,0,0,0.065);
       display: block;
       object-fit: cover;
@@ -71,9 +71,12 @@ export const ProductDetails = styled.div`
     text-overflow: ellipsis;
   }
 
-   @media(max-width: 380px){
+  @media(max-width: 420px){
+    & img{ width: 140px; height: 140px; }
+  }
+  @media(max-width: 380px){
     & img{ width: 110px; height: 110px; }
-   }
+  }
 `;
 
 export const ProductPrice = styled.div`

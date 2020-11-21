@@ -1,8 +1,6 @@
 import React from 'react';
 import Icon from '@hackclub/icons';
-import {
-  NavItems, NavWrapper, StyledLink, StyledSilentLink,
-} from './style';
+import { NavItems, NavWrapper, StyledLink } from './style';
 import AuthNavItems from './components/AuthNavItems';
 
 export default function MobileNavBar() {
@@ -14,10 +12,10 @@ export default function MobileNavBar() {
           {
             !isAuth ? (
               <>
-                <StyledLink to="/trips">
+                {/* <StyledLink to="/trips">
                   <Icon glyph="briefcase" size={26} />
                   <span> Trips </span>
-                </StyledLink>
+                </StyledLink> */}
                 <StyledLink to="/requests">
                   <Icon glyph="explore" size={26} />
                   <span> Requests </span>

@@ -8,8 +8,10 @@ import CreateRequest from './pages/createRequest';
 import HomePage from './pages/home';
 import RequestDetails from './pages/requestDetails';
 import RequestsList from './pages/requestsList';
-import Trips from './pages/trips';
+// import Trips from './pages/trips';
 import UserProfile from './pages/userProfile';
+import MyRequests from './pages/myRequests';
+import Messages from './pages/messages';
 
 function App() {
   return (
@@ -26,9 +28,13 @@ function App() {
 
       <Route exact path="/request/new" component={CreateRequest} />
 
-      <Route exact path="/trips" component={Trips} />
+      {/* <Route exact path="/trips" component={Trips} /> */}
 
       <Route exact path={['/user/:id', '/user/:id/:tab']} component={UserProfile} />
+
+      <Route exact path="/my/requests" component={MyRequests} />
+
+      <Route exact path={['/messages', '/messages/:to/']} component={Messages} />
 
       {/* End of Routes */}
     </Router>

@@ -52,41 +52,28 @@ export const NavWrapper = styled.div`
    background: white;
    border-bottom: 1px solid #dfe3ed;
    position: fixed;
+   @media(max-width: 600px){ position: relative; }
    top: 0;
    width: 100%;
   //  padding: 3px 0;
    z-index: 999999;
+   @media(max-width: 600px){
+     padding: 0.3rem 0;
+   }
 `;
 
 export const Nav = styled.nav`
   display: flex;
   // align-items: center;
   justify-content: space-between;
+  @media(max-width: 600px){ justify-content: center; }
 
-  // @media (max-width: 700px){
-  //   & a:not(.dontHide) { display: none; }
-  // }
-  
   & > .centeredItems { display: flex; }
   & > .leftSideItems { display: flex; align-items: center; position: relative; }
 `;
 
-// export const StyledIcon = styled(Icon)`
-//   padding: 5px;
-//   // border: 1px solid #e8e8e8;
-//   background: rgb(38,80,255, 0.11);
-//   border-radius: 50px;
-//   color: #2650ff;
-//   font-weight: bold;
-//   margin-right: 10px;
-//   transition: 250ms;
-
-//   &:hover {
-//     background: rgb(38,80,255, 0.18);
-//   }
-// `;
-
 export const Divider = styled.div`
   margin-top: 4rem;
+  @media(max-width: 600px){ margin-top: 0; }
   display: flex;
 `;

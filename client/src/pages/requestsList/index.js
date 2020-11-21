@@ -6,18 +6,8 @@ import MainContainer from '../../components/mainContainer';
 import UserRequestCard from '../../components/userRequestCard';
 
 const RequestCardsContainer = styled.div`
-  // display: grid;
-  // grid-template-rows: 1fr 1fr 1fr;
-  // gap: 1em 1em;
-  // max-width: 980px;
   max-width: 850px;
-  margin: 0 auto;
-  // @media(min-width: 768px){
-  //   grid-template-columns: 1fr 1fr;
-  // }
-  // @media(min-width: 1020px){
-  //   grid-template-columns: 1fr 1fr 1fr;
-  // }
+  margin: 0 auto 15rem;
 `;
 
 export default function RequestsList() {

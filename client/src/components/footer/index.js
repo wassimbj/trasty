@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '@hackclub/icons';
 import styled from 'styled-components';
-import Logo from '../logo';
+import { SymbolLogo } from '../logo';
 import {
   LeftSideLink, LeftSideLinks, LinksTitle, LinksWrapper, SocialLink, Wrapper,
 } from './style';
@@ -48,7 +48,7 @@ export default function Footer() {
     <Wrapper>
       <div className="flexit">
         <div>
-          <Logo color="#555555" />
+          <SymbolLogo color="#555555" />
           <SocialLink href="https://www.facebook.com/"><Icon glyph="facebook" /></SocialLink>
           <SocialLink href="https://www.twitter.com/"><Icon glyph="twitter" /></SocialLink>
         </div>
