@@ -52,21 +52,17 @@ export const NavWrapper = styled.div`
    background: white;
    border-bottom: 1px solid #dfe3ed;
    position: fixed;
-   @media(max-width: 600px){ position: relative; }
+   @media(max-width: 600px){ padding: 0.15rem 0; }
    top: 0;
    width: 100%;
-  //  padding: 3px 0;
    z-index: 999999;
-   @media(max-width: 600px){
-     padding: 0.3rem 0;
-   }
 `;
 
 export const Nav = styled.nav`
   display: flex;
   // align-items: center;
   justify-content: space-between;
-  @media(max-width: 600px){ justify-content: center; }
+  // @media(max-width: 600px){ justify-content: center; }
 
   & > .centeredItems { display: flex; }
   & > .leftSideItems { display: flex; align-items: center; position: relative; }

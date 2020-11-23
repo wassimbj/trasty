@@ -14,7 +14,9 @@ const SideTitle = styled.span`
   // margin-bottom: 2rem;
   padding: 1rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  position: sticky; top: 0;
+  @media(min-width: 800px){
+    position: sticky; top: 0;
+  }
   background: #fff;
   & small { font-size: 17px; }
 `;
@@ -61,15 +63,15 @@ export default function MyRequests() {
              Your Requests
              <small> (0) </small>
            </SideTitle>
-           {/* <EmptyWrapper>
+           <EmptyWrapper>
               <div>
                 <NoOffersIcon><Icon glyph="explore" size={50} /></NoOffersIcon>
                 <NoOffersText> No Requests yet... </NoOffersText>
               </div>
-           </EmptyWrapper> */}
-           <UserRequestsWrapper>
+           </EmptyWrapper>
+           {/* <UserRequestsWrapper>
             { [...Array(4)].map(() => <RequestCard />) }
-           </UserRequestsWrapper>
+           </UserRequestsWrapper> */}
          </RequestsSide>
          <OffersSide>
            <SideTitle>

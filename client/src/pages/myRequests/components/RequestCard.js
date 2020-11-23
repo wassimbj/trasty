@@ -8,7 +8,7 @@ import {
 export default function RequestCard() {
   return (
     <RequestCardContainer>
-      <RequestCardLink>
+      <RequestCardLink to="/my/requests/852">
         <ProductImg src="https://media.direct.playstation.com/is/image/sierialto/DemonsSouls_ProductHero1_900X900?$Background_Large$" />
         <ProductInfo>
           <ProductTitle> District Functionality Director </ProductTitle>

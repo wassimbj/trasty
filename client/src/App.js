@@ -18,7 +18,7 @@ function App() {
     <Router>
       {/* Start of Routes */}
       <NavBar />
-      <MobileNavBar />
+      {/* <MobileNavBar /> */}
 
       <Route exact path="/" component={HomePage} />
 
@@ -32,9 +32,9 @@ function App() {
 
       <Route exact path={['/user/:id', '/user/:id/:tab']} component={UserProfile} />
 
-      <Route exact path="/my/requests" component={MyRequests} />
+      <Route exact path={['/my/requests', '/my/requests/:request_id']} component={MyRequests} />
 
-      <Route exact path={['/messages', '/messages/:to/']} component={Messages} />
+      <Route exact path={['/messages', '/messages/:room']} component={Messages} />
 
       {/* End of Routes */}
     </Router>

@@ -19,19 +19,6 @@ export const DropDown = styled.div`
   right: 0;
   top: 100%;
   width: 200px;
-
-  ${(props) => props.isAddDropdown && css`
-    @media(max-width: 600px){
-      box-shadow: 0 -12px 28px 0 rgba(0,0,0,0.2),
-                  0 -2px 4px 0 rgba(0,0,0,0.1),
-                  inset 0 0 0 1px rgba(255,255,255,0.5);
-      bottom: 101%;
-      border-radius: 0;
-      top: unset;
-      left: 0;
-      width: 100%;
-    }
-  `}
 `;
 
 export const DropdownItem = styled(Link)`

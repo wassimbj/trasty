@@ -18,27 +18,23 @@ export default function AuthNavItems() {
   };
   return (
     <>
-     {
-      window.innerWidth > 600 ? (
-        <Tip content="Add">
-          <StyledLink
-            aria-label="navElem"
-            to="#"
-            onClick={() => setIsDropdownOpen({
-              profileDropdown: false,
-              addDropdown: !isDropdownOpen.addDropdown,
-            })}
-          >
-            <Icon glyph="plus" size={35} aria-label="navElem" />
-          </StyledLink>
-        </Tip>
-      ) : null
-    }
-    {/* <Tip content="Notifications">
+    <Tip content="Add">
+      <StyledLink
+        aria-label="navElem"
+        to="#"
+        onClick={() => setIsDropdownOpen({
+          profileDropdown: false,
+          addDropdown: !isDropdownOpen.addDropdown,
+        })}
+      >
+        <Icon glyph="plus" size={35} aria-label="navElem" />
+      </StyledLink>
+    </Tip>
+    <Tip content="Notifications">
       <StyledLink to="#">
         <Icon glyph="notification" size={35} />
       </StyledLink>
-    </Tip> */}
+    </Tip>
     <Tip content="Messages">
       <StyledLink to="/messages">
         <Icon glyph="message" size={35} />

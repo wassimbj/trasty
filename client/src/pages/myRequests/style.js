@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   position: fixed;
   left: 0; right: 0;
-  top: 7%; bottom: 0;
+  top: 5%; bottom: 0;
   margin: 0.5rem auto 0;
   // @media(min-width: 600px){ width: 95%; }
-  @media(max-width: 600px){ bottom: 7%; margin: 0.25rem; }
+  @media(max-width: 600px){ bottom: 5%; margin: 0.25rem; }
   border-top: 1px solid rgba(0,0,0,0.1);
   
 `;
@@ -144,7 +145,7 @@ export const RequestCardContainer = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-export const RequestCardLink = styled.div`
+export const RequestCardLink = styled(Link)`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -200,6 +201,11 @@ export const DeleteButton = styled.span`
   display: flex; align-items: center; justify-content: center;
   color: #ff3939;
   width: 145px;
+  @media(max-width: 350px){
+    width: 120px;
+    font-size: 14px;
+    padding: 0.3rem 0.5rem;
+  }
 `;
 
 export const OffersTotal = styled.div`
