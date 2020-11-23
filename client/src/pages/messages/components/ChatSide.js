@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const ChatSideWrapper = styled.div`
-  // padding: 0 1rem 1rem;
   position: relative;
   overflow: hidden;
   width: ${(props) => (props.isDetailsClosed ? '70%' : '45%')};
@@ -16,7 +15,7 @@ const ChatSideWrapper = styled.div`
 const ChatContent = styled.div`
   overflow-y: auto;
   height: 86%;
-  padding: 1rem;
+  padding: 3rem 1rem;
 `;
 
 const ChattingWithHeader = styled.div`
@@ -25,17 +24,19 @@ const ChattingWithHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 17px;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   height: 70px;
 `;
 
 const MsgInputWrapper = styled.div`
   margin-top: 1rem;
-  border-top: 2px solid #333;
+  border-top: 1px solid rgba(0,0,0,0.1);
   display: flex;
   position: absolute;
   bottom: 0;
   width: 100%;
+  background: #fff;
+  padding: 1rem;
 `;
 
 const MsgInput = styled.textarea`
@@ -44,12 +45,15 @@ const MsgInput = styled.textarea`
   resize: none;
   // border: 2px solid #f00;
   width: 100%;
+  &:focus{ outline: none; }
 `;
 
 const SendButton = styled.button`
   padding: 0.5rem 1rem;
   display: inline-block;
   background: #333; color: white;
+  border-radius: 5px;
+  margin-left: 0.5rem;
 `;
 
 const OpenDetailsBtn = styled.span`
@@ -90,7 +94,7 @@ const MsgText = styled.p`
 const MsgDate = styled.span`
   display: block;
   font-size: 13px;
-  color: gray;
+  color: #bababa;
   padding: 0 0.5rem;
 `;
 

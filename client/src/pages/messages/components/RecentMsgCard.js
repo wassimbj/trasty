@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CardLink = styled(Link)`
   padding: 0.5rem;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   display: block;
   transition: 250ms;
   &:hover{ background: rgba(0,0,0,0.05); }

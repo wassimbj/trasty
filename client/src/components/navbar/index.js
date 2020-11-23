@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@hackclub/icons';
 import { Logo, SymbolLogo } from '../logo';
-import MainContainer from '../mainContainer';
 import Tip from '../tip';
 import {
   NavWrapper, StyledLink, Divider, Nav,

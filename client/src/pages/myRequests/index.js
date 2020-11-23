@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '@hackclub/icons';
-import OfferCard from './components/OfferCard';
-import RequestCard from './components/RequestCard';
+// import OfferCard from './components/OfferCard';
+// import RequestCard from './components/RequestCard';
 import {
   Container, OffersSide, RequestsSide, SidesWrapper,
 } from './style';

@@ -7,11 +7,11 @@ import ChatSide from './components/ChatSide';
 const Container = styled.div`
   position: fixed;
   left: 0; right: 0;
-  top: 8%; bottom: 0;
+  top: 5%; bottom: 0;
   margin: 0.5rem auto 0;
   // max-width: 1200px;
-  @media(max-width: 600px){ bottom: 8%; margin: 0rem; }
-  border: 2px solid #000;
+  @media(max-width: 600px){ bottom: 8%; top: 6%; margin: 0rem; }
+  border: 1px solid rgba(0,0,0,0.1);
 `;
 
 const SidesWrapper = styled.div`
@@ -21,7 +21,7 @@ const SidesWrapper = styled.div`
 
 const RecentMessagesSide = styled.div`
   // padding: 1rem;
-  border-right: 2px solid #000;
+  border-right: 1px solid rgba(0,0,0,0.1);
   width: 30%;
 
   @media(max-width: 900px){
@@ -39,7 +39,7 @@ const RecentMsgsTitle = styled.span`
   align-items: center;
   // justify-content: center;
   padding: 0 1rem;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   height: 70px;
 `;
 
@@ -54,7 +54,7 @@ const OfferDetailsSide = styled.div`
     width: 0%;
     display: none;
   }
-  border-left: 2px solid #000;
+  border-left: 1px solid rgba(0,0,0,0.1);
 `;
 
 const OfferSideTitle = styled.div`
@@ -65,7 +65,7 @@ const OfferSideTitle = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   height: 70px;
 `;
 

@@ -2,7 +2,7 @@ import React from 'react';
 // import MainContainer from './components/mainContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navbar';
-import MobileNavBar from './components/mobileNavbar';
+// import MobileNavBar from './components/mobileNavbar';
 import CreateRequest from './pages/createRequest';
 // import MobileNavBar from './components/mobileNavbar';
 import HomePage from './pages/home';
