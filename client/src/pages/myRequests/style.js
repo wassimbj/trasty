@@ -218,3 +218,49 @@ export const OffersTotal = styled.div`
   display: block;
   margin-top: 1.5rem;
 `;
+
+export const SideTitle = styled.span`
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  // margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  @media(min-width: 800px){
+    position: sticky; top: 0;
+  }
+  background: #fff;
+  & small { font-size: 17px; }
+`;
+
+export const UserOffersContainer = styled.div`
+  display: grid;
+  gap: 1rem;
+  @media(min-width: 1000px){
+    grid-template-columns: 1fr 1fr;
+  }
+  margin-top: 2rem;
+`;
+
+export const UserRequestsWrapper = styled.div`
+  margin-top: 2rem;
+`;
+
+export const EmptyWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75%;
+`;
+
+export const NoOffersText = styled.p`
+  font-size: 19px;
+  font-weight: 600;
+  color: #333;
+`;
+
+export const NoOffersIcon = styled.span`
+  display: block;
+  text-align: center;
+  & svg { margin: 0 auto; color: #ccc; }
+`;

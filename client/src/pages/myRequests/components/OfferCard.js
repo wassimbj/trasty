@@ -48,7 +48,7 @@ export default function OfferCard() {
       </OfferDetails>
       <ActionButtonWrapper>
         <AcceptOfferButton> Accept </AcceptOfferButton>
-        <RefuseOfferButton> Refuse </RefuseOfferButton>
+        <RefuseOfferButton> Remove </RefuseOfferButton>
       </ActionButtonWrapper>
     </OfferCardContainer>
   );

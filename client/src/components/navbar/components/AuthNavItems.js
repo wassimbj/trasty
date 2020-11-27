@@ -3,36 +3,41 @@ import Icon from '@hackclub/icons';
 import Tip from '../../tip';
 import { StyledLink } from '../style';
 import ProfileDropdown from '../../dropdown/ProfileDropdown';
-import AddDropdown from '../../dropdown/AddDropdown';
+import NotifsDropdown from '../../dropdown/NotifsDropdown';
 
 export default function AuthNavItems() {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     profileDropdown: false,
-    addDropdown: false,
+    notifsDropdown: false,
   });
 
   document.onclick = (e) => {
     if ((e.path[0].ariaLabel !== 'navElem') && (e.path[0].nodeName !== 'path')) {
-      setIsDropdownOpen({ profileDropdown: false, addDropdown: false });
+      setIsDropdownOpen({ profileDropdown: false, notifsDropdown: false });
     }
   };
+
+  const isSmallDevice = window.innerWidth < 450;
   return (
     <>
-    <Tip content="Add">
+    <Tip content="Add Request">
       <StyledLink
         aria-label="navElem"
-        to="#"
-        onClick={() => setIsDropdownOpen({
-          profileDropdown: false,
-          addDropdown: !isDropdownOpen.addDropdown,
-        })}
+        to="/request/new"
       >
         <Icon glyph="plus" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
     <Tip content="Notifications">
-      <StyledLink to="#">
-        <Icon glyph="notification" size={35} />
+      <StyledLink
+        aria-label="navElem"
+        to={isSmallDevice ? '/notifs' : '#'}
+        onClick={() => (!isSmallDevice ? setIsDropdownOpen({
+          notifsDropdown: !isDropdownOpen.notifsDropdown,
+          profileDropdown: false,
+        }) : false)}
+      >
+        <Icon glyph="notification" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
     <Tip content="Messages">
@@ -53,7 +58,9 @@ export default function AuthNavItems() {
       </StyledLink>
     </Tip>
     <ProfileDropdown isOpen={isDropdownOpen.profileDropdown} />
-    <AddDropdown isOpen={isDropdownOpen.addDropdown} />
+    {
+      !isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />
+    }
     </>
   );
 }

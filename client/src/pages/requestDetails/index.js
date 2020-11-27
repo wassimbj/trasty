@@ -9,6 +9,7 @@ import {
   ProductImg, ProductTitle, RequestDetailsContainer, RequestSummaryContainer,
 } from './style';
 import Footer from '../../components/footer';
+import Modal from '../../components/modal';
 
 export default function RequestDetails() {
   return (
