@@ -18,13 +18,10 @@ export default function NavBar() {
         <SmContainer>
           <Nav>
             <Link to="/">
-              {
-              window.innerWidth > 600
-                ? (
-                  <Logo width="75pt" height="35pt" />
-                )
-                : <SymbolLogo width="27pt" height="100%" />
-              }
+              <Logo
+                width={`${window.innerWidth > 600 ? '60pt' : '50pt'}`}
+                height={`${window.innerWidth > 600 ? '35pt' : '30pt'}`}
+              />
             </Link>
             {/* <div className="centeredItems">
               <Tip content="Trips">

@@ -8,19 +8,25 @@ export const StyledLink = styled(NavLink)`
   // align-items: center;
   padding: 3px;
   // border: 1px solid #e8e8e8;
-  background: rgb(38,80,255, 0.11);
+  background: #edf2f7;
   border-radius: 50px;
-  color: #2650ff;
+  color: #4a5568;
   transition: 250ms;
   position: relative;
 
-  & svg { padding: 3px; }
+  & svg {
+    padding: 3px;
+    @media(max-width: 350px){
+      width: 32px;
+      height: 32px;
+    }
+  }
   &:not(:last-child){
     margin-right: 7px;
   }
 
   &:hover {
-    background: rgb(38,80,255, 0.18);
+    color: #000;
   }
 
   &:active{ transform: scale(0.95); }
@@ -70,6 +76,6 @@ export const Nav = styled.nav`
 
 export const Divider = styled.div`
   margin-top: 4rem;
-  @media(max-width: 600px){ margin-top: 0; }
+  // @media(max-width: 600px){ margin-top: 0; }
   display: flex;
 `;

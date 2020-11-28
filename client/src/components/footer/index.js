@@ -1,46 +1,47 @@
 import React from 'react';
 import Icon from '@hackclub/icons';
-import styled from 'styled-components';
-import { SymbolLogo } from '../logo';
+import styled, { css } from 'styled-components';
+import { Logo } from '../logo';
 import {
   LeftSideLink, LeftSideLinks, LinksTitle, LinksWrapper, SocialLink, Wrapper,
 } from './style';
 
-const LanguageCurrency = styled.div`
+const PreferenceWrapper = styled.div`
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(255,255,255,0.065);
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
-  & span {
-    color: gray;
-    display: block;
-    font-size: 14px;
-    margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  color: #666;
+  @media(max-width: 720px){
+    justify-content: end;
+  }
+  & div{
+    display: flex;
+    align-items: center;
+    &:not(:last-child){ margin-right: 1rem; }
+    margin-top: 1rem;
   }
 `;
 
-const LanguageSelect = styled.select`
-  border-radius: 5px;
-  padding: 0.1rem 0.5rem;
-  background: #161616;
-  color: #5f5f5f;
-  margin-right: 1rem;
-`;
-
-const SaveLanguageButton = styled.button`
-  // color: #fff;
-  // background: #2650ff;
-  // border-radius: 30px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 30px;
-  color: rgba(255,255,255,0.65);
-  padding: 0.25rem 1rem;
-  transition: 250ms;
-
-  &:hover{ background: #2650ff; color: white; }
+const PreferenceSelect = styled.select`
+  background: transparent;
+  ${(props) => css` width: ${props.width} `};
+  appearance: none;
+  border-radius: 50px;
+  background: rgba(0,0,0,0.045);
+  padding: 5px 30px;
+  padding-right: 0;
+  margin-left: -28px;
+  cursor: pointer;
+  &:focus{
+    outline: none;
+    background: rgba(0,0,0,0.075);
+    color: #333;
+  }
 `;
 
 export default function Footer() {
@@ -48,28 +49,22 @@ export default function Footer() {
     <Wrapper>
       <div className="flexit">
         <div>
-          <SymbolLogo color="#555555" />
+          <Logo color="#555555" width="60pt" height="32pt" />
           <SocialLink href="https://www.facebook.com/"><Icon glyph="facebook" /></SocialLink>
           <SocialLink href="https://www.twitter.com/"><Icon glyph="twitter" /></SocialLink>
         </div>
         <LeftSideLinks>
           <LinksWrapper>
-            <LinksTitle> Links </LinksTitle>
+            <LinksTitle> Trusti </LinksTitle>
             <ul>
               <li>
-                <LeftSideLink to="/signup">Sign up</LeftSideLink>
-              </li>
-              <li>
-                <LeftSideLink to="/login">Login</LeftSideLink>
+                <LeftSideLink to="/start">Login</LeftSideLink>
               </li>
               <li>
                 <LeftSideLink to="/shops">Shops</LeftSideLink>
               </li>
               <li>
                 <LeftSideLink to="/requests">Requests</LeftSideLink>
-              </li>
-              <li>
-                <LeftSideLink to="/trips">Trips</LeftSideLink>
               </li>
             </ul>
           </LinksWrapper>
@@ -98,44 +93,25 @@ export default function Footer() {
               </li>
             </ul>
           </LinksWrapper>
-          {/* <LinksWrapper>
-            <LinksTitle> Language </LinksTitle>
-            <ul>
-              <li>
-                <LanguageSelect>
-                  <option> TND </option>
-                  <option> USD </option>
-                  <option> EUR </option>
-                </LanguageSelect>
-              </li>
-              <li>
-                <LanguageSelect>
-                  <option> English </option>
-                  <option> Francais </option>
-                </LanguageSelect>
-              </li>
-            </ul>
-          </LinksWrapper> */}
         </LeftSideLinks>
       </div>
-      <LanguageCurrency>
+      <PreferenceWrapper>
         <div>
-          <span> Currency </span>
-          <LanguageSelect>
+          <Icon glyph="payment" size={25} />
+          <PreferenceSelect width="83px">
             <option> TND </option>
             <option> USD </option>
             <option> EUR </option>
-          </LanguageSelect>
+          </PreferenceSelect>
         </div>
         <div>
-          <span> Language </span>
-          <LanguageSelect>
+          <Icon glyph="web" size={23} />
+          <PreferenceSelect width="100px">
             <option> English </option>
             <option> Francais </option>
-          </LanguageSelect>
+          </PreferenceSelect>
         </div>
-        <SaveLanguageButton type="button"> Save </SaveLanguageButton>
-      </LanguageCurrency>
+      </PreferenceWrapper>
     </Wrapper>
   );
 }

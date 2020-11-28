@@ -12,6 +12,7 @@ import RequestsList from './pages/requestsList';
 import UserProfile from './pages/userProfile';
 import MyRequests from './pages/myRequests';
 import Messages from './pages/messages';
+import Login from './pages/auth/Login';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
       <Route exact path={['/my/requests', '/my/requests/:request_id']} component={MyRequests} />
 
       <Route exact path={['/messages', '/messages/:room']} component={Messages} />
+
+      {/* Auth routes */}
+      <Route exact path="/start" component={Login} />
 
       {/* End of Routes */}
     </Router>

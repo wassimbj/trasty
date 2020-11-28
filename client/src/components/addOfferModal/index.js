@@ -47,6 +47,18 @@ const Input = styled.input`
   width: 100%;
 `;
 
+const NotesTextarea = styled.textarea`
+  padding: 0.75rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 7px;
+  &:focus{
+    border-color: #333;
+    outline: none;
+  }
+  display: block;
+  width: 100%;
+`;
+
 const Label = styled.label`
   font-size: 14px;
   font-weight: 500;
@@ -108,8 +120,12 @@ export default function AddOfferModal({ onClose }) {
           </InputWrapper>
           <InputWrapper>
             <Label> Your reward </Label>
-            <Input type="number" placeholder="50 TND" />
+            <Input type="number" placeholder="50 TND" min="0" />
             <Hint content="please enter your reward in Tunisian Dinars" />
+          </InputWrapper>
+          <InputWrapper>
+            <Label> Some notes </Label>
+            <NotesTextarea rows="3" placeholder="write something" />
           </InputWrapper>
         </ModalBody>
       </ModalBodyWrapper>
