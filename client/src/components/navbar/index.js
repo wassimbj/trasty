@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@hackclub/icons';
-import { Logo, SymbolLogo } from '../logo';
+import { Logo } from '../logo';
 import Tip from '../tip';
 import {
   NavWrapper, StyledLink, Divider, Nav,
@@ -39,7 +39,7 @@ export default function NavBar() {
               {
                 !isAuth ? (
                   <Tip content="Login or Signup">
-                    <StyledLink to="/login">
+                    <StyledLink to="/start">
                       <Icon glyph="door-enter" size={35} />
                     </StyledLink>
                   </Tip>

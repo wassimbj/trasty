@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
    padding: 0.35rem 0.75rem;
@@ -7,9 +7,8 @@ export const Wrapper = styled.div`
    display: flex;
    align-items: center;
    width: ${(props) => props.width || '100%'};
-   &:hover {
-      background: #ededee;
-   }
+   ${(props) => (props.initStyles ? css` ${props.initStyles} ` : '')}
+
 
    @media(max-width: 425px){
       width: 100%;
@@ -19,6 +18,7 @@ export const Wrapper = styled.div`
       color: #222222;
       display: block;
       margin-right: 0.25rem;
+      white-space: nowrap;
    }
 `;
 

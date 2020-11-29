@@ -83,38 +83,58 @@ export const ProductSummaryContainer = styled.div`
 export const Input = styled.input`
    padding: 0.65rem 1rem;
    border-radius: 5px;
-   background: #f1f1f1;
-   &:focus{ outline: none }
+   background: #fff;
    &::placeholder{color: #999;}
    display: block;
    width: 100%;
    transition: 250ms ease-in-out;
-
-   &:focus{ background: #ededee; }
+   border: 1px solid rgba(0,0,0,0.15);
+   &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+   &:focus{ border: 1px solid rgba(0,0,0,0.5); outline: none }
 `;
 
 export const TextArea = styled.textarea`
-   padding: 0.65rem 1rem;
-   border-radius: 5px;
-   background: #f1f1f1;
-   &:focus{ outline: none }
-   &::placeholder{color: #999;}
-   display: block;
-   width: 100%;
-   transition: 250ms ease-in-out;
-   &:focus{ background: #ededee; }
+  padding: 0.65rem 1rem;
+  border-radius: 5px;
+  background: #fff;
+  &::placeholder{color: #999;}
+  display: block;
+  width: 100%;
+  transition: 250ms ease-in-out;
+  border: 1px solid rgba(0,0,0,0.15);
+  &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+  &:focus{ border: 1px solid rgba(0,0,0,0.5); outline: none }
 `;
 
 export const InputBlock = styled.div`
    margin-bottom: 2.5rem;
 
    & label{
-   color: #333333;
-   font-weight: 500;
-   font-size: 15px;
-   margin-bottom: 0.5rem;
-   display: block;
+    color: #333333;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 0.5rem;
+    display: block;
    }
+`;
+
+export const WaitingSelect = styled.select`
+  padding: 1rem;
+  appearance: none;
+  // width: 230px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.15);
+  transition: 250ms;
+  &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+  &:focus{
+    border: 1px solid rgba(0,0,0,0.5);
+    outline: none;
+  }
 `;
 
 export const WebsiteLink = styled.div`

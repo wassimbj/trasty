@@ -6,7 +6,7 @@ import {
 
 export default function UserRequestCard() {
   return (
-    <UserRequestCardLink to="/request/view/558">
+    <UserRequestCardLink to="/request/view/558" target="_blank">
         <DetailsWrapper>
           <ProductDetails>
             <LazyLoad once>

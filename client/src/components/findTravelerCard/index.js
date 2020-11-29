@@ -8,7 +8,13 @@ export default function FindTravelerCard({ marginTop, customStyle, btnText }) {
   return (
     <Wrapper marginTop={marginTop} customStyle={customStyle}>
       <LocationsSeachCard>
-        <InlineInput text="From" placeholder="City or Country" width="35%" />
+        <InlineInput
+          text="From"
+          placeholder="City or Country"
+          width="35%"
+          initStyles="&:hover{ background: #f3f3f3 }"
+          focusStyles={{ background: '#efefef' }}
+        />
         <SwitchIcon>
           <svg
             width="24"
@@ -27,7 +33,13 @@ export default function FindTravelerCard({ marginTop, customStyle, btnText }) {
             />
           </svg>
         </SwitchIcon>
-        <InlineInput text="To" placeholder="City or Country" width="35%" />
+        <InlineInput
+          text="To"
+          placeholder="City or Country"
+          width="35%"
+          initStyles="&:hover{ background: #f3f3f3 }"
+          focusStyles={{ background: '#efefef' }}
+        />
         <SearchBtn to="/search">
           {btnText}
         </SearchBtn>

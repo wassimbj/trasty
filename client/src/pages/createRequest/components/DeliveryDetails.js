@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { InputBlock } from '../style';
+import { InputBlock, WaitingSelect } from '../style';
 import InlineInput from '../../../components/inlineInput';
 
 export default function DeliveryDetails() {
@@ -13,10 +13,28 @@ export default function DeliveryDetails() {
           Enter the country your order is coming from and which city you want it to be delivered to.
         </p>
         <InputBlock>
-          <label> Route </label>
-          <InlineInput text="Delivery from" placeholder="City or Country" inputWidth="70%" />
+          <label> Delivery Route </label>
+          <InlineInput
+            text="From"
+            placeholder="City or Country"
+            inputWidth="100%"
+            initStyles={`
+              border: 1px solid rgba(0,0,0,0.15);
+              &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+            `}
+            focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
+          />
           <br />
-          <InlineInput text="Delivery to" placeholder="City or Country" inputWidth="70%" />
+          <InlineInput
+            text="To"
+            placeholder="City or Country"
+            inputWidth="100%"
+            initStyles={`
+              border: 1px solid rgba(0,0,0,0.15);
+              &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+            `}
+            focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
+          />
         </InputBlock>
 
         <InputBlock>
@@ -24,12 +42,12 @@ export default function DeliveryDetails() {
           <p className="optinalHeading">
             The longer period you are ready to wait the more offers you receive and can choose from
           </p>
-          <select>
+          <WaitingSelect>
             <option value="0"> Deliver my order anytime </option>
             <option value="90"> Up to 90 days </option>
             <option value="45"> Up to 45 days </option>
             <option value="21"> Up to 3 weeks </option>
-          </select>
+          </WaitingSelect>
         </InputBlock>
       </div>
     </>

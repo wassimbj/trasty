@@ -49,7 +49,7 @@ export default function Login() {
         <TitleWrapper>
           <Title> Start using Trusti </Title>
           <SubTitle>Wether you are new or an existing user</SubTitle>
-          <SubTitle>just click Login and start using trusti.</SubTitle>
+          <SubTitle>just click a button and start using trusti.</SubTitle>
         </TitleWrapper>
         <LoginButtons />
         <SignAgreementText />
