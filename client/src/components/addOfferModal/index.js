@@ -93,7 +93,6 @@ const CancelButton = styled.span`
   cursor: pointer;
   text-align: center;
   &:hover{ background: #cecece; }
-  font-weight: 500;
 `;
 
 export default function AddOfferModal({ onClose }) {

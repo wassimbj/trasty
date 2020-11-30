@@ -19,7 +19,7 @@ export default function NavBar() {
           <Nav>
             <Link to="/">
               <Logo
-                width={`${window.innerWidth > 600 ? '60pt' : '50pt'}`}
+                width={`${window.innerWidth > 600 ? '75pt' : '50pt'}`}
                 height={`${window.innerWidth > 600 ? '35pt' : '30pt'}`}
               />
             </Link>

@@ -14,7 +14,7 @@ export default function HomeBanner() {
             <h1> Shop Anything, </h1>
             <h1> To Anywhere. </h1>
             <p>Trusti connects shoppers and travelers who help each other access the world.</p>
-            <BannerPostLink to="/request/new">Post your Needs</BannerPostLink>
+            <BannerPostLink to="/start">Get Started</BannerPostLink>
             <BannerTravelLink to="/requests">Find Requests</BannerTravelLink>
           </BannerItem>
           <BannerItem>

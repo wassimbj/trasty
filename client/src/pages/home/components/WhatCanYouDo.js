@@ -45,7 +45,7 @@ export default function WhatCanYouDo() {
           <WhatYouCanDoCard>
             <div className="col-head">
               <img src="/images/icons/whatyoucando4.png" alt="" />
-              <span> Earn money while traveling the world or locally. </span>
+              <span> Help & Earn money while traveling from place to another. </span>
             </div>
             <p>
               With Trusti you will be able to earn money while you are traveling from any where,
