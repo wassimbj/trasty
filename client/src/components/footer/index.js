@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
         <LeftSideLinks>
           <LinksWrapper>
-            <LinksTitle> Trusti </LinksTitle>
+            <LinksTitle> Trusty </LinksTitle>
             <ul>
               <li>
                 <LeftSideLink to="/start">Login</LeftSideLink>

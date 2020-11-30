@@ -19,8 +19,9 @@ export default function NavBar() {
           <Nav>
             <Link to="/">
               <Logo
-                width={`${window.innerWidth > 600 ? '75pt' : '50pt'}`}
-                height={`${window.innerWidth > 600 ? '35pt' : '30pt'}`}
+                color="#2650ff"
+                width={`${window.innerWidth > 400 ? '75pt' : '55pt'}`}
+                height={`${window.innerWidth > 400 ? '35pt' : '30pt'}`}
               />
             </Link>
             {/* <div className="centeredItems">

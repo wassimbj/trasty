@@ -47,7 +47,7 @@ export default function Login() {
     <Wrapper>
       <LoginCard>
         <TitleWrapper>
-          <Title> Start using Trusti </Title>
+          <Title> Start using Trusty </Title>
           <SubTitle>Wether you are new or an existing user</SubTitle>
           <SubTitle>just click a button and start using trusti.</SubTitle>
         </TitleWrapper>
