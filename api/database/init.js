@@ -1,10 +1,17 @@
-const { Pool } = require('pg');
-const db = new Pool();
+import { Pool } from 'pg';
+import constants from '../constants';
+import logger from '../utils/logger';
+const db = new Pool({
+  connectionString: `${constants.PGDB_CONNECTION}`
+});
 
 db.on('error', (err, client) => {
-  console.error('Unexpected DB error', err);
+  logger.error(`Database Error: ${err}`);
   process.exit(-1);
 });
 
+db.on('connect', () => {
+  logger.info('Database is connected');
+});
 
-module.exports = db;
+export default db;

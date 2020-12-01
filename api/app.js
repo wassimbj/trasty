@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const helmet = require('helmet');
-const constants = require('./config/constants')
+import helmet from 'helmet';
+import constants from './constants';
+import passport from 'passport';
 
 // use helmet for basic security
 app.use(helmet());
@@ -14,12 +15,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 if(constants.IS_PROD){
-  app.set('trust proxy', 1) // trust first proxy
+  app.set('trust proxy', 1); // trust first proxy
 }
+
+// initialize passport
+app.use(passport.initialize());
 
 app.get('/', (req, res) => {
   return res.json('HELLLLLLLLLLLLLLLLLOOOOOOOOOOOOO')
 });
 
+require('./routes')(app);
 
-module.exports = app;
+export default app;

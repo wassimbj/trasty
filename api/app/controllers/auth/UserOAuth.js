@@ -1,6 +1,5 @@
-// const { qry } = require('../../database/db');
-// const logger = require('../../helpers/logger');
-const oauthUser = require('../../services/auth/oauthUser')
+import logger from '../../../utils/logger';
+import oauthUser from '../../../services/auth/oauthUser';
 
 class UserOauth {
 
@@ -61,4 +60,4 @@ class UserOauth {
 
 }
 
-module.exports = new UserOauth();
+export default new UserOauth();

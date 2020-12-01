@@ -1,5 +1,5 @@
 // const { error } = require("winston");
-const db = require('../../database/init');
+import db from '../../database/init';
 // const logger = require("../../helpers/logger");
 // const addToMailchimp = require('../user/addToMailchimp');
 
@@ -29,4 +29,4 @@ async function oauthUser(fullname, email, photo, provider, is_verified) {
   }
 }
 
-module.exports = oauthUser;
+export default oauthUser;
