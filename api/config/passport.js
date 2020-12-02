@@ -1,7 +1,6 @@
 import passport from 'passport';
 import FacebookStrategy from 'passport-facebook';
 import GoogleStrategy from 'passport-google-oauth2';
-
 import UserOauthController from '../app/controllers/auth/UserOAuth';
 import constants from '../constants';
 
@@ -26,7 +25,7 @@ passport.use(
   new GoogleStrategy(
     {
       clientID: constants.GOOGLE_CLIENT_ID,
-      clientSecret: constants.GOOGLE_SECRET_ID,
+      clientSecret: constants.GOOGLE_CLIENT_SECRET,
       callbackURL:  constants.IS_PROD ? `${constants.API_URL}/auth/google/callback` : `${constants.API_URL}/auth/google/callback`,
       passReqToCallback: true,
     },

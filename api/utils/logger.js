@@ -42,7 +42,7 @@ if(constants.IS_PROD){
     new transports.DailyRotateFile({
       filename: `${exceptionsLogsFile}`,
       maxsize: "20mb",
-      maxFiles: "1d",
+      maxFiles: "0d",
       silent: false,
     })
   );

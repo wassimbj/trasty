@@ -1,8 +1,8 @@
-const Redis = require("ioredis");
-const constants = require("../constants");
+import Redis from 'ioredis';
+import constants from '../constants';
 
-const redis = process.env.NODE_ENV === "production"
+const redis = constants.IS_PROD
 ? new Redis(constants.REDIS_URL)
-: new Redis({host: 'redis'});
+: new Redis({host: 'trusty_redis'});
 
-module.exports = redis;
+export default redis;

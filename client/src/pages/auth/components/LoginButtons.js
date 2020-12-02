@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FacebookButton, GoogleButton } from '../../../components/authButtons';
+import constants from '../../../constants';
 
 const Container = styled.div`
   display: flex;
@@ -20,8 +21,8 @@ export default function LoginButtons() {
   return (
     <Container>
       <ButtonsWrapper>
-        <FacebookButton text="Start with Facebook" />
-        <GoogleButton text="Start with Google" />
+        <FacebookButton text="Start with Facebook" href={`${constants.SERVER_URL}/auth/facebook`} />
+        <GoogleButton text="Start with Google" href={`${constants.SERVER_URL}/auth/google`} />
       </ButtonsWrapper>
     </Container>
   );

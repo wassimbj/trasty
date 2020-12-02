@@ -6,13 +6,20 @@ import constants from '../../constants';
 // const loginRateLimiter = require("../app/services/auth/loginRateLimiter");
 
 // setup the configs
-import '../../config/passport';
-
+// import '../../config/passport';
+require('../../config/passport');
 /**
  * Oauth the user with facebook and google
  */
 
 // ? Facebook login
+// router.get(
+//   "/auth/facebook",
+//   // loginRateLimiter,
+//   UserController.redirectIfAuth,
+//   (req, res) => ( res.json('HELLO FACEBOOK') )
+// );
+
 router.get(
   "/auth/facebook",
   // loginRateLimiter,

@@ -1,14 +1,15 @@
-const session = require("express-session");
-const constants = require("../constants");
+import session from 'express-session';
+import constants from '../constants';
 const RedisStore = require("connect-redis")(session);
-const redis = require("./redis");
+import redis from './redis';
 
 function init() {
   const sessionStore = new RedisStore({ client: redis });
 
   return session({
     name: "sid",
-    secret: constants.SESSION_SECRET_KEY, // Put whatever here
+    // secret: `${constants.SESSION_SECRET_KEY}`, // Put whatever here
+    secret: 'dssq*/fv*dfv*/df7v*//d7fv*q7/dfv*/d7f/v7d/f7*vd7q*fv7q*a*a',
     store: sessionStore,
     resave: false,
     saveUninitialized: true,
@@ -22,4 +23,4 @@ function init() {
   });
 }
 
-module.exports = init;
+export default init;

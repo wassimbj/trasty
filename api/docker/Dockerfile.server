@@ -2,5 +2,5 @@ FROM node:12-slim
 WORKDIR /trusty/app
 COPY . .
 RUN npm install
-CMD node -r esm ./server/index.js --color=true
+CMD node -r esm ./server/index.js --reload
 EXPOSE 5000

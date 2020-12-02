@@ -34,19 +34,14 @@ class User {
       if (!req.session.userid) {
         return res.status(401).json("unauthorized");
       }
-
-      let logged_in_user = await db.query("SELECT id FROM users WHERE id = $1", [
-        req.session.userid,
-      ]);
-
-      // check if user is in the DB
-      if (!logged_in_user[0]) {
-        req.session.userid = null;
-        return res.status(401).json("unauthorized");
-      }
-      // check if user's email is verified !
-      // else if(logged_in_user[0] && !logged_in_user[0].verified){
-      //     return res.status(401).json('unauthorized');
+      
+      // ? check if user is in the DB
+      // let logged_in_user = await db.query("SELECT id FROM users WHERE id = $1", [
+      //   req.session.userid,
+      // ]);
+      // if (!logged_in_user[0]) {
+      //   req.session.userid = null;
+      //   return res.status(401).json("unauthorized");
       // }
 
       // else
