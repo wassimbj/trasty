@@ -12,7 +12,7 @@ passport.use(
       clientID: constants.FACEBOOK_APP_ID,
       clientSecret: constants.FACEBOOK_APP_SECRET,
       callbackURL:  constants.IS_PROD ? `${constants.API_URL}/auth/facebook/callback` : `${constants.API_URL}/auth/facebook/callback`,
-      profileFields: ['id', 'displayName', 'photos', 'email'],
+      profileFields: ['id', 'displayName', 'photos', 'email', 'primary_phone', 'phone'],
       passReqToCallback: true,
     },
     UserOauthController.facebookLoginCallback

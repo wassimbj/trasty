@@ -1,5 +1,5 @@
 FROM node:12-slim
-WORKDIR /trusty/app
+WORKDIR /trusty/src
 COPY . .
 RUN npm install
 CMD node -r esm ./server/index.js --reload

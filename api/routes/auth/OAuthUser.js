@@ -1,30 +1,23 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import passport from 'passport';
-import UserController from '../../app/controllers/auth/User';
-import constants from '../../constants';
+import passport from "passport";
+import UserController from "../../app/controllers/auth/User";
+import constants from "../../constants";
 // const loginRateLimiter = require("../app/services/auth/loginRateLimiter");
 
 // setup the configs
 // import '../../config/passport';
-require('../../config/passport');
+require("../../config/passport");
 /**
  * Oauth the user with facebook and google
  */
 
 // ? Facebook login
-// router.get(
-//   "/auth/facebook",
-//   // loginRateLimiter,
-//   UserController.redirectIfAuth,
-//   (req, res) => ( res.json('HELLO FACEBOOK') )
-// );
-
 router.get(
   "/auth/facebook",
   // loginRateLimiter,
   UserController.redirectIfAuth,
-  passport.authenticate("facebook", { session: false, scope: 'email' })
+  passport.authenticate("facebook", { session: false, scope: "email" })
 );
 
 router.get(
@@ -44,7 +37,10 @@ router.get(
   "/auth/google",
   // loginRateLimiter,
   UserController.redirectIfAuth,
-  passport.authenticate("google", { scope: ['profile', 'email'], session: false })
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    session: false,
+  })
 );
 
 router.get(
@@ -58,6 +54,12 @@ router.get(
     // Successful authentication, redirect home.
     res.redirect(`${constants.CLIENT_URL}`);
   }
+);
+
+router.get(
+  "/logout", 
+  UserController.auth, 
+  UserController.logout
 );
 
 

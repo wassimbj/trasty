@@ -35,7 +35,7 @@ services:
          - "pg_db"
          - "trusty_redis"
       volumes:
-         - ..:/trusty/app
+         - ..:/trusty/src
       ports: 
          - 5000:5000
       

@@ -25,6 +25,11 @@ app.use(session());
 // initialize passport
 app.use(passport.initialize());
 
+app.get('*', (req, res, next) => {
+  console.log('LOGGEDIN_USER_ID: ', req.session.userid);
+  next();
+});
+
 app.get('/', (req, res) => {
   return res.json('HELLLLLLLLLLLLLLLLLOOOOOOOOOOOOO')
 });

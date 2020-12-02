@@ -1,0 +1,60 @@
+{
+  message: "OAUTH USER (google) ERROR: TypeError: Cannot read property 'id' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 21:49:18'
+}
+{
+  message: "GOOGLE_AUTH_ERROR: TypeError: Cannot read property 'new_user' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 21:49:18'
+}
+{
+  message: 'OAUTH USER (google) ERROR: error: null value in column "password" of relation "users" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-02 21:52:02'
+}
+{
+  message: "GOOGLE_AUTH_ERROR: TypeError: Cannot read property 'new_user' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 21:52:02'
+}
+{
+  message: 'OAUTH USER (google) ERROR: error: null value in column "phone" of relation "users" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-02 21:53:19'
+}
+{
+  message: "GOOGLE_AUTH_ERROR: TypeError: Cannot read property 'new_user' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 21:53:19'
+}
+{
+  message: 'OAUTH USER (google) ERROR: error: null value in column "is_email_verified" of relation "users" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-02 21:57:07'
+}
+{
+  message: "GOOGLE_AUTH_ERROR: TypeError: Cannot read property 'new_user' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 21:57:07'
+}
+{
+  message: "OAUTH USER (google) ERROR: TypeError: Cannot read property 'id' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 22:11:10'
+}
+{
+  message: "GOOGLE_AUTH_ERROR: TypeError: Cannot read property 'new_user' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 22:11:10'
+}
+{
+  message: 'OAUTH USER (google) ERROR: error: value too long for type character varying(50)',
+  level: 'error',
+  timestamp: '2020-12-02 22:24:14'
+}
+{
+  message: "GOOGLE_AUTH_ERROR: TypeError: Cannot read property 'new_user' of undefined",
+  level: 'error',
+  timestamp: '2020-12-02 22:24:14'
+}
