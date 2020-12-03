@@ -1,8 +1,11 @@
 import React from 'react';
 import Icon from '@hackclub/icons';
-import { DropDown, DropdownItem, ItemIcon } from './style';
+import {
+  DropDown, DropdownItem,
+  ItemIcon, SilentDropdownItem,
+} from './style';
 
-export default function ProfileDropdown({ isOpen }) {
+export default function ProfileDropdown({ isOpen, onClickLogout }) {
   return (
     <DropDown isOpen={isOpen}>
       <DropdownItem to="/user/588">
@@ -21,10 +24,10 @@ export default function ProfileDropdown({ isOpen }) {
         <ItemIcon><Icon glyph="settings" size={26} /></ItemIcon>
         <span> My Settings </span>
       </DropdownItem>
-      <DropdownItem to="/logout">
+      <SilentDropdownItem onClick={onClickLogout}>
         <ItemIcon><Icon glyph="door-leave" size={26} /></ItemIcon>
         <span> Logout </span>
-      </DropdownItem>
+      </SilentDropdownItem>
     </DropDown>
   );
 }

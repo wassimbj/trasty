@@ -32,6 +32,17 @@ export const DropdownItem = styled(Link)`
   & span { font-weight: 500; }
 `;
 
+export const SilentDropdownItem = styled.span`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  &:not(:last-child) { margin-bottom: 0.25rem; }
+  &:hover{ background: rgba(0,0,0,0.05); }
+  cursor: pointer;
+  & span { font-weight: 500; }
+`;
+
 export const ItemIcon = styled.span`
   border-radius: 30px;
   padding: 3px;

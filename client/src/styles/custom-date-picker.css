@@ -41,3 +41,7 @@
   background: #fff;
   color: #ccc;
 }
+
+.react-datepicker__day--outside-month {
+  color: #c5c5c5;
+}

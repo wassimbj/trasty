@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import constants from './constants';
 import passport from 'passport';
 import session from './config/session';
+import cors from 'cors';
 
 // use helmet for basic security
 app.use(helmet());
@@ -14,6 +15,20 @@ app.use(helmet.hidePoweredBy({ setTo: 'Django' }));
 // Parse incoming requests data
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
+
+const acceptedOrigins = [
+  'http://localhost:3000',
+  'http://192.168.1.12:3000',
+  // 'https://trusty.netlify.app',
+  'https://www.trusty.tn',
+  'https://trusty.tn',
+]
+// use cors
+app.use(cors({
+  origin: acceptedOrigins,
+  credentials: true
+}))
+
 
 if(constants.IS_PROD){
   app.set('trust proxy', 1); // trust first proxy

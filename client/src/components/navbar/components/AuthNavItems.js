@@ -5,7 +5,7 @@ import { StyledLink } from '../style';
 import ProfileDropdown from '../../dropdown/ProfileDropdown';
 import NotifsDropdown from '../../dropdown/NotifsDropdown';
 
-export default function AuthNavItems() {
+export default function AuthNavItems({ onClickLogout }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     profileDropdown: false,
     notifsDropdown: false,
@@ -57,7 +57,7 @@ export default function AuthNavItems() {
         <Icon glyph="profile" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
-    <ProfileDropdown isOpen={isDropdownOpen.profileDropdown} />
+    <ProfileDropdown isOpen={isDropdownOpen.profileDropdown} onClickLogout={onClickLogout} />
     {
       !isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />
     }

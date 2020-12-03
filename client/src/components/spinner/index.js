@@ -21,14 +21,21 @@ const StyledSpinner = styled.span`
     to { transform: rotate(360deg) }
   }
   
-  ${(props) => props.center && css` margin: 0 auto; `}
+  ${(props) => props.center && css` margin: 0 auto; display: block;`}
+  ${(props) => css` ${props.customStyle} `}
 `;
 
 export default function Spinner({
   spinnerColor, color,
-  width, center,
+  width, center, customStyle,
 }) {
   return (
-    <StyledSpinner spinnerColor={spinnerColor} color={color} width={width} center={center} />
+    <StyledSpinner
+      spinnerColor={spinnerColor}
+      color={color}
+      width={width}
+      center={center}
+      customStyle={customStyle}
+    />
   );
 }

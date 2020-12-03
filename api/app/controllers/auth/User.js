@@ -7,12 +7,12 @@ import logger from '../../../utils/logger';
 class User {
 
   async me(req, res) {
-    let me = await db.query(
-      "SELECT id, fullname, verified, is_consulter, heading, image FROM users WHERE id = $1",
+    let { rows } = await db.query(
+      "SELECT id FROM users WHERE id = $1",
       [req.session.userid]
     );
-
-    return res.status(200).json({ me: me[0] });
+      // console.log('ME: ', rows);
+    return res.status(200).json({ me: rows[0] });
   }
 
   // Log out the user
