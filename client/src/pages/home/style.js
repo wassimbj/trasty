@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Banner = styled.div`
-  padding-top: 2.5rem;
   border-radius: 0 0 15px 15px;
   margin: 0 auto;
   @media (min-width: 1200px) {
@@ -81,8 +80,7 @@ export const BannerTravelLink = styled(Link)`
   text-align: center;
   transition: 500ms;
   &:hover {
-    background: #0f3eff;
-    color: white;
+    background: #0f3eff1f;
   }
   @media (max-width: 400px) {
     width: 100%;

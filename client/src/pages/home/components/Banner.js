@@ -8,7 +8,6 @@ export default function HomeBanner() {
   return (
     <Banner>
       <MainContainer>
-
         <BannerWrapper>
           <BannerItem>
             <h1> Shop Anything, </h1>

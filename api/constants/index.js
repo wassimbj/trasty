@@ -14,6 +14,9 @@ const constants = {
   PGDB_CONNECTION: IS_PROD ? process.env.PROD_PGDB_CN : process.env.DEV_PGDB_CN,
   API_URL: IS_PROD ? process.env.API_URL : 'http://localhost:5000',
   CLIENT_URL: IS_PROD ? 'https://www.trusty.tn' : 'http://localhost:3000',
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
 }
 
 module.exports = constants

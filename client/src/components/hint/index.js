@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 export default function Hint({ content }) {
   return (
     <Wrapper>
-      <Icon glyph="info" size={20} color="#2ba1ff" />
+      <Icon glyph="info" size={18} color="#2ba1ff" />
       <span>{ content }</span>
     </Wrapper>
   );

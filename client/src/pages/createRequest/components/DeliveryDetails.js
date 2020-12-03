@@ -3,7 +3,7 @@ import React from 'react';
 import { InputBlock, WaitingSelect } from '../style';
 import InlineInput from '../../../components/inlineInput';
 
-export default function DeliveryDetails() {
+export default function DeliveryDetails({ values, handleChange }) {
   return (
     <>
       <div>
@@ -23,6 +23,9 @@ export default function DeliveryDetails() {
               &:hover{ border: 1px solid rgba(0,0,0,0.25); }
             `}
             focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
+            name="deliverFrom"
+            onChange={handleChange}
+            value={values.deliverFrom}
           />
           <br />
           <InlineInput
@@ -34,6 +37,9 @@ export default function DeliveryDetails() {
               &:hover{ border: 1px solid rgba(0,0,0,0.25); }
             `}
             focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
+            name="deliverTo"
+            onChange={handleChange}
+            value={values.deliverTo}
           />
         </InputBlock>
 
@@ -42,7 +48,11 @@ export default function DeliveryDetails() {
           <p className="optinalHeading">
             The longer period you are ready to wait the more offers you receive and can choose from
           </p>
-          <WaitingSelect>
+          <WaitingSelect
+            name="deliverBefore"
+            onChange={handleChange}
+            value={values.deliverBefore}
+          >
             <option value="0"> Deliver my order anytime </option>
             <option value="90"> Up to 90 days </option>
             <option value="45"> Up to 45 days </option>

@@ -6,13 +6,12 @@ export const StyledButton = styled.button`
    color: white;
    text-align: center;
    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 20px;
-   background: linear-gradient(rgb(38, 80, 255), rgb(0, 49, 255)) rgb(38, 80, 255);
+   background: linear-gradient(rgb(38, 80, 255), rgb(29,75,250)) rgb(38, 80, 255);
    outline: none;
    padding: 0.75rem;
    border-radius: 5px;
-   transition: background 500ms ease-in-out;
    &:hover{
-      background: rgb(0, 49, 255);
+      background: rgb(38, 80, 255);
    }
    ${(props) => props.customStyles};
 `;

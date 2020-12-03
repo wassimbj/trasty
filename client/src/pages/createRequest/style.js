@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const CreateRequestWrapper = styled.div`
    display: flex;
@@ -21,14 +21,14 @@ export const ProductDetailsContainer = styled.div`
    & .optinalHeading{ color: #8f8f95; margin-bottom: 1.5rem; }
 
 
-   @media (min-width: 992px){
-   width: 65%;
+   @media (min-width: 820px){
+    width: 65%;
    }
 
    & > div {
-   border: 1px solid rgba(0,0,0,0.1);
-   border-radius: 5px;
-   padding: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 1rem;
    }
 `;
 
@@ -37,22 +37,25 @@ export const ProductSummaryContainer = styled.div`
    padding-right: .5rem;
    width: 100%;s
    & .title { font-weight: bold; font-size: 23px; }
-   @media (min-width: 992px){
-   width: 35%;
+   @media (min-width: 820px){
+    width: 35%;
    }
 
-   @media(max-width: 989px){
-   margin-top: 1rem;
+   @media(max-width: 820px){
+    margin-top: 1rem;
    }
 
    & > div {
-   border: 1px solid rgba(0,0,0,0.1);
-   border-radius: 5px;
-   padding: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 1rem;
+    @media(min-width: 820px){
+      position: sticky; top: 55px;
+    }
    }
 
    & .productTitle {
-      font-weight: bold;
+      font-weight: 500;
       font-size: 23px;
       display: block;
       padding: 0.5rem 0 1rem;
@@ -66,31 +69,38 @@ export const ProductSummaryContainer = styled.div`
       color: #333333;
       & span { color: #8f8f95; }
    }
+`;
 
-   & .productPrice {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0 0.5rem;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      margin-top: 1.5rem;
-      flex-wrap;
-      & > span { display: block }
-      & span:last-child{ font-size: 22px; font-weight: bold; }
-   }
+export const ProductSummaryItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 0.5rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap;
+  & > span { display: block }
+`;
+
+export const ProductSummaryItemPrice = styled.span`
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 export const Input = styled.input`
-   padding: 0.65rem 1rem;
-   border-radius: 5px;
-   background: #fff;
-   &::placeholder{color: #999;}
-   display: block;
-   width: 100%;
-   transition: 250ms ease-in-out;
-   border: 1px solid rgba(0,0,0,0.15);
-   &:hover{ border: 1px solid rgba(0,0,0,0.25); }
-   &:focus{ border: 1px solid rgba(0,0,0,0.5); outline: none }
+  padding: 0.65rem 1rem;
+  border-radius: 5px;
+  background: #fff;
+  &::placeholder{color: #999;}
+  display: block;
+  width: 100%;
+  transition: 250ms ease-in-out;
+  border: 1px solid rgba(0,0,0,0.15);
+  &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+  &:focus{ border: 1px solid rgba(0,0,0,0.5); outline: none }
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const TextArea = styled.textarea`
@@ -149,30 +159,11 @@ export const WebsiteLink = styled.div`
    }
 `;
 
-export const Quantity = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  & label{
-    color: #333333;
-    font-weight: 500;
-    font-size: 15px;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-
-  & input{
-    padding: 0.65rem 1rem;
-    border-radius: 5px;
-    background: #f1f1f1;
-    &:focus{ outline: none }
-    &::placeholder{color: #999;}
-    display: block;
-    transition: 250ms ease-in-out;
-    width: 70px;
-    &:focus{ background: #ededee; }
-  }
+export const ProductLinkAvailability = styled.div`
+   display: flex;
+   align-items: center;
+   margin-top: 1rem;
+   & span { color: #555; margin-left: 0.5rem}
 `;
 
 export const NextBtn = styled.button`
@@ -258,4 +249,51 @@ export const Notice = styled.div`
    padding: 1rem;
    border-radius: 5px;
    margin: 1rem 0.5rem;
+`;
+
+export const RetryButton = styled.span`
+  background: #2650ff;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 50px;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 0.25rem;
+  ${(props) => props.isDisabled && css`
+    opacity: 0.8;
+    cursor: default;
+  `}
+  transition: 250ms;
+  &:hover{ background: #0334ff }
+`;
+
+export const ProductLinkWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ProductImg = styled.img`
+  border-radius: 5px;
+  max-width: 150px;
+  margin-right: 0.75rem;
+  border: 1px solid rgba(0,0,0,0.12);
+  display: block;
+  object-fit: cover;
+  margin-bottom: 1rem;
+`;
+
+export const ProductImgContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 2px dashed #d9d9d9;
+  border-radius: 2px;
+  background-color: #fafafa;
+  color: #bdbdbd;
+  outline: none;
+  transition: border .24s ease-in-out;
+  cursor: pointer;
+  &:hover{ border-color:  rgba(0,0,0,0.25); }
 `;
