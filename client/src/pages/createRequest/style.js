@@ -272,17 +272,39 @@ export const ProductLinkWrapper = styled.div`
   align-items: center;
 `;
 
-export const ProductImg = styled.img`
+export const ProductImgPreviewWrapper = styled.div`
+   position: relative;
+   max-width: 200px;
+   max-height: 200px;
+   margin-bottom: 1rem;
+`;
+
+export const RemoveImgButton = styled.span`
+   display: inline-block;
+   padding: 0.25rem;
+   border-radius: 50px;
+   color: white;
+   background: rgb(255, 60, 60);
+   &:hover{ background: rgb(255, 0, 60); }
+   position: absolute;
+   top: -5px;
+   right: -5px;
+   cursor: pointer;
+`;
+
+export const ProductImgPreview = styled.img`
   border-radius: 5px;
-  max-width: 150px;
+  max-width: 200px;
+  max-height: 200px;
+  width: 100%;
   margin-right: 0.75rem;
   border: 1px solid rgba(0,0,0,0.12);
   display: block;
   object-fit: cover;
-  margin-bottom: 1rem;
+  padding: 0.5rem;
 `;
 
-export const ProductImgContainer = styled.div`
+export const SelectProductImgContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;

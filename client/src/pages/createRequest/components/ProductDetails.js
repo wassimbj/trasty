@@ -1,26 +1,46 @@
+/* eslint-disable indent */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
 import { useDropzone } from 'react-dropzone';
 import {
-  Input, InputBlock, TextArea, ProductLinkAvailability,
-  ProductLinkWrapper, RetryButton, ProductImg, ProductImgContainer,
+  Input, InputBlock, TextArea,
+  ProductLinkWrapper, RetryButton,
+  ProductImgPreview, SelectProductImgContainer, ProductImgPreviewWrapper, RemoveImgButton,
 } from '../style';
 import Hint from '../../../components/hint';
 
 export default function ProductDetails({ values, handleChange, setFieldValue }) {
+  const [selectedImgPreview, setSelectedImgPreview] = useState('');
+
   const onDrop = useCallback((acceptedFile) => {
-    console.log(acceptedFile);
-    setFieldValue('productImage', acceptedFile);
+    const img = Array.isArray(acceptedFile) && acceptedFile.length > 0 ? acceptedFile[0] : null;
+    if (Array.isArray(acceptedFile) && acceptedFile.length > 0) {
+      setSelectedImgPreview(URL.createObjectURL(img));
+      setFieldValue('productImage', acceptedFile);
+    }
   }, []);
   const {
     getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject,
   } = useDropzone({
-    onDrop,
+    // onDrop,
+    onDropAccepted: onDrop,
     maxFiles: 1,
     multiple: false,
     maxSize: 2000000,
+    accept: 'image/png, image/jpg, image/jpeg',
+    noKeyboard: true,
   });
+
+  useEffect(() => () => {
+    // Make sure to revoke the data uris to avoid memory leaks
+    URL.revokeObjectURL(selectedImgPreview);
+  }, [selectedImgPreview]);
+
+  const handleProductImgDelete = () => {
+    setSelectedImgPreview('');
+    setFieldValue('productImage', '');
+  };
 
   return (
     <>
@@ -44,15 +64,26 @@ export default function ProductDetails({ values, handleChange, setFieldValue }) 
           </InputBlock>
           <InputBlock>
             <label> Product image </label>
-            {/* <ProductImg src="https://n11scdn1.akamaized.net/a1/450/16/86/97/99/79886089.png" alt="" /> */}
+            {
+              selectedImgPreview
+              ? (
+                <ProductImgPreviewWrapper>
+                  <RemoveImgButton onClick={handleProductImgDelete}><Icon glyph="delete" size={24} /></RemoveImgButton>
+                  <ProductImgPreview src={`${selectedImgPreview}`} alt="" />
+                </ProductImgPreviewWrapper>
+              )
+              : null
+            }
             <div {...getRootProps()}>
               {/* <input {...getInputProps()} /> */}
-              <ProductImgContainer {...getRootProps({ isDragActive, isDragAccept, isDragReject })}>
+              <SelectProductImgContainer
+                {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
+              >
                 <input {...getInputProps()} />
                 <p>Select product image</p>
-              </ProductImgContainer>
+              </SelectProductImgContainer>
             </div>
-            <Hint content="only one image is allowed, and must not pass 1MB" />
+            <Hint content="only one image is allowed, and must not pass 2MB" />
           </InputBlock>
           <InputBlock>
             <label> Product title </label>

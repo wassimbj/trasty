@@ -1,0 +1,5 @@
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-04 10:10:12'
+}

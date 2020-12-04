@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 import SmContainer from '../../components/smContainer';
 import ProductDetails from './components/ProductDetails';
 import DeliveryDetails from './components/DeliveryDetails';
@@ -30,6 +31,12 @@ export default function CreateRequest() {
       deliverTo: '',
       deliverBefore: '',
     },
+    validationSchema: yup.object().shape({
+      productLink: yup.string()
+                      .max(250, 'the link you provided is too long'),
+      productTitle: yup.string()
+                      .max(150, 'the title is too long'),
+    }),
     onSubmit: (values) => {
       console.log(values);
       if (activeTab < 3) {
