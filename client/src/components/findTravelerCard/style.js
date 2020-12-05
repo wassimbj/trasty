@@ -24,7 +24,7 @@ export const LocationsSeachCard = styled.div`
 
 export const SearchBtn = styled.button`
   display: inline-block;
-  background: linear-gradient(rgb(38,80,255),rgb(0,49,255)) rgb(38,80,255);
+  background: linear-gradient(rgb(38,80,255),rgb(29,75,250)) rgb(38,80,255);
   color: white;
   outline: none;
   text-align: center;
@@ -33,7 +33,7 @@ export const SearchBtn = styled.button`
   box-shadow: 0 3px 20px rgba(0,0,0,0.15);
   transition: 500ms;
   &:hover{
-    background: rgb(0,49,255);
+    background: rgb(29,75,250);
   }
 
   @media(max-width: 560px){

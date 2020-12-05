@@ -1,0 +1,715 @@
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 09:59:04'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 09:59:23'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:47:17'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:51:36'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:52:05'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:54:53'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:55:58'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:56:54'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:57:35'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:58:51'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 12:59:13'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:00:15'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:24:16'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:24:40'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:25:18'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:25:38'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:25:59'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:26:38'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:28:19'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:52:52'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:53:05'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 13:53:16'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 14:31:44'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:04:02'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:04:49'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:05:01'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:05:28'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:08:40'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:09:05'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:12:04'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:13:17'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:13:35'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:13:55'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:19:38'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:19:56'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:20:28'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:12'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:14'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:17'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:17'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:21'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:21'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:24'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:24'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:24'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:24'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:25'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:25'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:32'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "%"',
+  level: 'error',
+  timestamp: '2020-12-05 15:21:32'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:21:45'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:26:57'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:28:27'
+}
+{
+  message: 'Search Location Error: error: bind message supplies 1 parameters, but prepared statement "" requires 0',
+  level: 'error',
+  timestamp: '2020-12-05 15:28:28'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:29:50'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:31:21'
+}
+{
+  message: 'Search Location Error: error: bind message supplies 1 parameters, but prepared statement "" requires 0',
+  level: 'error',
+  timestamp: '2020-12-05 15:31:22'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:38:43'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:39:06'
+}
+{
+  message: 'Search Location Error: error: column reference "id" is ambiguous',
+  level: 'error',
+  timestamp: '2020-12-05 15:39:07'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:41:51'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:43:52'
+}
+{
+  message: 'Search Location Error: error: column reference "id" is ambiguous',
+  level: 'error',
+  timestamp: '2020-12-05 15:43:53'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:51:17'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:51:19'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:52:19'
+}
+{
+  message: 'Search Location Error: error: bind message supplies 1 parameters, but prepared statement "" requires 0',
+  level: 'error',
+  timestamp: '2020-12-05 15:52:22'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:53:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:53:57'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:56:29'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:56:29'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 15:58:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:58:41'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:59:05'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:59:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 15:59:58'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 16:01:59'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:02:11'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:04:08'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 16:05:22'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:05:28'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:05:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:06:02'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:06:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:07:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:07:50'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:08:06'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:08:22'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:08:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:27:22'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:28:07'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 16:32:35'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:33:30'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:33:59'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:36:49'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:37:17'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 16:40:04'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:41:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:41:55'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:43:37'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:44:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:48:37'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:49:09'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:50:01'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:51:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:52:16'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:54:10'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:55:02'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:55:43'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:58:26'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:58:39'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:59:29'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 16:59:58'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:00:32'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:00:54'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:02:18'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:04:21'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:05:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:07:46'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-05 17:17:57'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:19:28'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:19:41'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:20:17'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:20:41'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:22:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:23:20'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:23:56'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:24:11'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:24:21'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:25:06'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-05 17:25:17'
+}

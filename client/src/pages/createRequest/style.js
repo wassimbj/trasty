@@ -8,8 +8,6 @@ export const CreateRequestWrapper = styled.div`
 `;
 
 export const ProductDetailsContainer = styled.div`
-   padding-left: .5rem;
-   padding-right: .5rem;
    width: 100%;
    & .title {
       display: block;
@@ -101,6 +99,9 @@ export const Input = styled.input`
   &:focus{ border: 1px solid rgba(0,0,0,0.5); outline: none }
   overflow: hidden;
   text-overflow: ellipsis;
+  ${(props) => css`
+   ${props.customStyles}
+  `}
 `;
 
 export const TextArea = styled.textarea`
@@ -117,15 +118,33 @@ export const TextArea = styled.textarea`
 `;
 
 export const InputBlock = styled.div`
-   margin-bottom: 2.5rem;
-
-   & label{
+  margin-bottom: 2.5rem;
+  position: relative;
+  & label{
     color: #333333;
     font-weight: 500;
     font-size: 15px;
     margin-bottom: 0.5rem;
     display: block;
-   }
+  }
+  ${(props) => css`
+    ${props.customStyles}
+  `}
+`;
+
+export const InputLabel = styled.label`
+  color: #333333;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 0.5rem;
+  display: block;
+`;
+
+export const PriceCurrency = styled.span`
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  font-weight: 500;
 `;
 
 export const WaitingSelect = styled.select`

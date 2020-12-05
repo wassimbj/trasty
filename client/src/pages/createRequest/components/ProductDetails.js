@@ -6,7 +6,8 @@ import { useDropzone } from 'react-dropzone';
 import {
   Input, InputBlock, TextArea,
   ProductLinkWrapper, RetryButton,
-  ProductImgPreview, SelectProductImgContainer, ProductImgPreviewWrapper, RemoveImgButton,
+  ProductImgPreview, SelectProductImgContainer,
+  ProductImgPreviewWrapper, RemoveImgButton, PriceCurrency,
 } from '../style';
 import Hint from '../../../components/hint';
 
@@ -107,15 +108,18 @@ export default function ProductDetails({ values, handleChange, setFieldValue }) 
             />
           </InputBlock>
           <InputBlock>
-            <label> Unit price on www.site.com </label>
+            <label> Unit price </label>
             <Input
-              type="text"
+              type="number"
+              min="1"
+              max="100000000"
               placeholder="Product unit price"
               name="productUnitPrice"
               onChange={handleChange}
               value={values.productUnitPrice}
+              customStyles="padding-right: 4rem;"
             />
-            <Hint content="price must be in Tunisian Dinar" />
+            <PriceCurrency>TND</PriceCurrency>
           </InputBlock>
           <InputBlock>
             <label> Quantity </label>
@@ -125,6 +129,7 @@ export default function ProductDetails({ values, handleChange, setFieldValue }) 
               name="productQuantity"
               onChange={handleChange}
               value={values.productQuantity}
+              placeholder="How many ?"
             />
           </InputBlock>
       </div>

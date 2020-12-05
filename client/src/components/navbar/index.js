@@ -10,7 +10,7 @@ import {
 import AuthNavItems from './components/AuthNavItems';
 import SmContainer from '../smContainer';
 import UserAuthContext from '../../contexts/UserAuthContext';
-import LoadingShimmer from '../loadingShimmer';
+import Spinner from '../spinner';
 
 export default function NavBar({ onClickLogout }) {
   const { isLoggedIn } = useContext(UserAuthContext);
@@ -29,10 +29,7 @@ export default function NavBar({ onClickLogout }) {
             <div className="leftSideItems">
             {
               isLoggedIn.loading ? (
-                <>
-                <LoadingShimmer height="30px" width="30px" customStyle="border-radius: 30px; margin-right: 1rem" />
-                <LoadingShimmer height="30px" width="30px" customStyle="border-radius: 30px;" />
-                </>
+                <Spinner />
               ) : (
                 !isLoggedIn.status ? (
                   <Tip content="Login or Signup">

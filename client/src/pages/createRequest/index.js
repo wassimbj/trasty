@@ -17,7 +17,7 @@ import { Button } from '../../components/button';
 import Footer from '../../components/footer';
 
 export default function CreateRequest() {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(2);
 
   const formik = useFormik({
     initialValues: {
@@ -33,10 +33,17 @@ export default function CreateRequest() {
     },
     validationSchema: yup.object().shape({
       productLink: yup.string()
-                      .max(250, 'the link you provided is too long'),
+                      .max(500, 'the link you provided is too long'),
       productTitle: yup.string()
-                      .max(150, 'the title is too long'),
+                      .max(150, 'the title is too long')
+                      .required('please write the product title'),
+      productUnitPrice: yup.number()
+                      .max(100000000, 'price is too hight, are you gonna buy a plane ?')
+                      .min(1, "price can't be 0TND")
+                      .required('please enter the product unit price'),
     }),
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       console.log(values);
       if (activeTab < 3) {
@@ -58,12 +65,15 @@ export default function CreateRequest() {
                       values={formik.values}
                       handleChange={formik.handleChange}
                       setFieldValue={formik.setFieldValue}
+                      errors={formik.errors}
                     />
                   )
                   : activeTab === 2 ? (
                     <DeliveryDetails
                       values={formik.values}
                       handleChange={formik.handleChange}
+                      formikInstance={formik}
+                      errors={formik.errors}
                     />
                   )
                   : activeTab === 3 ? (
