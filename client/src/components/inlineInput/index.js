@@ -27,6 +27,7 @@ export default function InlineInput({
         onChange={onChange}
         value={value}
         defaultValue={defaultValue}
+        autoComplete="off"
       />
     </Wrapper>
   );

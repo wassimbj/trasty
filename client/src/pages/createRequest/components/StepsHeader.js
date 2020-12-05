@@ -43,11 +43,11 @@ const StepItem = styled.div`
 export default function StepsHeader({ onClickStep, activeStep }) {
   return (
     <StepsHeaderWrapper>
-      <StepItem isActive={activeStep === 1} onClick={() => onClickStep(1)}>
+      <StepItem isActive={activeStep <= 3} onClick={() => onClickStep(1)}>
         <StepNumber> 1 </StepNumber>
         Product
       </StepItem>
-      <StepItem isActive={activeStep === 2} onClick={() => onClickStep(2)}>
+      <StepItem isActive={activeStep === 2 || activeStep === 3} onClick={() => onClickStep(2)}>
         <StepNumber> 2 </StepNumber>
         Delivery
       </StepItem>
