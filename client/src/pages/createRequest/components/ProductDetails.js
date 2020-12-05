@@ -111,8 +111,6 @@ export default function ProductDetails({ values, handleChange, setFieldValue }) 
             <label> Unit price </label>
             <Input
               type="number"
-              min="1"
-              max="100000000"
               placeholder="Product unit price"
               name="productUnitPrice"
               onChange={handleChange}

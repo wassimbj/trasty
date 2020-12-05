@@ -6,26 +6,17 @@ import { InputBlock, InputLabel, WaitingSelect } from '../style';
 import InlineInput from '../../../components/inlineInput';
 import SearchLocation from '../../../components/searchLocation';
 
-export default function DeliveryDetails({ values, handleChange, setFieldValue }) {
-  const [routeSearch, setRouteSearch] = useState({
-    from: '',
-    to: '',
-    isFromSelected: false,
-    isToSelected: false,
-  });
+export default function DeliveryDetails({
+  values, handleChange,
+  setFieldValue, errors,
+}) {
   const [fromRouteSearch, setFromRouteSearch] = useState({
     from: '', hasSelected: false,
   });
   const [toRouteSearch, setToRouteSearch] = useState({
     from: '', hasSelected: false,
   });
-  // const handleSetRoute = useDebouncedCallback((val, route) => {
-  //   setRouteSearch({
-  //     [route]: val,
-  //     [route === 'from' ? 'to' : 'from']: routeSearch[route === 'from' ? 'to' : 'from'],
-  //     isSelected: false,
-  //   });
-  // }, 700);
+
   const handleSetRoute = (val, route) => {
     if (route === 'from') {
       setFromRouteSearch({
@@ -38,15 +29,9 @@ export default function DeliveryDetails({ values, handleChange, setFieldValue })
         hasSelected: false,
       });
     }
-    // setRouteSearch({
-    //   [route]: val,
-    //   [route === 'from' ? 'to' : 'from']: routeSearch[route === 'from' ? 'to' : 'from'],
-    //   isFromSelected: false,
-    //   isToSelected: false,
-    // });
   };
 
-  // state or country :)
+  // helper, state or country :)
   const isState = (location) => location.state_id;
 
   return (
