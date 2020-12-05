@@ -15,6 +15,7 @@ import {
 import RequestSummary from './components/RequestSummary';
 import { Button } from '../../components/button';
 import Footer from '../../components/footer';
+import StepsHeader from './components/StepsHeader';
 
 export default function CreateRequest() {
   const [activeTab, setActiveTab] = useState(1);
@@ -59,14 +60,27 @@ export default function CreateRequest() {
     onSubmit: (values) => {
       console.log(values);
       if (activeTab < 3) {
-        setActiveTab(activeTab + 1);
+        setActiveTab(Math.min(activeTab + 1, 3));
       }
     },
   });
-  console.log('Errors : ', formik.errors);
+
+  const handleStepClicking = async (step) => {
+    const validate = await formik.validateForm();
+    // console.log(Object.keys(validate));
+    if (step === 1 && activeTab === 2) {
+      setActiveTab(step);
+    } else if (activeTab === 3) {
+      setActiveTab(step);
+    } else if (Object.keys(validate).length === 0) {
+      setActiveTab(step);
+    }
+  };
+
   return (
     <>
       <SmContainer>
+        <StepsHeader activeStep={activeTab} onClickStep={handleStepClicking} />
         <CreateRequestWrapper>
           <ProductDetailsContainer>
             <div>

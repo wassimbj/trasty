@@ -10,11 +10,25 @@ export default function DeliveryDetails({
   values, handleChange,
   setFieldValue, errors,
 }) {
+  // helper, state or country :)
+  const isState = (location) => location.state_id;
+
+  const fromDefaultValue = !values.deliverFrom ? '' : (
+    `${isState(JSON.parse(values.deliverFrom))
+      ? `${JSON.parse(values.deliverFrom).country}, ${JSON.parse(values.deliverFrom).state_name}`.trim()
+      : `${JSON.parse(values.deliverFrom).name}, ${JSON.parse(values.deliverFrom).sortname}`.trim()}`
+  );
   const [fromRouteSearch, setFromRouteSearch] = useState({
-    from: '', hasSelected: false,
+    from: fromDefaultValue, hasSelected: !!fromDefaultValue,
   });
+
+  const toDefaultValue = !values.deliverTo ? '' : (
+    `${isState(JSON.parse(values.deliverTo))
+      ? `${JSON.parse(values.deliverTo).country}, ${JSON.parse(values.deliverTo).state_name}`.trim()
+      : `${JSON.parse(values.deliverTo).name}, ${JSON.parse(values.deliverTo).sortname}`.trim()}`
+  );
   const [toRouteSearch, setToRouteSearch] = useState({
-    from: '', hasSelected: false,
+    to: toDefaultValue, hasSelected: !!toDefaultValue,
   });
 
   const handleSetRoute = (val, route) => {
@@ -30,9 +44,6 @@ export default function DeliveryDetails({
       });
     }
   };
-
-  // helper, state or country :)
-  const isState = (location) => location.state_id;
 
   return (
     <>

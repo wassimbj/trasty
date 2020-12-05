@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 export const CreateRequestWrapper = styled.div`
    display: flex;
    flex-wrap: wrap;
-   margin-top: 5rem;
    margin-bottom: 10rem;
 `;
 
