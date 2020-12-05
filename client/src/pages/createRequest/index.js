@@ -17,7 +17,7 @@ import { Button } from '../../components/button';
 import Footer from '../../components/footer';
 
 export default function CreateRequest() {
-  const [activeTab, setActiveTab] = useState(2);
+  const [activeTab, setActiveTab] = useState(1);
 
   const formik = useFormik({
     initialValues: {
@@ -72,8 +72,9 @@ export default function CreateRequest() {
                     <DeliveryDetails
                       values={formik.values}
                       handleChange={formik.handleChange}
-                      formikInstance={formik}
+                      setFieldValue={formik.setFieldValue}
                       errors={formik.errors}
+                      // deliverRouteSelected={}
                     />
                   )
                   : activeTab === 3 ? (

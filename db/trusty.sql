@@ -274,14 +274,12 @@ CREATE TABLE "public"."requests" (
     "packaging" smallint DEFAULT '1' NOT NULL,
     "product_link" character varying(500),
     "request_by" integer NOT NULL,
-    "deliver_to_country" integer NOT NULL,
-    "deliver_from_country" integer NOT NULL,
     "deliver_before" date NOT NULL,
     "product_title" character varying(150) NOT NULL,
     "category" integer,
     "created_at" timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "deliver_to_state" integer NOT NULL,
-    "deliver_from_state" integer NOT NULL
+    "deliver_to" json NOT NULL,
+    "deliver_from" json NOT NULL
 ) WITH (oids = false);
 
 
@@ -3906,9 +3904,6 @@ INSERT INTO "states" ("id", "name", "country_id") VALUES
 (3654,	'Tatawin',	222),
 (3656,	'Tunis',	222),
 (3657,	'Zaghwan',	222),
-(3658,	'al-Kaf',	222),
-(3659,	'al-Mahdiyah',	222),
-(3662,	'al-Qayrawan',	222),
 (3663,	'Adana',	223),
 (3664,	'Adiyaman',	223),
 (3665,	'Afyon',	223),
@@ -3923,12 +3918,15 @@ INSERT INTO "states" ("id", "name", "country_id") VALUES
 (3642,	'Mednin',	222),
 (3646,	'Gabes',	222),
 (3647,	'Gafsa',	222),
-(3648,	'Kebili',	222),
 (3652,	'Silyana',	222),
 (3651,	'Sidi Bou Zid',	222),
 (3661,	'Kasserine',	222),
 (3655,	'Touzer',	222),
 (3640,	'Hammamet',	222),
+(3659,	'Mahdia',	222),
+(3658,	'Kef',	222),
+(3662,	'Kairouan',	222),
+(3648,	'Kebili',	222),
 (3668,	'Amasya',	223),
 (3669,	'Ankara',	223),
 (3670,	'Antalya',	223),
@@ -4382,7 +4380,8 @@ INSERT INTO "states" ("id", "name", "country_id") VALUES
 (4118,	'Matabeleland North',	246),
 (4119,	'Matabeleland South',	246),
 (4120,	'Midlands',	246),
-(3635,	'Bin ''Arus',	222);
+(3635,	'Bin Arous',	222),
+(4122,	'Klibia',	222);
 
 DROP TABLE IF EXISTS "users";
 DROP SEQUENCE IF EXISTS users_id_seq;
@@ -4406,4 +4405,4 @@ CREATE TABLE "public"."users" (
 INSERT INTO "users" ("id", "fullname", "image", "email", "password", "phone", "is_phone_verified", "is_email_verified", "phone_verify_token", "email_verify_token", "joined_at", "join_method") VALUES
 (7,	'wasim',	'https://lh3.googleusercontent.com/a-/AOh14GgH2oCAiiWKLtgUeSXHUdEH0hJXljxAwjOQ-_VHkw=s96-c',	'wassimbenjdida@gmail.com',	NULL,	'20123456',	'0',	'1',	'292995',	'dHOJbjAC85yMUQpcuQmV',	'2020-12-02 22:25:51.848937',	'google');
 
--- 2020-12-05 12:12:41.191711+00
+-- 2020-12-05 17:48:09.230296+00

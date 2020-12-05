@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
+import { useDebounce } from 'use-debounce';
 import Spinner from '../spinner';
 import searchLocation from '../../api/requests/searchLocation';
 import { LocationItem, Msg, SearchLocationCard } from './style';
@@ -10,21 +11,36 @@ export default function SearchLocation({ searchQuery, onSelect, name }) {
     success: true,
     loading: true,
   });
+  const [searchQueryValue] = useDebounce(searchQuery, 500);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (searchQuery) {
+    if (searchQueryValue) {
+      setIsOpen(true);
       (async function () {
-        const res = await searchLocation(searchQuery);
+        const res = await searchLocation(searchQueryValue);
         // console.log('Locations Found: ', res);
         setLocations({
           ...res,
           loading: false,
         });
       }());
+    } else {
+      setIsOpen(false);
     }
-  }, [searchQuery]);
+  }, [searchQueryValue]);
 
+  // helper (see if its a state or country)
   const isState = (location) => location.state_id;
+  const handleLocationSelection = (data) => {
+    onSelect(data);
+    setIsOpen(false);
+  };
+
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <SearchLocationCard>
@@ -40,7 +56,7 @@ export default function SearchLocation({ searchQuery, onSelect, name }) {
                     {
                       isState(data) ? `${data.country}, ${data.state_name}` : `${data.name}, ${data.sortname}`
                     }
-                    <input type="radio" value={data} name={name || 'deliver'} onChange={onSelect} />
+                    <input type="radio" value={data} name={name || 'deliver'} onChange={() => handleLocationSelection(data)} />
                   </LocationItem>
                 ))
               )

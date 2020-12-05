@@ -1,28 +1,53 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
+// import { useDebouncedCallback } from 'use-debounce';
 import { InputBlock, InputLabel, WaitingSelect } from '../style';
 import InlineInput from '../../../components/inlineInput';
 import SearchLocation from '../../../components/searchLocation';
 
-export default function DeliveryDetails({ values, handleChange, formikInstance }) {
+export default function DeliveryDetails({ values, handleChange, setFieldValue }) {
   const [routeSearch, setRouteSearch] = useState({
-    from: '', to: '',
+    from: '',
+    to: '',
+    isFromSelected: false,
+    isToSelected: false,
   });
-
-  // const handleSetRoute = (route) => (e) => {
+  const [fromRouteSearch, setFromRouteSearch] = useState({
+    from: '', hasSelected: false,
+  });
+  const [toRouteSearch, setToRouteSearch] = useState({
+    from: '', hasSelected: false,
+  });
+  // const handleSetRoute = useDebouncedCallback((val, route) => {
   //   setRouteSearch({
-  //     [route]: e.target.value,
+  //     [route]: val,
   //     [route === 'from' ? 'to' : 'from']: routeSearch[route === 'from' ? 'to' : 'from'],
+  //     isSelected: false,
   //   });
-  // };
-  const handleSetRoute = useDebouncedCallback((val, route) => {
-    console.log(val, route);
-    setRouteSearch({
-      [route]: val,
-      [route === 'from' ? 'to' : 'from']: routeSearch[route === 'from' ? 'to' : 'from'],
-    });
-  }, 700);
+  // }, 700);
+  const handleSetRoute = (val, route) => {
+    if (route === 'from') {
+      setFromRouteSearch({
+        from: val,
+        hasSelected: false,
+      });
+    } else {
+      setToRouteSearch({
+        to: val,
+        hasSelected: false,
+      });
+    }
+    // setRouteSearch({
+    //   [route]: val,
+    //   [route === 'from' ? 'to' : 'from']: routeSearch[route === 'from' ? 'to' : 'from'],
+    //   isFromSelected: false,
+    //   isToSelected: false,
+    // });
+  };
+
+  // state or country :)
+  const isState = (location) => location.state_id;
 
   return (
     <>
@@ -44,10 +69,26 @@ export default function DeliveryDetails({ values, handleChange, formikInstance }
               `}
               focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
               name="deliverFrom"
-              onChange={(e) => handleSetRoute.callback(e.target.value, 'from')}
-              // value={routeSearch.from}
+              onChange={(e) => handleSetRoute(e.target.value, 'from')}
+              // value={deliverFromValue}
+              value={fromRouteSearch.from}
             />
-            { routeSearch.from ? <SearchLocation searchQuery={routeSearch.from} /> : null }
+            { fromRouteSearch.from && !fromRouteSearch.hasSelected
+              ? (
+                <SearchLocation
+                  searchQuery={fromRouteSearch.from}
+                  name="deliverFrom"
+                  onSelect={(data) => {
+                    setFieldValue('deliverFrom', JSON.stringify(data));
+                    setFromRouteSearch({
+                      from: `${isState(data)
+                        ? `${data.country}, ${data.state_name}`.trim()
+                        : `${data.name}, ${data.sortname}`.trim()}`,
+                      hasSelected: true,
+                    });
+                  }}
+                />
+              ) : null}
           </InputBlock>
           <InputBlock>
             <InlineInput
@@ -60,10 +101,25 @@ export default function DeliveryDetails({ values, handleChange, formikInstance }
               `}
               focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
               name="deliverTo"
-              onChange={(e) => handleSetRoute.callback(e.target.value, 'to')}
-              // value={values.deliverTo}
+              onChange={(e) => handleSetRoute(e.target.value, 'to')}
+              value={toRouteSearch.to}
             />
-            { routeSearch.to ? <SearchLocation searchQuery={routeSearch.to} /> : null }
+            { toRouteSearch.to && !toRouteSearch.hasSelected
+              ? (
+                <SearchLocation
+                  searchQuery={toRouteSearch.to}
+                  name="deliverTo"
+                  onSelect={(data) => {
+                    setFieldValue('deliverTo', JSON.stringify(data));
+                    setToRouteSearch({
+                      to: `${isState(data)
+                        ? `${data.country}, ${data.state_name}`.trim()
+                        : `${data.name}, ${data.sortname}`.trim()}`,
+                      hasSelected: true,
+                    });
+                  }}
+                />
+              ) : null}
           </InputBlock>
           {/* <br /> */}
 

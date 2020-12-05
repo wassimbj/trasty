@@ -5,7 +5,7 @@ export default function InlineInput({
   text, placeholder,
   type, width, inputWidth,
   initStyles, focusStyles,
-  onChange, name, value,
+  onChange, name, value, defaultValue,
 }) {
   const [isFocus, setIsFocus] = useState(false);
   return (
@@ -26,6 +26,7 @@ export default function InlineInput({
         name={name}
         onChange={onChange}
         value={value}
+        defaultValue={defaultValue}
       />
     </Wrapper>
   );
