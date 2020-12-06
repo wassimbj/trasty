@@ -294,6 +294,11 @@ export const ProductImgPreviewWrapper = styled.div`
    position: relative;
    max-width: 200px;
    max-height: 200px;
+
+   @media(max-width: 350px){
+     max-width: 130px;
+     max-height: 130px;
+   }
    margin-bottom: 1rem;
 `;
 
@@ -312,9 +317,9 @@ export const RemoveImgButton = styled.span`
 
 export const ProductImgPreview = styled.img`
   border-radius: 5px;
-  max-width: 200px;
-  max-height: 200px;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  // width: 100%;
   margin-right: 0.75rem;
   border: 1px solid rgba(0,0,0,0.12);
   display: block;
@@ -336,4 +341,10 @@ export const SelectProductImgContainer = styled.div`
   transition: border .24s ease-in-out;
   cursor: pointer;
   &:hover{ border-color:  rgba(0,0,0,0.25); }
+`;
+
+export const ErrorMsg = styled.span`
+  color: #ff5858;
+  font-size: 13px;
+  display: block;
 `;

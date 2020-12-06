@@ -8,10 +8,13 @@ import {
   ProductLinkWrapper, RetryButton,
   ProductImgPreview, SelectProductImgContainer,
   ProductImgPreviewWrapper, RemoveImgButton, PriceCurrency,
+  ErrorMsg,
 } from '../style';
 import Hint from '../../../components/hint';
 
-export default function ProductDetails({ values, handleChange, setFieldValue }) {
+export default function ProductDetails({
+  values, handleChange, setFieldValue, errors,
+}) {
   const [selectedImgPreview, setSelectedImgPreview] = useState('');
 
   const onDrop = useCallback((acceptedFile) => {
@@ -94,7 +97,9 @@ export default function ProductDetails({ values, handleChange, setFieldValue }) 
               name="productTitle"
               onChange={handleChange}
               value={values.productTitle}
+              customStyles={errors.productTitle ? 'border-color: #ff5858' : ''}
             />
+            <ErrorMsg>{errors.productTitle}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Product description </label>
@@ -115,20 +120,24 @@ export default function ProductDetails({ values, handleChange, setFieldValue }) 
               name="productUnitPrice"
               onChange={handleChange}
               value={values.productUnitPrice}
-              customStyles="padding-right: 4rem;"
+              customStyles={`padding-right: 4rem; ${errors.productUnitPrice ? 'border-color: #ff5858' : ''}`}
             />
             <PriceCurrency>TND</PriceCurrency>
+            <ErrorMsg>{errors.productUnitPrice}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Quantity </label>
             <Input
               type="number"
               defaultValue="1"
+              min="1"
               name="productQuantity"
               onChange={handleChange}
               value={values.productQuantity}
               placeholder="How many ?"
+              customStyles={errors.productQuantity ? 'border-color: #ff5858' : ''}
             />
+            <ErrorMsg>{errors.productQuantity}</ErrorMsg>
           </InputBlock>
       </div>
     </>

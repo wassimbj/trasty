@@ -16,6 +16,7 @@ import RequestSummary from './components/RequestSummary';
 import { Button } from '../../components/button';
 import Footer from '../../components/footer';
 import StepsHeader from './components/StepsHeader';
+import displayNiceLocation from '../../utils/displayNiceLocation';
 
 export default function CreateRequest() {
   const [activeTab, setActiveTab] = useState(1);
@@ -25,13 +26,17 @@ export default function CreateRequest() {
       productLink: yup.string()
                       .max(500, 'the link you provided is too long'),
       productTitle: yup.string()
-                      .max(150, 'the title is too long')
-                      .required('please write the product title'),
+                      .max(200, 'the title is too long')
+                      .required('enter the product title'),
       productUnitPrice: yup.number()
                       .max(100000000, 'price is too hight, are you gonna buy a plane ?')
                       .min(0.1, "price can't be 0TND")
-                      .positive('you entered a negative number, please check again')
+                      .positive('this is a negative number, please check again')
                       .required('please enter the product unit price'),
+      productQuantity: yup.number()
+                      .min(1, 'minimum is 1')
+                      .max(5000, 'maximum is 5000')
+                      .required('please enter how many you want'),
     },
     {
       deliverFrom: yup.string()
@@ -55,7 +60,7 @@ export default function CreateRequest() {
       deliverBefore: '',
     },
     validationSchema: yup.object().shape(validationSchemaArray[activeTab - 1]),
-    validateOnChange: false,
+    validateOnChange: activeTab === 1,
     validateOnBlur: false,
     onSubmit: (values) => {
       console.log(values);
@@ -114,22 +119,26 @@ export default function CreateRequest() {
           </ProductDetailsContainer>
           <ProductSummaryContainer>
             <div>
-              <span className="productTitle"> Handmade Metal Table </span>
+              <span className="productTitle">
+                {formik.values.productTitle || '...'}
+              </span>
               <p>
                 <span> Deliver from </span>
-                France
+                {displayNiceLocation(formik.values.deliverFrom, true) || '...'}
               </p>
               <p>
                 <span> Deliver to </span>
-                Sousse, TN
+                {displayNiceLocation(formik.values.deliverTo, true) || '...'}
               </p>
               <p>
                 <span> Deliver before </span>
-                11 Nov, 2020
+                {formik.values.deliverBefore || 'Anytime'}
               </p>
               <ProductSummaryItem>
                 <span> Product price </span>
-                <ProductSummaryItemPrice> 100TND </ProductSummaryItemPrice>
+                <ProductSummaryItemPrice>
+                  {`${formik.values.productUnitPrice || 0}TND`}
+                </ProductSummaryItemPrice>
               </ProductSummaryItem>
               <Button
                 type="submit"

@@ -5,16 +5,18 @@ const StepsHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   overflow-x: auto;
-  padding: 1.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.1);
 `;
 
 const StepNumber = styled.span`
-  width: 23px;
-  height: 23px;
-  font-size: 13px;
+  width: 21px;
+  height: 21px;
+  font-size: 12px;
   padding: 0.15rem;
   color: #828282;
   background: #dddddd;
@@ -22,6 +24,7 @@ const StepNumber = styled.span`
   display: block;
   margin: 0 auto;
   text-align: center;
+  font-weight: 500;
 `;
 
 const StepItem = styled.div`
@@ -37,7 +40,12 @@ const StepItem = styled.div`
       background: #2650ff;
     }
     color: #2650ff;
+    font-weight: 500;
   `}
+
+  @media(max-width: 340px){
+    font-size: 13px;
+  }
 `;
 
 export default function StepsHeader({ onClickStep, activeStep }) {

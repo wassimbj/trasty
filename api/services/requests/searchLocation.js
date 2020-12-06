@@ -20,22 +20,7 @@ async function searchLocation(text){
       LIMIT 10
     `, [`%${text}%`]);
 
-    console.log(
-      ' countries:', countries,
-      '\n states: ', states
-    );
-
     return [...countries, ...states];
-
-    /*
-      ? some "bla" notes
-      text = tun
-
-      countries = [{ name: tunisia, id: 222 }, {...}, {...}]
-      states = [{name: ...}, {...}]
-      set = new Set([...countries, ...states]);
-      then merge them :)
-    */
 
   }catch(err){
     logger.error(`Search Location Error: ${err}`);

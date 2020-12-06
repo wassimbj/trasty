@@ -2,9 +2,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 // import { useDebouncedCallback } from 'use-debounce';
-import { InputBlock, InputLabel, WaitingSelect } from '../style';
+import {
+  ErrorMsg, InputBlock, InputLabel, WaitingSelect,
+} from '../style';
 import InlineInput from '../../../components/inlineInput';
 import SearchLocation from '../../../components/searchLocation';
+import displayNiceLocation from '../../../utils/displayNiceLocation';
 
 export default function DeliveryDetails({
   values, handleChange,
@@ -13,20 +16,12 @@ export default function DeliveryDetails({
   // helper, state or country :)
   const isState = (location) => location.state_id;
 
-  const fromDefaultValue = !values.deliverFrom ? '' : (
-    `${isState(JSON.parse(values.deliverFrom))
-      ? `${JSON.parse(values.deliverFrom).country}, ${JSON.parse(values.deliverFrom).state_name}`.trim()
-      : `${JSON.parse(values.deliverFrom).name}, ${JSON.parse(values.deliverFrom).sortname}`.trim()}`
-  );
+  const fromDefaultValue = !values.deliverFrom ? '' : displayNiceLocation(values.deliverFrom, true);
   const [fromRouteSearch, setFromRouteSearch] = useState({
     from: fromDefaultValue, hasSelected: !!fromDefaultValue,
   });
 
-  const toDefaultValue = !values.deliverTo ? '' : (
-    `${isState(JSON.parse(values.deliverTo))
-      ? `${JSON.parse(values.deliverTo).country}, ${JSON.parse(values.deliverTo).state_name}`.trim()
-      : `${JSON.parse(values.deliverTo).name}, ${JSON.parse(values.deliverTo).sortname}`.trim()}`
-  );
+  const toDefaultValue = !values.deliverTo ? '' : displayNiceLocation(values.deliverTo, true);
   const [toRouteSearch, setToRouteSearch] = useState({
     to: toDefaultValue, hasSelected: !!toDefaultValue,
   });
@@ -62,6 +57,7 @@ export default function DeliveryDetails({
               initStyles={`
                 border: 1px solid rgba(0,0,0,0.15);
                 &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+                ${errors.deliverFrom ? 'border-color: #ff5858;' : ''}
               `}
               focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
               name="deliverFrom"
@@ -69,6 +65,7 @@ export default function DeliveryDetails({
               // value={deliverFromValue}
               value={fromRouteSearch.from}
             />
+            <ErrorMsg>{errors.deliverFrom}</ErrorMsg>
             { fromRouteSearch.from && !fromRouteSearch.hasSelected
               ? (
                 <SearchLocation
@@ -94,27 +91,29 @@ export default function DeliveryDetails({
               initStyles={`
                 border: 1px solid rgba(0,0,0,0.15);
                 &:hover{ border: 1px solid rgba(0,0,0,0.25); }
+                ${errors.deliverTo ? 'border-color: #ff5858;' : ''}
               `}
               focusStyles={{ border: '1px solid rgba(0,0,0,0.5)' }}
               name="deliverTo"
               onChange={(e) => handleSetRoute(e.target.value, 'to')}
               value={toRouteSearch.to}
             />
+            <ErrorMsg>{errors.deliverTo}</ErrorMsg>
             { toRouteSearch.to && !toRouteSearch.hasSelected
               ? (
-                <SearchLocation
-                  searchQuery={toRouteSearch.to}
-                  name="deliverTo"
-                  onSelect={(data) => {
-                    setFieldValue('deliverTo', JSON.stringify(data));
-                    setToRouteSearch({
-                      to: `${isState(data)
-                        ? `${data.country}, ${data.state_name}`.trim()
-                        : `${data.name}, ${data.sortname}`.trim()}`,
-                      hasSelected: true,
-                    });
-                  }}
-                />
+                  <SearchLocation
+                    searchQuery={toRouteSearch.to}
+                    name="deliverTo"
+                    onSelect={(data) => {
+                      setFieldValue('deliverTo', JSON.stringify(data));
+                      setToRouteSearch({
+                        to: `${isState(data)
+                          ? `${data.country}, ${data.state_name}`.trim()
+                          : `${data.name}, ${data.sortname}`.trim()}`,
+                        hasSelected: true,
+                      });
+                    }}
+                  />
               ) : null}
           </InputBlock>
           {/* <br /> */}
