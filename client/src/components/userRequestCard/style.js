@@ -40,12 +40,7 @@ export const ProductDetails = styled.div`
    align-items: end;
    white-space: nowrap;
    overflow: hidden;
-   & > .requestDetails {
-    white-space: nowrap;
-    overflow: hidden;
-    width: 100%;
-    margin-left: 0.75rem;
-  }
+
    & img { 
       border-radius: 5px;
       max-width: 190px;
@@ -55,27 +50,36 @@ export const ProductDetails = styled.div`
       display: block;
       object-fit: cover;
    }
-   & > div > p {
-    font-size: 14px;
-    margin-bottom: 0.25rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-   & > div > p span { color: #8f8f95; }
-
-   & h2 {
-    font-weight: 600;
-    font-size: 17px;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+   
 
   @media(max-width: 420px){
     & img{ width: 140px; height: 140px; }
   }
   @media(max-width: 380px){
     & img{ width: 110px; height: 110px; }
+  }
+`;
+
+export const ProductRequestDetails = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  margin-left: 0.75rem;
+  & > p {
+    @media(max-width: 350px){ font-size: 14px; }
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & > p span { color: #8f8f95; }
+
+  & h2 {
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 

@@ -4,19 +4,19 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Icon from '@hackclub/icons';
 import SmContainer from '../../components/smContainer';
 import ProductDetails from './components/ProductDetails';
 import DeliveryDetails from './components/DeliveryDetails';
 import {
-  CreateRequestWrapper, ProductSummaryContainer,
-  ProductDetailsContainer, ProductSummaryItem,
-  ProductSummaryItemPrice,
+  CreateRequestWrapper, PrevBtn, ProductDetailsContainer,
+  ControlButtonsWrapper,
 } from './style';
 import RequestSummary from './components/RequestSummary';
 import { Button } from '../../components/button';
 import Footer from '../../components/footer';
 import StepsHeader from './components/StepsHeader';
-import displayNiceLocation from '../../utils/displayNiceLocation';
+// import displayNiceLocation from '../../utils/displayNiceLocation';
 
 export default function CreateRequest() {
   const [activeTab, setActiveTab] = useState(1);
@@ -25,13 +25,14 @@ export default function CreateRequest() {
     {
       productLink: yup.string()
                       .max(500, 'the link you provided is too long'),
+      productImage: yup.mixed()
+                      .required('please upload the product image'),
       productTitle: yup.string()
                       .max(200, 'the title is too long')
                       .required('enter the product title'),
       productUnitPrice: yup.number()
                       .max(100000000, 'price is too hight, are you gonna buy a plane ?')
-                      .min(0.1, "price can't be 0TND")
-                      .positive('this is a negative number, please check again')
+                      .min(0.1, "price can't be 0")
                       .required('please enter the product unit price'),
       productQuantity: yup.number()
                       .min(1, 'minimum is 1')
@@ -50,6 +51,7 @@ export default function CreateRequest() {
   const formik = useFormik({
     initialValues: {
       productLink: '',
+      productImageUrl: '',
       productImage: '',
       productTitle: '',
       productDesc: '',
@@ -115,39 +117,20 @@ export default function CreateRequest() {
                   : null
                 }
               </form>
+              <ControlButtonsWrapper>
+                <PrevBtn onClick={() => handleStepClicking(Math.max(activeTab - 1, 1))}>
+                  <Icon glyph="view-back" />
+                  Previous
+                </PrevBtn>
+                <Button
+                  type="submit"
+                  formId="productDetails"
+                >
+                  { activeTab < 3 ? 'Next' : 'Create Request' }
+                </Button>
+              </ControlButtonsWrapper>
             </div>
           </ProductDetailsContainer>
-          <ProductSummaryContainer>
-            <div>
-              <span className="productTitle">
-                {formik.values.productTitle || '...'}
-              </span>
-              <p>
-                <span> Deliver from </span>
-                {displayNiceLocation(formik.values.deliverFrom, true) || '...'}
-              </p>
-              <p>
-                <span> Deliver to </span>
-                {displayNiceLocation(formik.values.deliverTo, true) || '...'}
-              </p>
-              <p>
-                <span> Deliver before </span>
-                {formik.values.deliverBefore || 'Anytime'}
-              </p>
-              <ProductSummaryItem>
-                <span> Product price </span>
-                <ProductSummaryItemPrice>
-                  {`${formik.values.productUnitPrice || 0}TND`}
-                </ProductSummaryItemPrice>
-              </ProductSummaryItem>
-              <Button
-                type="submit"
-                formId="productDetails"
-              >
-                { activeTab < 3 ? 'Next' : 'Create Request' }
-              </Button>
-            </div>
-          </ProductSummaryContainer>
         </CreateRequestWrapper>
       </SmContainer>
       <Footer />

@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const CreateRequestWrapper = styled.div`
-   display: flex;
-   flex-wrap: wrap;
+  //  display: flex;
+  //  flex-wrap: wrap;
    margin-bottom: 10rem;
 `;
 
 export const ProductDetailsContainer = styled.div`
-   width: 100%;
+   max-width: 800px;
+   margin: 0 auto;
    & .title {
       display: block;
       font-weight: bold;
@@ -18,9 +19,9 @@ export const ProductDetailsContainer = styled.div`
    & .optinalHeading{ color: #8f8f95; margin-bottom: 1.5rem; }
 
 
-   @media (min-width: 820px){
-    width: 65%;
-   }
+  //  @media (min-width: 820px){
+  //   width: 65%;
+  //  }
 
    & > div {
     border: 1px solid rgba(0,0,0,0.1);
@@ -184,18 +185,22 @@ export const ProductLinkAvailability = styled.div`
    & span { color: #555; margin-left: 0.5rem}
 `;
 
-export const NextBtn = styled.button`
-  display: inline-block;
-  background: linear-gradient(rgb(38,80,255),rgb(0,49,255)) rgb(38,80,255);
-  color: white;
+export const PrevBtn = styled.button`
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,0.1);
+  color: #333;
   outline: none;
   text-align: center;
-  padding: 0.75rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 5px;
-  box-shadow: 0 3px 20px rgba(0,0,0,0.15);
   transition: 500ms;
-  width: 100%;
-  margin-top: 1rem;
+  margin-right: 0.5rem;
+  &:hover{ background: rgba(0,0,0,0.15); }
+`;
+
+export const ControlButtonsWrapper = styled.div`
+   display: flex;
 `;
 
 export const PriceSummaryTitle = styled.span`
@@ -341,6 +346,10 @@ export const SelectProductImgContainer = styled.div`
   transition: border .24s ease-in-out;
   cursor: pointer;
   &:hover{ border-color:  rgba(0,0,0,0.25); }
+
+  ${(props) => props.isError && css`
+   border-color: #ff5858;
+  `}
 `;
 
 export const ErrorMsg = styled.span`

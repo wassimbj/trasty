@@ -11,16 +11,16 @@ import {
   ErrorMsg,
 } from '../style';
 import Hint from '../../../components/hint';
+import Tip from '../../../components/tip';
 
 export default function ProductDetails({
   values, handleChange, setFieldValue, errors,
 }) {
   const [selectedImgPreview, setSelectedImgPreview] = useState('');
-
   const onDrop = useCallback((acceptedFile) => {
     const img = Array.isArray(acceptedFile) && acceptedFile.length > 0 ? acceptedFile[0] : null;
     if (Array.isArray(acceptedFile) && acceptedFile.length > 0) {
-      setSelectedImgPreview(URL.createObjectURL(img));
+      // setSelectedImgPreview(URL.createObjectURL(img));
       setFieldValue('productImage', acceptedFile);
     }
   }, []);
@@ -36,9 +36,19 @@ export default function ProductDetails({
     noKeyboard: true,
   });
 
+  useEffect(() => {
+    if (values.productImage && Array.isArray(values.productImage)) {
+      setSelectedImgPreview(URL.createObjectURL(values.productImage[0]));
+      console.log('Set', selectedImgPreview);
+    }
+  }, [values.productImage]);
+
   useEffect(() => () => {
     // Make sure to revoke the data uris to avoid memory leaks
-    URL.revokeObjectURL(selectedImgPreview);
+    if (selectedImgPreview) {
+      URL.revokeObjectURL(selectedImgPreview);
+      console.log('Revoke', selectedImgPreview);
+    }
   }, [selectedImgPreview]);
 
   const handleProductImgDelete = () => {
@@ -60,9 +70,11 @@ export default function ProductDetails({
                 onChange={handleChange}
                 value={values.productLink}
               />
-              <RetryButton>
-                <Icon glyph="view-reload" />
-              </RetryButton>
+              <Tip content="Get product details">
+                <RetryButton>
+                  <Icon glyph="view-reload" />
+                </RetryButton>
+              </Tip>
             </ProductLinkWrapper>
             <Hint content="if you don't have the product link, just leave it empty and fill the rest manually" />
           </InputBlock>
@@ -81,6 +93,7 @@ export default function ProductDetails({
             <div {...getRootProps()}>
               {/* <input {...getInputProps()} /> */}
               <SelectProductImgContainer
+                isError={!!errors.productImage}
                 {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
               >
                 <input {...getInputProps()} />
@@ -88,6 +101,7 @@ export default function ProductDetails({
               </SelectProductImgContainer>
             </div>
             <Hint content="only one image is allowed, and must not pass 2MB" />
+            <ErrorMsg>{errors.productImage}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Product title </label>
@@ -106,7 +120,7 @@ export default function ProductDetails({
             <TextArea
               rows="3"
               type="text"
-              placeholder="Enter product description"
+              placeholder="Describe the product you want, like the size, or the color. e.g: i want the color to be black please..."
               name="productDesc"
               onChange={handleChange}
               value={values.productDesc}

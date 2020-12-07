@@ -1,7 +1,8 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
 import {
-  ProductDetails, ProductPrice, UserRequestCardLink, DetailsWrapper,
+  ProductDetails, ProductPrice, UserRequestCardLink,
+  DetailsWrapper, ProductRequestDetails,
 } from './style';
 
 export default function UserRequestCard() {
@@ -15,7 +16,7 @@ export default function UserRequestCard() {
                 alt=""
               />
             </LazyLoad>
-            <div className="requestDetails">
+            <ProductRequestDetails>
               <h2> Fantastic Steel Sausages </h2>
               <p>
                 <span>Deliver to </span>
@@ -27,13 +28,9 @@ export default function UserRequestCard() {
               </p>
               <p>
                 <span>Before </span>
-                11 Nov, 2020
+                Anytime
               </p>
-              <p>
-                <span>Product price </span>
-                25 TND
-              </p>
-            </div>
+            </ProductRequestDetails>
           </ProductDetails>
           <ProductPrice>
               <span>Estimated reward </span>

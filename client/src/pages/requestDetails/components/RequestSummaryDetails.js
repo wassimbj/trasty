@@ -46,7 +46,7 @@ export default function RequestAmountsDetails() {
           <span> 1200 TD </span>
         </TotalAmount>
         <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setModalOpen(true)}>
-          Make your offer
+          Offer Help
         </Button>
       </RequestAmountsDetailsWrapper>
       { isModalOpen && <AddOfferModal onClose={() => setModalOpen(false)} /> }

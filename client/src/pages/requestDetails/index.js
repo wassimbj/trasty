@@ -1,7 +1,7 @@
 import React from 'react';
 import MdContainer from '../../components/mdContainer';
 import DeliveryDetails from './components/DeliveryDetails';
-import RequestAmountsDetails from './components/RequestAmountsDetails';
+import RequestSummaryDetails from './components/RequestSummaryDetails';
 import AdditionalProductDetails from './components/AdditionalProductDetails';
 import RequesterInfo from './components/RequesterInfo';
 import {
@@ -9,7 +9,6 @@ import {
   ProductImg, ProductTitle, RequestDetailsContainer, RequestSummaryContainer,
 } from './style';
 import Footer from '../../components/footer';
-import Modal from '../../components/modal';
 
 export default function RequestDetails() {
   return (
@@ -35,7 +34,7 @@ export default function RequestDetails() {
         <RequestSummaryContainer>
           <div className="wrapper">
             <RequesterInfo />
-            <RequestAmountsDetails />
+            <RequestSummaryDetails />
             <DeliveryDetails />
           </div>
         </RequestSummaryContainer>
