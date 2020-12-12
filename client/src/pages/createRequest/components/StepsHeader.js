@@ -5,8 +5,8 @@ const StepsHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  max-width: 800px;
+  margin: 1rem auto;
   overflow-x: auto;
   padding: 0.5rem;
   border-radius: 5px;

@@ -10,4 +10,10 @@ router.get(
   RequestsController.searchLocation
 );
 
+router.post(
+  "/request/create",
+  UserController.auth,
+  RequestsController.create
+);
+
 export default router;

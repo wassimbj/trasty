@@ -24,7 +24,9 @@ export default function CreateRequest() {
   const validationSchemaArray = [
     {
       productLink: yup.string()
-                      .max(500, 'the link you provided is too long'),
+                      .max(500, 'the link you provided is too long')
+                      .url('Invalid link')
+                      .nullable(true),
       productImage: yup.mixed()
                       .required('please upload the product image'),
       productTitle: yup.string()
@@ -34,6 +36,8 @@ export default function CreateRequest() {
                       .max(100000000, 'price is too hight, are you gonna buy a plane ?')
                       .min(0.1, "price can't be 0")
                       .required('please enter the product unit price'),
+      productDesc: yup.string()
+                      .max(250, 'the description is too long'),
       productQuantity: yup.number()
                       .min(1, 'minimum is 1')
                       .max(5000, 'maximum is 5000')
@@ -65,9 +69,10 @@ export default function CreateRequest() {
     validateOnChange: activeTab === 1,
     validateOnBlur: false,
     onSubmit: (values) => {
-      console.log(values);
       if (activeTab < 3) {
         setActiveTab(Math.min(activeTab + 1, 3));
+      } else if (activeTab === 3) {
+        console.log(vvalues);
       }
     },
   });

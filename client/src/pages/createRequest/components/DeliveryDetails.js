@@ -43,7 +43,7 @@ export default function DeliveryDetails({
   return (
     <>
       <div>
-        <span className="title"> 2. Confirm Delivery City and Date </span>
+        <span className="title"> 2. Confirm Delivery Location and Date </span>
         <p className="optinalHeading">
           A Trusti traveler going to your city will deliver your request.
           Enter the country your order is coming from and which city you want it to be delivered to.
@@ -52,7 +52,7 @@ export default function DeliveryDetails({
           <InputBlock customStyles="margin-bottom: 1rem">
             <InlineInput
               text="From"
-              placeholder="City or Country"
+              placeholder="State or Country"
               inputWidth="100%"
               initStyles={`
                 border: 1px solid rgba(0,0,0,0.15);
@@ -86,7 +86,7 @@ export default function DeliveryDetails({
           <InputBlock>
             <InlineInput
               text="To"
-              placeholder="City or Country"
+              placeholder="State or Country"
               inputWidth="100%"
               initStyles={`
                 border: 1px solid rgba(0,0,0,0.15);

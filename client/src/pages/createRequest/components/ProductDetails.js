@@ -39,7 +39,7 @@ export default function ProductDetails({
   useEffect(() => {
     if (values.productImage && Array.isArray(values.productImage)) {
       setSelectedImgPreview(URL.createObjectURL(values.productImage[0]));
-      console.log('Set', selectedImgPreview);
+      // console.log('Set', selectedImgPreview);
     }
   }, [values.productImage]);
 
@@ -47,7 +47,7 @@ export default function ProductDetails({
     // Make sure to revoke the data uris to avoid memory leaks
     if (selectedImgPreview) {
       URL.revokeObjectURL(selectedImgPreview);
-      console.log('Revoke', selectedImgPreview);
+      // console.log('Revoke', selectedImgPreview);
     }
   }, [selectedImgPreview]);
 
@@ -69,6 +69,8 @@ export default function ProductDetails({
                 name="productLink"
                 onChange={handleChange}
                 value={values.productLink}
+                autoComplete="off"
+                customStyles={errors.productLink ? 'border-color: #ff5858' : ''}
               />
               <Tip content="Get product details">
                 <RetryButton>
@@ -77,6 +79,7 @@ export default function ProductDetails({
               </Tip>
             </ProductLinkWrapper>
             <Hint content="if you don't have the product link, just leave it empty and fill the rest manually" />
+            <ErrorMsg>{errors.productLink}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Product image </label>
@@ -124,7 +127,9 @@ export default function ProductDetails({
               name="productDesc"
               onChange={handleChange}
               value={values.productDesc}
+              customStyles={errors.productDesc ? 'border-color: #ff5858' : ''}
             />
+            <ErrorMsg>{errors.productDesc}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Unit price </label>

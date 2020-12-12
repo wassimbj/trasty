@@ -115,6 +115,9 @@ export const TextArea = styled.textarea`
   border: 1px solid rgba(0,0,0,0.15);
   &:hover{ border: 1px solid rgba(0,0,0,0.25); }
   &:focus{ border: 1px solid rgba(0,0,0,0.5); outline: none }
+  ${(props) => css`
+    ${props.customStyles}
+  `}
 `;
 
 export const InputBlock = styled.div`
@@ -297,8 +300,8 @@ export const ProductLinkWrapper = styled.div`
 
 export const ProductImgPreviewWrapper = styled.div`
    position: relative;
-   max-width: 200px;
-   max-height: 200px;
+   width: 200px;
+   height: 200px;
 
    @media(max-width: 350px){
      max-width: 130px;
@@ -322,14 +325,13 @@ export const RemoveImgButton = styled.span`
 
 export const ProductImgPreview = styled.img`
   border-radius: 5px;
-  max-width: 100%;
-  max-height: 100%;
-  // width: 100%;
+  width: 100%;
+  height: 100%;
   margin-right: 0.75rem;
   border: 1px solid rgba(0,0,0,0.12);
   display: block;
   object-fit: cover;
-  padding: 0.5rem;
+  padding: 0.25rem;
 `;
 
 export const SelectProductImgContainer = styled.div`
