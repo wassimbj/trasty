@@ -17,6 +17,7 @@ import MyRequests from './pages/myRequests';
 import Messages from './pages/messages';
 import Login from './pages/auth/Login';
 import UserAuthContext from './contexts/UserAuthContext';
+import ErrorBoundary from './components/errorBoundary';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -55,7 +56,7 @@ function App() {
         {/* Start of Routes */}
         <NavBar onClickLogout={logoutHandler} />
         {/* <MobileNavBar /> */}
-
+      <ErrorBoundary>
         <Route exact path="/" component={HomePage} />
 
         <Route exact path="/requests" component={RequestsList} />
@@ -116,6 +117,7 @@ function App() {
             return <Login />;
           }}
         />
+      </ErrorBoundary>
 
         {/* End of Routes */}
       </UserAuthContext.Provider>

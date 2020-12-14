@@ -14,7 +14,7 @@ export default function DeliveryDetails({
   setFieldValue, errors,
 }) {
   // helper, state or country :)
-  const isState = (location) => location.state_id;
+  // const isState = (location) => location.state_id;
 
   const fromDefaultValue = !values.deliverFrom ? '' : displayNiceLocation(values.deliverFrom, true);
   const [fromRouteSearch, setFromRouteSearch] = useState({
@@ -74,9 +74,7 @@ export default function DeliveryDetails({
                   onSelect={(data) => {
                     setFieldValue('deliverFrom', JSON.stringify(data));
                     setFromRouteSearch({
-                      from: `${isState(data)
-                        ? `${data.country}, ${data.state_name}`.trim()
-                        : `${data.name}, ${data.sortname}`.trim()}`,
+                      from: displayNiceLocation(data),
                       hasSelected: true,
                     });
                   }}
@@ -107,9 +105,7 @@ export default function DeliveryDetails({
                     onSelect={(data) => {
                       setFieldValue('deliverTo', JSON.stringify(data));
                       setToRouteSearch({
-                        to: `${isState(data)
-                          ? `${data.country}, ${data.state_name}`.trim()
-                          : `${data.name}, ${data.sortname}`.trim()}`,
+                        to: displayNiceLocation(data),
                         hasSelected: true,
                       });
                     }}

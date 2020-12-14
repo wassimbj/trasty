@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -16,19 +17,21 @@ import RequestSummary from './components/RequestSummary';
 import { Button } from '../../components/button';
 import Footer from '../../components/footer';
 import StepsHeader from './components/StepsHeader';
+import createRequest from '../../api/requests/create';
+import Spinner from '../../components/spinner';
 // import displayNiceLocation from '../../utils/displayNiceLocation';
 
 export default function CreateRequest() {
   const [activeTab, setActiveTab] = useState(1);
-
+  const [isCreatingRequest, setIsCreatingRequest] = useState(false);
   const validationSchemaArray = [
     {
       productLink: yup.string()
                       .max(500, 'the link you provided is too long')
                       .url('Invalid link')
                       .nullable(true),
-      productImage: yup.mixed()
-                      .required('please upload the product image'),
+      // productImage: yup.mixed()
+      //                 .required('please upload the product image'),
       productTitle: yup.string()
                       .max(200, 'the title is too long')
                       .required('enter the product title'),
@@ -59,11 +62,12 @@ export default function CreateRequest() {
       productImage: '',
       productTitle: '',
       productDesc: '',
+      productSize: 'small',
       productUnitPrice: 0,
       productQuantity: 1,
       deliverFrom: '',
       deliverTo: '',
-      deliverBefore: '',
+      deliverBefore: '0',
     },
     validationSchema: yup.object().shape(validationSchemaArray[activeTab - 1]),
     validateOnChange: activeTab === 1,
@@ -72,7 +76,11 @@ export default function CreateRequest() {
       if (activeTab < 3) {
         setActiveTab(Math.min(activeTab + 1, 3));
       } else if (activeTab === 3) {
-        console.log(vvalues);
+        setIsCreatingRequest(true);
+        // submit the request
+        createRequest(values, () => {
+          setIsCreatingRequest(false);
+        });
       }
     },
   });
@@ -131,7 +139,11 @@ export default function CreateRequest() {
                   type="submit"
                   formId="productDetails"
                 >
-                  { activeTab < 3 ? 'Next' : 'Create Request' }
+                  { activeTab < 3
+                    ? 'Next'
+                    : (
+                      isCreatingRequest ? <Spinner center /> : 'Create Request'
+                    )}
                 </Button>
               </ControlButtonsWrapper>
             </div>

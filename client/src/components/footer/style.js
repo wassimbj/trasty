@@ -44,9 +44,13 @@ export const LeftSideLink = styled(Link)`
    transition: 250ms;
    &:hover{
       color: #555;
-      border-bottom: 1px solid #555;
+      // border-bottom: 1px solid #555;
    }
-   line-height: 1.8;
+  //  line-height: 1.8;
+
+  //  ------------
+  display: inline-block;
+  margin-right: 0.5rem;
 `;
 
 export const LinksWrapper = styled.div`

@@ -4,6 +4,7 @@ import { useDebounce } from 'use-debounce';
 import Spinner from '../spinner';
 import searchLocation from '../../api/requests/searchLocation';
 import { LocationItem, Msg, SearchLocationCard } from './style';
+import displayNiceLocation from '../../utils/displayNiceLocation';
 
 export default function SearchLocation({ searchQuery, onSelect, name }) {
   const [locations, setLocations] = useState({
@@ -32,7 +33,6 @@ export default function SearchLocation({ searchQuery, onSelect, name }) {
   }, [searchQueryValue]);
 
   // helper (see if its a state or country)
-  const isState = (location) => location.state_id;
   const handleLocationSelection = (data) => {
     onSelect(data);
     setIsOpen(false);
@@ -53,9 +53,7 @@ export default function SearchLocation({ searchQuery, onSelect, name }) {
                 locations.data.map((data, i) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <LocationItem key={i}>
-                    {
-                      isState(data) ? `${data.country}, ${data.state_name}` : `${data.name}, ${data.sortname}`
-                    }
+                    {displayNiceLocation(data)}
                     <input type="radio" value={data} name={name || 'deliver'} onChange={() => handleLocationSelection(data)} />
                   </LocationItem>
                 ))

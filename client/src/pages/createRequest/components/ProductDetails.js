@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
 import { useDropzone } from 'react-dropzone';
+import styled from 'styled-components';
 import {
   Input, InputBlock, TextArea,
   ProductLinkWrapper, RetryButton,
@@ -13,22 +14,23 @@ import {
 import Hint from '../../../components/hint';
 import Tip from '../../../components/tip';
 
+const AdditionalInfo = styled.div`
+  padding-top: 1rem;
+  border-top: 1xp solid rgba(0,0,0,0.1);
+`;
+
 export default function ProductDetails({
   values, handleChange, setFieldValue, errors,
 }) {
   const [selectedImgPreview, setSelectedImgPreview] = useState('');
   const onDrop = useCallback((acceptedFile) => {
-    const img = Array.isArray(acceptedFile) && acceptedFile.length > 0 ? acceptedFile[0] : null;
     if (Array.isArray(acceptedFile) && acceptedFile.length > 0) {
-      // setSelectedImgPreview(URL.createObjectURL(img));
       setFieldValue('productImage', acceptedFile);
     }
   }, []);
-  const {
-    getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject,
-  } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     // onDrop,
-    onDropAccepted: onDrop,
+    onDrop,
     maxFiles: 1,
     multiple: false,
     maxSize: 2000000,
@@ -38,18 +40,25 @@ export default function ProductDetails({
 
   useEffect(() => {
     if (values.productImage && Array.isArray(values.productImage)) {
-      setSelectedImgPreview(URL.createObjectURL(values.productImage[0]));
-      // console.log('Set', selectedImgPreview);
+      // const previewURL = URL.createObjectURL(values.productImage[0]);
+      // setSelectedImgPreview(previewURL);
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setSelectedImgPreview(e.target.result);
+        setFieldValue('productImageUrl', e.target.result);
+        // $('#blah')
+          //     .attr('src', e.target.result);
+      };
+      reader.readAsDataURL(values.productImage[0]);
     }
   }, [values.productImage]);
 
-  useEffect(() => () => {
-    // Make sure to revoke the data uris to avoid memory leaks
-    if (selectedImgPreview) {
-      URL.revokeObjectURL(selectedImgPreview);
-      // console.log('Revoke', selectedImgPreview);
-    }
-  }, [selectedImgPreview]);
+  // useEffect(() => () => {
+  //   // Make sure to revoke the data uris to avoid memory leaks
+  //   if (selectedImgPreview) {
+  //     URL.revokeObjectURL(selectedImgPreview);
+  //   }
+  // }, [selectedImgPreview]);
 
   const handleProductImgDelete = () => {
     setSelectedImgPreview('');
@@ -93,16 +102,13 @@ export default function ProductDetails({
               )
               : null
             }
-            <div {...getRootProps()}>
-              {/* <input {...getInputProps()} /> */}
-              <SelectProductImgContainer
-                isError={!!errors.productImage}
-                {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
-              >
-                <input {...getInputProps()} />
-                <p>Select product image</p>
-              </SelectProductImgContainer>
-            </div>
+            <SelectProductImgContainer
+              isError={!!errors.productImage}
+              {...getRootProps()}
+            >
+              <input {...getInputProps()} />
+              <p>Select product image</p>
+            </SelectProductImgContainer>
             <Hint content="only one image is allowed, and must not pass 2MB" />
             <ErrorMsg>{errors.productImage}</ErrorMsg>
           </InputBlock>
@@ -144,20 +150,31 @@ export default function ProductDetails({
             <PriceCurrency>TND</PriceCurrency>
             <ErrorMsg>{errors.productUnitPrice}</ErrorMsg>
           </InputBlock>
-          <InputBlock>
-            <label> Quantity </label>
-            <Input
-              type="number"
-              defaultValue="1"
-              min="1"
-              name="productQuantity"
-              onChange={handleChange}
-              value={values.productQuantity}
-              placeholder="How many ?"
-              customStyles={errors.productQuantity ? 'border-color: #ff5858' : ''}
-            />
-            <ErrorMsg>{errors.productQuantity}</ErrorMsg>
-          </InputBlock>
+          <AdditionalInfo>
+            <InputBlock>
+              <label> Quantity </label>
+              <Input
+                type="number"
+                defaultValue="1"
+                min="1"
+                name="productQuantity"
+                onChange={handleChange}
+                value={values.productQuantity}
+                placeholder="How many ?"
+                customStyles={errors.productQuantity ? 'border-color: #ff5858' : ''}
+              />
+              <ErrorMsg>{errors.productQuantity}</ErrorMsg>
+            </InputBlock>
+            <InputBlock>
+              <label> Size </label>
+              <select onChange={handleChange} name="productSize">
+                <option value="small"> Small </option>
+                <option value="medium"> Medium </option>
+                <option value="big"> Big </option>
+                <option value="extra"> Extra Big </option>
+              </select>
+            </InputBlock>
+          </AdditionalInfo>
       </div>
     </>
   );

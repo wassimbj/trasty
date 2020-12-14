@@ -4,10 +4,10 @@ import axios from '../../utils/axios';
 
 export default async function searchLocation(searchQuery) {
   try {
-    const res = await axios.get('/search/location', {
+    const { data: locationsFound } = await axios.get('/search/location', {
       params: { searchQuery }
     });
-    return { success: true, data: res.data };
+    return { success: true, data: locationsFound };
   } catch (err) {
     return { success: false, data: [] };
   }
