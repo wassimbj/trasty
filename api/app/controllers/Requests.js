@@ -6,6 +6,10 @@ import { nanoid } from 'nanoid';
 
 class Requests {
 
+  async getAll(req, res){
+
+  }
+
   async searchLocation(req, res) {
     try{
       const {searchQuery} = req.query;
@@ -30,16 +34,16 @@ class Requests {
         deliverBefore, productLink, productSize
       } = req.body;
       const user_id = req.session.userid;
-      const deliverFromObj = {
-        country_id: JSON.parse(deliverFrom).country_id,
-        state_id: JSON.parse(deliverFrom).state_id || 0,
-        city_id: JSON.parse(deliverFrom).city_id || 0,
-      }
-      const deliverToObj = {
-        country_id: JSON.parse(deliverTo).country_id,
-        state_id: JSON.parse(deliverTo).state_id || 0,
-        city_id: JSON.parse(deliverTo).city_id || 0,
-      }
+      // const deliverFromObj = {
+      //   country_id: JSON.parse(deliverFrom).country_id,
+      //   state_id: JSON.parse(deliverFrom).state_id || 0,
+      //   city_id: JSON.parse(deliverFrom).city_id || 0,
+      // }
+      // const deliverToObj = {
+      //   country_id: JSON.parse(deliverTo).country_id,
+      //   state_id: JSON.parse(deliverTo).state_id || 0,
+      //   city_id: JSON.parse(deliverTo).city_id || 0,
+      // }
       await db.query(`
         INSERT INTO requests(
           slug
@@ -66,8 +70,8 @@ class Requests {
         user_id,
         deliverBefore,
         productTitle,
-        deliverToObj,
-        deliverFromObj,
+        deliverTo,
+        deliverFrom,
         productSize,
       ]);
       return res.status(200).json('Done');

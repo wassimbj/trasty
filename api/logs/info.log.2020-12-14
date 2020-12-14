@@ -398,3 +398,23 @@
   level: 'info',
   timestamp: '2020-12-14 20:54:03'
 }
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-14 20:58:43'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-14 20:59:28'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-14 21:01:10'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-14 21:39:31'
+}

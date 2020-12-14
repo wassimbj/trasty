@@ -19,6 +19,7 @@ import Footer from '../../components/footer';
 import StepsHeader from './components/StepsHeader';
 import createRequest from '../../api/requests/create';
 import Spinner from '../../components/spinner';
+import displayNiceLocation from '../../utils/displayNiceLocation';
 // import displayNiceLocation from '../../utils/displayNiceLocation';
 
 export default function CreateRequest() {
@@ -72,9 +73,31 @@ export default function CreateRequest() {
     validationSchema: yup.object().shape(validationSchemaArray[activeTab - 1]),
     validateOnChange: activeTab === 1,
     validateOnBlur: false,
-    onSubmit: (values) => {
+    onSubmit: (values, { setFieldValue }) => {
       if (activeTab < 3) {
         setActiveTab(Math.min(activeTab + 1, 3));
+        if (activeTab === 2) {
+          // console.log();
+          // values.deliverTo, values.deliverFrom
+          if (values.deliverFrom && values.deliverTo) {
+            const parseDeliverFrom = JSON.parse(values.deliverFrom);
+            const parseDeliverTo = JSON.parse(values.deliverTo);
+            setFieldValue('deliverFrom', JSON.stringify({
+              ...parseDeliverFrom,
+              country_id: parseDeliverFrom.country_id,
+              state_id: parseDeliverFrom.state_id || 0,
+              city_id: parseDeliverFrom.city_id || 0,
+              niceDisplay: displayNiceLocation(parseDeliverFrom),
+            }));
+            setFieldValue('deliverTo', JSON.stringify({
+              ...parseDeliverTo,
+              country_id: parseDeliverTo.country_id,
+              state_id: parseDeliverTo.state_id || 0,
+              city_id: parseDeliverTo.city_id || 0,
+              niceDisplay: displayNiceLocation(parseDeliverTo),
+            }));
+          }
+        }
       } else if (activeTab === 3) {
         setIsCreatingRequest(true);
         // submit the request

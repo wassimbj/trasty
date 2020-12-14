@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import FindTravelerCard from '../../components/findTravelerCard';
 import Footer from '../../components/footer';
 import MainContainer from '../../components/mainContainer';
