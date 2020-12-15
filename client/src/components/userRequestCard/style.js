@@ -66,7 +66,7 @@ export const ProductRequestDetails = styled.div`
   width: 100%;
   margin-left: 0.75rem;
   & > p {
-    @media(max-width: 350px){ font-size: 14px; }
+    @media(max-width: 350px){ font-size: 13px; }
     margin-bottom: 0.25rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -80,6 +80,7 @@ export const ProductRequestDetails = styled.div`
     margin-bottom: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    @media(max-width: 350px){ font-size: 14px; }
   }
 `;
 

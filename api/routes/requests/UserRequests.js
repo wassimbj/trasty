@@ -17,4 +17,15 @@ router.post(
   RequestsController.create
 );
 
+router.get(
+  "/requests/all",
+  RequestsController.getAll
+);
+
+router.get(
+  "/request/details/:slug",
+  RequestsController.getSingle
+);
+
+
 export default router;

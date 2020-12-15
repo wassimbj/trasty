@@ -62,8 +62,9 @@ export const RequesterInfoWrapper = styled.div`
    & img {
       width: 85px;
       height: 85px;
-      border-radius: 30px;
+      border-radius: 50px;
       margin: 0 auto;
+      box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
    }
    & small { display: block; color: gray; }
 `;
@@ -108,7 +109,8 @@ export const AdditionalProductDetailsWrapper = styled.div`
    justify-content: space-between;
    flex-wrap: wrap;
    & p {
-      margin-bottom: 0.5rem;   
+      margin-bottom: 0.5rem;
+      text-align: center;
       & span { display: block; text-align: center; }
       & span:first-child { color: #a7a7a7; font-size: 14px;}
       & a {

@@ -29,7 +29,7 @@ export default function NavBar({ onClickLogout }) {
             <div className="leftSideItems">
             {
               isLoggedIn.loading ? (
-                <Spinner />
+                <Spinner width="22px" />
               ) : (
                 !isLoggedIn.status ? (
                   <Tip content="Login or Signup">

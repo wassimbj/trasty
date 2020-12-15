@@ -1,0 +1,45 @@
+{
+  message: 'Search Location Error: error: syntax error at or near "LIMIT"',
+  level: 'error',
+  timestamp: '2020-12-15 13:18:26'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "LIMIT"',
+  level: 'error',
+  timestamp: '2020-12-15 13:20:43'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "LIMIT"',
+  level: 'error',
+  timestamp: '2020-12-15 13:21:47'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "LIMIT"',
+  level: 'error',
+  timestamp: '2020-12-15 13:24:55'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "LIMIT"',
+  level: 'error',
+  timestamp: '2020-12-15 13:27:31'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2020-12-15 17:19:17'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2020-12-15 17:20:08'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2020-12-15 17:20:08'
+}
+{
+  message: 'Search Location Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2020-12-15 17:20:08'
+}

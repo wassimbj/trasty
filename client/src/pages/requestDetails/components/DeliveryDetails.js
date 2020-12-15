@@ -1,24 +1,25 @@
 import React from 'react';
 import Icon from '@hackclub/icons';
+import dayjs from 'dayjs';
 import { DeliveryDetailsWrapper } from '../style';
 
-export default function DeliveryDetails() {
+export default function DeliveryDetails({ deliverFrom, deliverTo, before }) {
   return (
     <DeliveryDetailsWrapper>
         <p>
           <Icon glyph="view-forward" color="gray" size={22} />
           <span> Deliver to </span>
-          Sousse, TN
+          {deliverFrom}
         </p>
         <p>
           <Icon glyph="view-forward" color="gray" size={22} />
           <span> From </span>
-          Germany
+          {deliverTo}
         </p>
         <p>
           <Icon glyph="clock" color="gray" size={22} />
           <span> Before </span>
-          March 21, 2021
+          {before ? dayjs().add(before, 'd').format('MMM D, YYYY') : 'Anytime'}
         </p>
     </DeliveryDetailsWrapper>
   );

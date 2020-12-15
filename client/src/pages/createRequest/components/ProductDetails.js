@@ -63,6 +63,7 @@ export default function ProductDetails({
   const handleProductImgDelete = () => {
     setSelectedImgPreview('');
     setFieldValue('productImage', '');
+    setFieldValue('productImageUrl', '');
   };
 
   return (
@@ -103,14 +104,14 @@ export default function ProductDetails({
               : null
             }
             <SelectProductImgContainer
-              isError={!!errors.productImage}
+              isError={!!errors.productImageUrl}
               {...getRootProps()}
             >
               <input {...getInputProps()} />
               <p>Select product image</p>
             </SelectProductImgContainer>
             <Hint content="only one image is allowed, and must not pass 2MB" />
-            <ErrorMsg>{errors.productImage}</ErrorMsg>
+            <ErrorMsg>{errors.productImageUrl}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Product title </label>

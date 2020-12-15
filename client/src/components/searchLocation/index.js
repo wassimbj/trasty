@@ -46,7 +46,7 @@ export default function SearchLocation({ searchQuery, onSelect, name }) {
     <SearchLocationCard>
       {
         locations.success ? (
-          locations.loading ? <Spinner customStyle="margin: 1rem auto; display: block;" /> : (
+          locations.loading ? <Spinner center customStyle="margin: 1rem 0;" color="#ccc" spinnerColor="#555" /> : (
             locations.data.length === 0
               ? <Msg> Nothing found... </Msg>
               : (

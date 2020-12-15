@@ -10,6 +10,10 @@ const Container = styled.div`
    @media (min-width: 1320px){
       max-width: 1300px;
    }
+
+   @media(max-width: 400px){
+     padding: 0 .25rem;
+   }
 `;
 
 // eslint-disable-next-line react/prop-types

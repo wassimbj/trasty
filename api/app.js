@@ -13,8 +13,8 @@ app.use(helmet.noSniff());
 app.use(helmet.hidePoweredBy({ setTo: 'Django' }));
 
 // Parse incoming requests data
-app.use(express.json({ extended: true }));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ extended: true, limit: '3mb' }));
+app.use(express.urlencoded({ extended: false, limit: '3mb' }));
 
 const acceptedOrigins = [
   'http://localhost:3000',

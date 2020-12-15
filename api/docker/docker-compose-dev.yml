@@ -31,11 +31,15 @@ services:
       container_name: trusti_server
       restart: always
       env_file: ../.env
+      volumes:
+         - ..:/trusty/src
       depends_on:
          - "pg_db"
          - "trusty_redis"
-      volumes:
-         - ..:/trusty/src
+      # volumes:
+      #   - type: bind
+      #      source: ..
+      #      target: /trusty/src
       ports: 
          - 5000:5000
       

@@ -1,24 +1,30 @@
 import React from 'react';
 import { AdditionalProductDetailsWrapper } from '../style';
 
-export default function AdditionalProductDetails() {
+export default function AdditionalProductDetails({
+  unitPrice, quantity, size, link,
+}) {
   return (
     <AdditionalProductDetailsWrapper>
         <p>
           <span> Unit Price </span>
-          <span> 200 TD </span>
+          <span>{`${unitPrice} TND`}</span>
         </p>
         <p>
           <span> Quantity </span>
-          <span> 1 </span>
+          <span>{quantity}</span>
         </p>
         <p>
-          <span> Packaging </span>
-          <span> With box </span>
+          <span> Size </span>
+          <span>{size}</span>
         </p>
         <p>
           <span> Where to buy </span>
-          <a href="https://amazon.com" rel="noreferrer" target="_blank">www.amazon.com</a>
+          {
+            link ? (
+              <a href={link} rel="noreferrer" target="_blank">{`${String(link).substr(0, 10)}...`}</a>
+            ) : 'N/A'
+          }
         </p>
     </AdditionalProductDetailsWrapper>
   );

@@ -8,8 +8,11 @@ import {
 import AddOfferModal from '../../../components/addOfferModal';
 import ToolTip from '../../../components/toolTip';
 
-export default function RequestAmountsDetails() {
+export default function RequestAmountsDetails({ quantity, productPrice }) {
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const productTotalPrice = parseFloat(productPrice * quantity);
+  const reward = parseFloat(productPrice * 0.15).toFixed(2);
   return (
     <>
       <RequestAmountsDetailsWrapper>
@@ -20,7 +23,7 @@ export default function RequestAmountsDetails() {
               <span><Icon glyph="info" size={22} color="#b7b7b7" /></span>
             </ToolTip>
           </p>
-          <span> 800.00 TD </span>
+          <span>{`${productTotalPrice} TND`}</span>
         </RequestAmounts>
         <RequestAmounts>
           <p> Estimated taxes </p>
@@ -33,7 +36,7 @@ export default function RequestAmountsDetails() {
               <span><Icon glyph="info" size={22} color="#b7b7b7" /></span>
             </ToolTip>
           </p>
-          <span> 206 TD </span>
+          <span>{`${reward} TND`}</span>
         </RequestAmounts>
         <hr />
         <TotalAmount>
@@ -43,7 +46,11 @@ export default function RequestAmountsDetails() {
               <span><Icon glyph="info" size={22} color="#b7b7b7" /></span>
             </ToolTip>
           </p>
-          <span> 1200 TD </span>
+          <span>
+            {parseFloat(parseFloat(reward) + parseFloat(productTotalPrice)).toFixed(2)}
+            {' '}
+            TND
+          </span>
         </TotalAmount>
         <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setModalOpen(true)}>
           Offer Help

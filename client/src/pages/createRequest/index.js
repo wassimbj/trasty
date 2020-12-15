@@ -31,8 +31,8 @@ export default function CreateRequest() {
                       .max(500, 'the link you provided is too long')
                       .url('Invalid link')
                       .nullable(true),
-      // productImage: yup.mixed()
-      //                 .required('please upload the product image'),
+      productImageUrl: yup.mixed()
+                      .required('the product image is required'),
       productTitle: yup.string()
                       .max(200, 'the title is too long')
                       .required('enter the product title'),
@@ -87,14 +87,14 @@ export default function CreateRequest() {
               country_id: parseDeliverFrom.country_id,
               state_id: parseDeliverFrom.state_id || 0,
               city_id: parseDeliverFrom.city_id || 0,
-              niceDisplay: displayNiceLocation(parseDeliverFrom),
+              nice_display: displayNiceLocation(parseDeliverFrom),
             }));
             setFieldValue('deliverTo', JSON.stringify({
               ...parseDeliverTo,
               country_id: parseDeliverTo.country_id,
               state_id: parseDeliverTo.state_id || 0,
               city_id: parseDeliverTo.city_id || 0,
-              niceDisplay: displayNiceLocation(parseDeliverTo),
+              nice_display: displayNiceLocation(parseDeliverTo),
             }));
           }
         }

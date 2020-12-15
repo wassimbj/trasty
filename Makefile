@@ -1,9 +1,9 @@
 # --------------- server cmds ---------------
-watch_server: 
-	@cd api/docker && docker-compose -f docker-compose-dev.yml build trusti_node_server && docker-compose -f docker-compose-dev.yml up
+# watch_server: 
+# 	@cd api/docker && docker-compose -f docker-compose-dev.yml build trusti_node_server && docker-compose -f docker-compose-dev.yml up
 
 run_server: 
-	@cd api/docker && docker-compose -f docker-compose-dev.yml up
+	@cd api/docker && docker-compose -f docker-compose-dev.yml up -V
 
 rebuild_server: 
 	@cd api/docker && docker-compose -f docker-compose-dev.yml up --build

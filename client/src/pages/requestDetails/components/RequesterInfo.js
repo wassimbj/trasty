@@ -1,13 +1,18 @@
 import React from 'react';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
+// import 'dayjs/locale/fr';
 import { RequesterInfoWrapper } from '../style';
 
-export default function RequesterInfo() {
+dayjs.extend(relativeTime);
+
+export default function RequesterInfo({ userImage, userName, requestTime }) {
   return (
     <RequesterInfoWrapper>
-        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/salimianoff/128.jpg" alt="" />
+        <img src={userImage} alt="" />
         <div>
-          <b> Jaquelin Kuhn </b>
-          <small> requested 2 min ago </small>
+          <b>{userName}</b>
+          <small>{`requested ${dayjs(requestTime).fromNow()}`}</small>
         </div>
     </RequesterInfoWrapper>
   );

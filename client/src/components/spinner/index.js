@@ -1,13 +1,18 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+const Wrapper = styled.div`
+  ${(props) => props.center && css` text-align: center; `}
+  ${(props) => css` ${props.customStyle} `}
+`;
+
 const StyledSpinner = styled.span`
   box-sizing: border-box;
   border-color:
-          ${(props) => props.color || 'rgb(225, 231, 236)'}
-          ${(props) => props.color || 'rgb(225, 231, 236)'}
-          ${(props) => props.color || 'rgb(225, 231, 236)'}
-          ${(props) => props.spinnerColor || 'rgb(146, 159, 177)'};
+          ${(props) => props.color || '#999'}
+          ${(props) => props.color || '#999'}
+          ${(props) => props.color || '#999'}
+          ${(props) => props.spinnerColor || '#333'};
   display: inline-block;
   border-width: 2px;
   border-style: solid;
@@ -20,9 +25,6 @@ const StyledSpinner = styled.span`
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
   }
-  
-  ${(props) => props.center && css` margin: 0 auto; display: block;`}
-  ${(props) => css` ${props.customStyle} `}
 `;
 
 export default function Spinner({
@@ -30,12 +32,12 @@ export default function Spinner({
   width, center, customStyle,
 }) {
   return (
-    <StyledSpinner
-      spinnerColor={spinnerColor}
-      color={color}
-      width={width}
-      center={center}
-      customStyle={customStyle}
-    />
+    <Wrapper center={center} customStyle={customStyle}>
+      <StyledSpinner
+        spinnerColor={spinnerColor}
+        color={color}
+        width={width}
+      />
+    </Wrapper>
   );
 }

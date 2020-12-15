@@ -3,11 +3,33 @@ import logger from '../../utils/logger';
 import cloudinary from '../../config/cloudinary';
 import db from '../../database/init';
 import { nanoid } from 'nanoid';
+import getRequests from '../../services/requests/getRequests';
+import getSingleDetails from '../../services/requests/getSingleDetails';
 
 class Requests {
 
   async getAll(req, res){
+    try{
+      const {limit, offset, filterFrom, filterTo} = req.query;
+      const data = await getRequests(offset, limit, filterFrom, filterTo);
+      // console.log('Get All!: \n', data);
+      return res.status(200).json(data);
+    }catch(err){
+      logger.error(`Get All requests Error : ${err}`);
+      return res.status(500).json('Oops');
+    }
+  }
 
+  async getSingle(req, res){
+    try{
+      const {slug} = req.params;
+      const data = await getSingleDetails(slug);
+      // console.log('Get All!: \n', data);
+      return res.status(200).json(data);
+    }catch(err){
+      logger.error(`Get single request Error : ${err}`);
+      return res.status(500).json('Oops');
+    }
   }
 
   async searchLocation(req, res) {
@@ -34,16 +56,7 @@ class Requests {
         deliverBefore, productLink, productSize
       } = req.body;
       const user_id = req.session.userid;
-      // const deliverFromObj = {
-      //   country_id: JSON.parse(deliverFrom).country_id,
-      //   state_id: JSON.parse(deliverFrom).state_id || 0,
-      //   city_id: JSON.parse(deliverFrom).city_id || 0,
-      // }
-      // const deliverToObj = {
-      //   country_id: JSON.parse(deliverTo).country_id,
-      //   state_id: JSON.parse(deliverTo).state_id || 0,
-      //   city_id: JSON.parse(deliverTo).city_id || 0,
-      // }
+      
       await db.query(`
         INSERT INTO requests(
           slug
