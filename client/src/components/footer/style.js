@@ -1,63 +1,77 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.footer`
-   padding: 2rem 5rem;
-   background: rgba(0,0,0,0.035);
-   border-top: 1px solid rgba(0,0,0,0.1);
-   @media(max-width: 500px){
-     padding: 2rem 2rem;
-   }
+export const Wrapper = styled.div`
+  background: rgba(0,0,0,0.05);
+  padding: 0.5rem 1rem;
+  border-top: 1px solid rgba(0,0,0,0.085);
 
-   & .flexit{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-   }
+  ${(props) => props.marinTop && css`
+    margin-top: ${props.marinTop}
+  `}
+`;
+
+export const Content = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-around;
+flex-wrap: wrap;
+`;
+
+export const Links = styled.div`
+& a {
+  color: rgba(0,0,0,0.5);
+  &:hover{ color: #000 }
+  display: inline-block;
+  &:not(:first-child){ margin-left: 0.65rem; }
+  font-size: 14px;
+}
 `;
 
 export const SocialLink = styled.a`
-   display: inline-block;
-   margin-right: 0.75rem;
-   color: #555555;
-   transition: 250ms;
-   &:hover{
-      color: #333;
-   }
-   margin-top: 0.5rem;
+ display: inline-block;
+ margin-left: 0.75rem;
+ color: #555555;
+ transition: 250ms;
+ &:hover{ color: #333; }
 `;
 
-export const LeftSideLinks = styled.div`
+export const PreferenceWrapper = styled.div`
+border-top: 1px solid rgba(255,255,255,0.065);
+text-align: center;
+display: flex;
+justify-content: flex-end;
+align-items: flex-end;
+flex-wrap: wrap;
+color: #666;
+& div{
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  &:not(:last-child){ margin-right: 1rem; }
+}
+@media(max-width: 720px){ justify-content: end; }
+@media(max-width: 666px){ margin-top: 1rem; }
 `;
 
-export const LinksTitle = styled.span`
-   font-weight: 500;
-   color: rgb(25, 25, 25);
-   display: block;
-   margin-bottom: 0.5rem;
+export const PreferenceSelect = styled.select`
+background: transparent;
+${(props) => css` width: ${props.width} `};
+appearance: none;
+border-radius: 50px;
+background: rgba(0,0,0,0.045);
+padding: 5px 30px;
+padding-right: 0;
+margin-left: -28px;
+cursor: pointer;
+&:focus{
+  outline: none;
+  background: rgba(0,0,0,0.075);
+  color: #333;
+}
 `;
 
-export const LeftSideLink = styled(Link)`
-   color: #717e8f;
-   transition: 250ms;
-   &:hover{
-      color: #555;
-      // border-bottom: 1px solid #555;
-   }
-  //  line-height: 1.8;
-
-  //  ------------
-  display: inline-block;
-  margin-right: 0.5rem;
-`;
-
-export const LinksWrapper = styled.div`
-  @media(min-width: 300px){
-     margin-right: 2rem;
-  }
-  @media(max-width: 660px){
-    margin-top: 1.5rem;
-  }
+export const SelectCurrency = styled.span`
+  text-align: left;
+  width: 15px;
+  font-size: 18px;
+  font-weight: 600;
 `;

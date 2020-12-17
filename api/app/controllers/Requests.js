@@ -5,6 +5,7 @@ import db from '../../database/init';
 import { nanoid } from 'nanoid';
 import getRequests from '../../services/requests/getRequests';
 import getSingleDetails from '../../services/requests/getSingleDetails';
+import getUserRequests from '../../services/requests/getUserRequests';
 
 class Requests {
 
@@ -28,6 +29,19 @@ class Requests {
       return res.status(200).json(data);
     }catch(err){
       logger.error(`Get single request Error : ${err}`);
+      return res.status(500).json('Oops');
+    }
+  }
+
+  async userRequests(req, res){
+    try{
+      const {userid} = req.params;
+      const {limit, offset} = req.query;
+      const data = await getUserRequests(userid, limit, offset);
+      // console.log('Get All!: \n', data);
+      return res.status(200).json(data);
+    }catch(err){
+      logger.error(`Get User Requests Error : ${err}`);
       return res.status(500).json('Oops');
     }
   }

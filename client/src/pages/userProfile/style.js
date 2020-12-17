@@ -13,12 +13,10 @@ export const UserInfo = styled.div`
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
-  // justify-content: center;
-  // border-bottom: 1px solid rgba(0,0,0,0.065);
   border-radius: 5px;
   & img {
-    width: 100px; height: 100px;
-    border-radius: 50px;
+    width: 115px; height: 115px;
+    border-radius: 50%;
     box-shadow: 0 0 3px rgba(0,0,0,0.35);
     object-fit: cover;
   }
@@ -31,17 +29,11 @@ export const UserInfo = styled.div`
 export const UserName = styled.div`
   display: flex; align-items: center; flex-wrap: wrap;
   & h3 {
-    font-weight: bold;
-    font-size: 30px;
+    font-weight: 500;
+    font-size: 28px;
     @media(max-width: 500px){ font-size: 22px; }
     margin-right: 0.5rem;
   }
-
-  // & svg {
-  //   display: inline-block;
-  //   margin-left: 0.5rem;
-  //   color: #d0d0d0;
-  // }
 `;
 
 export const UserVerifiedDetailsCard = styled.div`
@@ -51,9 +43,14 @@ export const UserVerifiedDetailsCard = styled.div`
   align-items: center;
   margin-bottom: 0.5rem;
   // flex-wrap: wrap;
-  & p { display: flex; }
+  & p {
+    display: flex;
+    @media(max-width: 400px){
+      font-size: 14px;
+    }
+  }
 
-  & p:not(:last-child) { margin-right: 1.5rem; }
+  & p:not(:last-child) { margin-right: 1rem; }
   
   & svg{ margin-left: 0.25rem; }
 
@@ -113,4 +110,28 @@ export const TabContent = styled.div`
 export const ReviewSummary = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const NoUserMsg = styled.div`
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 2rem 0.5rem;
+  color: #888;
+  & svg {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+  }
+  & p { font-size: 17px; }
+  & a {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(0,0,0,0.065);
+    border-radius: 50px;
+    color: #555;
+    &:hover{ border-color: #333; color: #333; }
+    margin-top: 1.5rem;
+    text-align: center;
+  }
 `;

@@ -27,5 +27,9 @@ router.get(
   RequestsController.getSingle
 );
 
+router.get(
+  '/requests/user/:userid',
+  RequestsController.userRequests
+)
 
 export default router;

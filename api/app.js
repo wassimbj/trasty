@@ -40,15 +40,21 @@ app.use(session());
 // initialize passport
 app.use(passport.initialize());
 
-app.get('*', (req, res, next) => {
-  console.log('LOGGEDIN_USER_ID: ', req.session.userid);
-  next();
-});
+// app.get('*', (req, res, next) => {
+//   console.log('LOGGEDIN_USER_ID: ', req.session.userid);
+//   next();
+// });
 
 app.get('/', (req, res) => {
   return res.json('HELLLLLLLLLLLLLLLLLOOOOOOOOOOOOO')
 });
 
 require('./routes')(app);
+
+// 404 Catcher 
+app.use((req, res, next) => {
+  res.status(404).json('Not Found');
+  next();
+});
 
 export default app;

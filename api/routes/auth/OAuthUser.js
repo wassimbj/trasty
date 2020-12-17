@@ -56,11 +56,18 @@ router.get(
   }
 );
 
+// logout
 router.get(
   "/logout", 
   UserController.auth, 
   UserController.logout
 );
 
+// get logged in user info
+router.get(
+  "/me",
+  UserController.auth,
+  UserController.me
+);
 
 export default router;

@@ -1,0 +1,10 @@
+{
+  message: 'Get User Requests Error: error: syntax error at or near "OFFSET"',
+  level: 'error',
+  timestamp: '2020-12-17 08:58:33'
+}
+{
+  message: 'Get User Requests Error: error: syntax error at or near "OFFSET"',
+  level: 'error',
+  timestamp: '2020-12-17 08:58:45'
+}

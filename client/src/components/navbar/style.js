@@ -14,22 +14,20 @@ export const StyledLink = styled(NavLink)`
   transition: 250ms;
   position: relative;
 
-  & svg {
-    padding: 3px;
-    @media(max-width: 350px){
+  & svg { padding: 3px; }
+  
+  &:not(:last-child){ margin-right: 7px; }
+
+  &:hover { color: #000; }
+  &:active{ transform: scale(0.95); }
+
+  @media(max-width: 400px){
+    padding: 1px;
+    & svg {
       width: 32px;
       height: 32px;
     }
   }
-  &:not(:last-child){
-    margin-right: 7px;
-  }
-
-  &:hover {
-    color: #000;
-  }
-
-  &:active{ transform: scale(0.95); }
 `;
 
 export const CenteredStyledLink = styled(NavLink)`

@@ -3,7 +3,7 @@
 # 	@cd api/docker && docker-compose -f docker-compose-dev.yml build trusti_node_server && docker-compose -f docker-compose-dev.yml up
 
 run_server: 
-	@cd api/docker && docker-compose -f docker-compose-dev.yml up -V
+	@cd api/docker && docker-compose -f docker-compose-dev.yml up
 
 rebuild_server: 
 	@cd api/docker && docker-compose -f docker-compose-dev.yml up --build

@@ -46,12 +46,17 @@ export const RequestSummaryContainer = styled.div`
       border-radius: 5px;
       padding: 1rem;
       @media(max-width: 992px){
-         border-radius: none !important;
-         border-right: none;
-         border-left: none;
-         padding-left: 0;
-         padding-right: 0;
+        border-radius: none !important;
+        border-right: none;
+        border-left: none;
+        padding-left: 0;
+        padding-right: 0;
       }
+      
+      // @media(min-width: 992px){
+      //   position: sticky;
+      //   top: 55px;
+      // }
    }
 `;
 

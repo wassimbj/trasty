@@ -7,7 +7,11 @@ const Badge = styled.span`
   padding: 0.3rem 1rem;
   border-radius: 30px;
   font-weight: 500;
+  @media(max-width: 425px){
+    padding: 0.25rem 0.5rem; font-size: 13px;
+  }
   ${(props) => props.small && css` padding: 0.25rem 0.65rem; font-size: 12px; `}
+
 `;
 
 const ExcellentBadge = styled(Badge)`

@@ -55,7 +55,7 @@ function App() {
       <UserAuthContext.Provider value={{ isLoggedIn }}>
         {/* Start of Routes */}
         <NavBar onClickLogout={logoutHandler} />
-        {/* <MobileNavBar /> */}
+        <createGlobalStyle />
       <ErrorBoundary>
         <Route exact path="/" component={HomePage} />
 
