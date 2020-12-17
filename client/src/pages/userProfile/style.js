@@ -29,8 +29,8 @@ export const UserInfo = styled.div`
 export const UserName = styled.div`
   display: flex; align-items: center; flex-wrap: wrap;
   & h3 {
-    font-weight: 500;
-    font-size: 28px;
+    font-weight: 400;
+    font-size: 26px;
     @media(max-width: 500px){ font-size: 22px; }
     margin-right: 0.5rem;
   }
@@ -61,9 +61,7 @@ export const UserVerifiedDetailsCard = styled.div`
 export const JoinedDate = styled.span`
   color: gray;
   display: block;
-  @media(max-width: 500px){
-    font-size: 14px;
-  }
+  font-size: 14px;
 `;
 
 export const UserInfoSummarySpan = styled.span`

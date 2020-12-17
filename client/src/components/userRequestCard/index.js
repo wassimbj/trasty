@@ -10,7 +10,6 @@ export default function UserRequestCard({
   slug, img, title, deliver, price, before,
 }) {
   // console.log();
-  console.log('before: ', before);
   return (
     <UserRequestCardLink to={`/request/view/${slug}`} target="_blank">
         <DetailsWrapper>

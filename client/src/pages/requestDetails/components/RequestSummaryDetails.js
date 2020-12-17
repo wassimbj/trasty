@@ -56,7 +56,15 @@ export default function RequestAmountsDetails({ quantity, productPrice }) {
           Offer Help
         </Button>
       </RequestAmountsDetailsWrapper>
-      { isModalOpen && <AddOfferModal onClose={() => setModalOpen(false)} /> }
+      {
+        isModalOpen && (
+        <AddOfferModal
+          onClose={() => setModalOpen(false)}
+          productUnitPrice={productPrice}
+          quantity={quantity}
+        />
+        )
+      }
     </>
   );
 }

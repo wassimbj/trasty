@@ -33,12 +33,13 @@ async function getRequests(offset, limit, filterFrom, filterTo){
       deliver_to->'nice_display' as deliver_to,
       deliver_from->'nice_display' as deliver_from
       FROM requests
+      ORDER BY RANDOM()
       LIMIT $1 OFFSET $2
     `, [limit, offset]);
     // console.log('All Requests: ', requestsFound);
     return requestsFound;
   }catch(err){
-    logger.error(`Search Location Error: ${err}`);
+    logger.error(`Get All Requests Error: ${err}`);
   }
 
 }

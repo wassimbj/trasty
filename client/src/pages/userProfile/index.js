@@ -22,10 +22,6 @@ export default function UserProfile({ match }) {
     loading: true,
     data: null,
   });
-  // const [userRequests, setUserRequests] = useState({
-  //   loadng: true,
-  //   data: [],
-  // });
 
   useEffect(() => {
     (async function () {
@@ -40,21 +36,6 @@ export default function UserProfile({ match }) {
       }
     }());
   }, []);
-
-  // useEffect(() => {
-  //   (async function () {
-  //     try {
-  //       const requests = await getUserRequests(userid);
-  //       console.log(requests);
-  //       setUserRequests({
-  //         loading: false,
-  //         data: requests,
-  //       });
-  //     } catch (err) {
-  //       throw new Error('Something went wrong...');
-  //     }
-  //   }());
-  // }, []);
 
   return (
     <>
@@ -111,13 +92,11 @@ export default function UserProfile({ match }) {
               <Tab to={`/user/${userid}/reviews`} className={`${activeTab === 'reviews' ? 'active' : ''}`}> 3 Reviews </Tab>
             </ProfileTabs>
             <TabContent>
-              <UserRequests userid={userid} />
-              {/* {
+              {
                 activeTab === 'reviews'
-                  ? [...Array(3)].map(() => <ReviewCard />)
-                  : activeTab === 'trips' ? [...Array(3)].map(() => <TravelerTripCard />)
-                    : [...Array(3)].map(() => <UserRequestCard />)
-              } */}
+                  ? <p> Reviews </p>
+                  : <UserRequests userid={userid} />
+              }
             </TabContent>
             </div>
           )

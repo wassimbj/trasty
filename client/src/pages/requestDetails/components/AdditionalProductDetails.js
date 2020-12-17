@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '@hackclub/icons';
 import { AdditionalProductDetailsWrapper } from '../style';
 
 export default function AdditionalProductDetails({
@@ -22,7 +23,9 @@ export default function AdditionalProductDetails({
           <span> Where to buy </span>
           {
             link ? (
-              <a href={link} rel="noreferrer" target="_blank">{`${String(link).substr(0, 10)}...`}</a>
+              <a href={link} rel="noreferrer" target="_blank">
+                {link}
+              </a>
             ) : 'N/A'
           }
         </p>

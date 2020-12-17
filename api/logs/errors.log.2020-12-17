@@ -8,3 +8,8 @@
   level: 'error',
   timestamp: '2020-12-17 08:58:45'
 }
+{
+  message: 'Search Location Error: error: syntax error at or near "ORDER"',
+  level: 'error',
+  timestamp: '2020-12-17 10:47:58'
+}

@@ -34,6 +34,7 @@ function App() {
       setIsLoggedIn({
         loading: false,
         status: loggedInUser.isLoggedIn,
+        userid: loggedInUser.data.id,
       });
     }());
   }, []);

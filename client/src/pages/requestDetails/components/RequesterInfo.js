@@ -11,7 +11,7 @@ export default function RequesterInfo({ userImage, userName, requestTime }) {
     <RequesterInfoWrapper>
         <img src={userImage} alt="" />
         <div>
-          <b>{userName}</b>
+          <span>{userName}</span>
           <small>{`requested ${dayjs(requestTime).fromNow()}`}</small>
         </div>
     </RequesterInfoWrapper>

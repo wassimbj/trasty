@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Icon from '@hackclub/icons';
 import {
   DropDown, DropdownItem,
   ItemIcon, SilentDropdownItem,
 } from './style';
+import UserAuthContext from '../../contexts/UserAuthContext';
 
 export default function ProfileDropdown({ isOpen, onClickLogout }) {
+  const { isLoggedIn } = useContext(UserAuthContext);
   return (
     <DropDown isOpen={isOpen}>
-      <DropdownItem to="/user/588">
+      <DropdownItem to={`/user/${isLoggedIn.userid}`}>
         <ItemIcon><Icon glyph="person" size={26} /></ItemIcon>
         <span> My Profile </span>
       </DropdownItem>

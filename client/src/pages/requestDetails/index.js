@@ -29,56 +29,55 @@ export default function RequestDetails({ match }) {
       });
     }());
   }, []);
+
+  if (requestDetails.loading) {
+    return <Spinner center customStyle="margin: 3rem 0;" />;
+  }
+
   return (
     <>
     <MdContainer>
-      {
-        requestDetails.loading ? (
-          <Spinner center customStyle="margin: 3rem 0;" />
-        ) : (
-          <RequestDetailsContainer>
-            <ProductDetailsContainer>
-              <div className="wrapper">
-                <ProductImg
-                  src={requestDetails.data.product_img}
-                  alt=""
-                />
-                <ProductTitle>
-                  {requestDetails.data.product_title}
-                </ProductTitle>
-                <ProductDescription>
-                  <span>Item description</span>
-                  {requestDetails.data.product_desc || 'N/A'}
-                </ProductDescription>
-                <AdditionalProductDetails
-                  link={requestDetails.data.product_link}
-                  quantity={requestDetails.data.quantity}
-                  size={requestDetails.data.product_size}
-                  unitPrice={requestDetails.data.product_unit_price}
-                />
-              </div>
-            </ProductDetailsContainer>
-            <RequestSummaryContainer>
-              <div className="wrapper">
-                <RequesterInfo
-                  requestTime={requestDetails.data.created_at}
-                  userImage={requestDetails.data.user_image}
-                  userName={requestDetails.data.user_name}
-                />
-                <RequestSummaryDetails
-                  quantity={requestDetails.data.quantity}
-                  productPrice={requestDetails.data.product_unit_price}
-                />
-                <DeliveryDetails
-                  deliverFrom={requestDetails.data.deliver_from.nice_display}
-                  deliverTo={requestDetails.data.deliver_to.nice_display}
-                  before={requestDetails.data.deliver_before}
-                />
-              </div>
-            </RequestSummaryContainer>
-          </RequestDetailsContainer>
-        )
-      }
+      <RequestDetailsContainer>
+        <ProductDetailsContainer>
+          <div className="wrapper">
+            <ProductImg
+              src={requestDetails.data.product_img}
+              alt=""
+            />
+            <ProductTitle>
+              {requestDetails.data.product_title}
+            </ProductTitle>
+            <ProductDescription>
+              <span>Item description</span>
+              {requestDetails.data.product_desc || 'N/A'}
+            </ProductDescription>
+            <AdditionalProductDetails
+              link={requestDetails.data.product_link}
+              quantity={requestDetails.data.quantity}
+              size={requestDetails.data.product_size}
+              unitPrice={requestDetails.data.product_unit_price}
+            />
+          </div>
+        </ProductDetailsContainer>
+        <RequestSummaryContainer>
+          <div className="wrapper">
+            <RequesterInfo
+              requestTime={requestDetails.data.created_at}
+              userImage={requestDetails.data.user_image}
+              userName={requestDetails.data.user_name}
+            />
+            <RequestSummaryDetails
+              quantity={requestDetails.data.quantity}
+              productPrice={requestDetails.data.product_unit_price}
+            />
+            <DeliveryDetails
+              deliverFrom={requestDetails.data.deliver_from.nice_display}
+              deliverTo={requestDetails.data.deliver_to.nice_display}
+              before={requestDetails.data.deliver_before}
+            />
+          </div>
+        </RequestSummaryContainer>
+      </RequestDetailsContainer>
     </MdContainer>
     <Footer />
     </>

@@ -11,7 +11,7 @@ async function getBadge(userid){
     `, [userid]);
     // console.log('requestDetails: ', requestDetails);
     console.log('getBadge: ', reviewAvg)
-    return reviewAvg[0].average;
+    return reviewAvg[0];
   }catch(err){
     logger.error(`Get Review Badge Error: ${err}`);
   }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Icon from '@hackclub/icons';
 import getUserRequests from '../../../api/requests/getUserRequests';
 import Spinner from '../../../components/spinner';
 import UserRequestCard from '../../../components/userRequestCard';
@@ -9,11 +10,10 @@ export default function UserRequests({ userid }) {
   const [userRequests, setUserRequests] = useState({
     loadng: true,
     data: [],
-    // hasMore: true,
   });
   const [hasMore, setHasMore] = useState(true);
   const [offset, setOffset] = useState(0);
-  const LIMIT = 2;
+  const LIMIT = 6;
 
   useEffect(() => {
     (async function () {
@@ -49,14 +49,20 @@ export default function UserRequests({ userid }) {
           hasMore={hasMore}
           loader={<Spinner center customStyle="margin: 5rem 0;" />}
           endMessage={(
-            <p style={{ textAlign: 'center' }}>
-              <b>Thats all...</b>
-            </p>
+            userRequests.data.length === 0 ? (
+              <p style={{ textAlign: 'center', padding: '2rem 0', color: '#333' }}>
+                <Icon glyph="explore" style={{ margin: '0 auto' }} size={50} />
+                Doesn't have any requests yet...
+              </p>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                <b>Thats all...</b>
+              </p>
+            )
           )}
         >
-          { !userRequests.loadng && userRequests.data.length === 0 ? (
-              <p> Nothing found </p>
-          ) : userRequests.data.map((request) => (
+          {
+          userRequests.data.map((request) => (
             <UserRequestCard
               slug={request.slug}
               title={request.product_title}
@@ -65,7 +71,8 @@ export default function UserRequests({ userid }) {
               before={request.deliver_before}
               price={request.product_unit_price}
             />
-          ))}
+          ))
+          }
         </InfiniteScroll>
       ) : (
         <p style={{ textAlign: 'center', padding: '1rem 0' }}> Something went wrong... </p>

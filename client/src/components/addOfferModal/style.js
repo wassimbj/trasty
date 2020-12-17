@@ -53,6 +53,15 @@ display: block;
 width: 100%;
 `;
 
+export const PriceCurrency = styled.span`
+  position: absolute;
+  top: 33px;
+  right: 11px;
+  font-weight: 500;
+  background: #fff;
+  padding: 0.25rem;
+`;
+
 export const Label = styled.label`
 font-size: 14px;
 font-weight: 500;
@@ -62,7 +71,8 @@ display: block;
 `;
 
 export const InputWrapper = styled.div`
-&:not(:first-child){ margin-top: 2rem; }
+  &:not(:first-child){ margin-top: 2rem; }
+  position: relative;
 `;
 
 export const CreateOfferButton = styled.button`

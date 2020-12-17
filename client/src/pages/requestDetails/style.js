@@ -72,6 +72,7 @@ export const RequesterInfoWrapper = styled.div`
       box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
    }
    & small { display: block; color: gray; }
+   & span { font-weight: 500; }
 `;
 
 // export const SendMsgButton = styled.button`
@@ -109,23 +110,31 @@ export const DeliveryDetailsWrapper = styled.div`
 export const AdditionalProductDetailsWrapper = styled.div`
    border-top: 1px solid rgba(0,0,0,0.1);
    padding: 1.5rem 0 0;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   flex-wrap: wrap;
+  //  display: flex;
+  //  align-items: center;
+  //  justify-content: space-between;
+  //  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  @media(max-width: 450px){ grid-template-columns: 1fr 1fr; }
    & p {
-      margin-bottom: 0.5rem;
+      // margin-bottom: 0.5rem;
+      //max-width: 115px;
+      overflow: hidden;
+      text-overflow: ellipsis;
       text-align: center;
       & span { display: block; text-align: center; }
       & span:first-child { color: #a7a7a7; font-size: 14px;}
       & a {
          color: #5b7bff; 
          &:hover { color: #2650ff }
+         white-space: nowrap;
       }
 
-      @media(max-width: 415px){
-        margin: 0.75rem 1rem;
-      }
+      // @media(max-width: 415px){
+      //   margin: 0.75rem 1rem;
+      // }
    }
 `;
 
@@ -133,6 +142,7 @@ export const ProductImg = styled.img`
    max-width: 100%;
    padding: 2rem 0;
    margin: 0 auto;
+   max-height: 700px;
 `;
 
 export const ProductTitle = styled.h2`
