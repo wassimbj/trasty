@@ -64,7 +64,7 @@ export default function RequestsList() {
           dataLength={requests.length}
           next={fetchMoreData}
           hasMore={hasMoreData}
-          loader={<Spinner color="#888" spinnerColor="#000" center customStyle="margin-top: 2rem;" />}
+          loader={<Spinner color="#888" spinnerColor="#000" center customStyle="margin: 5rem 0; padding: 2rem 0;" />}
           endMessage={(
             requests.length === 0 ? null : (
               <p style={{ textAlign: 'center' }}>

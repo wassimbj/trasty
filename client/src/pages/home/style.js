@@ -198,6 +198,7 @@ export const JoinLink = styled(Link)`
 export const WhatYouCanDoContainer = styled.div`
   margin-top: 5rem;
   padding: 3rem 0;
+  background: #f3f5f7;
 `;
 
 export const WhatYouCanDoWrapper = styled.div`

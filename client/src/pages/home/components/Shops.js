@@ -6,7 +6,6 @@ import MainContainer from '../../../components/mainContainer';
 const ShopsContainer = styled.div`
    margin-top: 5rem;
    padding: 3rem 0;
-   background: #f3f5f7;
    & p {
     display: block;
     text-align: center;

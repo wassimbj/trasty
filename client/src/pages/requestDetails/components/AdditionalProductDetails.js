@@ -1,5 +1,4 @@
 import React from 'react';
-import Icon from '@hackclub/icons';
 import { AdditionalProductDetailsWrapper } from '../style';
 
 export default function AdditionalProductDetails({

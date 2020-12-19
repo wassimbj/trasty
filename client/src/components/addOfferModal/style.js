@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Title = styled.span`
 display: block;
@@ -10,10 +10,10 @@ font-size: 19px;
 `;
 
 export const ModalBodyWrapper = styled.div`
-flex: 1 1 auto;
-min-height: 0;
-min-width: 0;
-overflow: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
 `;
 
 export const ModalBody = styled.div`
@@ -76,16 +76,21 @@ export const InputWrapper = styled.div`
 `;
 
 export const CreateOfferButton = styled.button`
-padding: 0.65rem 1.5rem;
-background: #2650ff;
-border-radius: 30px;
-color: #fff;
-transition: 250ms;
-cursor: pointer;
-&:hover{ background: #0a37f3; }
-width: 75%;
-margin-right: 0.5rem;
-font-weight: 500;
+  padding: 0.65rem 1.5rem;
+  background: #2650ff;
+  border-radius: 30px;
+  color: #fff;
+  transition: 250ms;
+  cursor: pointer;
+  &:focus{ outline: none; }
+  &:hover{ background: #0a37f3; }
+  width: 75%;
+  margin-right: 0.5rem;
+  font-weight: 500;
+  ${(props) => props.isDisabled && css`
+    opacity: 0.7;
+    &:hover{ background: #2650ff; }
+  `}
 `;
 
 export const CancelButton = styled.span`
@@ -97,4 +102,10 @@ transition: 250ms;
 cursor: pointer;
 text-align: center;
 &:hover{ background: #cecece; }
+`;
+
+export const ErrorMsg = styled.span`
+  // color: #FF5722;
+  color: #ff3535;
+  font-size: 13px;
 `;

@@ -7,12 +7,15 @@ import {
 } from '../style';
 import AddOfferModal from '../../../components/addOfferModal';
 import ToolTip from '../../../components/toolTip';
+import getEstimatedReward from '../../../utils/getEstimatedReward';
 
-export default function RequestAmountsDetails({ quantity, productPrice }) {
+export default function RequestAmountsDetails({
+  quantity, productPrice, requestId, isMyRequest,
+}) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const productTotalPrice = parseFloat(productPrice * quantity);
-  const reward = parseFloat(productPrice * 0.15).toFixed(2);
+  const reward = getEstimatedReward(productPrice, quantity);
   return (
     <>
       <RequestAmountsDetailsWrapper>
@@ -52,18 +55,25 @@ export default function RequestAmountsDetails({ quantity, productPrice }) {
             TND
           </span>
         </TotalAmount>
-        <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setModalOpen(true)}>
-          Offer Help
-        </Button>
+        {
+          !isMyRequest ? (
+          <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setModalOpen(true)}>
+            Offer Help
+          </Button>
+          ) : null
+        }
       </RequestAmountsDetailsWrapper>
       {
-        isModalOpen && (
-        <AddOfferModal
-          onClose={() => setModalOpen(false)}
-          productUnitPrice={productPrice}
-          quantity={quantity}
-        />
-        )
+        !isMyRequest ? (
+          isModalOpen && (
+            <AddOfferModal
+              onClose={() => setModalOpen(false)}
+              requestId={requestId}
+              productUnitPrice={productPrice}
+              quantity={quantity}
+            />
+          )
+        ) : null
       }
     </>
   );

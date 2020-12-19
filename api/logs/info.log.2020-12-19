@@ -1,0 +1,50 @@
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-19 13:01:02'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-19 13:01:35'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-19 13:01:36'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-19 13:02:01'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-19 13:02:07'
+}
+{
+  message: 'Search Location Error: ReferenceError: hasOffered is not defined',
+  level: 'error',
+  timestamp: '2020-12-19 13:02:07'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-19 13:04:39'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-19 13:04:41'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-19 13:04:41'
+}
+{
+  message: 'Get Single Request (service) Error: ReferenceError: detailsFound is not defined',
+  level: 'error',
+  timestamp: '2020-12-19 13:04:41'
+}

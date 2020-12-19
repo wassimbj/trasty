@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import Icon from '@hackclub/icons';
 import MdContainer from '../../components/mdContainer';
 import DeliveryDetails from './components/DeliveryDetails';
 import RequestSummaryDetails from './components/RequestSummaryDetails';
 import AdditionalProductDetails from './components/AdditionalProductDetails';
 import RequesterInfo from './components/RequesterInfo';
 import {
+  MyRequestMsg,
   ProductDescription, ProductDetailsContainer,
-  ProductImg, ProductTitle, RequestDetailsContainer, RequestSummaryContainer,
+  ProductImg, ProductTitle, RequestDetailsContainer,
+  RequestSummaryCard, RequestSummaryContainer,
 } from './style';
 import Footer from '../../components/footer';
 import getSingleDetails from '../../api/requests/getSingleDetails';
 import Spinner from '../../components/spinner';
+import ShareRequest from './components/ShareRequest';
 
 export default function RequestDetails({ match }) {
   const [requestDetails, setRequestDetails] = useState({
@@ -22,7 +26,7 @@ export default function RequestDetails({ match }) {
   useEffect(() => {
     (async function () {
       const respData = await getSingleDetails(urlSlug);
-      console.log(respData);
+      // console.log(respData);
       setRequestDetails({
         loading: false,
         data: respData,
@@ -37,6 +41,16 @@ export default function RequestDetails({ match }) {
   return (
     <>
     <MdContainer>
+      {requestDetails.data.isMyRequest ? (
+        <MyRequestMsg>
+          <Icon glyph="info" size={25} />
+          <span>
+            This is your request.
+            {' '}
+            <a href={`/my/requests/${requestDetails.data.id}`}>see offers or delete it</a>
+          </span>
+        </MyRequestMsg>
+      ) : null}
       <RequestDetailsContainer>
         <ProductDetailsContainer>
           <div className="wrapper">
@@ -60,13 +74,15 @@ export default function RequestDetails({ match }) {
           </div>
         </ProductDetailsContainer>
         <RequestSummaryContainer>
-          <div className="wrapper">
+          <RequestSummaryCard>
             <RequesterInfo
               requestTime={requestDetails.data.created_at}
               userImage={requestDetails.data.user_image}
               userName={requestDetails.data.user_name}
             />
             <RequestSummaryDetails
+              isMyRequest={requestDetails.data.isMyRequest}
+              requestId={requestDetails.data.id}
               quantity={requestDetails.data.quantity}
               productPrice={requestDetails.data.product_unit_price}
             />
@@ -75,7 +91,8 @@ export default function RequestDetails({ match }) {
               deliverTo={requestDetails.data.deliver_to.nice_display}
               before={requestDetails.data.deliver_before}
             />
-          </div>
+          </RequestSummaryCard>
+          <ShareRequest />
         </RequestSummaryContainer>
       </RequestDetailsContainer>
     </MdContainer>

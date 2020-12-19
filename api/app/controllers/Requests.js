@@ -1,11 +1,13 @@
 import searchLocation from '../../services/requests/searchLocation';
 import logger from '../../utils/logger';
 import cloudinary from '../../config/cloudinary';
-import db from '../../database/init';
-import { nanoid } from 'nanoid';
+// import db from '../../database/init';
+// import { nanoid } from 'nanoid';
 import getRequests from '../../services/requests/getRequests';
 import getSingleDetails from '../../services/requests/getSingleDetails';
 import getUserRequests from '../../services/requests/getUserRequests';
+import createRequest from '../../services/requests/createRequest';
+import hasOffered from '../../services/offers/hasOffered';
 
 class Requests {
 
@@ -24,7 +26,7 @@ class Requests {
   async getSingle(req, res){
     try{
       const {slug} = req.params;
-      const data = await getSingleDetails(slug);
+      const data = await getSingleDetails(slug, req.session.userid);
       // console.log('Get All!: \n', data);
       return res.status(200).json(data);
     }catch(err){
@@ -71,24 +73,7 @@ class Requests {
       } = req.body;
       const user_id = req.session.userid;
       
-      await db.query(`
-        INSERT INTO requests(
-          slug
-          ,product_unit_price
-          ,product_img
-          ,product_desc
-          ,quantity
-          ,product_link
-          ,request_by
-          ,deliver_before
-          ,product_title
-          ,deliver_to
-          ,deliver_from
-          ,product_size
-        ) 
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
-      `, [
-        nanoid(30),
+      await createRequest(
         productUnitPrice,
         result.secure_url,
         productDesc,
@@ -100,7 +85,37 @@ class Requests {
         deliverTo,
         deliverFrom,
         productSize,
-      ]);
+      )
+      // await db.query(`
+      //   INSERT INTO requests(
+      //     slug
+      //     ,product_unit_price
+      //     ,product_img
+      //     ,product_desc
+      //     ,quantity
+      //     ,product_link
+      //     ,request_by
+      //     ,deliver_before
+      //     ,product_title
+      //     ,deliver_to
+      //     ,deliver_from
+      //     ,product_size
+      //   ) 
+      //   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+      // `, [
+      //   nanoid(30),
+        // productUnitPrice,
+        // result.secure_url,
+        // productDesc,
+        // productQuantity,
+        // productLink,
+        // user_id,
+        // deliverBefore,
+        // productTitle,
+        // deliverTo,
+        // deliverFrom,
+        // productSize,
+      // ]);
       return res.status(200).json('Done');
     }catch(err){
       logger.error(`Create Request Error: ${err}`);

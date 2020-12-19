@@ -1,0 +1,10 @@
+{
+  message: 'Search Location Error: ReferenceError: hasOffered is not defined',
+  level: 'error',
+  timestamp: '2020-12-19 13:02:07'
+}
+{
+  message: 'Get Single Request (service) Error: ReferenceError: detailsFound is not defined',
+  level: 'error',
+  timestamp: '2020-12-19 13:04:41'
+}

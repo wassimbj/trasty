@@ -3,10 +3,25 @@ import styled from 'styled-components';
 export const RequestDetailsContainer = styled.div`
    display: flex;
    flex-wrap: wrap;
-   @media(min-width: 992px){
-      margin-top: 5rem;
-   }
+  //  @media(min-width: 992px){ margin-top: 5rem; }
    margin-bottom: 10rem;
+   @media(max-width: 992px){ max-width: 550px; margin: 0 auto 10rem; }
+`;
+
+export const MyRequestMsg = styled.div`
+  background: rgba(38, 80, 255, 0.12);
+  color: #2650ff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 0 0.5rem 1rem;
+  & > span{ vertical-align: middle; }
+
+  & svg{ margin-right: 0.5rem; display: inline; }
+  & a {
+    border-bottom: 1px solid #999;
+    color: #333;
+    &:hover{ color: #000 }
+  }
 `;
 
 export const ProductDetailsContainer = styled.div`
@@ -40,24 +55,110 @@ export const RequestSummaryContainer = styled.div`
    @media (min-width: 992px){
       width: 35%;
    }
+`;
 
-   & > .wrapper {
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 5px;
-      padding: 1rem;
-      @media(max-width: 992px){
-        border-radius: none !important;
-        border-right: none;
-        border-left: none;
-        padding-left: 0;
-        padding-right: 0;
-      }
-      
-      // @media(min-width: 992px){
-      //   position: sticky;
-      //   top: 55px;
-      // }
-   }
+export const RequestSummaryCard = styled.div`
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  background: #fff;
+  padding: 1rem;
+  @media(max-width: 992px){
+    border-radius: none !important;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // @media(min-width: 992px){
+  //   position: sticky;
+  //   top: 55px;
+  // }
+`;
+
+export const ShareCard = styled.div`
+  margin-top: 1rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  background: #fff;
+  padding: 1rem 0 0;
+  @media(max-width: 992px){
+    margin-top: 0;
+    border-radius: none !important;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  & .shareHint{
+    display: block;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+`;
+export const ShareBtnsWrapper = styled.div`
+  display: flex;
+  border-top: 1px solid rgba(96, 125, 139, 0.28);
+`;
+
+export const ShareBtnLink = styled.a`
+  padding: 0.75rem 0.5rem;
+  width: 100%;
+  color: #607D8B;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 200ms;
+  & svg { margin-right: 0.5rem; }
+  &:hover{ background: rgba(0,0,0,0.05); }
+  &:not(:last-child){
+    border-right: 1px solid rgba(96, 125, 139, 0.28);
+  }
+`;
+
+export const ShareBtn = styled.button`
+  position: relative;
+  padding: 0.75rem 0.5rem;
+  width: 100%;
+  color: #607D8B;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 200ms;
+  & svg { margin-right: 0.5rem; }
+  &:hover{ background: rgba(0,0,0,0.05); }
+  &:not(:last-child){
+    border-right: 1px solid rgba(96, 125, 139, 0.28);
+  }
+  &:focus{ outline: none; }
+`;
+
+export const TextCopyElem = styled.textarea`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  &:focus{ outline: none; }
+`;
+
+export const SuccessCopyHint = styled.span`
+  position: absolute;
+  top: -10px;
+  font-size: 12px;
+  animation: upToHide 200ms;
+
+  @keyframes upToHide{
+    from{ top: -5px; opacity: 0; }
+    to{ top: -10px; opacity: 1; }
+  }
 `;
 
 export const RequesterInfoWrapper = styled.div`
@@ -71,8 +172,8 @@ export const RequesterInfoWrapper = styled.div`
       margin: 0 auto;
       box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
    }
-   & small { display: block; color: gray; }
-   & span { font-weight: 500; }
+   & .datePosted { display: block; color: gray; }
+   & .userName { font-weight: 500; }
 `;
 
 // export const SendMsgButton = styled.button`
@@ -109,21 +210,16 @@ export const DeliveryDetailsWrapper = styled.div`
 
 export const AdditionalProductDetailsWrapper = styled.div`
    border-top: 1px solid rgba(0,0,0,0.1);
-   padding: 1.5rem 0 0;
-  //  display: flex;
-  //  align-items: center;
-  //  justify-content: space-between;
-  //  flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem;
-  @media(max-width: 450px){ grid-template-columns: 1fr 1fr; }
+   padding: 1rem 0 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
    & p {
-      // margin-bottom: 0.5rem;
-      //max-width: 115px;
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: center;
+      max-width: 150px;
       & span { display: block; text-align: center; }
       & span:first-child { color: #a7a7a7; font-size: 14px;}
       & a {
@@ -132,9 +228,9 @@ export const AdditionalProductDetailsWrapper = styled.div`
          white-space: nowrap;
       }
 
-      // @media(max-width: 415px){
-      //   margin: 0.75rem 1rem;
-      // }
+      @media(max-width: 415px){
+        margin: 0.35rem;
+      }
    }
 `;
 
@@ -193,8 +289,7 @@ export const TotalAmount = styled.div`
   font-weight: 500;
 
   & p svg { display: inline-block; }
-
-  &:last-child { color: #000 }
+//  &:last-child { color: #000 }
 `;
 
 export const OffersNumber = styled.div`
