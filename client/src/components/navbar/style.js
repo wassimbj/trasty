@@ -59,7 +59,7 @@ export const NavWrapper = styled.div`
    @media(max-width: 600px){ padding: 0.15rem 0; }
    top: 0;
    width: 100%;
-   z-index: 999999;
+   z-index: 9999;
 `;
 
 export const Nav = styled.nav`

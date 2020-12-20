@@ -18,6 +18,10 @@ export default function ProfileDropdown({ isOpen, onClickLogout }) {
         <ItemIcon><Icon glyph="explore" size={26} /></ItemIcon>
         <span> My Requests </span>
       </DropdownItem>
+      <DropdownItem to="/my/offers">
+        <ItemIcon><Icon glyph="support" size={26} /></ItemIcon>
+        <span> My Offers </span>
+      </DropdownItem>
       {/* <DropdownItem to="/my/trips">
         <ItemIcon><Icon glyph="briefcase" size={26} /></ItemIcon>
         <span> My Trips </span>

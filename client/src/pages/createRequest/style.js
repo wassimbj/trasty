@@ -143,6 +143,11 @@ export const InputLabel = styled.label`
   display: block;
 `;
 
+export const AdditionalInfo = styled.div`
+  padding-top: 1rem;
+  border-top: 1xp solid rgba(0,0,0,0.1);
+`;
+
 export const PriceCurrency = styled.span`
   position: absolute;
   top: 40px;

@@ -9,6 +9,11 @@
             "date": 1608382851642,
             "name": "/trusty/src/logs/info.log.2020-12-19",
             "hash": "1dcbbc87c7708103c19f396716f574f8"
+        },
+        {
+            "date": 1608466033313,
+            "name": "/trusty/src/logs/info.log.2020-12-20",
+            "hash": "671ea80e1f1ecbae718aef466f630a43"
         }
     ]
 }

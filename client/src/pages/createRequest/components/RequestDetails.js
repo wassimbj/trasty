@@ -9,7 +9,7 @@ import InlineInput from '../../../components/inlineInput';
 import SearchLocation from '../../../components/searchLocation';
 import displayNiceLocation from '../../../utils/displayNiceLocation';
 
-export default function DeliveryDetails({
+export default function RequestDetails({
   values, handleChange,
   setFieldValue, errors,
 }) {

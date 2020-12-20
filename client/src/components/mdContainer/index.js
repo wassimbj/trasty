@@ -8,6 +8,10 @@ const Container = styled.div`
       max-width: 1125px;
    }
    max-width: 990px;
+
+   @media(max-width: 400px){
+     padding: 0 0.25rem;
+   }
 `;
 
 export default function MdContainer({ children }) {

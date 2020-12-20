@@ -14,11 +14,6 @@ import {
 import Hint from '../../../components/hint';
 import Tip from '../../../components/tip';
 
-const AdditionalInfo = styled.div`
-  padding-top: 1rem;
-  border-top: 1xp solid rgba(0,0,0,0.1);
-`;
-
 export default function ProductDetails({
   values, handleChange, setFieldValue, errors,
 }) {
@@ -151,31 +146,39 @@ export default function ProductDetails({
             <PriceCurrency>TND</PriceCurrency>
             <ErrorMsg>{errors.productUnitPrice}</ErrorMsg>
           </InputBlock>
-          <AdditionalInfo>
-            <InputBlock>
-              <label> Quantity </label>
-              <Input
-                type="number"
-                defaultValue="1"
-                min="1"
-                name="productQuantity"
-                onChange={handleChange}
-                value={values.productQuantity}
-                placeholder="How many ?"
-                customStyles={errors.productQuantity ? 'border-color: #ff5858' : ''}
-              />
-              <ErrorMsg>{errors.productQuantity}</ErrorMsg>
-            </InputBlock>
-            <InputBlock>
-              <label> Size </label>
-              <select onChange={handleChange} name="productSize">
-                <option value="small"> Small </option>
-                <option value="medium"> Medium </option>
-                <option value="big"> Big </option>
-                <option value="extra"> Extra Big </option>
-              </select>
-            </InputBlock>
-          </AdditionalInfo>
+          <InputBlock>
+            <label> Quantity </label>
+            <Input
+              type="number"
+              defaultValue="1"
+              min="1"
+              name="productQuantity"
+              onChange={handleChange}
+              value={values.productQuantity}
+              placeholder="How many ?"
+              customStyles={errors.productQuantity ? 'border-color: #ff5858' : ''}
+            />
+            <ErrorMsg>{errors.productQuantity}</ErrorMsg>
+          </InputBlock>
+          <InputBlock>
+            <label> Size </label>
+            <select onChange={handleChange} name="productSize">
+              <option value="small"> Small </option>
+              <option value="medium"> Medium </option>
+              <option value="big"> Big </option>
+              <option value="extra"> Extra Big </option>
+            </select>
+          </InputBlock>
+          {/* <InputBlock>
+            <label> Category </label>
+            <select onChange={handleChange} name="productCategory">
+              <option value="food"> Food and Drinks </option>
+              <option value="gadgets"> Gadgets </option>
+              <option value="clothes"> Clothes </option>
+              <option value="gaming"> Gaming </option>
+              <option value="electronics"> Electronics </option>
+            </select>
+          </InputBlock> */}
       </div>
     </>
   );

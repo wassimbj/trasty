@@ -2,7 +2,7 @@ import searchLocation from '../../services/requests/searchLocation';
 import logger from '../../utils/logger';
 import cloudinary from '../../config/cloudinary';
 // import db from '../../database/init';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 import getRequests from '../../services/requests/getRequests';
 import getSingleDetails from '../../services/requests/getSingleDetails';
 import getUserRequests from '../../services/requests/getUserRequests';
@@ -72,8 +72,10 @@ class Requests {
         deliverBefore, productLink, productSize
       } = req.body;
       const user_id = req.session.userid;
-      
+
+      const urlSlug = nanoid(30);
       await createRequest(
+        urlSlug,
         productUnitPrice,
         result.secure_url,
         productDesc,
@@ -116,10 +118,13 @@ class Requests {
         // deliverFrom,
         // productSize,
       // ]);
-      return res.status(200).json('Done');
+      return res.status(200).json({
+        slug: urlSlug,
+        success: true
+      });
     }catch(err){
       logger.error(`Create Request Error: ${err}`);
-      return res.status(500).json('Ooops');
+      return res.status(500).json({ success: false });
     }
   }
 

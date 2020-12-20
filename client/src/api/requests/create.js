@@ -6,8 +6,12 @@ export default async function createRequest(data, cb) {
   try {
     const resp = await axios.post('/request/create', data);
     console.log('Resp -> ', resp);
-    return cb({ success: true, resp: resp.data });
-  } catch (err) {
+    if (resp.status === 200) {
+      return cb({ success: true, resp: resp.data });
+    }
+
     return cb({ success: false });
+  } catch (err) {
+    throw new Error(err);
   }
 }

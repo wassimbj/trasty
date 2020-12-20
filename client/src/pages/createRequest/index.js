@@ -6,9 +6,11 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Icon from '@hackclub/icons';
+import toast from 'react-hot-toast';
+import { Redirect } from 'react-router-dom';
 import SmContainer from '../../components/smContainer';
 import ProductDetails from './components/ProductDetails';
-import DeliveryDetails from './components/DeliveryDetails';
+import RequestDetails from './components/RequestDetails';
 import {
   CreateRequestWrapper, PrevBtn, ProductDetailsContainer,
   ControlButtonsWrapper,
@@ -25,6 +27,10 @@ import displayNiceLocation from '../../utils/displayNiceLocation';
 export default function CreateRequest() {
   const [activeTab, setActiveTab] = useState(1);
   const [isCreatingRequest, setIsCreatingRequest] = useState(false);
+  const [createdRequest, setCreatedRequest] = useState({
+    success: false,
+    slug: '',
+  });
   const validationSchemaArray = [
     {
       productLink: yup.string()
@@ -66,6 +72,7 @@ export default function CreateRequest() {
       productSize: 'small',
       productUnitPrice: 0,
       productQuantity: 1,
+      productCategory: '',
       deliverFrom: '',
       deliverTo: '',
       deliverBefore: '0',
@@ -73,44 +80,56 @@ export default function CreateRequest() {
     validationSchema: yup.object().shape(validationSchemaArray[activeTab - 1]),
     validateOnChange: activeTab === 1,
     validateOnBlur: false,
-    onSubmit: (values, { setFieldValue }) => {
-      if (activeTab < 3) {
-        setActiveTab(Math.min(activeTab + 1, 3));
-        if (activeTab === 2) {
-          // console.log();
-          // values.deliverTo, values.deliverFrom
-          if (values.deliverFrom && values.deliverTo) {
-            const parseDeliverFrom = JSON.parse(values.deliverFrom);
-            const parseDeliverTo = JSON.parse(values.deliverTo);
-            setFieldValue('deliverFrom', JSON.stringify({
-              ...parseDeliverFrom,
-              country_id: parseDeliverFrom.country_id,
-              state_id: parseDeliverFrom.state_id || 0,
-              city_id: parseDeliverFrom.city_id || 0,
-              nice_display: displayNiceLocation(parseDeliverFrom),
-            }));
-            setFieldValue('deliverTo', JSON.stringify({
-              ...parseDeliverTo,
-              country_id: parseDeliverTo.country_id,
-              state_id: parseDeliverTo.state_id || 0,
-              city_id: parseDeliverTo.city_id || 0,
-              nice_display: displayNiceLocation(parseDeliverTo),
-            }));
+    onSubmit: async (values, { setFieldValue }) => {
+      try {
+        if (activeTab < 3) {
+          setActiveTab(Math.min(activeTab + 1, 3));
+          if (activeTab === 2) {
+            // console.log();
+            // values.deliverTo, values.deliverFrom
+            if (values.deliverFrom && values.deliverTo) {
+              const parseDeliverFrom = JSON.parse(values.deliverFrom);
+              const parseDeliverTo = JSON.parse(values.deliverTo);
+              setFieldValue('deliverFrom', JSON.stringify({
+                ...parseDeliverFrom,
+                country_id: parseDeliverFrom.country_id,
+                state_id: parseDeliverFrom.state_id || 0,
+                city_id: parseDeliverFrom.city_id || 0,
+                nice_display: displayNiceLocation(parseDeliverFrom),
+              }));
+              setFieldValue('deliverTo', JSON.stringify({
+                ...parseDeliverTo,
+                country_id: parseDeliverTo.country_id,
+                state_id: parseDeliverTo.state_id || 0,
+                city_id: parseDeliverTo.city_id || 0,
+                nice_display: displayNiceLocation(parseDeliverTo),
+              }));
+            }
           }
+        } else if (activeTab === 3) {
+          setIsCreatingRequest(true);
+          // submit the request
+          await createRequest(values, (data) => {
+            console.log('DDDDDDDDDDDDDDDD -> ', data, values);
+            setIsCreatingRequest(false);
+            if (data.success) {
+              toast.success('Successfully created !.');
+              setCreatedRequest({
+                success: true,
+                slug: data.resp.slug,
+              });
+            }
+          });
         }
-      } else if (activeTab === 3) {
-        setIsCreatingRequest(true);
-        // submit the request
-        createRequest(values, () => {
-          setIsCreatingRequest(false);
-        });
+      } catch (err) {
+        toast.error('Something went wrong, please come back later.');
+        setIsCreatingRequest(false);
       }
     },
   });
 
   const handleStepClicking = async (step) => {
     const validate = await formik.validateForm();
-    // console.log(Object.keys(validate));
     if (step === 1 && activeTab === 2) {
       setActiveTab(step);
     } else if (activeTab === 3) {
@@ -120,10 +139,14 @@ export default function CreateRequest() {
     }
   };
 
+  if (createdRequest.success) {
+    return <Redirect to={`/request/view/${createdRequest.slug}`} />;
+  }
+
   return (
     <>
       <SmContainer>
-        <StepsHeader activeStep={activeTab} onClickStep={handleStepClicking} />
+        <StepsHeader activeStep={activeTab} />
         <CreateRequestWrapper>
           <ProductDetailsContainer>
             <div>
@@ -138,7 +161,7 @@ export default function CreateRequest() {
                     />
                   )
                   : activeTab === 2 ? (
-                    <DeliveryDetails
+                    <RequestDetails
                       values={formik.values}
                       handleChange={formik.handleChange}
                       setFieldValue={formik.setFieldValue}
@@ -158,16 +181,24 @@ export default function CreateRequest() {
                   <Icon glyph="view-back" />
                   Previous
                 </PrevBtn>
-                <Button
-                  type="submit"
-                  formId="productDetails"
-                >
-                  { activeTab < 3
-                    ? 'Next'
-                    : (
-                      isCreatingRequest ? <Spinner center /> : 'Create Request'
-                    )}
-                </Button>
+                {
+                  isCreatingRequest ? (
+                    <Button type="button" customStyles="opacity: 0.75">
+                      <Spinner center />
+                    </Button>
+                  ) : (
+                    <Button
+                      type="submit"
+                      formId="productDetails"
+                    >
+                      { activeTab < 3
+                        ? 'Next'
+                        : (
+                          'Create Request'
+                        )}
+                    </Button>
+                  )
+                }
               </ControlButtonsWrapper>
             </div>
           </ProductDetailsContainer>

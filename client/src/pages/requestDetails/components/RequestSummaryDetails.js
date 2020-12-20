@@ -3,6 +3,7 @@ import Icon from '@hackclub/icons';
 import { Button } from '../../../components/button';
 // import Tip from '../../../components/tip';
 import {
+  AlreadyOfferedMsg,
   RequestAmounts, RequestAmountsDetailsWrapper, TotalAmount,
 } from '../style';
 import AddOfferModal from '../../../components/addOfferModal';
@@ -10,7 +11,7 @@ import ToolTip from '../../../components/toolTip';
 import getEstimatedReward from '../../../utils/getEstimatedReward';
 
 export default function RequestAmountsDetails({
-  quantity, productPrice, requestId, isMyRequest,
+  quantity, productPrice, requestId, isMyRequest, iAlreadyOffered,
 }) {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -56,12 +57,15 @@ export default function RequestAmountsDetails({
           </span>
         </TotalAmount>
         {
-          !isMyRequest ? (
+          !isMyRequest && !iAlreadyOffered ? (
           <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setModalOpen(true)}>
             Offer Help
           </Button>
           ) : null
         }
+        {iAlreadyOffered ? (
+          <AlreadyOfferedMsg> Your offer is sent </AlreadyOfferedMsg>
+        ) : null}
       </RequestAmountsDetailsWrapper>
       {
         !isMyRequest ? (

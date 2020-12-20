@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import DatePicker, { registerLocale } from 'react-datepicker';
 // import fr from 'date-fns/locale/fr';
+import toast from 'react-hot-toast';
 import dayjs from 'dayjs';
 import 'react-datepicker/dist/react-datepicker.css';
 import Modal from '../modal';
@@ -49,32 +50,36 @@ export default function AddOfferModal({
       deliveryReward, notes,
     }) => {
       setIsCreatingOffer(true);
-      const parsedObj = JSON.parse(deliverFrom);
-      const newDeliverFromObj = {
-        country_id: parsedObj.country_id,
-        state_id: parsedObj.state_id || 0,
-        city_id: parsedObj.city_id || 0,
-        nice_display: displayNiceLocation(parsedObj),
-      };
+      try {
+        const parsedObj = JSON.parse(deliverFrom);
+        const newDeliverFromObj = {
+          country_id: parsedObj.country_id,
+          state_id: parsedObj.state_id || 0,
+          city_id: parsedObj.city_id || 0,
+          nice_display: displayNiceLocation(parsedObj),
+        };
 
-      await createOffer({
-        requestId,
-        deliveryDate,
-        deliveryReward,
-        notes,
-        deliverFrom: newDeliverFromObj,
-      }, (resp) => {
-        if (resp) {
-          window.location.reload();
-        } else {
-          alert('something went wrong...');
-        }
-        setIsCreatingOffer(false);
-      });
+        await createOffer({
+          requestId,
+          deliveryDate,
+          deliveryReward,
+          notes,
+          deliverFrom: newDeliverFromObj,
+        }, (resp) => {
+          if (resp) {
+            toast.success('Your offer has been successfully added.');
+            window.location.reload();
+          } else {
+            toast.error('Something went wrong, try again later...');
+          }
+        });
+      } catch (err) {
+        toast.error('Something went wrong, try again later...');
+      }
+      setIsCreatingOffer(false);
     },
   });
 
-  console.log('\n Errors: ', formik.errors);
   return (
     <Modal onClose={onClose}>
       <Title> Offer Help </Title>
@@ -161,7 +166,7 @@ export default function AddOfferModal({
               <CreateOfferButton type="button" isDisabled>Add Offer</CreateOfferButton>
             ) : (
               isCreatingOffer ? (
-                <CreateOfferButton type="button">
+                <CreateOfferButton type="button" isDisabled>
                   <Spinner center width="22px" />
                 </CreateOfferButton>
               ) : (

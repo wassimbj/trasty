@@ -1,8 +1,8 @@
-import { nanoid } from 'nanoid';
 import db from '../../database/init';
 import logger from '../../utils/logger';
 
-async function createRequest({
+async function createRequest(
+  urlSlug,
   productUnitPrice,
   productImage,
   productDesc,
@@ -14,9 +14,8 @@ async function createRequest({
   deliverTo,
   deliverFrom,
   productSize,
-}){
+){
   try{
-    
     await db.query(`
     INSERT INTO requests(
       slug
@@ -34,7 +33,7 @@ async function createRequest({
     ) 
     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
   `, [
-      nanoid(30),
+      urlSlug,
       productUnitPrice,
       productImage,
       productDesc,
@@ -48,7 +47,7 @@ async function createRequest({
       productSize,
     ]);
   }catch(err){
-    logger.error(`Get User Requests Error: ${err}`);
+    logger.error(`Create Request Error: ${err}`);
   }
 
 }

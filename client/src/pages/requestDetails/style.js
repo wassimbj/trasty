@@ -258,6 +258,17 @@ export const RequestAmountsDetailsWrapper = styled.div`
    margin: 0.75rem 0;
 `;
 
+export const AlreadyOfferedMsg = styled.p`
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  margin-top: 1rem;
+  color: #2c2c2c;
+  font-weight: 500;
+  background: #f6f6f6;
+`;
+
 export const TravelerReward = styled.div`
    & b { font-size: 19px; font-weight: bold; }
 `;
@@ -294,4 +305,12 @@ export const TotalAmount = styled.div`
 
 export const OffersNumber = styled.div`
    color: #2650ff
+`;
+
+export const NoRequestFoundMsg = styled.div`
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
 `;

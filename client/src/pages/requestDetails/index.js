@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
+import toast from 'react-hot-toast';
 import MdContainer from '../../components/mdContainer';
 import DeliveryDetails from './components/DeliveryDetails';
 import RequestSummaryDetails from './components/RequestSummaryDetails';
@@ -9,7 +10,7 @@ import {
   MyRequestMsg,
   ProductDescription, ProductDetailsContainer,
   ProductImg, ProductTitle, RequestDetailsContainer,
-  RequestSummaryCard, RequestSummaryContainer,
+  RequestSummaryCard, RequestSummaryContainer, NoRequestFoundMsg,
 } from './style';
 import Footer from '../../components/footer';
 import getSingleDetails from '../../api/requests/getSingleDetails';
@@ -26,7 +27,6 @@ export default function RequestDetails({ match }) {
   useEffect(() => {
     (async function () {
       const respData = await getSingleDetails(urlSlug);
-      // console.log(respData);
       setRequestDetails({
         loading: false,
         data: respData,
@@ -36,6 +36,14 @@ export default function RequestDetails({ match }) {
 
   if (requestDetails.loading) {
     return <Spinner center customStyle="margin: 3rem 0;" />;
+  }
+
+  if (!requestDetails.loading && Object.keys(requestDetails.data).length === 0) {
+    return (
+      <NoRequestFoundMsg>
+        We couldn't find this request. either its deleted, or it doesn't exist
+      </NoRequestFoundMsg>
+    );
   }
 
   return (
@@ -81,6 +89,7 @@ export default function RequestDetails({ match }) {
               userName={requestDetails.data.user_name}
             />
             <RequestSummaryDetails
+              iAlreadyOffered={requestDetails.data.alreadyOffered}
               isMyRequest={requestDetails.data.isMyRequest}
               requestId={requestDetails.data.id}
               quantity={requestDetails.data.quantity}

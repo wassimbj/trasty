@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
    outline: none;
    padding: 0.75rem;
    border-radius: 5px;
+   &:focus:{ outline: none; }
    &:hover{
       background: rgb(29,75,250);
    }

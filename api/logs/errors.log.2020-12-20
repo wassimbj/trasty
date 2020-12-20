@@ -1,0 +1,20 @@
+{
+  message: 'Get User Requests Error: error: null value in column "slug" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:12:22'
+}
+{
+  message: 'Create Request Error: error: null value in column "slug" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:30:03'
+}
+{
+  message: 'Create Request Error: error: null value in column "slug" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:36:42'
+}
+{
+  message: 'Create Request Error: error: null value in column "product_unit_price" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:43:18'
+}

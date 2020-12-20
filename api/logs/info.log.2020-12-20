@@ -1,0 +1,290 @@
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-20 12:07:25'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:07:56'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:10:11'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:10:13'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:10:31'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:10:31'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:11:23'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:38:05'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:38:21'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:40:50'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:41:29'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:43:23'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:49:47'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:53:27'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:53:49'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 12:54:31'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-20 13:03:16'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:10:53'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:12:03'
+}
+{
+  message: 'Get User Requests Error: error: null value in column "slug" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:12:22'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:12:22'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-20 13:17:24'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:17:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:17:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:18:20'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:18:20'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:19:14'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:19:14'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:20:07'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:20:07'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:22:38'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:22:38'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:23:45'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:23:48'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:24:06'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:24:06'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:24:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:24:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:25:20'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:26:04'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:27:29'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:28:07'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:28:24'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:28:24'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:28:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:28:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:29:15'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:29:34'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:29:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:30:03'
+}
+{
+  message: 'Create Request Error: error: null value in column "slug" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:30:03'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-20 13:36:01'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:36:18'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:36:36'
+}
+{
+  message: 'Create Request Error: error: null value in column "slug" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:36:42'
+}
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-20 13:41:07'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 13:43:18'
+}
+{
+  message: 'Create Request Error: error: null value in column "product_unit_price" of relation "requests" violates not-null constraint',
+  level: 'error',
+  timestamp: '2020-12-20 13:43:18'
+}

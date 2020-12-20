@@ -33,7 +33,7 @@ const StepItem = styled.div`
   padding: 0.35rem 1.3rem;
   border-radius: 5px;
   color: gray;
-  &:hover{ background: rgba(0,0,0,0.035); }
+ // &:hover{ background: rgba(0,0,0,0.035); }
   ${(props) => props.isActive && css`
     ${StepNumber}{
       color: #ffffff;
@@ -48,18 +48,18 @@ const StepItem = styled.div`
   }
 `;
 
-export default function StepsHeader({ onClickStep, activeStep }) {
+export default function StepsHeader({ activeStep }) {
   return (
     <StepsHeaderWrapper>
-      <StepItem isActive={activeStep <= 3} onClick={() => onClickStep(1)}>
+      <StepItem isActive={activeStep <= 3}>
         <StepNumber> 1 </StepNumber>
         Product
       </StepItem>
-      <StepItem isActive={activeStep === 2 || activeStep === 3} onClick={() => onClickStep(2)}>
+      <StepItem isActive={activeStep === 2 || activeStep === 3}>
         <StepNumber> 2 </StepNumber>
         Delivery
       </StepItem>
-      <StepItem isActive={activeStep === 3} onClick={() => onClickStep(3)}>
+      <StepItem isActive={activeStep === 3}>
         <StepNumber> 3 </StepNumber>
         Summary
       </StepItem>
