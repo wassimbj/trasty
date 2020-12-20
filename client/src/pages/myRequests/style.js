@@ -136,7 +136,7 @@ export const RefuseOfferButton = styled(ActionButton)`
 
 export const RequestCardContainer = styled.div`
   border: 1px solid rgba(0,0,0,0.1);
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
   border-radius: 5px;
   max-width: 100%;
   display: block;
@@ -189,7 +189,7 @@ export const ProductPrice = styled.p`
 `;
 
 export const DeleteButton = styled.span`
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
   background: rgb(255,0,0,0.1);
@@ -204,7 +204,7 @@ export const DeleteButton = styled.span`
   @media(max-width: 350px){
     width: 120px;
     font-size: 14px;
-    padding: 0.3rem 0.5rem;
+    padding: 0.3rem;
   }
 `;
 

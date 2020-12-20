@@ -82,13 +82,13 @@ function App() {
         <Route
           exact
           path={['/my/requests', '/my/requests/:request_id']}
-          component={() => {
+          component={(props) => {
             if (isLoggedIn.loading) {
               return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
             } if (!isLoggedIn.status) {
               return <Redirect to="/requests" />;
             }
-            return <MyRequests />;
+            return <MyRequests urlProps={props} />;
           }}
         />
 

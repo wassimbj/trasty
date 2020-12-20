@@ -1,5 +1,6 @@
 import createOffer from '../../services/offers/createOffer';
 import deleteOffer from '../../services/offers/deleteOffer';
+import getRequestOffers from '../../services/offers/getRequestOffers';
 import logger from '../../utils/logger';
 
 class Offers {
@@ -41,6 +42,19 @@ class Offers {
     }
   }
 
+  async requestOffers(req, res){
+    try{
+      const {request_id} = req.params;
+      const userId = req.session.userid;
+
+      const data = await getRequestOffers(userId, request_id);
+
+      return res.status(200).json(data);
+    }catch(err){
+      logger.error(`Request Offers ERROR: ${err}`);
+      return res.status(500).json('Error');
+    }
+  }
 }
 
 export default new Offers();

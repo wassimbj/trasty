@@ -713,3 +713,123 @@
   level: 'info',
   timestamp: '2020-12-20 17:04:23'
 }
+{
+  message: 'Server is running on port 5000, In Development Mode',
+  level: 'info',
+  timestamp: '2020-12-20 17:26:57'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:30:25'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:30:25'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:31:12'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:31:12'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:33:46'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:33:54'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:34:11'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:34:13'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:40:53'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:41:39'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:41:39'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:41:50'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:41:50'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:42:33'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:42:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:43:11'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:43:56'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:43:59'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:44:14'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:44:28'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:44:44'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:44:45'
+}
+{
+  message: 'Database is connected',
+  level: 'info',
+  timestamp: '2020-12-20 17:45:15'
+}

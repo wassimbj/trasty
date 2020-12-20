@@ -30,6 +30,12 @@ router.get(
 router.get(
   '/requests/user/:userid',
   RequestsController.userRequests
-)
+);
+
+router.get(
+  '/my/requests',
+  UserController.auth,
+  RequestsController.myRequests
+);
 
 export default router;

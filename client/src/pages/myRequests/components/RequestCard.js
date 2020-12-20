@@ -12,10 +12,10 @@ export default function RequestCard() {
         <ProductImg src="https://media.direct.playstation.com/is/image/sierialto/DemonsSouls_ProductHero1_900X900?$Background_Large$" />
         <ProductInfo>
           <ProductTitle> District Functionality Director </ProductTitle>
-          <ProductPrice>
+          {/* <ProductPrice>
             Product price
             <span> 25 TND </span>
-          </ProductPrice>
+          </ProductPrice> */}
           <OffersTotal> 5 Offers </OffersTotal>
         </ProductInfo>
       </RequestCardLink>

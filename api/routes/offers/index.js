@@ -15,4 +15,10 @@ router.post(
   OffersController.delete
 );
 
+router.get(
+  "/offers/request/:request_id",
+  UserController.auth,
+  OffersController.requestOffers
+);
+
 export default router;

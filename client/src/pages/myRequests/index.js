@@ -4,45 +4,53 @@ import OfferCard from './components/OfferCard';
 import RequestCard from './components/RequestCard';
 import {
   Container, EmptyWrapper, NoOffersIcon, NoOffersText,
-  OffersSide, RequestsSide, SidesWrapper, SideTitle, UserOffersContainer,
+  OffersSide, RequestsSide, SidesWrapper, SideTitle, UserOffersContainer, UserRequestsWrapper,
 } from './style';
 
-export default function MyRequests() {
+export default function MyRequests({ urlProps }) {
+  const selectedRequestId = urlProps.match.params.request_id;
+  // console.log('HAAA: ', urlProps);
+  /*
+   /offers/request/:request_id -> get request offers
+   /my/requests, (limit, offset) -> get my request
+  */
   return (
     <>
      <Container>
        <SidesWrapper>
          <RequestsSide>
-           <SideTitle>
-             Your Requests
-             <small> (0) </small>
-           </SideTitle>
-           <EmptyWrapper>
+           <SideTitle>Your Requests</SideTitle>
+           {/* <EmptyWrapper>
               <div>
                 <NoOffersIcon><Icon glyph="explore" size={50} /></NoOffersIcon>
                 <NoOffersText> You don't have any request </NoOffersText>
               </div>
-           </EmptyWrapper>
-           {/* <UserRequestsWrapper>
+           </EmptyWrapper> */}
+           <UserRequestsWrapper>
             { [...Array(4)].map(() => <RequestCard />) }
-           </UserRequestsWrapper> */}
+           </UserRequestsWrapper>
          </RequestsSide>
          <OffersSide>
            <SideTitle>
             Offers
             <small> (0) </small>
            </SideTitle>
-           {/* <EmptyWrapper>
-              <div>
-                <NoOffersIcon><Icon glyph="message-simple" size={50} /></NoOffersIcon>
-                <NoOffersText>Please select a request to see the available offers</NoOffersText>
-              </div>
-           </EmptyWrapper> */}
-           <UserOffersContainer>
-            <OfferCard />
-            <OfferCard />
-            <OfferCard />
-           </UserOffersContainer>
+           {
+             !selectedRequestId ? (
+              <EmptyWrapper>
+                  <div>
+                    <NoOffersIcon><Icon glyph="support" size={50} /></NoOffersIcon>
+                    <NoOffersText>Please select a request to see the available offers</NoOffersText>
+                  </div>
+              </EmptyWrapper>
+             ) : (
+              <UserOffersContainer>
+                <OfferCard />
+                <OfferCard />
+                <OfferCard />
+              </UserOffersContainer>
+             )
+           }
          </OffersSide>
        </SidesWrapper>
      </Container>

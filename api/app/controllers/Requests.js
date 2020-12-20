@@ -7,7 +7,7 @@ import getRequests from '../../services/requests/getRequests';
 import getSingleDetails from '../../services/requests/getSingleDetails';
 import getUserRequests from '../../services/requests/getUserRequests';
 import createRequest from '../../services/requests/createRequest';
-import hasOffered from '../../services/offers/hasOffered';
+import getMyRequests from '../../services/requests/getMyRequests';
 
 class Requests {
 
@@ -87,37 +87,7 @@ class Requests {
         deliverTo,
         deliverFrom,
         productSize,
-      )
-      // await db.query(`
-      //   INSERT INTO requests(
-      //     slug
-      //     ,product_unit_price
-      //     ,product_img
-      //     ,product_desc
-      //     ,quantity
-      //     ,product_link
-      //     ,request_by
-      //     ,deliver_before
-      //     ,product_title
-      //     ,deliver_to
-      //     ,deliver_from
-      //     ,product_size
-      //   ) 
-      //   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
-      // `, [
-      //   nanoid(30),
-        // productUnitPrice,
-        // result.secure_url,
-        // productDesc,
-        // productQuantity,
-        // productLink,
-        // user_id,
-        // deliverBefore,
-        // productTitle,
-        // deliverTo,
-        // deliverFrom,
-        // productSize,
-      // ]);
+      );
       return res.status(200).json({
         slug: urlSlug,
         success: true
@@ -128,6 +98,17 @@ class Requests {
     }
   }
 
+  async myRequests(req, res){
+    try{
+      const {limit, offset} = req.query;
+      const data = await getMyRequests(req.session.userid, limit, offset);
+      // console.log('Get All!: \n', data);
+      return res.status(200).json(data);
+    }catch(err){
+      logger.error(`Get my requests Error : ${err}`);
+      return res.status(500).json('Oops');
+    }
+  }
 }
 
 export default new Requests();

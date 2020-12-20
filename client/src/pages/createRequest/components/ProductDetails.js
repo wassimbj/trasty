@@ -121,19 +121,6 @@ export default function ProductDetails({
             <ErrorMsg>{errors.productTitle}</ErrorMsg>
           </InputBlock>
           <InputBlock>
-            <label> Product description </label>
-            <TextArea
-              rows="3"
-              type="text"
-              placeholder="Describe the product you want, like the size, or the color. e.g: i want the color to be black please..."
-              name="productDesc"
-              onChange={handleChange}
-              value={values.productDesc}
-              customStyles={errors.productDesc ? 'border-color: #ff5858' : ''}
-            />
-            <ErrorMsg>{errors.productDesc}</ErrorMsg>
-          </InputBlock>
-          <InputBlock>
             <label> Unit price </label>
             <Input
               type="number"
@@ -145,6 +132,19 @@ export default function ProductDetails({
             />
             <PriceCurrency>TND</PriceCurrency>
             <ErrorMsg>{errors.productUnitPrice}</ErrorMsg>
+          </InputBlock>
+          <InputBlock>
+            <label> Some notes </label>
+            <TextArea
+              rows="3"
+              type="text"
+              placeholder="Describe the product you want, like the size, or the color. e.g: i want the color to be black please..."
+              name="productDesc"
+              onChange={handleChange}
+              value={values.productDesc}
+              customStyles={errors.productDesc ? 'border-color: #ff5858' : ''}
+            />
+            <ErrorMsg>{errors.productDesc}</ErrorMsg>
           </InputBlock>
           <InputBlock>
             <label> Quantity </label>
