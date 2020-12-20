@@ -1,7 +1,7 @@
 import db from '../../database/init';
 import logger from '../../utils/logger';
 
-async function createRequest(
+async function createOffer(
   offer_by,
   request_id,
   delivery_date,
@@ -36,4 +36,4 @@ async function createRequest(
 
 }
 
-export default createRequest;
+export default createOffer;

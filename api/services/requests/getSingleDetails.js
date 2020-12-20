@@ -13,7 +13,7 @@ async function getSingleDetails(slug, user_id){
     */
     const { rows: requestDetails, rowCount } = await db.query(`
      SELECT
-      requests.*, users.fullname as user_name, users.image as user_image
+      requests.*, users.id as user_id, users.fullname as user_name, users.image as user_image
       FROM requests
       LEFT JOIN users ON users.id = requests.request_by
       WHERE requests.slug = $1

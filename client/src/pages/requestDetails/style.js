@@ -173,7 +173,11 @@ export const RequesterInfoWrapper = styled.div`
       box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
    }
    & .datePosted { display: block; color: gray; }
-   & .userName { font-weight: 500; }
+   & .userName {
+     font-weight: 500;
+     color: #333;
+     &:hover{ color: #000; }
+  }
 `;
 
 // export const SendMsgButton = styled.button`
@@ -258,7 +262,7 @@ export const RequestAmountsDetailsWrapper = styled.div`
    margin: 0.75rem 0;
 `;
 
-export const AlreadyOfferedMsg = styled.p`
+export const AlreadyOfferedMsg = styled.div`
   padding: 0.5rem;
   text-align: center;
   border: 1px solid #dbdbdb;
@@ -267,6 +271,17 @@ export const AlreadyOfferedMsg = styled.p`
   color: #2c2c2c;
   font-weight: 500;
   background: #f6f6f6;
+`;
+
+export const DeleteOfferBtn = styled.span`
+   display: inline-block;
+   text-align: center;
+   margin-top: 0.5rem;
+   color: #555;
+   &:hover{ color: #000 }
+   font-weight: 400;
+   cursor: pointer;
+   border-bottom: 1px dotted #999;
 `;
 
 export const TravelerReward = styled.div`

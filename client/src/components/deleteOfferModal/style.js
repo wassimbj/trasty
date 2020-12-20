@@ -75,16 +75,15 @@ export const InputWrapper = styled.div`
   position: relative;
 `;
 
-export const CreateOfferButton = styled.button`
+export const DeleteOfferButton = styled.button`
   padding: 0.65rem 1.5rem;
-  background: #2650ff;
+  background: #E91E63;
   border-radius: 30px;
   color: #fff;
   transition: 250ms;
   cursor: pointer;
   &:focus{ outline: none; }
-  &:hover{ background: #0a37f3; }
-  // width: 75%;
+  &:hover{ background: #d8064d; }
   margin-right: 0.5rem;
   font-weight: 500;
   ${(props) => props.isDisabled && css`
@@ -94,14 +93,14 @@ export const CreateOfferButton = styled.button`
 `;
 
 export const CancelButton = styled.span`
-padding: 0.65rem 1.5rem;
-background: #dedede;
-color: #626262;
-border-radius: 30px;
-transition: 250ms;
-cursor: pointer;
-text-align: center;
-&:hover{ background: #cecece; }
+  padding: 0.65rem 1.5rem;
+  background: #ececec;
+  color: #626262;
+  border-radius: 30px;
+  transition: 250ms;
+  cursor: pointer;
+  text-align: center;
+  &:hover{ background: #e3e3e3; }
 `;
 
 export const ErrorMsg = styled.span`

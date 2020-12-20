@@ -85,6 +85,7 @@ export default function RequestDetails({ match }) {
           <RequestSummaryCard>
             <RequesterInfo
               requestTime={requestDetails.data.created_at}
+              userId={requestDetails.data.user_id}
               userImage={requestDetails.data.user_image}
               userName={requestDetails.data.user_name}
             />

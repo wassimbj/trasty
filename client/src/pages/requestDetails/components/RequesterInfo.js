@@ -7,13 +7,13 @@ import { RequesterInfoWrapper } from '../style';
 dayjs.extend(relativeTime);
 
 export default function RequesterInfo({
-  userImage, userName, requestTime,
+  userImage, userName, userId, requestTime,
 }) {
   return (
     <RequesterInfoWrapper>
         <img src={userImage} alt="" />
         <div>
-          <div className="userName">{userName}</div>
+          <a className="userName" href={`/user/${userId}`}>{userName}</a>
           <small className="datePosted">{`requested ${dayjs(requestTime).fromNow()}`}</small>
         </div>
     </RequesterInfoWrapper>

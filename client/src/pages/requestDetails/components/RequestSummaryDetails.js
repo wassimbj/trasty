@@ -4,16 +4,19 @@ import { Button } from '../../../components/button';
 // import Tip from '../../../components/tip';
 import {
   AlreadyOfferedMsg,
+  DeleteOfferBtn,
   RequestAmounts, RequestAmountsDetailsWrapper, TotalAmount,
 } from '../style';
 import AddOfferModal from '../../../components/addOfferModal';
 import ToolTip from '../../../components/toolTip';
 import getEstimatedReward from '../../../utils/getEstimatedReward';
+import DeleteOfferModal from '../../../components/deleteOfferModal';
 
 export default function RequestAmountsDetails({
   quantity, productPrice, requestId, isMyRequest, iAlreadyOffered,
 }) {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isAddOfferModalOpen, setIsAddOfferModalOpen] = useState(false);
+  const [isDeleteOfferModalOpen, setIsDeleteOfferModalOpen] = useState(false);
 
   const productTotalPrice = parseFloat(productPrice * quantity);
   const reward = getEstimatedReward(productPrice, quantity);
@@ -58,23 +61,39 @@ export default function RequestAmountsDetails({
         </TotalAmount>
         {
           !isMyRequest && !iAlreadyOffered ? (
-          <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setModalOpen(true)}>
+          <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setIsAddOfferModalOpen(true)}>
             Offer Help
           </Button>
           ) : null
         }
         {iAlreadyOffered ? (
-          <AlreadyOfferedMsg> Your offer is sent </AlreadyOfferedMsg>
+          <AlreadyOfferedMsg>
+            <p>Your offer is sent</p>
+            <DeleteOfferBtn onClick={() => setIsDeleteOfferModalOpen(true)}>
+              Delete Offer
+            </DeleteOfferBtn>
+          </AlreadyOfferedMsg>
         ) : null}
       </RequestAmountsDetailsWrapper>
       {
         !isMyRequest ? (
-          isModalOpen && (
+          isAddOfferModalOpen && (
             <AddOfferModal
-              onClose={() => setModalOpen(false)}
+              onClose={() => setIsAddOfferModalOpen(false)}
               requestId={requestId}
               productUnitPrice={productPrice}
               quantity={quantity}
+            />
+          )
+        ) : null
+      }
+
+      {
+        iAlreadyOffered ? (
+          isDeleteOfferModalOpen && (
+            <DeleteOfferModal
+              onClose={() => setIsDeleteOfferModalOpen(false)}
+              requestId={requestId}
             />
           )
         ) : null

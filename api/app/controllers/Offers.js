@@ -1,4 +1,5 @@
-import createRequest from '../../services/offers/createOffer';
+import createOffer from '../../services/offers/createOffer';
+import deleteOffer from '../../services/offers/deleteOffer';
 import logger from '../../utils/logger';
 
 class Offers {
@@ -10,7 +11,7 @@ class Offers {
       } = req.body;
       const user_id = req.session.userid;
 
-      await createRequest(
+      await createOffer(
         user_id,
         requestId,
         deliveryDate,
@@ -22,6 +23,20 @@ class Offers {
       return res.status(200).json('success');
     }catch(err){
       logger.error(`Create Offer Error: ${err}`);
+      return res.status(500).json('Oops');
+    }
+  }
+
+  async delete(req, res){
+    try{
+      const { requestId } = req.body;
+      const user_id = req.session.userid;
+
+      await deleteOffer(user_id, requestId);
+      
+      return res.status(200).json('success');
+    }catch(err){
+      logger.error(`Delete Offer Error: ${err}`);
       return res.status(500).json('Oops');
     }
   }

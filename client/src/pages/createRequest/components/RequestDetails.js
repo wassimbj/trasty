@@ -128,6 +128,7 @@ export default function RequestDetails({
             <option value="90"> Up to 90 days </option>
             <option value="45"> Up to 45 days </option>
             <option value="21"> Up to 3 weeks </option>
+            <option value="7"> Up to 1 week </option>
           </WaitingSelect>
         </InputBlock>
       </div>

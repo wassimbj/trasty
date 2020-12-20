@@ -59,20 +59,17 @@ export default function AddOfferModal({
           nice_display: displayNiceLocation(parsedObj),
         };
 
-        await createOffer({
+        const resp = await createOffer({
           requestId,
           deliveryDate,
           deliveryReward,
           notes,
           deliverFrom: newDeliverFromObj,
-        }, (resp) => {
-          if (resp) {
-            toast.success('Your offer has been successfully added.');
-            window.location.reload();
-          } else {
-            toast.error('Something went wrong, try again later...');
-          }
         });
+        if (resp.success) {
+          toast.success('Your offer has been successfully added.');
+          window.location.reload();
+        }
       } catch (err) {
         toast.error('Something went wrong, try again later...');
       }

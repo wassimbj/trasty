@@ -110,7 +110,6 @@ export default function CreateRequest() {
           setIsCreatingRequest(true);
           // submit the request
           await createRequest(values, (data) => {
-            console.log('DDDDDDDDDDDDDDDD -> ', data, values);
             setIsCreatingRequest(false);
             if (data.success) {
               toast.success('Successfully created !.');
