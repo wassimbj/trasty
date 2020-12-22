@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable no-nested-ternary */
+import React, { useContext, useState } from 'react';
 import Icon from '@hackclub/icons';
 import { Button } from '../../../components/button';
 // import Tip from '../../../components/tip';
+import UserAuthContext from '../../../contexts/UserAuthContext';
+
 import {
   AlreadyOfferedMsg,
   DeleteOfferBtn,
@@ -11,10 +14,12 @@ import AddOfferModal from '../../../components/addOfferModal';
 import ToolTip from '../../../components/toolTip';
 import getEstimatedReward from '../../../utils/getEstimatedReward';
 import DeleteOfferModal from '../../../components/deleteOfferModal';
+import Spinner from '../../../components/spinner';
 
 export default function RequestAmountsDetails({
   quantity, productPrice, requestId, isMyRequest, iAlreadyOffered,
 }) {
+  const { isLoggedIn } = useContext(UserAuthContext);
   const [isAddOfferModalOpen, setIsAddOfferModalOpen] = useState(false);
   const [isDeleteOfferModalOpen, setIsDeleteOfferModalOpen] = useState(false);
 
@@ -60,11 +65,20 @@ export default function RequestAmountsDetails({
           </span>
         </TotalAmount>
         {
-          !isMyRequest && !iAlreadyOffered ? (
-          <Button customStyles="margin: 2rem 0 0.5rem;" onClick={() => setIsAddOfferModalOpen(true)}>
-            Offer Help
-          </Button>
-          ) : null
+          isLoggedIn.loading ? (
+            <Button customStyles="margin: 2rem 0 0.5rem;">
+              <Spinner center />
+            </Button>
+          ) : (
+            !isMyRequest && !iAlreadyOffered ? (
+              <Button
+                customStyles="margin: 2rem 0 0.5rem;"
+                onClick={() => (isLoggedIn.status ? setIsAddOfferModalOpen(true) : false)}
+              >
+                Offer Help
+              </Button>
+            ) : null
+          )
         }
         {iAlreadyOffered ? (
           <AlreadyOfferedMsg>

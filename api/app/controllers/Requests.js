@@ -7,7 +7,8 @@ import getRequests from '../../services/requests/getRequests';
 import getSingleDetails from '../../services/requests/getSingleDetails';
 import getUserRequests from '../../services/requests/getUserRequests';
 import createRequest from '../../services/requests/createRequest';
-import getMyRequests from '../../services/requests/getMyRequests';
+import deleteRequest from '../../services/requests/deleteRequest';
+// import getMyRequests from '../../services/requests/getMyRequests';
 
 class Requests {
 
@@ -98,17 +99,26 @@ class Requests {
     }
   }
 
-  async myRequests(req, res){
+  async delete(req, res){
     try{
-      const {limit, offset} = req.query;
-      const data = await getMyRequests(req.session.userid, limit, offset);
-      // console.log('Get All!: \n', data);
-      return res.status(200).json(data);
+      const {request_id} = req.body;
+      await deleteRequest(request_id);
     }catch(err){
-      logger.error(`Get my requests Error : ${err}`);
-      return res.status(500).json('Oops');
+      logger.error(`Delete Request Error: ${err}`);
+      return res.status(500).json('Ooops');
     }
   }
+  // async myRequests(req, res){
+  //   try{
+  //     const {limit, offset} = req.query;
+  //     const data = await getMyRequests(req.session.userid, limit, offset);
+  //     // console.log('Get All!: \n', data);
+  //     return res.status(200).json(data);
+  //   }catch(err){
+  //     logger.error(`Get my requests Error : ${err}`);
+  //     return res.status(500).json('Oops');
+  //   }
+  // }
 }
 
 export default new Requests();

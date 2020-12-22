@@ -19,6 +19,9 @@ export const DropDown = styled.div`
   right: 0;
   top: 100%;
   width: 200px;
+  ${(props) => props.customStyle && css`
+    ${props.customStyle}
+  `}
 `;
 
 export const DropdownItem = styled(Link)`
@@ -41,6 +44,10 @@ export const SilentDropdownItem = styled.span`
   &:hover{ background: rgba(0,0,0,0.05); }
   cursor: pointer;
   & span { font-weight: 500; }
+
+  ${(props) => props.customStyle && css`
+    ${props.customStyle}
+  `}
 `;
 
 export const ItemIcon = styled.span`

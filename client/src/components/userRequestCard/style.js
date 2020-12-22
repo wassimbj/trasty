@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export const UserRequestCardWrapper = styled.div`
+  padding: 0.75rem;
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.12);
+  display: block;
+  transition: 300ms;
+  &:hover{
+    border: 1px solid #2650ff;
+  }
+`;
 
 export const UserRequestCardLink = styled(Link)`
-   padding: 0.75rem;
-   border-radius: 5px;
-   margin-bottom: 1.5rem;
-   border: 1px solid rgba(0,0,0,0.12);
-   display: block;
-   transition: 300ms;
-   &:hover {
-    border: 1px solid #2650ff;
-   }
+  display: block;
+  &:hover{ color: #2650ff }
 `;
 
 export const RequesterInfo = styled.div`
@@ -104,4 +110,46 @@ export const ProductPrice = styled.div`
     margin-top: 1rem;
     & > span { display: inline-block; font-size: 14px; }
   }
+`;
+
+export const DropDown = styled.div`
+  position: absolute;
+  z-index: 999;
+  border-radius: 5px;
+  padding: 0.25rem;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: white;
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 
+              0 2px 4px 0 rgba(0, 0, 0, 0.1),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+
+  display: none;
+  ${(props) => props.isOpen && css`
+    display: block;
+  `}
+  right: 0;
+  top: 100%;
+  width: 200px;
+  ${(props) => props.customStyle && css`
+    ${props.customStyle}
+  `}
+`;
+
+export const SilentDropdownItem = styled.span`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  &:not(:last-child) { margin-bottom: 0.25rem; }
+  &:hover{ background: rgba(0,0,0,0.05); }
+  cursor: pointer;
+  & span { font-weight: 500; }
+`;
+
+export const ItemIcon = styled.span`
+  border-radius: 30px;
+  padding: 3px;
+  background: #e4e6eb;
+  color: rgba(0,0,0,0.75);
+  margin-right: 0.5rem;
 `;

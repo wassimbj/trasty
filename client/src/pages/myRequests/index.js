@@ -9,10 +9,9 @@ import {
 
 export default function MyRequests({ urlProps }) {
   const selectedRequestId = urlProps.match.params.request_id;
-  // console.log('HAAA: ', urlProps);
   /*
-   /offers/request/:request_id -> get request offers
-   /my/requests, (limit, offset) -> get my request
+   ? /offers/request/:request_id |-> get request offers
+   ? /request/delete |-> delete request
   */
   return (
     <>

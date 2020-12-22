@@ -7,7 +7,6 @@ import RequestsController from "../../app/controllers/Requests";
 // search for countries or cities
 router.get(
   "/search/location",
-  UserController.auth,
   RequestsController.searchLocation
 );
 
@@ -15,6 +14,12 @@ router.post(
   "/request/create",
   UserController.auth,
   RequestsController.create
+);
+
+router.post(
+  "/request/delete",
+  UserController.auth,
+  RequestsController.delete
 );
 
 router.get(
@@ -27,15 +32,10 @@ router.get(
   RequestsController.getSingle
 );
 
+// get user requests
 router.get(
   '/requests/user/:userid',
   RequestsController.userRequests
-);
-
-router.get(
-  '/my/requests',
-  UserController.auth,
-  RequestsController.myRequests
 );
 
 export default router;

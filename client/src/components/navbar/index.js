@@ -19,7 +19,7 @@ export default function NavBar({ onClickLogout }) {
       <NavWrapper>
         <SmContainer>
           <Nav>
-            <Link to={isLoggedIn ? '/requests' : '/'}>
+            <Link to="/">
               <Logo
                 color="#2650ff"
                 width={`${window.innerWidth > 400 ? '75pt' : '55pt'}`}

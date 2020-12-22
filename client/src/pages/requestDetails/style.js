@@ -17,11 +17,11 @@ export const MyRequestMsg = styled.div`
   & > span{ vertical-align: middle; }
 
   & svg{ margin-right: 0.5rem; display: inline; }
-  & a {
-    border-bottom: 1px solid #999;
-    color: #333;
-    &:hover{ color: #000 }
-  }
+  // & a {
+  //   border-bottom: 1px solid #999;
+  //   color: #333;
+  //   &:hover{ color: #000 }
+  // }
 `;
 
 export const ProductDetailsContainer = styled.div`

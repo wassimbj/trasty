@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
 import toast from 'react-hot-toast';
@@ -52,11 +53,7 @@ export default function RequestDetails({ match }) {
       {requestDetails.data.isMyRequest ? (
         <MyRequestMsg>
           <Icon glyph="info" size={25} />
-          <span>
-            This is your request.
-            {' '}
-            <a href={`/my/requests/${requestDetails.data.id}`}>see offers or delete it</a>
-          </span>
+          <span>This is your request.</span>
         </MyRequestMsg>
       ) : null}
       <RequestDetailsContainer>
