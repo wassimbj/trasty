@@ -30,10 +30,25 @@ class Offers {
 
   async delete(req, res){
     try{
-      const { requestId } = req.body;
+      const { offerId, requestBy, offerBy } = req.body;
       const user_id = req.session.userid;
+      // if i get no requestId or no offerId or i get them both
+      // if i get requestBy only, i know its the user who got the offer wants to delete the offer
+      // if i get offerBy only, i knw its the user who offered want to delete his offer
+      if((!requestBy && !offerBy) || (requestBy && offerBy)){
+        return res.status(401).json('Not Allowed');
+      }
+      // if requestBy (the user who got the offer) is !== to the logged in user
+      if(requestBy && (requestBy !== user_id)){
+        return res.status(401).json('Not Allowed');
+      }
+      // if offerId (the offerer) is !== to the logged in user
+      if(offerBy && (offerBy !== user_id)){
+        return res.status(401).json('Not Allowed');
+      }
 
-      await deleteOffer(user_id, requestId);
+      // else perform the deletion
+      await deleteOffer(offerId);
       
       return res.status(200).json('success');
     }catch(err){

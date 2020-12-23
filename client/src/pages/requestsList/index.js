@@ -80,12 +80,14 @@ export default function RequestsList() {
               <NoRequestsFoundMsg> Nothing found </NoRequestsFoundMsg>
           ) : requests.map((request) => (
             <UserRequestCard
+              id={request.id}
               slug={request.slug}
               title={request.product_title}
               deliver={{ from: request.deliver_from, to: request.deliver_to }}
               img={request.product_img}
               before={request.deliver_before}
               price={request.product_unit_price}
+              requestBy={request.request_by}
             />
           ))}
         </InfiniteScroll>

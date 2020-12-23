@@ -12,11 +12,11 @@ export default function RequestCardDropdown({
   // const { isLoggedIn } = useContext(UserAuthContext);
   return (
     <DropDown isOpen={isOpen} customStyle={customStyle}>
-      <SilentDropdownItem customStyle="color: #E91E63">
+      <SilentDropdownItem customStyle="color: #E91E63" onClick={onClickDelete}>
         <Icon glyph="delete" size={25} style={{ marginRight: '0.5rem' }} />
         <span> Delete </span>
       </SilentDropdownItem>
-      <SilentDropdownItem>
+      <SilentDropdownItem onClick={onClickOffers}>
         <Icon glyph="message-simple" size={25} style={{ marginRight: '0.5rem' }} />
         <span> Offers </span>
       </SilentDropdownItem>

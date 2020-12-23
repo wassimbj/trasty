@@ -3,9 +3,9 @@ import logger from '../../utils/logger';
 
 async function getUserRequests(userid, limit, offset){
   try{
-    const { rows: requestsFound, rowCount } = await db.query(`
+    const { rows: requestsFound } = await db.query(`
      SELECT
-      slug, product_img, product_unit_price,
+      id, slug, product_img, product_unit_price, request_by,
       quantity, product_title, deliver_before,
       deliver_to->'nice_display' as deliver_to,
       deliver_from->'nice_display' as deliver_from

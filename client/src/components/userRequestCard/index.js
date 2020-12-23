@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LazyLoad from 'react-lazyload';
 import dayjs from 'dayjs';
 import {
@@ -9,21 +9,24 @@ import {
   ProductRequestDetails,
   UserRequestCardWrapper,
 } from './style';
+import MoreBtn from './components/MoreBtn';
+import UserAuthContext from '../../contexts/UserAuthContext';
 
 export default function UserRequestCard({
+  id,
   slug,
   img,
   title,
   deliver,
   price,
   before,
-  isMine,
+  requestBy,
 }) {
-  // console.log();
-  // eslint-disable-next-line no-param-reassign
-  isMine = true;
+  const { isLoggedIn } = useContext(UserAuthContext);
+  const isRequestMine = isLoggedIn.userid === requestBy;
   return (
     <UserRequestCardWrapper>
+      {isRequestMine ? <MoreBtn requestBy={requestBy} requestId={id} /> : null}
       <DetailsWrapper>
         <ProductDetails>
           <LazyLoad once>
@@ -56,8 +59,8 @@ export default function UserRequestCard({
           <strong>
             {' '}
             {Number(price * (price > 100 ? 0.09 : 0.2)).toFixed(2)}
-{' '}
-TND
+            {' '}
+            TND
           </strong>
         </ProductPrice>
       </DetailsWrapper>

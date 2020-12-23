@@ -101,24 +101,19 @@ class Requests {
 
   async delete(req, res){
     try{
-      const {request_id} = req.body;
-      await deleteRequest(request_id);
+      const {requestId, requestBy} = req.body;
+      const loggedInUserId = req.session.userid;
+      if(loggedInUserId !== requestBy){
+        return res.status(401).json('Not allowed')
+      }
+      await deleteRequest(requestId);
+      return res.status(200).json('success');
     }catch(err){
       logger.error(`Delete Request Error: ${err}`);
       return res.status(500).json('Ooops');
     }
   }
-  // async myRequests(req, res){
-  //   try{
-  //     const {limit, offset} = req.query;
-  //     const data = await getMyRequests(req.session.userid, limit, offset);
-  //     // console.log('Get All!: \n', data);
-  //     return res.status(200).json(data);
-  //   }catch(err){
-  //     logger.error(`Get my requests Error : ${err}`);
-  //     return res.status(500).json('Oops');
-  //   }
-  // }
+
 }
 
 export default new Requests();

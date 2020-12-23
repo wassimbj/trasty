@@ -75,7 +75,7 @@ export const InputWrapper = styled.div`
   position: relative;
 `;
 
-export const DeleteOfferButton = styled.button`
+export const DeleteRequestButton = styled.button`
   padding: 0.65rem 1.5rem;
   background: #E91E63;
   border-radius: 30px;

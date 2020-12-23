@@ -2,7 +2,6 @@ import express from "express";
 const router = express.Router();
 import UserController from "../../app/controllers/auth/User";
 import RequestsController from "../../app/controllers/Requests";
-// import imageUploader from '../../utils/imageUploader';
 
 // search for countries or cities
 router.get(
@@ -32,7 +31,7 @@ router.get(
   RequestsController.getSingle
 );
 
-// get user requests
+// get user (profile) requests
 router.get(
   '/requests/user/:userid',
   RequestsController.userRequests

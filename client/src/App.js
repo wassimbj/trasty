@@ -29,6 +29,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
     loading: true,
     status: false,
+    userid: null,
   });
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 

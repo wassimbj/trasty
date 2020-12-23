@@ -19,6 +19,7 @@ export default function UserRequests({ userid }) {
     (async function () {
       try {
         const requests = await getUserRequests(userid, LIMIT, offset);
+        console.log('requests: ', requests);
         // console.log(requests);
         setUserRequests({
           loading: false,
@@ -64,12 +65,14 @@ export default function UserRequests({ userid }) {
           {
           userRequests.data.map((request) => (
             <UserRequestCard
+              id={request.id}
               slug={request.slug}
               title={request.product_title}
               deliver={{ from: request.deliver_from, to: request.deliver_to }}
               img={request.product_img}
               before={request.deliver_before}
               price={request.product_unit_price}
+              requestBy={request.request_by}
             />
           ))
           }

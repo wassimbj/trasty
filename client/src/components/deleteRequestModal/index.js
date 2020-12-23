@@ -4,27 +4,20 @@ import toast from 'react-hot-toast';
 import Modal from '../modal';
 import {
   Title, ModalBodyWrapper, ModalBody,
-  ModalFooter, DeleteOfferButton, CancelButton,
+  ModalFooter, CancelButton, DeleteRequestButton,
 } from './style';
 import Spinner from '../spinner';
-import deleteOffer from '../../api/offers/deleteOffer';
+import deleteRequest from '../../api/requests/deleteRequest';
 
-export default function DeleteOfferModal({
-  onClose, offerId, offerBy, requestBy,
-}) {
+export default function DeleteRequestModal({ onClose, requestId, requestBy }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // const formik = useFormik({
-  //   onSubmit: async () => {
-  //     toast.loading('We are deleting it... one moment');
-  //   },
-  // });
   const handleSubmit = async () => {
     setIsDeleting(true);
     try {
-      const resp = await deleteOffer(offerId, offerBy, requestBy);
+      const resp = await deleteRequest(requestId, requestBy);
       if (resp.success) {
-        toast.success('Your offer has been deleted.');
+        toast.success('Your request has been deleted.');
         window.location.reload();
       }
     } catch (err) {
@@ -38,19 +31,23 @@ export default function DeleteOfferModal({
       <Title> Are you sure ? </Title>
       <ModalBodyWrapper>
         <ModalBody>
-          <p style={{ textAlign: 'center' }}> Are you sure you want to delete your help offer ? </p>
+          <p style={{ textAlign: 'center' }}>
+            Are you sure you want to
+            <b> delete your request </b>
+            ?
+          </p>
         </ModalBody>
       </ModalBodyWrapper>
       <ModalFooter>
         {
           isDeleting ? (
-            <DeleteOfferButton type="button" isDisabled>
+            <DeleteRequestButton type="button" isDisabled>
               <Spinner center width="22px" />
-            </DeleteOfferButton>
+            </DeleteRequestButton>
           ) : (
-            <DeleteOfferButton onClick={handleSubmit}>
+            <DeleteRequestButton onClick={handleSubmit}>
               Yes, delete
-            </DeleteOfferButton>
+            </DeleteRequestButton>
           )
         }
         <CancelButton onClick={onClose}>Cancel</CancelButton>

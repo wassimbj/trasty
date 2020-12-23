@@ -4,13 +4,6 @@ import hasOffered from '../offers/hasOffered';
 
 async function getSingleDetails(slug, user_id){
   try{
-    /*
-      id, slug, product_img, product_unit_price,
-      quantity, product_title, deliver_before,
-      product_size, created_at, product_link, product_desc,
-      deliver_to->'nice_display' as deliver_to,
-      deliver_from->'nice_display' as deliver_from
-    */
     const { rows: requestDetails, rowCount } = await db.query(`
      SELECT
       requests.*, users.id as user_id, users.fullname as user_name, users.image as user_image
