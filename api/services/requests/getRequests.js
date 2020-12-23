@@ -28,7 +28,7 @@ async function getRequests(offset, limit, filterFrom, filterTo){
     // get countries
     const { rows: requestsFound } = await db.query(`
      SELECT
-      slug, product_img, product_unit_price, request_by,
+      id, slug, product_img, product_unit_price, request_by,
       quantity, product_title, deliver_before,
       deliver_to->'nice_display' as deliver_to,
       deliver_from->'nice_display' as deliver_from

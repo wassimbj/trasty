@@ -103,8 +103,8 @@ class Requests {
     try{
       const {requestId, requestBy} = req.body;
       const loggedInUserId = req.session.userid;
-      if(loggedInUserId !== requestBy){
-        return res.status(401).json('Not allowed')
+      if((loggedInUserId !== requestBy) || (!requestId || !requestBy)){
+        return res.status(401).json('Not allowed');
       }
       await deleteRequest(requestId);
       return res.status(200).json('success');
