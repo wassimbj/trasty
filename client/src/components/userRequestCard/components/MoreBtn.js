@@ -3,6 +3,7 @@ import Icon from '@hackclub/icons';
 import styled from 'styled-components';
 import RequestCardDropdown from './RequestCardDropdown';
 import DeleteRequestModal from '../../deleteRequestModal';
+import RequestOffersModal from '../../requestOffersModal';
 
 const StyledMoreBtn = styled.span`
   position: absolute;
@@ -20,18 +21,42 @@ const StyledMoreBtn = styled.span`
 export default function MoreBtn({ requestId, requestBy }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isOffersModalOpen, setIsOffersModalOpen] = useState(false);
+  document.onclick = (e) => {
+    console.dir(e);
+    console.dir(e.path);
+    if ((e.path[0].ariaLabel !== 'more')) {
+      setIsDropdownOpen(false);
+    }
+  };
+
   return (
     <>
-      <StyledMoreBtn onClick={() => setIsDropdownOpen(!isDropdownOpen)}><Icon glyph="more" size={29} /></StyledMoreBtn>
+      <StyledMoreBtn
+        className="requestCardMoreBtn"
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+      >
+        <Icon glyph="more" size={29} />
+      </StyledMoreBtn>
       <RequestCardDropdown
         isOpen={isDropdownOpen}
         onClickDelete={() => setIsDeleteModalOpen(true)}
+        onClickOffers={() => setIsOffersModalOpen(true)}
         customStyle="top: 35px; right: 15px; width: 150px;"
       />
       {
         isDeleteModalOpen ? (
           <DeleteRequestModal
             onClose={() => setIsDeleteModalOpen(false)}
+            requestBy={requestBy}
+            requestId={requestId}
+          />
+        ) : null
+      }
+      {
+        isOffersModalOpen ? (
+          <RequestOffersModal
+            onClose={() => setIsOffersModalOpen(false)}
             requestBy={requestBy}
             requestId={requestId}
           />

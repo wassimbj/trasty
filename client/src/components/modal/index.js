@@ -26,8 +26,8 @@ const ModalContainer = styled.div`
   z-index: 15;
   margin: 0 .5rem;
   ${(props) => (
-    props.size === 'md' ? css` width: 720px`
-      : props.size === 'lg' ? css` width: 900px`
+    props.size === 'md' ? css` width: 720px; `
+      : props.size === 'lg' ? css` width: 900px; `
         : null
   )}
   border-radius: 20px;
@@ -54,6 +54,7 @@ const ModalContentWrapper = styled.div`
 `;
 
 export default function Modal({ onClose, children, size }) {
+  // size = md | lg
   return (
     <Wrapper>
       <ModalGlobalStyle />

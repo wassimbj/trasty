@@ -4,16 +4,22 @@ import Tip from '../../tip';
 import { StyledLink } from '../style';
 import ProfileDropdown from '../../dropdown/ProfileDropdown';
 import NotifsDropdown from '../../dropdown/NotifsDropdown';
+import AddDropdown from '../../dropdown/AddDropdown';
 
 export default function AuthNavItems({ onClickLogout }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     profileDropdown: false,
     notifsDropdown: false,
+    addDropdown: false,
   });
 
   document.onclick = (e) => {
     if ((e.path[0].ariaLabel !== 'navElem') && (e.path[0].nodeName !== 'path')) {
-      setIsDropdownOpen({ profileDropdown: false, notifsDropdown: false });
+      setIsDropdownOpen({
+        profileDropdown: false,
+        notifsDropdown: false,
+        addDropdown: false,
+      });
     }
   };
 
@@ -23,7 +29,12 @@ export default function AuthNavItems({ onClickLogout }) {
     <Tip content="Add Request">
       <StyledLink
         aria-label="navElem"
-        to="/request/new"
+        to="#"
+        onClick={() => setIsDropdownOpen({
+          profileDropdown: false,
+          addDropdown: !isDropdownOpen.addDropdown,
+          notifsDropdown: false,
+        })}
       >
         <Icon glyph="plus" size={35} aria-label="navElem" />
       </StyledLink>
@@ -52,12 +63,29 @@ export default function AuthNavItems({ onClickLogout }) {
         onClick={() => setIsDropdownOpen({
           profileDropdown: !isDropdownOpen.profileDropdown,
           addDropdown: false,
+          notifsDropdown: false,
         })}
       >
         <Icon glyph="profile" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
-    <ProfileDropdown isOpen={isDropdownOpen.profileDropdown} onClickLogout={onClickLogout} />
+    {
+      isDropdownOpen.profileDropdown
+        ? (
+          <ProfileDropdown
+            isOpen={isDropdownOpen.profileDropdown}
+            onClickLogout={onClickLogout}
+          />
+        )
+        : null
+    }
+    {
+      isDropdownOpen.addDropdown
+        ? (
+          <AddDropdown isOpen={isDropdownOpen.addDropdown} />
+        )
+        : null
+    }
     {
       !isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />
     }
