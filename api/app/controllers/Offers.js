@@ -60,9 +60,14 @@ class Offers {
   async requestOffers(req, res){
     try{
       const {request_id} = req.params;
+      const {request_by} = req.query;
       const userId = req.session.userid;
 
-      const data = await getRequestOffers(userId, request_id);
+      if(!request_id || !request_by || parseInt(request_by) !== parseInt(userId)){
+        return res.status(401).json('Not Allowed');
+      }
+
+      const data = await getRequestOffers(parseInt(request_id) || 0);
 
       return res.status(200).json(data);
     }catch(err){

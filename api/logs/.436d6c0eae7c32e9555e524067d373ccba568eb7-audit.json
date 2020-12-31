@@ -6,9 +6,9 @@
     "auditLog": "/trusty/src/logs/.436d6c0eae7c32e9555e524067d373ccba568eb7-audit.json",
     "files": [
         {
-            "date": 1609323426583,
-            "name": "/trusty/src/logs/errors.log.2020-12-30",
-            "hash": "c0859d2a26ead265738ddec289123075"
+            "date": 1609413365792,
+            "name": "/trusty/src/logs/errors.log.2020-12-31",
+            "hash": "d58e49f818cbcf5a1f96b42ce45160b1"
         }
     ]
 }

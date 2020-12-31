@@ -58,3 +58,9 @@ export const ErrorMsg = styled.span`
   color: #ff3535;
   font-size: 13px;
 `;
+
+export const NoOffersMsg = styled.div`
+  text-align: center;
+  padding: 5rem 0.5rem;
+  font-weight: 500;
+`;

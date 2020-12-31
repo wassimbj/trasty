@@ -13,7 +13,7 @@ export default function AuthNavItems({ onClickLogout }) {
     addDropdown: false,
   });
 
-  document.onclick = (e) => {
+  window.onclick = (e) => {
     if ((e.path[0].ariaLabel !== 'navElem') && (e.path[0].nodeName !== 'path')) {
       setIsDropdownOpen({
         profileDropdown: false,
@@ -23,6 +23,14 @@ export default function AuthNavItems({ onClickLogout }) {
     }
   };
 
+  const handleDropdownToggle = (nav, isOpen) => () => {
+    setIsDropdownOpen({
+      profileDropdown: nav === 'profile' ? isOpen : false,
+      addDropdown: nav === 'add' ? isOpen : false,
+      notifsDropdown: nav === 'notif' ? isOpen : false,
+    });
+  };
+
   const isSmallDevice = window.innerWidth < 450;
   return (
     <>
@@ -30,11 +38,8 @@ export default function AuthNavItems({ onClickLogout }) {
       <StyledLink
         aria-label="navElem"
         to="#"
-        onClick={() => setIsDropdownOpen({
-          profileDropdown: false,
-          addDropdown: !isDropdownOpen.addDropdown,
-          notifsDropdown: false,
-        })}
+        onClick={handleDropdownToggle('add', !isDropdownOpen.addDropdown)}
+        tabIndex="-1"
       >
         <Icon glyph="plus" size={35} aria-label="navElem" />
       </StyledLink>
@@ -43,10 +48,8 @@ export default function AuthNavItems({ onClickLogout }) {
       <StyledLink
         aria-label="navElem"
         to={isSmallDevice ? '/notifs' : '#'}
-        onClick={() => (!isSmallDevice ? setIsDropdownOpen({
-          notifsDropdown: !isDropdownOpen.notifsDropdown,
-          profileDropdown: false,
-        }) : false)}
+        onClick={handleDropdownToggle('notif', !isDropdownOpen.notifsDropdown)}
+        tabIndex="-1"
       >
         <Icon glyph="notification" size={35} aria-label="navElem" />
       </StyledLink>
@@ -60,11 +63,8 @@ export default function AuthNavItems({ onClickLogout }) {
       <StyledLink
         aria-label="navElem"
         to="#"
-        onClick={() => setIsDropdownOpen({
-          profileDropdown: !isDropdownOpen.profileDropdown,
-          addDropdown: false,
-          notifsDropdown: false,
-        })}
+        onClick={handleDropdownToggle('profile', !isDropdownOpen.profileDropdown)}
+        tabIndex="-1"
       >
         <Icon glyph="profile" size={35} aria-label="navElem" />
       </StyledLink>

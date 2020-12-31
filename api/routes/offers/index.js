@@ -15,6 +15,7 @@ router.post(
   OffersController.delete
 );
 
+// offers for a signle request
 router.get(
   "/offers/request/:request_id",
   UserController.auth,

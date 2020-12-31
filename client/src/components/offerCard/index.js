@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '@hackclub/icons';
+import timeAgo from '../../utils/timeAgo';
+import niceDateFormat from '../../utils/niceDateFormat';
 import ReviewBadge from '../reviewBadge';
 import BigDot from '../bigDot';
 import {
@@ -9,22 +10,30 @@ import {
   SingleOfferDetail, UserImg, UserName, UserNameAndRating,
 } from './style';
 
-export default function OfferCard() {
+export default function OfferCard({
+  userId,
+  userImg,
+  userName,
+  createdAt,
+  deliverFrom,
+  deliverOn,
+  reward,
+}) {
   return (
     <OfferCardContainer>
       <OfferByInfo>
-        <Link to="/user/558" target="_blank" rel="noopener">
+        <Link to={`/user/${userId}`} target="_blank" rel="noopener">
         <UserImg
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4vHwf_WqQW7lAjOAsNDwrzeJer1Bg863H1Q&usqp=CAU"
+          src={userImg}
           alt=""
         />
         </Link>
         <UserNameAndRating>
-          <Link to="/user/855" target="_blank" rel="noopener">
-            <UserName> Ali batata </UserName>
+          <Link to={`/user/${userId}`} target="_blank" rel="noopener">
+            <UserName>{userName}</UserName>
             <OfferDate>
             <BigDot />
-            5 min ago
+            {timeAgo(createdAt)}
             </OfferDate>
           </Link>
           <RatingSummary>
@@ -36,15 +45,15 @@ export default function OfferCard() {
       <OfferDetails>
         <SingleOfferDetail>
           <DetailTitle> Deliver on </DetailTitle>
-          <p> 25 March, 2020 </p>
+          <p>{niceDateFormat(deliverOn)}</p>
         </SingleOfferDetail>
         <SingleOfferDetail>
           <DetailTitle> From </DetailTitle>
-          <p> Germany </p>
+          <p>{deliverFrom.nice_display}</p>
         </SingleOfferDetail>
         <SingleOfferDetail>
           <DetailTitle> Reward </DetailTitle>
-          <p> 50 TND </p>
+          <p>{`${reward} TND`}</p>
         </SingleOfferDetail>
       </OfferDetails>
       <ActionButtonWrapper>

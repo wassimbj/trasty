@@ -7,7 +7,7 @@ export const OfferCardContainer = styled.div`
   margin-bottom: 1.5rem;
   transition: 250ms;
   &:hover{
-    border: 1px solid rgba(0,0,0,0.35); 
+    border: 1px solid #2650ff; 
   }
 `;
 
@@ -58,32 +58,28 @@ export const DetailTitle = styled.div`
 
 export const ActionButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
 `;
 
 export const ActionButton = styled.span`
   display: block;
-  // width: 100%;
+  width: 100%;
   text-align: center;
   padding: 0.5rem 1rem;
   font-weight: 500;
-  border-radius: 50px;
+  border-radius: 5px;
+  margin: 0 0.5rem;
   cursor: pointer;
 `;
 
 export const AcceptOfferButton = styled(ActionButton)`
   background: #81b214; color: #fff;
-  &:hover{ box-shadow: 0 0 0px 3px rgb(129, 178, 20, 0.38); }
   transition: 250ms;
-  
   &:hover{ background: #74a800 }
 `;
 
 export const RefuseOfferButton = styled(ActionButton)`
   background: #ff2c2c; color: #fff;
   transition: 250ms;
-  &:hover{ box-shadow: 0 0 0px 3px rgb(255, 44, 44, 0.38); }
-
   &:hover{ background: #ea0000 }
 `;
 

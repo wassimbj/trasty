@@ -1,0 +1,5 @@
+{
+  message: 'Request Offers ERROR: Error: error: table name "users" specified more than once',
+  level: 'error',
+  timestamp: '2020-12-31 12:55:44'
+}
