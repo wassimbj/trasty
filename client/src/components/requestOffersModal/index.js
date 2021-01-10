@@ -20,7 +20,6 @@ export default function RequestOffersModal({ onClose, requestId, requestBy }) {
   useEffect(() => {
     (async function () {
       const data = await getRequestOffers(requestId, requestBy);
-      console.log(data);
       setOffers({
         loading: false,
         data: data.resp,

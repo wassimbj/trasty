@@ -1,5 +1,5 @@
 // import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 // import Icon from '@hackclub/icons';
 
@@ -17,7 +17,7 @@ export const StyledLink = styled(NavLink)`
   & svg { padding: 3px; }
   
   &:not(:last-child){ margin-right: 7px; }
-
+  &:focus{ outline: none; }
   &:hover { color: #000; }
   &:active{ transform: scale(0.95); }
 
@@ -27,6 +27,11 @@ export const StyledLink = styled(NavLink)`
       width: 32px;
       height: 32px;
     }
+  }
+  
+  &.active{
+    background: rgb(38, 80, 255, 0.15);
+    color: #2650ff;
   }
 `;
 

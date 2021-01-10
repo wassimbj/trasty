@@ -34,17 +34,20 @@ export default function AuthNavItems({ onClickLogout }) {
   const isSmallDevice = window.innerWidth < 450;
   return (
     <>
-    <Tip content="Add Request">
+    <Tip content="Add">
       <StyledLink
         aria-label="navElem"
         to="#"
+        activeClassName="active"
+        isActive={() => isDropdownOpen.addDropdown}
+        // active={isDropdownOpen.addDropdown}
         onClick={handleDropdownToggle('add', !isDropdownOpen.addDropdown)}
         tabIndex="-1"
       >
         <Icon glyph="plus" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
-    <Tip content="Notifications">
+    {/* <Tip content="Notifications">
       <StyledLink
         aria-label="navElem"
         to={isSmallDevice ? '/notifs' : '#'}
@@ -53,9 +56,9 @@ export default function AuthNavItems({ onClickLogout }) {
       >
         <Icon glyph="notification" size={35} aria-label="navElem" />
       </StyledLink>
-    </Tip>
+    </Tip> */}
     <Tip content="Messages">
-      <StyledLink to="/messages">
+      <StyledLink to="/messages" activeClassName="active">
         <Icon glyph="message" size={35} />
       </StyledLink>
     </Tip>
@@ -63,6 +66,8 @@ export default function AuthNavItems({ onClickLogout }) {
       <StyledLink
         aria-label="navElem"
         to="#"
+        activeClassName="active"
+        isActive={() => isDropdownOpen.profileDropdown}
         onClick={handleDropdownToggle('profile', !isDropdownOpen.profileDropdown)}
         tabIndex="-1"
       >

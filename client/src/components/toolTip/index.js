@@ -26,9 +26,12 @@ const StyledTip = styled.div`
   border-radius: 5px;
   max-width: 300px;
   width: ${(props) => css`${props.width}`};
+  text-align: center;
 `;
 
-export default function ToolTip({ children, content, inline }) {
+export default function ToolTip({
+  children, content, inline, width,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Wrapper
@@ -38,7 +41,17 @@ export default function ToolTip({ children, content, inline }) {
       onBlur={() => setIsOpen(false)}
       onClick={() => setIsOpen(true)}
     >
-      <StyledTip isOpen={isOpen} width={String(content).length <= 30 ? '100px' : '250px'}>{content}</StyledTip>
+      <StyledTip
+        isOpen={isOpen}
+        width={
+          // eslint-disable-next-line no-nested-ternary
+          !width
+            ? (String(content).length <= 30 ? '100px' : '250px')
+            : width
+        }
+      >
+        {content}
+      </StyledTip>
       {children}
     </Wrapper>
   );

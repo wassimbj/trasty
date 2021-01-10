@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable max-len */
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
@@ -87,15 +88,17 @@ export default function UserProfile({ match }) {
               <ReviewBadge rating={5} />
             </ReviewSummary>
             <ProfileTabs>
-              <Tab to={`/user/${userid}/requests`} className={`${activeTab !== 'reviews' ? 'active' : ''}`}> Requests </Tab>
-              {/* <Tab to="/user/888/trips" className={`${activeTab === 'trips' ? 'active' : ''}`}> 2 Upcoming trips </Tab> */}
+              <Tab to={`/user/${userid}/requests`} className={`${!activeTab || activeTab === 'requests' ? 'active' : ''}`}> Requests </Tab>
+              <Tab to={`/user/${userid}/trips`} className={`${activeTab === 'trips' ? 'active' : ''}`}> Upcoming trips </Tab>
               <Tab to={`/user/${userid}/reviews`} className={`${activeTab === 'reviews' ? 'active' : ''}`}> Reviews </Tab>
             </ProfileTabs>
             <TabContent>
               {
                 activeTab === 'reviews'
                   ? <p> Reviews </p>
-                  : <UserRequests userid={userid} />
+                : activeTab === 'trips'
+                    ? <p> Trips </p>
+                : <UserRequests userid={userid} />
               }
             </TabContent>
             </div>

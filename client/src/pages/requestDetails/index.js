@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
-import toast from 'react-hot-toast';
 import MdContainer from '../../components/mdContainer';
 import DeliveryDetails from './components/DeliveryDetails';
 import RequestSummaryDetails from './components/RequestSummaryDetails';

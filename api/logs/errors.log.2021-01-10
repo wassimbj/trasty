@@ -1,0 +1,30 @@
+{
+  message: 'Get My Offers Error: Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2021-01-10 10:08:30'
+}
+{
+  message: 'Get My Offers Error: Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2021-01-10 10:08:38'
+}
+{
+  message: 'Get My Offers Error: Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2021-01-10 10:08:39'
+}
+{
+  message: 'Get My Offers Error: Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2021-01-10 10:08:41'
+}
+{
+  message: 'Get My Offers Error: Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2021-01-10 10:09:02'
+}
+{
+  message: 'Get My Offers Error: Error: error: syntax error at or near "FROM"',
+  level: 'error',
+  timestamp: '2021-01-10 10:09:06'
+}

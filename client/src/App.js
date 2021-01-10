@@ -24,6 +24,7 @@ import Login from './pages/auth/Login';
 import UserAuthContext from './contexts/UserAuthContext';
 import ErrorBoundary from './components/errorBoundary';
 import Error404 from './pages/404';
+import MyOffers from './pages/myOffers';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -108,6 +109,19 @@ function App() {
               return <MyRequests urlProps={props} />;
             }}
           /> */}
+
+          <Route
+            exact
+            path="/my/offers"
+            component={(props) => {
+              if (isLoggedIn.loading) {
+                return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
+              } if (!isLoggedIn.status) {
+                return <Redirect to="/requests" />;
+              }
+              return <MyOffers />;
+            }}
+          />
 
             <Route
               exact

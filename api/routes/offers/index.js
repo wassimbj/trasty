@@ -22,4 +22,12 @@ router.get(
   OffersController.requestOffers
 );
 
+// get my offers
+router.get(
+  "/offers/mine",
+  UserController.auth,
+  OffersController.myOffers
+);
+
+
 export default router;

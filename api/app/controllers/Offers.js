@@ -1,5 +1,6 @@
 import createOffer from '../../services/offers/createOffer';
 import deleteOffer from '../../services/offers/deleteOffer';
+import getMyOffers from '../../services/offers/getMyOffers';
 import getRequestOffers from '../../services/offers/getRequestOffers';
 import logger from '../../utils/logger';
 
@@ -34,7 +35,7 @@ class Offers {
       const user_id = req.session.userid;
       // if i get no requestId or no offerId or i get them both
       // if i get requestBy only, i know its the user who got the offer wants to delete the offer
-      // if i get offerBy only, i knw its the user who offered want to delete his offer
+      // if i get offerBy only, i know its the user who offered want to delete his offer
       if((!requestBy && !offerBy) || (requestBy && offerBy)){
         return res.status(401).json('Not Allowed');
       }
@@ -73,6 +74,19 @@ class Offers {
     }catch(err){
       logger.error(`Request Offers ERROR: ${err}`);
       return res.status(500).json('Error');
+    }
+  }
+
+  async myOffers(req, res){
+    try{
+      const userid = req.session.userid;
+
+      let offers = await getMyOffers(userid)
+
+      return res.status(200).json(offers)
+    }catch(err){
+      logger.error(`Get My Offers Error: ${err}`)
+      return res.status(500).json("Something went wrong...")
     }
   }
 }

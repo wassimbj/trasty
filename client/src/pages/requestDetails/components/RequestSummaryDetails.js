@@ -23,7 +23,7 @@ export default function RequestAmountsDetails({
   const [isAddOfferModalOpen, setIsAddOfferModalOpen] = useState(false);
   const [isDeleteOfferModalOpen, setIsDeleteOfferModalOpen] = useState(false);
 
-  const productTotalPrice = parseFloat(productPrice * quantity);
+  const productTotalPrice = parseFloat(productPrice * quantity).toFixed(2);
   const reward = getEstimatedReward(productPrice, quantity);
   return (
     <>

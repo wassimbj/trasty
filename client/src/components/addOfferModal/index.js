@@ -42,7 +42,7 @@ export default function AddOfferModal({
       deliverFrom: yup.object().required('please choose from where you will deliver this request.'),
       deliveryReward: yup.number()
         .min(0, 'you cant enter negative number')
-        .max(productUnitPrice - 5, 'this is more then the product price'),
+        .max(productUnitPrice * quantity, 'this is more then the product price'),
       notes: yup.string().max(200, 'you wrote a too long note, try to make it short please.').notRequired(),
     }),
     onSubmit: async ({
