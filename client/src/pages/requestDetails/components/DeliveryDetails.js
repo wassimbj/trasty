@@ -9,12 +9,12 @@ export default function DeliveryDetails({ deliverFrom, deliverTo, before }) {
         <p>
           <Icon glyph="view-forward" color="gray" size={22} />
           <span> Deliver to </span>
-          {deliverFrom}
+          {deliverTo}
         </p>
         <p>
           <Icon glyph="view-forward" color="gray" size={22} />
           <span> From </span>
-          {deliverTo}
+          {deliverFrom}
         </p>
         <p>
           <Icon glyph="clock" color="gray" size={22} />

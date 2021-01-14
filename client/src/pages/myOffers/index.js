@@ -59,6 +59,7 @@ export default function MyOffers() {
                       offerId={offer.id}
                       offerBy={offer.offer_by}
                       key={offer.id}
+                      isAccepted={offer.is_accepted}
                     />
                   ))
                 )

@@ -1,11 +1,12 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import Icon from '@hackclub/icons';
 import Tip from '../../../components/tip';
 import ToolTip from '../../../components/toolTip';
 import niceDateFormat from '../../../utils/niceDateFormat';
 import {
-  DeleteBtn, DeliveryDetails, OfferCardWrapper, OfferDetails,
-  OfferReward, ProductDetails, ProductTitle,
+  DeleteBtn, DeliveryDetails, GoToChatBtn, OfferCardWrapper, OfferDetails,
+  OfferReward, ProductDetails, ProductTitle, Status,
 } from '../style';
 import DeleteOfferModal from '../../../components/deleteOfferModal';
 
@@ -18,6 +19,7 @@ export default function OfferCard({
   deliverFrom,
   deliverDate,
   deliverReward,
+  isAccepted,
 }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -71,6 +73,16 @@ export default function OfferCard({
           <span className="hint"> Your reward </span>
           <span className="mark">{`${deliverReward} TND`}</span>
         </OfferReward>
+        <Status>
+          <ToolTip
+            content={isAccepted ? 'Your offer is accepted 😄' : 'your offer is not accepted yet 🧐'}
+            inline
+            width={`${isAccepted ? '160px' : '195px'}`}
+          >
+            <span span className={`statushint ${isAccepted ? 'accepted' : 'pending'}`}>{isAccepted ? 'Accepted' : 'Pending'}</span>
+          </ToolTip>
+          { isAccepted ? <GoToChatBtn href="/messages/581"> Go to Chat </GoToChatBtn> : null }
+        </Status>
       </OfferDetails>
       </OfferCardWrapper>
       {

@@ -6,8 +6,9 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import toast from 'react-hot-toast';
 import dayjs from 'dayjs';
 import 'react-datepicker/dist/react-datepicker.css';
-import Modal from '../modal';
 import '../../assets/styles/custom-date-picker.css';
+import Modal from '../modal';
+import constants from '../../constants';
 import {
   Title, ModalBodyWrapper, ModalBody,
   InputWrapper, Label, Input, NotesTextarea,
@@ -139,15 +140,22 @@ export default function AddOfferModal({
               />
               <PriceCurrency>TND</PriceCurrency>
               {formik.values.deliveryReward === 0 ? (
-              <small style={{ color: '#737373' }}>
-                You are so generous to have no reward, we are so proud to have you on trusty.
+              <small style={{ color: '#2650ff' }}>
+                You are so generous to have no reward, we are so proud to have you on
+                {' '}
+                {constants.APP_NAME}
               </small>
               ) : ''}
               <ErrorMsg>{formik.errors.deliveryReward}</ErrorMsg>
             </InputWrapper>
             <InputWrapper>
               <Label> Some notes </Label>
-              <NotesTextarea rows="3" placeholder="write something" name="notes" onChange={formik.handleChange} />
+              <NotesTextarea
+                rows="3"
+                placeholder="write something"
+                name="notes"
+                onChange={formik.handleChange}
+              />
               <ErrorMsg>{formik.errors.notes}</ErrorMsg>
             </InputWrapper>
         </ModalBody>

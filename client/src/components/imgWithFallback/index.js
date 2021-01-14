@@ -8,7 +8,7 @@ export default function ImgWithFallback({ src, alt, context }) {
 
   const handleImgError = (e) => {
     e.target.onerror = null;
-    e.target.src = defaultImgs[context];
+    e.target.src = defaultImgs[context || 'user'];
   };
 
   return <img src={src} alt={alt || ''} onError={handleImgError} />;

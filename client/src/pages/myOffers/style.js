@@ -97,12 +97,48 @@ export const OfferReward = styled.div`
   margin-top: 0.5rem;
   & span{ display: inline-block; margin-right: 0.5rem }
   & .icon{ margin-right 0; }
-  & .icon{ margin-right 0; }
   & .hint{ color: #5c5c5c; }
   & .mark{
     font-weight: 500;
     color: #2650ff;
   }
+`;
+
+export const Status = styled.div`
+  margin-top: 1rem;
+  text-align: center;
+  & span{ display: inline-block; margin-right: 0.5rem }
+  & .icon{ margin-right 0; }
+  & .hint{
+    color: #607D8B;
+    // font-weight: 500;
+  }
+  & .statushint{
+    padding: 2px 10px;
+    border-radius: 30px;
+    font-weight: 500;
+  }
+  & .accepted{
+    background: rgb(76, 175, 80, .21);
+    color: #4CAF50;
+  }
+  & .pending{
+    background: rgb(255, 152, 0, .25);
+    color: #FF5722;
+  }
+`;
+
+export const GoToChatBtn = styled.a`
+  display: block;
+  background: rgb(38, 80, 255, 0.25);
+  color: #2650ff;
+  max-width: 150px;
+  margin: 1rem auto 0;
+  border-radius: 3px;
+  padding: 5px 5px;
+  font-weight: 500;
+  transition: 200ms;
+  &:hover{background: rgb(38, 80, 255, 0.35);}
 `;
 
 export const DeleteBtn = styled.span`

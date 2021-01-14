@@ -14,17 +14,12 @@ export default function DeleteOfferModal({
 }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // const formik = useFormik({
-  //   onSubmit: async () => {
-  //     toast.loading('We are deleting it... one moment');
-  //   },
-  // });
   const handleSubmit = async () => {
     setIsDeleting(true);
     try {
       const resp = await deleteOffer(offerId, offerBy, requestBy);
       if (resp.success) {
-        toast.success('Your offer has been deleted.');
+        toast.success('Offer has been deleted.');
         window.location.reload();
       }
     } catch (err) {
@@ -38,7 +33,7 @@ export default function DeleteOfferModal({
       <Title> Are you sure ? </Title>
       <ModalBodyWrapper>
         <ModalBody>
-          <p style={{ textAlign: 'center' }}> Are you sure you want to delete your help offer ? </p>
+          <p style={{ textAlign: 'center' }}> Are you sure you want to delete this help offer ? </p>
         </ModalBody>
       </ModalBodyWrapper>
       <ModalFooter>

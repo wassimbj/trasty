@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import styled from 'styled-components';
 import LoginButtons from './components/LoginButtons';
 import SignAgreementText from '../../components/signAgreementText';
 import Footer from '../../components/footer';
+import constants from '../../constants';
 
 const Wrapper = styled.div`
   padding: 0 0.5rem;
@@ -47,9 +49,9 @@ export default function Login() {
     <Wrapper>
       <LoginCard>
         <TitleWrapper>
-          <Title> Start using Trusty </Title>
+          <Title> Start using {constants.APP_NAME} </Title>
           <SubTitle>Wether you are new or an existing user</SubTitle>
-          <SubTitle>just click a button and start using trusti.</SubTitle>
+          <SubTitle>just click a button and start using {constants.APP_NAME}.</SubTitle>
         </TitleWrapper>
         <LoginButtons />
         <SignAgreementText />

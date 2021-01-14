@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from '@hackclub/icons';
 import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
+import constants from '../../constants';
 import {
   Wrapper, Content, Links,
   PreferenceWrapper, PreferenceSelect,
@@ -58,7 +59,8 @@ export default function Footer({ marinTop }) {
           ©
           {dayjs().year()}
           {' '}
-          Trusty, Inc. All rights reserved
+          {constants.APP_NAME}
+          ,Inc. All rights reserved
         </RightsReservedP>
       </Content>
     </Wrapper>
