@@ -1,0 +1,19 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 1
+    },
+    "auditLog": "/trusty/src/logs/.642592f48c6fb79b412b3a702a8c7d3ceddd8bd6-audit.json",
+    "files": [
+        {
+            "date": 1610699387766,
+            "name": "/trusty/src/logs/info.log.2021-01-15",
+            "hash": "29ad1c50b40f63bcbc0fd68b3c852bc0"
+        },
+        {
+            "date": 1610775231833,
+            "name": "/trusty/src/logs/info.log.2021-01-16",
+            "hash": "fc4ff7c84aa081f33ecc3ce1d80754f5"
+        }
+    ]
+}

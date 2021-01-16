@@ -37,9 +37,7 @@ export const OfferDate = styled.div`
 `;
 
 export const RatingSummary = styled.div`
-  margin-top: 0.25rem;
-  display: flex; align-items: center;
-  & .def { color: #b8b8b8; font-size: 13px; margin-right: 0.35rem; }
+  margin-top: 0.5rem;
 `;
 
 export const SingleOfferDetail = styled.div`
@@ -207,7 +205,7 @@ export const GoToChatBtn = styled.a`
 export const ActionBtnWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   margin-top: 1rem;
 `;
 

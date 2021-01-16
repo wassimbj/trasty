@@ -1,3 +1,4 @@
+import acceptOffer from '../../services/offers/acceptOffer';
 import createOffer from '../../services/offers/createOffer';
 import deleteOffer from '../../services/offers/deleteOffer';
 import getMyOffers from '../../services/offers/getMyOffers';
@@ -87,6 +88,17 @@ class Offers {
     }catch(err){
       logger.error(`Get My Offers Error: ${err}`)
       return res.status(500).json("Something went wrong...")
+    }
+  }
+
+  async accept(req, res){
+    try{
+        const {offerId, requestId, travelerId} = req.body;
+        const requesterId = req.session.userid;
+        acceptOffer(offerId)
+    }catch(err){
+      logger.error(`Accept Offer Error: ${err}`);
+      return res.status(500).json('Oops')
     }
   }
 }

@@ -40,23 +40,24 @@ export default function AuthNavItems({ onClickLogout }) {
         to="#"
         activeClassName="active"
         isActive={() => isDropdownOpen.addDropdown}
-        // active={isDropdownOpen.addDropdown}
         onClick={handleDropdownToggle('add', !isDropdownOpen.addDropdown)}
         tabIndex="-1"
       >
         <Icon glyph="plus" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
-    {/* <Tip content="Notifications">
+    <Tip content="Notifications">
       <StyledLink
         aria-label="navElem"
+        isActive={() => isDropdownOpen.notifsDropdown}
+        activeClassName="active"
         to={isSmallDevice ? '/notifs' : '#'}
         onClick={handleDropdownToggle('notif', !isDropdownOpen.notifsDropdown)}
         tabIndex="-1"
       >
         <Icon glyph="notification" size={35} aria-label="navElem" />
       </StyledLink>
-    </Tip> */}
+    </Tip>
     <Tip content="Messages">
       <StyledLink to="/messages" activeClassName="active">
         <Icon glyph="message" size={35} />
@@ -91,9 +92,7 @@ export default function AuthNavItems({ onClickLogout }) {
         )
         : null
     }
-    {
-      !isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />
-    }
+    {!isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />}
     </>
   );
 }

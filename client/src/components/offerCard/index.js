@@ -13,7 +13,7 @@ import {
   OfferReward, TravelerInfo,
   OfferByInfo, UserImg,
   UserNameAndRating, UserName,
-  OfferDate, RatingSummary, AcceptBtn, ActionBtn, ActionBtnWrapper,
+  OfferDate, RatingSummary, AcceptBtn, ActionBtnWrapper,
 } from './style';
 import DeleteOfferModal from '../deleteOfferModal';
 
