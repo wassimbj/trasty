@@ -19,18 +19,14 @@ export default function UserRequests({ userid }) {
     (async function () {
       try {
         const requests = await getUserRequests(userid, LIMIT, offset);
-        console.log('requests: ', requests);
-        // console.log(requests);
         setUserRequests({
           loading: false,
           data: [...new Set([...userRequests.data, ...requests])],
-          // hasMore: requests.length <= LIMIT,
         });
         if (requests.length < LIMIT) {
           setHasMore(false);
         }
       } catch (err) {
-        // console.log(err);
         setSomethingWrong(true);
       }
     }());
@@ -40,6 +36,11 @@ export default function UserRequests({ userid }) {
     setOffset((prevOffset) => prevOffset + LIMIT);
   };
 
+  if (userRequests.loadng) {
+    return (
+      <Spinner center customStyle="margin: 5rem 0;" />
+    );
+  }
   return (
     <>
       { !somethingWrong ? (
@@ -53,7 +54,7 @@ export default function UserRequests({ userid }) {
             userRequests.data.length === 0 ? (
               <p style={{ textAlign: 'center', padding: '2rem 0', color: '#333' }}>
                 <Icon glyph="explore" style={{ margin: '0 auto' }} size={50} />
-                Doesn't have any requests yet...
+                No requests yet...
               </p>
             ) : (
               <p style={{ textAlign: 'center' }}>

@@ -26,7 +26,7 @@ export default function RequestOffersModal({ onClose, requestId, requestBy }) {
       });
     }());
   }, []);
-  console.log('DDDDDDDDDDAAAAA : ', offers.data);
+
   return (
     <Modal onClose={onClose} size="md">
       <Title> Offers you got </Title>
@@ -48,6 +48,9 @@ export default function RequestOffersModal({ onClose, requestId, requestBy }) {
                     reward={offer.offer_reward}
                     userImg={offer.user_image}
                     offerId={offer.id}
+                    chatRoom={offer.chat_room}
+                    isAccepted={offer.is_accepted}
+                    requestId={requestId}
                     requestBy={requestBy}
                     userName={offer.user_name}
                     key={offer.id}

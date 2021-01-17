@@ -13,22 +13,28 @@ import {
   OfferReward, TravelerInfo,
   OfferByInfo, UserImg,
   UserNameAndRating, UserName,
-  OfferDate, RatingSummary, AcceptBtn, ActionBtnWrapper,
+  OfferDate, RatingSummary, AcceptBtn,
+  ActionBtnWrapper, OfferAcceptedMsg, AcceptedBadge,
 } from './style';
 import DeleteOfferModal from '../deleteOfferModal';
+import AcceptOfferModal from '../acceptOfferModal';
 
 export default function OfferCard({
   userId,
   userImg,
   userName,
+  isAccepted,
+  chatRoom,
   createdAt,
   deliverFrom,
   deliverOn,
   reward,
   offerId,
+  requestId,
   requestBy,
 }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isAcceptModalOpen, setIsAcceptModalOpen] = useState(false);
 
   return (
     <>
@@ -86,23 +92,49 @@ export default function OfferCard({
             <span className="mark">{`${reward} TND`}</span>
           </OfferReward>
         </OfferDetails>
-        <ActionBtnWrapper>
-          <AcceptBtn onClick={() => setIsDeleteModalOpen(true)}>
-            <Icon glyph="checkmark" size={22} />
-            Accept
-          </AcceptBtn>
-          <DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
-            <Icon glyph="delete" size={20} />
-            Remove
-          </DeleteBtn>
-        </ActionBtnWrapper>
+        {
+          isAccepted
+            ? (
+              <>
+                <OfferAcceptedMsg href={`/messages/${chatRoom}`}>
+                  Chat more with the traveler...
+                </OfferAcceptedMsg>
+                <AcceptedBadge>Accepted</AcceptedBadge>
+              </>
+            )
+            : (
+              <ActionBtnWrapper>
+                <AcceptBtn onClick={() => setIsAcceptModalOpen(true)}>
+                  <Icon glyph="checkmark" size={22} />
+                  Accept
+                </AcceptBtn>
+                <DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
+                  <Icon glyph="delete" size={20} />
+                  Remove
+                </DeleteBtn>
+              </ActionBtnWrapper>
+            )
+        }
       </OfferCardWrapper>
       {
-        isDeleteModalOpen && (
+        !isAccepted && isDeleteModalOpen && (
           <DeleteOfferModal
             onClose={() => setIsDeleteModalOpen(false)}
             offerId={offerId}
             requestBy={requestBy}
+            key={offerId}
+          />
+        )
+      }
+      {
+        !isAccepted && isAcceptModalOpen && (
+          <AcceptOfferModal
+            onClose={() => setIsAcceptModalOpen(false)}
+            offerId={offerId}
+            requestBy={requestBy}
+            offerBy={userId}
+            requestId={requestId}
+            key={offerId}
           />
         )
       }

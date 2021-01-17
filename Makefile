@@ -1,12 +1,12 @@
 # --------------- server cmds ---------------
 # watch_server: 
-# 	@cd api/docker && docker-compose -f docker-compose-dev.yml build trusti_node_server && docker-compose -f docker-compose-dev.yml up
+# 	@cd server/docker && docker-compose -f docker-compose-dev.yml build trusti_node_server && docker-compose -f docker-compose-dev.yml up
 
 run_server: 
-	@cd api/docker && docker-compose -f docker-compose-dev.yml up
+	@cd server/docker && docker-compose -f docker-compose-dev.yml up
 
 rebuild_server: 
-	@cd api/docker && docker-compose -f docker-compose-dev.yml up --build
+	@cd server/docker && docker-compose -f docker-compose-dev.yml up --build
 
 stop_server: 
 	docker stop trusti_db trusti_redis trusti_server

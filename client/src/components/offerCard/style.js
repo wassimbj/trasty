@@ -236,3 +236,30 @@ export const AcceptBtn = styled(ActionBtn)`
     background: rgba(76, 175, 80, .35);
   }
 `;
+
+export const OfferAcceptedMsg = styled.a`
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  background: #65e66a;
+  padding: 0.65rem 0.25rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: 250ms;
+  &:hover{
+    background: #5edc63
+  }
+`;
+
+export const AcceptedBadge = styled.span`
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 50px;
+  background: rgba(76, 175, 80, .21);
+  color: #4CAF50;
+`;

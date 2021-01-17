@@ -30,4 +30,12 @@ router.get(
 );
 
 
+// get my offers
+router.post(
+  "/offer/accept",
+  UserController.auth,
+  OffersController.accept
+);
+
+
 export default router;

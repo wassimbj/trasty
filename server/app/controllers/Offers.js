@@ -1,8 +1,11 @@
+import {nanoid} from "nanoid"
+import createMessageRoom from '../../services/messages/createMessageRoom';
 import acceptOffer from '../../services/offers/acceptOffer';
 import createOffer from '../../services/offers/createOffer';
 import deleteOffer from '../../services/offers/deleteOffer';
 import getMyOffers from '../../services/offers/getMyOffers';
 import getRequestOffers from '../../services/offers/getRequestOffers';
+import isOfferAccepted from "../../services/offers/isOfferAccepted";
 import logger from '../../utils/logger';
 
 class Offers {
@@ -69,7 +72,8 @@ class Offers {
         return res.status(401).json('Not Allowed');
       }
 
-      const data = await getRequestOffers(parseInt(request_id) || 0);
+      // parseInt(request_id) || 0
+      const data = await getRequestOffers(request_id || 0);
 
       return res.status(200).json(data);
     }catch(err){
@@ -93,9 +97,18 @@ class Offers {
 
   async accept(req, res){
     try{
-        const {offerId, requestId, travelerId} = req.body;
+        const {offerId, requestId, offerBy} = req.body;
         const requesterId = req.session.userid;
-        acceptOffer(offerId)
+        const isAlreadyAccepted = await isOfferAccepted(offerId);
+        if(!isAlreadyAccepted){
+          let chatRoomId = nanoid(30);
+          await acceptOffer(offerId)
+          await createMessageRoom(chatRoomId, offerId, requestId, offerBy, requesterId)
+          return res.status(200).json(chatRoomId)
+        }else {
+          return res.status(403).json("already accepted")
+        }
+
     }catch(err){
       logger.error(`Accept Offer Error: ${err}`);
       return res.status(500).json('Oops')
