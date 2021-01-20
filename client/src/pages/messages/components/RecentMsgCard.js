@@ -1,25 +1,33 @@
 import React from 'react';
 import {
-  CardLink, FlexBetween, RecentMsg, RecentMsgDate,
-  RecentMsgUserInfo, UserImg, UserName,
+  CardLink, FlexBetween,
+  RecentMsgUserInfo, UserImg,
+  UserName, IsRequesterBadge, IsTravelerBadge, NewMsgBadge,
 } from '../style';
 
-export default function RecentMsgCard() {
+export default function RecentMsgCard({
+  userImg,
+  userName,
+  roomId,
+  isTraveler,
+  isActive,
+}) {
   return (
-    <CardLink to="/messages/885">
+    <CardLink isActive={isActive} to={`/messages/${roomId}`}>
       <FlexBetween>
         <RecentMsgUserInfo>
-          <UserImg src="https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg" alt="" />
+          <UserImg src={userImg} alt="" />
           <div>
-            <UserName>
-              Ali batata
-            </UserName>
-            <RecentMsgDate> 5 min ago </RecentMsgDate>
+            <UserName>{userName}</UserName>
+            {
+              isTraveler
+                ? <IsTravelerBadge>Traveler</IsTravelerBadge>
+                : <IsRequesterBadge>Requester</IsRequesterBadge>
+            }
           </div>
         </RecentMsgUserInfo>
-        {/* <NewOfferBadge>New Offer</NewOfferBadge> */}
+        {/* <NewMsgBadge>1</NewMsgBadge> */}
       </FlexBetween>
-      <RecentMsg> hello this is a new offer frm me, new offer frm me  </RecentMsg>
     </CardLink>
   );
 }

@@ -61,3 +61,8 @@
 .react-datepicker__day--outside-month {
   color: #c5c5c5;
 }
+
+
+.addTripDatePickerWrapper{
+  width: 100%;
+}

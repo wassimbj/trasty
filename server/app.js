@@ -16,20 +16,13 @@ app.use(helmet.hidePoweredBy({ setTo: 'Django' }));
 app.use(express.json({ extended: true, limit: '3mb' }));
 app.use(express.urlencoded({ extended: false, limit: '3mb' }));
 
-const acceptedOrigins = [
-  'http://localhost:3000',
-  'http://192.168.1.12:3000',
-  // 'https://trusty.netlify.app',
-  'https://www.trusty.tn',
-  'https://trusty.tn',
-]
 // use cors
 app.use(cors({
-  origin: acceptedOrigins,
+  origin: constants.ACCEPTED_ORIGINS,
   credentials: true
 }))
 
-
+app.set('port', parseInt(constants.PORT, 10));
 if(constants.IS_PROD){
   app.set('trust proxy', 1); // trust first proxy
 }
@@ -40,13 +33,8 @@ app.use(session());
 // initialize passport
 app.use(passport.initialize());
 
-// app.get('*', (req, res, next) => {
-//   console.log('LOGGEDIN_USER_ID: ', req.session.userid);
-//   next();
-// });
-
 app.get('/', (req, res) => {
-  return res.json('HELLLLLLLLLLLLLLLLLOOOOOOOOOOOOO')
+  return res.json('Welcome !!')
 });
 
 require('./routes')(app);

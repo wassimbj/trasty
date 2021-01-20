@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react';
 // import MainContainer from './components/mainContainer';
 import {
@@ -6,7 +7,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
+// import io from 'socket.io-client';
+// import socketIo from './utils/socketIo';
+// import { io } from 'socket.io-client';
+// import constants from './constants';
 import getLoggedInUser from './api/user/getLoggedInUser';
 import logOut from './api/user/logOut';
 // Components
@@ -25,6 +29,7 @@ import UserAuthContext from './contexts/UserAuthContext';
 import ErrorBoundary from './components/errorBoundary';
 import Error404 from './pages/404';
 import MyOffers from './pages/myOffers';
+import CreateTrip from './pages/createTrip';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -34,6 +39,18 @@ function App() {
   });
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
+  // const socketIo = io('ws://localhost:5000', {
+  //   transports: ['websocket'],
+  //   withCredentials: true,
+  // });
+  // console.log(socketIo.connected);
+  // socketIo.on('connect', () => {
+  //   console.log(`connect ${socketIo.id}`);
+  // });
+
+  // socketIo.on('disconnect', () => {
+  //   console.log('disconnect');
+  // });
   // get if user is logged in
   useEffect(() => {
     // eslint-disable-next-line func-names
@@ -90,42 +107,9 @@ function App() {
                 return <CreateRequest />;
               }}
             />
-
             <Route
               exact
-              path={['/user/:id', '/user/:id/:tab']}
-              component={UserProfile}
-            />
-
-            {/* <Route
-            exact
-            path={['/my/requests', '/my/requests/:request_id']}
-            component={(props) => {
-              if (isLoggedIn.loading) {
-                return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
-              } if (!isLoggedIn.status) {
-                return <Redirect to="/requests" />;
-              }
-              return <MyRequests urlProps={props} />;
-            }}
-          /> */}
-
-          <Route
-            exact
-            path="/my/offers"
-            component={(props) => {
-              if (isLoggedIn.loading) {
-                return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
-              } if (!isLoggedIn.status) {
-                return <Redirect to="/requests" />;
-              }
-              return <MyOffers />;
-            }}
-          />
-
-            <Route
-              exact
-              path={['/messages', '/messages/:room']}
+              path="/trip/new"
               component={() => {
                 if (isLoggedIn.loading) {
                   return (
@@ -139,7 +123,46 @@ function App() {
                 if (!isLoggedIn.status) {
                   return <Redirect to="/requests" />;
                 }
-                return <Messages />;
+                return <CreateTrip />;
+              }}
+            />
+
+            <Route
+              exact
+              path={['/user/:id', '/user/:id/:tab']}
+              component={UserProfile}
+            />
+
+          <Route
+            exact
+            path="/my/offers"
+            component={() => {
+              if (isLoggedIn.loading) {
+                return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
+              } if (!isLoggedIn.status) {
+                return <Redirect to="/requests" />;
+              }
+              return <MyOffers />;
+            }}
+          />
+
+            <Route
+              exact
+              path={['/messages', '/messages/:room']}
+              component={({ match }) => {
+                if (isLoggedIn.loading) {
+                  return (
+                    <Spinner
+                      width="30px"
+                      customStyle="margin-top: 5rem"
+                      center
+                    />
+                  );
+                }
+                if (!isLoggedIn.status) {
+                  return <Redirect to="/requests" />;
+                }
+                return <Messages match={match} />;
               }}
             />
 

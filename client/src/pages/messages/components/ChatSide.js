@@ -1,15 +1,16 @@
 import React from 'react';
 import {
   ChatContent, ChatSideWrapper, ChattingWithHeader,
-  ChattingWithUserProfileLink, ClearFixFloat, MsgAvatar, MsgBubble,
-  MsgDate, MsgInput, MsgInputWrapper, MsgText, MsgTextWrapper, OpenDetailsBtn, SendButton,
+  ChatTitle, ClearFixFloat, MsgAvatar, MsgBubble,
+  MsgDate, MsgInput, MsgInputWrapper, MsgText,
+  MsgTextWrapper, OpenDetailsBtn, SendButton,
 } from '../style';
 
-export default function ChatSide({ isDetailsClosed, onOpenDetails }) {
+export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
   return (
     <ChatSideWrapper isDetailsClosed={isDetailsClosed}>
       <ChattingWithHeader>
-        <ChattingWithUserProfileLink to="/user/888" target="_blank"> Ali batata </ChattingWithUserProfileLink>
+        <ChatTitle> Chat </ChatTitle>
         {
           isDetailsClosed
             ? (
@@ -21,7 +22,7 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails }) {
         }
       </ChattingWithHeader>
       <ChatContent>
-        { [...Array(20)].map((_, i) => (
+        {/* { [...Array(20)].map((_, i) => (
           <MsgBubble isMe={i % 2 === 0}>
             <div>
               <MsgAvatar>
@@ -34,7 +35,7 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails }) {
             </div>
             <ClearFixFloat />
           </MsgBubble>
-        )) }
+        )) } */}
       </ChatContent>
       <MsgInputWrapper>
         <MsgInput rows="1" placeholder="write your message..." />

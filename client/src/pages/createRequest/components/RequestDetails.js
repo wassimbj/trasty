@@ -13,9 +13,6 @@ export default function RequestDetails({
   values, handleChange,
   setFieldValue, errors,
 }) {
-  // helper, state or country :)
-  // const isState = (location) => location.state_id;
-
   const fromDefaultValue = !values.deliverFrom ? '' : displayNiceLocation(values.deliverFrom, true);
   const [fromRouteSearch, setFromRouteSearch] = useState({
     from: fromDefaultValue, hasSelected: !!fromDefaultValue,
@@ -28,15 +25,11 @@ export default function RequestDetails({
 
   const handleSetRoute = (val, route) => {
     if (route === 'from') {
-      setFromRouteSearch({
-        from: val,
-        hasSelected: false,
-      });
+      setFromRouteSearch({ from: val, hasSelected: false });
+      setFieldValue('deliverFrom', '');
     } else {
-      setToRouteSearch({
-        to: val,
-        hasSelected: false,
-      });
+      setToRouteSearch({ to: val, hasSelected: false });
+      setFieldValue('deliverTo', '');
     }
   };
 

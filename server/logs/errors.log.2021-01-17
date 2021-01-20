@@ -1,5 +1,0 @@
-{
-  message: 'Request Offers ERROR: Error: error: could not determine data type of parameter $1',
-  level: 'error',
-  timestamp: '2021-01-17 09:55:11'
-}

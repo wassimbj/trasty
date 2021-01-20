@@ -7,7 +7,6 @@ export default async function getRequests(data) {
     const resp = await axios.get('/requests/all', {
       params: data
     });
-    console.log('Resp -> ', resp);
     return resp.data;
   } catch (err) {
     return [];

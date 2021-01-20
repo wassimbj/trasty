@@ -4,7 +4,9 @@
 import OAuthUser from './auth/OAuthUser';
 import UserProfile from './userProfile/User';
 import UserRequests from './requests/UserRequests';
-import Offers from './Offers';
+import Offers from './offers';
+import Messages from './messages';
+import Trips from './trips';
 
 module.exports = (app) => {
   // ----------------------------------------
@@ -16,5 +18,9 @@ module.exports = (app) => {
   app.use(UserRequests);
   
   app.use(Offers);
+  
+  app.use(Messages);
+  
+  app.use(Trips);
   // ----------------------------------------
 }

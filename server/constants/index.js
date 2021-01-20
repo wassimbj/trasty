@@ -17,6 +17,13 @@ const constants = {
   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+  ACCEPTED_ORIGINS: [
+    'http://localhost:3000',
+    'http://192.168.1.12:3000',
+    // 'https://trasty.netlify.app',
+    'https://www.trasty.tn',
+    'https://trasty.tn',
+  ]
 }
 
 module.exports = constants

@@ -28,4 +28,6 @@ export const Input = styled.input`
    border-radius: 6px;
    outline: none;
    width: ${(props) => props.width || '100%'};
+   overflow: hidden;
+   text-overflow: ellipsis;
 `;
