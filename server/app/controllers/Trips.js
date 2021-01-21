@@ -21,8 +21,9 @@ class Trips {
 
   async userTrips(req, res){
     try{
-      const userId = req.session.userid;
-      const data = await getUserTrips(userId);
+      const {userid} = req.params;
+      const {limit, offset} = req.query;
+      const data = await getUserTrips(userid, limit, offset);
 
       return res.status(200).json(data);
     }catch(err){

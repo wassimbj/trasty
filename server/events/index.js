@@ -3,7 +3,11 @@ import logger from "../utils/logger";
 function initIoEvents(io){
   // when user open the site (connect)
   io.on("connection", (socket) => { 
-    logger.info("NEW user connected \n\n");
+    logger.info("user connected");
+
+    socket.on('disconnect', () => {
+      logger.info('user disconnected')
+    })
   });
 }
 

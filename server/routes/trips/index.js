@@ -10,7 +10,7 @@ router.post(
 );
 
 router.get(
-  "/trips/user",
+  "/trips/user/:userid",
   UserController.auth,
   TripsController.userTrips
 );

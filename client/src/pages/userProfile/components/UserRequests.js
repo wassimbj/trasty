@@ -13,7 +13,7 @@ export default function UserRequests({ userid }) {
   });
   const [hasMore, setHasMore] = useState(true);
   const [offset, setOffset] = useState(0);
-  const LIMIT = 6;
+  const LIMIT = 10;
 
   useEffect(() => {
     (async function () {

@@ -93,8 +93,10 @@ export default function CreateTrip() {
   const handleTripType = (type) => (e) => {
     if (type === 'roundtrip') {
       setIsRoudTrip(e.target.checked);
+      formik.setFieldValue('tripType', 1);
     } else {
       setIsRoudTrip(!e.target.checked);
+      formik.setFieldValue('tripType', 2);
     }
 
     formik.setFieldValue('travelDate', new Date());

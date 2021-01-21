@@ -133,3 +133,59 @@ export const NoUserMsg = styled.div`
     text-align: center;
   }
 `;
+
+export const TripCardWrapper = styled.div`
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  display: flex;
+`;
+
+export const TripCardImg = styled.span`
+  background: rgb(0 104 186);
+  width: 45px;
+  border-radius: 6px 0 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffa1;
+
+  @media(max-width: 450px){
+    display: none;
+  }
+`;
+
+export const TripCardInfo = styled.div`
+  padding: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  
+`;
+
+export const TripLocation = styled.div`
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  @media(max-width: 425px){
+    font-size: 15px;
+  }
+`;
+
+export const TripDate = styled.div`
+  font-size: 17px;
+  display: flex;
+  &:not(:last-child){ margin-bottom: 0.5rem; }
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media(max-width: 425px){
+    font-size: 15px;
+  }
+`;

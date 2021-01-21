@@ -15,6 +15,7 @@ import ReviewBadge from '../../components/reviewBadge';
 import getUserDetails from '../../api/userProfile/getUserDetails';
 import Spinner from '../../components/spinner';
 import UserRequests from './components/UserRequests';
+import UpcomingTrips from './components/UpcomingTrips';
 
 export default function UserProfile({ match }) {
   const activeTab = match.params.tab;
@@ -97,7 +98,7 @@ export default function UserProfile({ match }) {
                 activeTab === 'reviews'
                   ? <p> Reviews </p>
                 : activeTab === 'trips'
-                    ? <p> Trips </p>
+                  ? <UpcomingTrips userid={userid} />
                 : <UserRequests userid={userid} />
               }
             </TabContent>
