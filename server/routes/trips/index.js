@@ -9,5 +9,11 @@ router.post(
   TripsController.create
 );
 
+router.get(
+  "/trips/user",
+  UserController.auth,
+  TripsController.userTrips
+);
+
 
 export default router;

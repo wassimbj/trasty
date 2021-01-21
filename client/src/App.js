@@ -8,7 +8,7 @@ import {
   Switch,
 } from 'react-router-dom';
 // import io from 'socket.io-client';
-// import socketIo from './utils/socketIo';
+import socketIo from './utils/socketIo';
 // import { io } from 'socket.io-client';
 // import constants from './constants';
 import getLoggedInUser from './api/user/getLoggedInUser';
@@ -39,18 +39,10 @@ function App() {
   });
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  // const socketIo = io('ws://localhost:5000', {
-  //   transports: ['websocket'],
-  //   withCredentials: true,
-  // });
-  // console.log(socketIo.connected);
-  // socketIo.on('connect', () => {
-  //   console.log(`connect ${socketIo.id}`);
-  // });
+  socketIo.on('connect', (s) => {
+    console.log(`connect ${socketIo.id}`);
+  });
 
-  // socketIo.on('disconnect', () => {
-  //   console.log('disconnect');
-  // });
   // get if user is logged in
   useEffect(() => {
     // eslint-disable-next-line func-names

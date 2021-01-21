@@ -1,6 +1,8 @@
-import { io } from 'socket.io-client';
-import constants from '../constants';
+import io from 'socket.io-client';
 
-const socketIo = io('http://localhost:5000', { transports: ['websocket'] });
+const socketIo = io('ws://127.0.0.1:5000', {
+  transports: ['websocket'],
+  withCredentials: true,
+});
 
 export default socketIo;

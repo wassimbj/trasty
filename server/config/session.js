@@ -10,7 +10,7 @@ function init() {
     name: "sid",
     secret: `${constants.SESSION_SECRET_KEY}`, // Put whatever here
     store: sessionStore,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     unset: "destroy",
     cookie: {

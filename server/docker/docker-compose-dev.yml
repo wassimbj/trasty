@@ -1,53 +1,60 @@
 version: "3"
 
-services: 
-   
-   pg_db: 
-      build: 
-         context: ../
-         dockerfile: ./docker/Dockerfile.pgdb
-      container_name: trusti_db
-      env_file: ../.env
-      restart: always
-      volumes:
-         - ../docker-dev-data/pg-data:/var/lib/postgresql/data
-      ports: 
-         - 5432:5432
+services:
+  pg_db:
+    build:
+      # context: ../
+      context: ./
+      dockerfile: ./Dockerfile.pgdb
+    container_name: trusti_db
+    env_file: ../.env
+    restart: always
+    volumes:
+      - ../docker-dev-data/pg-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    # networks:
+    #   - app-network
 
-   trusty_redis: 
-      image: redis
-      restart: always
-      container_name: trusti_redis
-      volumes: 
-         - ../docker-dev-data/redis-data:/var/lib/redis
-      command: redis-server
-      ports:
-         - 5698:6379
-   
-   trusti_node_server:
-      build: 
-         context: ../
-         dockerfile: ./docker/Dockerfile.server
-      container_name: trusti_server
-      restart: always
-      env_file: ../.env
-      volumes:
-         - ..:/trusty/src
-      depends_on:
-         - "pg_db"
-         - "trusty_redis"
-      # volumes:
-      #   - type: bind
-      #      source: ..
-      #      target: /trusty/src
-      ports: 
-         - 5000:5000
-      
-   adminer:
-      image: adminer
-      restart: always
-      ports: 
-         - 8080:8080
-      container_name: adminer
-      environment: 
-         ADMINER_DEFAULT_SERVER: pg_db
+  trusty_redis:
+    image: redis
+    restart: always
+    container_name: trusti_redis
+    volumes:
+      - ../docker-dev-data/redis-data:/var/lib/redis
+    command: redis-server
+    ports:
+      - 5698:6379
+    # networks:
+    #   - app-network
+
+  trusti_node_server:
+    build:
+      # context: ../
+      context: ./
+      dockerfile: ./Dockerfile.server
+    container_name: trusti_server
+    restart: always
+    env_file: ../.env
+    volumes:
+      - ..:/trasty/app
+    depends_on:
+      - "pg_db"
+      - "trusty_redis"
+    ports:
+      - "0.0.0.0:5000:5000"
+    # networks:
+    #   - app-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    container_name: adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: pg_db
+
+# networks:
+#   app-network:
+#     driver: bridge
