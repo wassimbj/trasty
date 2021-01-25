@@ -2,6 +2,7 @@ import createTrip from '../../services/trips/createTrip';
 import logger from '../../utils/logger';
 import {nanoid} from 'nanoid';
 import getUserTrips from '../../services/trips/getUserTrips';
+import deleteTrip from '../../services/trips/deleteTrip';
 
 class Trips {
 
@@ -28,6 +29,19 @@ class Trips {
       return res.status(200).json(data);
     }catch(err){
       logger.error(`get user trips ERROR: ${err}`)
+      return res.status(500).json("ooops")
+    }
+  }
+
+  async delete(req, res){
+    try{
+      const {tripid} = req.params;
+      const {userid} = req.session;
+      await deleteTrip(userid, tripid);
+
+      return res.status(200).json('success');
+    }catch(err){
+      logger.error(`delete trip ERROR: ${err}`)
       return res.status(500).json("ooops")
     }
   }

@@ -56,9 +56,9 @@ export default function CreateTrip() {
           () => {
             toast.success('Your trip has been created', {
               duration: 8000,
-              style: {
-                borderRadius: '50px', background: '#222', color: '#fff',
-              },
+              // style: {
+              //   borderRadius: '50px', background: '#222', color: '#fff',
+              // },
             });
             resetForm({});
             // eslint-disable-next-line no-use-before-define

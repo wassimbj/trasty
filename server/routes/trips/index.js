@@ -9,6 +9,12 @@ router.post(
   TripsController.create
 );
 
+router.post(
+  "/trip/delete/:tripid",
+  UserController.auth,
+  TripsController.delete
+);
+
 router.get(
   "/trips/user/:userid",
   UserController.auth,

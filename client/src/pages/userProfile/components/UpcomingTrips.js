@@ -6,10 +6,12 @@ import Spinner from '../../../components/spinner';
 import niceDateFormat from '../../../utils/niceDateFormat';
 import {
   TripCardWrapper, TripCardImg,
-  TripCardInfo, TripLocation, TripDate,
+  TripCardInfo, TripLocation, TripDate, DeleteTripBtn,
 } from '../style';
+import DeleteTripModal from '../../../components/deleteTripModal.js';
 
 export default function UpcomingTrips({ userid }) {
+  const [isDeleteTripModalOpen, setIsDeleteTripModalOpen] = useState(false);
   const [somethingWrong, setSomethingWrong] = useState(false);
   const [userTrips, setUserTrips] = useState({
     loadng: true,
@@ -70,6 +72,7 @@ export default function UpcomingTrips({ userid }) {
         >
           {
           userTrips.data.map((trip) => (
+            <>
             <TripCardWrapper>
               <TripCardImg />
               <TripCardInfo>
@@ -78,20 +81,28 @@ export default function UpcomingTrips({ userid }) {
                   <span style={{ color: 'rgb(175 175 175)', margin: '0 0.5rem' }}>to</span>
                   <span style={{ fontWeight: '500' }}>{trip.travel_to.nice_display}</span>
                 </TripLocation>
-                <TripDate>
-                  <span style={{ color: 'rgb(175 175 175)', marginRight: '0.5rem' }}>Traveling on</span>
-                  <span style={{ fontWeight: '500', color: '#555', marginRight: '0.5rem' }}>{niceDateFormat(trip.travel_date, true)}</span>
-                </TripDate>
-                {
-                  trip.back_date && (
-                    <TripDate>
-                      <span style={{ color: 'rgb(175 175 175)', marginRight: '0.5rem' }}>Back on</span>
-                      <span style={{ fontWeight: '500', color: '#555', marginRight: '0.5rem' }}>{niceDateFormat(trip.back_date, true)}</span>
-                    </TripDate>
-                  )
-                }
+                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <TripDate>
+                    <span style={{ color: 'rgb(175 175 175)', marginRight: '0.5rem' }}>Traveling on</span>
+                    <span style={{ fontWeight: '500', color: '#555', marginRight: '0.5rem' }}>{niceDateFormat(trip.travel_date, true)}</span>
+                  </TripDate>
+                  {
+                    trip.back_date && (
+                      <TripDate>
+                        <span style={{ color: 'rgb(175 175 175)', marginRight: '0.5rem' }}>Back on</span>
+                        <span style={{ fontWeight: '500', color: '#555', marginRight: '0.5rem' }}>{niceDateFormat(trip.back_date, true)}</span>
+                      </TripDate>
+                    )
+                  }
+                </div>
               </TripCardInfo>
+              <DeleteTripBtn onClick={() => setIsDeleteTripModalOpen(true)}><Icon glyph="delete" size={22} /></DeleteTripBtn>
             </TripCardWrapper>
+            {
+            isDeleteTripModalOpen
+            && <DeleteTripModal tripId={trip.id} onClose={() => setIsDeleteTripModalOpen(false)} />
+            }
+            </>
           ))
           }
         </InfiniteScroll>

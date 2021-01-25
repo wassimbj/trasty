@@ -139,6 +139,21 @@ export const TripCardWrapper = styled.div`
   border-radius: 6px;
   margin-bottom: 2rem;
   display: flex;
+  position: relative;
+  overflow: visible;
+`;
+
+export const DeleteTripBtn = styled.span`
+  padding: 3px;
+  border-radius: 50%;
+  color: #E91E63;
+  background: rgb(233, 30, 99, 0.15);
+  height: 29px;
+  width: 30px;
+  margin: 5px;
+  transition: 250ms;
+  cursor: pointer;
+  &:hover{ background: rgb(233, 30, 99, 0.25); }
 `;
 
 export const TripCardImg = styled.span`
@@ -180,7 +195,7 @@ export const TripLocation = styled.div`
 export const TripDate = styled.div`
   font-size: 17px;
   display: flex;
-  &:not(:last-child){ margin-bottom: 0.5rem; }
+  &:not(:last-child){ margin-right: 0.5rem; }
   align-items: center;
   flex-wrap: wrap;
   overflow: hidden;
