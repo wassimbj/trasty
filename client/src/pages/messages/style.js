@@ -29,14 +29,14 @@ height: 70px;
 `;
 
 export const MsgInputWrapper = styled.div`
-margin-top: 1rem;
-border-top: 1px solid rgba(0,0,0,0.1);
-display: flex;
-position: absolute;
-bottom: 0;
-width: 100%;
-background: #fff;
-padding: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 1rem;
 `;
 
 export const MsgInput = styled.textarea`
@@ -49,11 +49,12 @@ width: 100%;
 `;
 
 export const SendButton = styled.button`
-padding: 0.5rem 1rem;
-display: inline-block;
-background: #333; color: white;
-border-radius: 5px;
-margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  background: #2650ff; color: white;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  &:hover{ background: #0e36e1 }
 `;
 
 export const OpenDetailsBtn = styled.span`
@@ -142,8 +143,8 @@ export const CardLink = styled(Link)`
   &:hover{ background: rgba(0,0,0,0.05); }
 
   ${(props) => props.isActive && css`
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.15);
-    &:hover{ background: transparent; }
+    background: rgba(0,0,0,0.065);
+    &:hover{ background: rgba(0,0,0,0.065); }
   `}
 `;
 

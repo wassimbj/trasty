@@ -39,8 +39,8 @@ function App() {
   });
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  socketIo.on('connect', (s) => {
-    console.log(`connect ${socketIo.id}`);
+  socketIo.on('connect', () => {
+    console.log(`socket connected: ${socketIo.id}`);
   });
 
   // get if user is logged in

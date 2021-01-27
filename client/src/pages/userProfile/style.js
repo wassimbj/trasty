@@ -13,6 +13,7 @@ export const UserInfo = styled.div`
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   border-radius: 5px;
   & img {
     width: 115px; height: 115px;

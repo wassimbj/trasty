@@ -9,5 +9,17 @@ router.get(
   MessagesController.chatRooms
 );
 
+router.post(
+  "/messages/create",
+  UserController.auth,
+  MessagesController.create
+);
+
+router.get(
+  "/messages/get/:roomId",
+  UserController.auth,
+  MessagesController.getAll
+);
+
 
 export default router;
