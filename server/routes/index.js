@@ -7,6 +7,7 @@ import UserRequests from './requests/UserRequests';
 import Offers from './offers';
 import Messages from './messages';
 import Trips from './trips';
+import Notifs from './notifs';
 
 module.exports = (app) => {
   // ----------------------------------------
@@ -22,5 +23,7 @@ module.exports = (app) => {
   app.use(Messages);
   
   app.use(Trips);
+  
+  app.use(Notifs);
   // ----------------------------------------
 }

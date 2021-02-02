@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@hackclub/icons';
 import { Logo } from '../logo';
@@ -11,9 +11,11 @@ import AuthNavItems from './components/AuthNavItems';
 import SmContainer from '../smContainer';
 import UserAuthContext from '../../contexts/UserAuthContext';
 import LoadingShimmer from '../loadingShimmer';
+// import initSocketIo from '../../utils/socketIo';
 
 export default function NavBar({ onClickLogout }) {
   const { isLoggedIn } = useContext(UserAuthContext);
+
   return (
     <>
       <NavWrapper>

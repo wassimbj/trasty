@@ -110,10 +110,12 @@ export const NotifItemContent = styled.div`
 `;
 
 export const EmptyNotifs = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70%;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // height: 70%;
+  text-align: center;
+  margin-top: 2rem;
   & p {
     color: #bdbdbd;
     font-size: 17px;

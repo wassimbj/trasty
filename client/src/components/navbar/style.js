@@ -35,6 +35,18 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
+export const NewNotifDot = styled.span`
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  background: #ff3e3e;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border: 2px solid #f2a9c2;
+`;
+
 export const CenteredStyledLink = styled(NavLink)`
   display: flex;
   align-items: center;

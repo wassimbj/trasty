@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
 import Tip from '../../tip';
-import { StyledLink } from '../style';
+import { NewNotifDot, StyledLink } from '../style';
 import ProfileDropdown from '../../dropdown/ProfileDropdown';
 import NotifsDropdown from '../../dropdown/NotifsDropdown';
 import AddDropdown from '../../dropdown/AddDropdown';
+import initSocketIo from '../../../utils/socketIo';
 
 export default function AuthNavItems({ onClickLogout }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     profileDropdown: false,
     notifsDropdown: false,
     addDropdown: false,
+  });
+
+  // for notifications
+  const [newNotif, setNewNotif] = useState(false);
+  const [newMsg, setNewMsg] = useState(false);
+  
+  const notfisSocketIo = initSocketIo('notifs');
+
+  notfisSocketIo.on('new_notif', () => {
+    setNewNotif(true);
   });
 
   window.onclick = (e) => {
@@ -29,6 +40,10 @@ export default function AuthNavItems({ onClickLogout }) {
       addDropdown: nav === 'add' ? isOpen : false,
       notifsDropdown: nav === 'notif' ? isOpen : false,
     });
+    // when user open the notif dropdown, means user saw the new notifs.
+    if(nav === 'notif' && isOpen){
+      setNewNotif(false);
+    }
   };
 
   const isSmallDevice = window.innerWidth < 450;
@@ -55,11 +70,13 @@ export default function AuthNavItems({ onClickLogout }) {
         onClick={handleDropdownToggle('notif', !isDropdownOpen.notifsDropdown)}
         tabIndex="-1"
       >
+        { newNotif && <NewNotifDot /> }
         <Icon glyph="notification" size={35} aria-label="navElem" />
       </StyledLink>
     </Tip>
     <Tip content="Messages">
       <StyledLink to="/messages" activeClassName="active">
+        {newMsg && <NewNotifDot />}
         <Icon glyph="message" size={35} />
       </StyledLink>
     </Tip>
@@ -77,21 +94,13 @@ export default function AuthNavItems({ onClickLogout }) {
     </Tip>
     {
       isDropdownOpen.profileDropdown
-        ? (
+        &&
           <ProfileDropdown
             isOpen={isDropdownOpen.profileDropdown}
             onClickLogout={onClickLogout}
           />
-        )
-        : null
     }
-    {
-      isDropdownOpen.addDropdown
-        ? (
-          <AddDropdown isOpen={isDropdownOpen.addDropdown} />
-        )
-        : null
-    }
+    {isDropdownOpen.addDropdown && <AddDropdown isOpen={isDropdownOpen.addDropdown} />}
     {!isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />}
     </>
   );

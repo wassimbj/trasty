@@ -27,8 +27,6 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
     query: { roomId }
   });
 
-  // socketIo.on('connect', () => console.log('Connected...'));
-
   // when user send a new message
   const handleNewMsgSent = () => socketIo.emit('new_msg_sent', { roomId });
 
@@ -39,10 +37,9 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
   });
 
   useEffect(() => {
+    // scroll to bottom
+    chatBox.current.scrollTop = chatBox.current.scrollHeight;
     (async function () {
-      chatBox.current.scrollTop = chatBox.current.scrollHeight;
-      // console.dir(chatBox.current);
-      // chatBox.current.scrollIntoView({ behavior: "smooth" })
       try {
         const respData = await getMessages(roomId);
         setMessages({

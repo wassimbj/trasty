@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
 import ChatSide from './components/ChatSide';
 import {
@@ -11,6 +11,7 @@ import DetailsSide from './components/DetailsSide';
 export default function Messages({ match }) {
   const ROOM_ID = match.params.room;
   const [isDetailsClosed, setIsDetailsClosed] = useState(false);
+
   return (
     <Container>
       <SidesWrapper>

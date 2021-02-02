@@ -20,15 +20,18 @@ export const StyledAuthButton = styled.a`
   transition: 250ms;
   
   & span { margin-left: 2rem; }
-  &:hover{ box-shadow: 0 0 12px rgba(0,0,0,0.25); }
+  // &:hover{ box-shadow: 0 0 12px rgba(0,0,0,0.25); }
 `;
 
 export const StyledFacebookButton = styled(StyledAuthButton)`
-  background: rgb(59, 89, 152);
+  background: rgb(33 103 250);
   color: rgb(255, 255, 255);
-`;
 
+  &:hover{ background: rgb(46 93 197); }
+`;
+  
 export const StyledGoogleButton = styled(StyledAuthButton)`
   background: rgb(234, 67, 53);
   color: rgb(255, 255, 255);
+  &:hover{ background: rgb(217 57 44); }
 `;
