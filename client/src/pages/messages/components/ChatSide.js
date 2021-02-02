@@ -4,8 +4,7 @@ import timeAgo from '../../../utils/timeAgo';
 import {
   ChatContent, ChatSideWrapper, ChattingWithHeader,
   ChatTitle, ClearFixFloat, MsgAvatar, MsgBubble,
-  MsgDate, MsgInput, MsgInputWrapper, MsgText,
-  MsgTextWrapper, OpenDetailsBtn, SendButton,
+  MsgDate, MsgText, MsgTextWrapper, OpenDetailsBtn
 } from '../style';
 import MessageTextarea from './MessageTextarea';
 import getMessages from '../../../api/messages/getMessages';
@@ -28,7 +27,7 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
     query: { roomId }
   });
 
-  socketIo.on('connect', () => console.log('Connected to msgs'));
+  // socketIo.on('connect', () => console.log('Connected...'));
 
   // when user send a new message
   const handleNewMsgSent = () => socketIo.emit('new_msg_sent', { roomId });
@@ -40,8 +39,8 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
   });
 
   useEffect(() => {
-    chatBox.current.scrollIntoView();
     (async function () {
+      chatBox.current.scrollTop = chatBox.current.scrollHeight;
       // console.dir(chatBox.current);
       // chatBox.current.scrollIntoView({ behavior: "smooth" })
       try {

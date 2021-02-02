@@ -1,21 +1,21 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import {useFormik} from 'formik';
-import { MsgInput, MsgInputWrapper, SendButton } from '../style'
+import { DisabledSendButton, MsgInput, MsgInputWrapper, SendButton } from '../style'
 import createMessage from '../../../api/messages/createMessage';
+import {string as yupStr, object as yupObj} from 'yup';
 
 export default function MessageTextarea({ roomId, onNewMsgSent }) {
   const formik = useFormik({
     initialValues: {
       msg: '',
     },
+    validationSchema: yupObj().shape({
+      msg: yupStr().required()
+    }),
     onSubmit: async ({ msg }, { resetForm }) => {
       try{
-        if(!msg){
-          return;
-        }
         await createMessage(roomId, msg);
-        // socketIo.emit('new_msg_sent', { roomId })
         onNewMsgSent()
         resetForm({});
       }catch(err){
@@ -34,7 +34,13 @@ export default function MessageTextarea({ roomId, onNewMsgSent }) {
         value={formik.values.msg}
         onChange={formik.handleChange}
       />
-      <SendButton type="submit"> Send </SendButton>
+      {
+        !formik.values.msg ? (
+          <DisabledSendButton> Send </DisabledSendButton>
+        ) : (
+          <SendButton type="submit"> Send </SendButton>
+        )
+      }
     </MsgInputWrapper>
     </form>
   )

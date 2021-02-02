@@ -49,13 +49,23 @@ width: 100%;
 `;
 
 export const SendButton = styled.button`
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   display: inline-block;
   background: #2650ff; color: white;
-  border-radius: 5px;
+  font-weight: 500;
+  border-radius: 50px;
   margin-left: 0.5rem;
   &:hover{ background: #0e36e1 }
 `;
+
+export const DisabledSendButton = styled.span`
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  background: #ccc; color: #555;
+  font-weight: 500;
+  border-radius: 50px;
+  margin-left: 0.5rem;
+`; 
 
 export const OpenDetailsBtn = styled.span`
   padding: 0.35rem 1rem;
