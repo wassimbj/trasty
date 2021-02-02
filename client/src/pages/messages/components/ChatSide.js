@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {useFormik} from 'formik';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import timeAgo from '../../../utils/timeAgo';
 import {
   ChatContent, ChatSideWrapper, ChattingWithHeader,
   ChatTitle, ClearFixFloat, MsgAvatar, MsgBubble,
@@ -9,22 +10,42 @@ import {
 import MessageTextarea from './MessageTextarea';
 import getMessages from '../../../api/messages/getMessages';
 import UserAuthContext from '../../../contexts/UserAuthContext';
+import initSocketIo from '../../../utils/socketIo';
 
 export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
-
+  
+  // get logged in user
+  const { isLoggedIn } = useContext(UserAuthContext);
+  const chatBox = useRef(null);
+  const [newMsg, setNewMsg] = useState(false);
   const [messages, setMessages] = useState({
     loading: true,
     data: [],
   });
 
-  // get logged in user
-  const { isLoggedIn } = useContext(UserAuthContext);
+  // init with the roomId to join the user.
+  const socketIo = initSocketIo('msgs', {
+    query: { roomId }
+  });
+
+  socketIo.on('connect', () => console.log('Connected to msgs'));
+
+  // when user send a new message
+  const handleNewMsgSent = () => socketIo.emit('new_msg_sent', { roomId });
+
+  // when we get a new message
+  socketIo.on('new_msg', (msg) => {
+    console.log('NEW MESSAGE', msg);
+    setNewMsg(true);
+  });
 
   useEffect(() => {
+    chatBox.current.scrollIntoView();
     (async function () {
+      // console.dir(chatBox.current);
+      // chatBox.current.scrollIntoView({ behavior: "smooth" })
       try {
         const respData = await getMessages(roomId);
-        console.log('Data: ', respData);
         setMessages({
           loading: false,
           data: respData.data,
@@ -35,8 +56,12 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
           data: [],
         });
       }
+      if(newMsg){
+        setNewMsg(false);
+      }
     }());
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newMsg]);
 
   return (
     <ChatSideWrapper isDetailsClosed={isDetailsClosed}>
@@ -51,7 +76,7 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
             )
         }
       </ChattingWithHeader>
-      <ChatContent>
+      <ChatContent ref={chatBox}>
         { messages.data.map((msg, i) => (
           <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
             <div>
@@ -60,14 +85,17 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
               </MsgAvatar>
               <MsgTextWrapper>
                 <MsgText>{msg.msg}</MsgText>
-                <MsgDate>2 min ago</MsgDate>
+                <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
               </MsgTextWrapper>
             </div>
             <ClearFixFloat />
           </MsgBubble>
         )) }
       </ChatContent>
-      <MessageTextarea roomId={roomId} />
+      <MessageTextarea
+        roomId={roomId}
+        onNewMsgSent={handleNewMsgSent}
+      />
     </ChatSideWrapper>
   );
 }

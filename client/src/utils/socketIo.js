@@ -1,8 +1,18 @@
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
+import constants from '../constants';
 
-const socketIo = io('ws://127.0.0.1:5000', {
-  transports: ['websocket'],
-  withCredentials: true,
-});
+function initSocketIo(nsp, opts){
+  const options = !opts ? {} : opts;
+  
+  console.log('OPTSSSSSSSSSSS: ', opts);
+  const socketIo = io(`${constants.SERVER_URL}/${nsp}`, {
+    transports: ['websocket'],
+    withCredentials: true,
+    ...options
+  });
 
-export default socketIo;
+  return socketIo;
+}
+
+
+export default initSocketIo;

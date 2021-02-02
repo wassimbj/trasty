@@ -4,6 +4,7 @@ export default async function getUserChatRooms(userId){
   try{
     const {rows} = await db.query(`
       SELECT chat_rooms.slug, chat_rooms.is_locked, chat_rooms.is_success,
+      chat_rooms.traveler_id, chat_rooms.requester_id,
       traveler.fullname as traveler_name, traveler.image as traveler_img,
       requester.fullname as requester_name, requester.image as requester_img
       FROM chat_rooms

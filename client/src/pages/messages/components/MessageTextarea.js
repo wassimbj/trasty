@@ -4,17 +4,19 @@ import {useFormik} from 'formik';
 import { MsgInput, MsgInputWrapper, SendButton } from '../style'
 import createMessage from '../../../api/messages/createMessage';
 
-export default function MessageTextarea({ roomId }) {
-
+export default function MessageTextarea({ roomId, onNewMsgSent }) {
   const formik = useFormik({
     initialValues: {
       msg: '',
     },
-
     onSubmit: async ({ msg }, { resetForm }) => {
       try{
+        if(!msg){
+          return;
+        }
         await createMessage(roomId, msg);
-        // console.log('msssg: ', resp);
+        // socketIo.emit('new_msg_sent', { roomId })
+        onNewMsgSent()
         resetForm({});
       }catch(err){
         toast.error('Something went wong, try again later.');

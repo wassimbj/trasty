@@ -13,9 +13,9 @@ export const ChatSideWrapper = styled.div`
 `;
 
 export const ChatContent = styled.div`
-overflow-y: auto;
-height: 86%;
-padding: 3rem 1rem;
+  overflow-y: auto;
+  height: 86%;
+  padding: 3rem 1rem;
 `;
 
 export const ChattingWithHeader = styled.div`
@@ -58,38 +58,38 @@ export const SendButton = styled.button`
 `;
 
 export const OpenDetailsBtn = styled.span`
-padding: 0.35rem 1rem;
-border-radius: 30px;
-cursor: pointer;
-background: rgb(38,80,255,0.12);
-color: #2650ff;
-font-size: 14px;
-font-weight: 500;
-transition: 250ms;
-&:hover{ background: rgb(38,80,255,0.15) }
+  padding: 0.35rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  background: rgb(38,80,255,0.12);
+  color: #2650ff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 250ms;
+  &:hover{ background: rgb(38,80,255,0.15) }
 `;
 
 export const MsgAvatar = styled.div`
-position: absolute;
-left: 0;
-top: 0;
-& img { width: 45px; height: 45px; object-fit: cover; border-radius: 50px; }
+  position: absolute;
+  left: 0;
+  top: 0;
+  & img { width: 45px; height: 45px; object-fit: cover; border-radius: 50px; }
 `;
 
 export const MsgTextWrapper = styled.div`
-margin-left: 55px;
-position: relative;
-display: inline-block;
-float: left;
+  margin-left: 55px;
+  position: relative;
+  display: inline-block;
+  float: left;
 `;
 
 export const MsgText = styled.p`
-background-color: #eaeaea;
-border-radius: 50px;
-padding: 12px 18px;
-position: relative;
-display: inline-block;
-line-height: 25px;
+  background-color: #eaeaea;
+  border-radius: 5px;
+  padding: 12px 18px;
+  position: relative;
+  display: inline-block;
+  line-height: 25px;
 `;
 
 export const MsgDate = styled.span`
@@ -227,7 +227,7 @@ export const Container = styled.div`
   top: 5%; bottom: 0;
   margin: 0.5rem auto 0;
   // max-width: 1200px;
-  @media(max-width: 600px){ bottom: 8%; top: 6%; margin: 0rem; }
+  @media(max-width: 600px){ bottom: 0%; top: 8%; margin: 0rem; }
   border: 1px solid rgba(0,0,0,0.1);
 `;
 

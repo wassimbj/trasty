@@ -53,9 +53,9 @@ export default function Shops() {
   return (
     <ShopsContainer>
       <MainContainer>
-        <ShopsTitle> Ship goods from any store in the world or locally </ShopsTitle>
+        <ShopsTitle> Ship goods from anywhere in the world. </ShopsTitle>
         <p>
-          Enjoy shopping at huge national retailers or small exclusive shops worldwide or locally
+          Enjoy shopping at huge national retailers or small exclusive shops worldwide
           and forget about the limitations.
         </p>
 

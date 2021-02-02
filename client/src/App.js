@@ -7,10 +7,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-// import io from 'socket.io-client';
-import socketIo from './utils/socketIo';
-// import { io } from 'socket.io-client';
-// import constants from './constants';
 import getLoggedInUser from './api/user/getLoggedInUser';
 import logOut from './api/user/logOut';
 // Components
@@ -30,6 +26,7 @@ import ErrorBoundary from './components/errorBoundary';
 import Error404 from './pages/404';
 import MyOffers from './pages/myOffers';
 import CreateTrip from './pages/createTrip';
+import initSocketIo from './utils/socketIo';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -38,10 +35,10 @@ function App() {
     userid: null,
   });
   const [isLoggedOut, setIsLoggedOut] = useState(false);
-
-  socketIo.on('connect', () => {
-    console.log(`socket connected: ${socketIo.id}`);
-  });
+  // connect to notifs nsp
+  useEffect(() => {
+    initSocketIo('notifs').on('connect', () => console.log('Connected to notifs'));
+  }, [])
 
   // get if user is logged in
   useEffect(() => {
