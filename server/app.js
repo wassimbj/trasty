@@ -5,6 +5,7 @@ import constants from './constants';
 import passport from 'passport';
 import session from './config/session';
 import cors from 'cors';
+import deleteNotifs from './cron-jobs/deleteNotifs';
 
 // use helmet for basic security
 app.use(helmet());
@@ -38,6 +39,9 @@ app.get('/', (req, res) => {
 });
 
 require('./routes')(app);
+
+// call cron jobs
+deleteNotifs();
 
 // 404 Catcher 
 app.use((req, res, next) => {
