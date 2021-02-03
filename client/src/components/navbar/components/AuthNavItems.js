@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Icon from '@hackclub/icons';
 import Tip from '../../tip';
 import { NewNotifDot, StyledLink } from '../style';
 import ProfileDropdown from '../../dropdown/ProfileDropdown';
 import NotifsDropdown from '../../dropdown/NotifsDropdown';
 import AddDropdown from '../../dropdown/AddDropdown';
-import initSocketIo from '../../../utils/socketIo';
+import UserAuthContext from '../../../contexts/UserAuthContext';
+import getNewNotifsNum from '../../../api/notifs/getNewNotifsNum';
 
 export default function AuthNavItems({ onClickLogout }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
@@ -13,17 +14,26 @@ export default function AuthNavItems({ onClickLogout }) {
     notifsDropdown: false,
     addDropdown: false,
   });
+  const { notifSocketIo } = useContext(UserAuthContext);
 
   // for notifications
   const [newNotif, setNewNotif] = useState(false);
   const [newMsg, setNewMsg] = useState(false);
-  
-  const notfisSocketIo = initSocketIo('notifs');
 
-  notfisSocketIo.on('new_notif', () => {
-    setNewNotif(true);
-  });
+  useEffect(() => {
+    (async function(){
+      const newNotifs = await getNewNotifsNum();
+      if(newNotifs.data > 0){
+        setNewNotif(true);
+      }
+    }());
+    notifSocketIo.on('new_notif', (data) => {
+      console.log('NEW NOTIF! ', data);
+      setNewNotif(true);
+    });
+  }, [])
 
+  // to close the dropdowns when clicking anywhere
   window.onclick = (e) => {
     if ((e.path[0].ariaLabel !== 'navElem') && (e.path[0].nodeName !== 'path')) {
       setIsDropdownOpen({
@@ -101,7 +111,8 @@ export default function AuthNavItems({ onClickLogout }) {
           />
     }
     {isDropdownOpen.addDropdown && <AddDropdown isOpen={isDropdownOpen.addDropdown} />}
-    {!isSmallDevice && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />}
+    {!isSmallDevice && isDropdownOpen.notifsDropdown
+      && <NotifsDropdown isOpen={isDropdownOpen.notifsDropdown} />}
     </>
   );
 }

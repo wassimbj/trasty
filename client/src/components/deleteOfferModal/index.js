@@ -10,42 +10,54 @@ import Spinner from '../spinner';
 import deleteOffer from '../../api/offers/deleteOffer';
 
 export default function DeleteOfferModal({
-  onClose, offerId, offerBy, requestBy,
+  onClose, offerId, offerBy, requestBy, isAccepted,
 }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleSubmit = async () => {
-    setIsDeleting(true);
-    try {
-      const resp = await deleteOffer(offerId, offerBy, requestBy);
-      if (resp.success) {
-        toast.success('Offer has been deleted.');
-        window.location.reload();
+    if(!isAccepted){
+      setIsDeleting(true);
+      try {
+        const resp = await deleteOffer(offerId, offerBy, requestBy);
+        if (resp.success) {
+          toast.success('Offer has been deleted.');
+          window.location.reload();
+        }
+      } catch (err) {
+        toast.error('Something went wrong, please try again later.');
       }
-    } catch (err) {
-      toast.error('Something went wrong, please try again later.');
+      setIsDeleting(false);
     }
-    setIsDeleting(false);
   };
 
   return (
     <Modal onClose={onClose}>
-      <Title> Are you sure ? </Title>
+      <Title>Are you sure ?</Title>
       <ModalBodyWrapper>
         <ModalBody>
-          <p style={{ textAlign: 'center' }}> Are you sure you want to delete this help offer ? </p>
+          <p style={{ textAlign: 'center' }}>
+            {
+              !isAccepted
+                ? `Are you sure you want to delete this help offer ?`
+                : `You can't delete this offer, cause its already accepted, if you really can't deliver the user request, please honestly tell him to close the chat room, so he can find another traveler.`
+            }
+          </p>
         </ModalBody>
       </ModalBodyWrapper>
       <ModalFooter>
         {
-          isDeleting ? (
-            <DeleteOfferButton type="button" isDisabled>
-              <Spinner center width="22px" />
-            </DeleteOfferButton>
+          isAccepted ? (
+            <DeleteOfferButton type="button" isDisabled> delete </DeleteOfferButton>
           ) : (
-            <DeleteOfferButton onClick={handleSubmit}>
-              Yes, delete
-            </DeleteOfferButton>
+            isDeleting ? (
+              <DeleteOfferButton type="button" isDisabled>
+                <Spinner center width="22px" />
+              </DeleteOfferButton>
+            ) : (
+              <DeleteOfferButton onClick={handleSubmit}>
+                Yes, delete
+              </DeleteOfferButton>
+            )
           )
         }
         <CancelButton onClick={onClose}>Cancel</CancelButton>

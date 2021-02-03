@@ -1,10 +1,19 @@
 // ? connect to notifications namespace
+
 function connectToNotifsNameSpace(io){
-  io.of('/notifs').on('connection', (socket) => {
-    // const newNamespace = socket.nsp; // newNamespace.name === '/dynamic-101'
-      // console.log('Notifs NSP: ', socket.request.session)
-    // broadcast to all clients in the given sub-namespace
-    // newNamespace.emit('hello');
+  const nsp = io.of('/notifs');
+  nsp.on('connection', (socket) => {
+    //* on connection, join the user to his room, 
+    //* user room is his id
+    const loggedInUserId = socket.request.session.userid;
+    socket.join(loggedInUserId);
+    //  when we got a new notif send it to the right user.
+    socket.on("send_notif", (data) => {
+      //* notifType = notif | msg 
+      const {notifTo, notifType} = data;
+      nsp.to(notifTo).emit('new_notif', notifType);
+    });
+
   });
 } 
 

@@ -1,10 +1,9 @@
 import socketIo from 'socket.io';
 import constants from '../constants';
 import authSocketConnection from '../middlewares/authSocketConnection';
-import connectToMessagesNameSpace from '../events/messages/connectToMsgsNsp';
-import connectToNotifsNameSpace from '../events/notifications/connectToNotifsNsp';
-import logger from '../utils/logger';
-import session from './session';
+import connectToMessagesNameSpace from './messages/connectToMsgsNsp';
+import connectToNotifsNameSpace from './notifications/connectToNotifsNsp';
+import session from '../config/session';
 
 function initSocketIo(server){
   const io = socketIo(server, {
@@ -28,19 +27,6 @@ function initSocketIo(server){
   connectToMessagesNameSpace(io);
 
   connectToNotifsNameSpace(io);
-
-  // io.on("connection", (socket) => {
-  //   logger.info("user connected");
-    //  ??????????????
-    // socket.emit('msgg', 'HELLO FROM THE SERVER !!!!')
-    // socket.join('CHAT_ROOM_ID'); // for chat
-    // socket.join('USER_SPACE_ID')  // for notifications
-    // io.to('some room').emit('some event'); // send to a room
-    //  ??????????????
-    // socket.on('disconnect', () => {
-    //   logger.info('user disconnected')
-    // })
-  // });
 }
 
 export default initSocketIo

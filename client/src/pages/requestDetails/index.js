@@ -91,6 +91,7 @@ export default function RequestDetails({ match }) {
               requestId={requestDetails.data.id}
               quantity={requestDetails.data.quantity}
               productPrice={requestDetails.data.product_unit_price}
+              requestBy={requestDetails.data.user_id}
             />
             <DeliveryDetails
               deliverFrom={requestDetails.data.deliver_from.nice_display}

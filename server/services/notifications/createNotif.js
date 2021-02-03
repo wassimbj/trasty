@@ -8,16 +8,17 @@ import db from '../../database/init';
 
   acceptedOffer = {
     requester_id,
-    chat_room_id
+    request_id
   }
 */
-export default async function createNotif( newOffer, acceptedOffer, userid ){
+export default async function createNotif( notifTo, newOffer, acceptedOffer ){
   try{
+    const notifType = !newOffer ? 'accepted_offer' : 'new_offer';
     await db.query(`
       INSERT INTO
-        notifs(new_offer, accepted_offer, user_id, is_seen)
+        notifs(new_offer, accepted_offer, user_id, notif_type)
       VALUES($1,$2,$3,$4)
-    `, [newOffer, acceptedOffer, userid, false]);
+    `, [newOffer, acceptedOffer, notifTo, notifType]);
   
   }catch(err){
     throw new Error(err);

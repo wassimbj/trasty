@@ -3,7 +3,7 @@ import http from 'http';
 import app from '../app';
 import constants from '../constants';
 import logger from '../utils/logger.js';
-import initSocketIo from '../config/socketIo';
+import initSocketIo from '../events/socketIo';
 // app.set('socketio', io);
 
 const server = http.Server(app);

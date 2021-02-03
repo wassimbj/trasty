@@ -26,11 +26,11 @@ export default function OfferCard({
   return (
     <>
       <OfferCardWrapper>
-      <Tip content="Delete">
-        <DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
-          <Icon glyph="delete" size={20} />
-        </DeleteBtn>
-      </Tip>
+        <Tip content="Delete">
+          <DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
+            <Icon glyph="delete" size={20} />
+          </DeleteBtn>
+        </Tip>
       <ProductDetails>
         <span className="title">product</span>
         <ToolTip content="view request details" inline width="130px">
@@ -91,6 +91,7 @@ export default function OfferCard({
             onClose={() => setIsDeleteModalOpen(false)}
             offerId={offerId}
             offerBy={offerBy}
+            isAccepted={isAccepted}
           />
         )
       }

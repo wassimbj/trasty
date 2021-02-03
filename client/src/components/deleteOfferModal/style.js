@@ -88,6 +88,7 @@ export const DeleteOfferButton = styled.button`
   font-weight: 500;
   ${(props) => props.isDisabled && css`
     opacity: 0.7;
+    pointer-events: none;
   `}
 `;
 

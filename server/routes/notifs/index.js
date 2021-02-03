@@ -9,4 +9,10 @@ router.get(
   NotifsController.getAll
 );
 
+router.get(
+  "/notifs/news",
+  UserController.auth,
+  NotifsController.newNotifsNum
+);
+
 export default router;

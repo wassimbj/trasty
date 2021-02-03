@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import getMyOffers from '../../api/offers/getMyOffers';
 import OfferCard from './components/OfferCard';
 import Spinner from '../../components/spinner';
@@ -7,15 +7,24 @@ import {
   ContentContainer, HeaderWrapper, NoOffersMsg, OffersWrapper,
   RequestsLink, Title, Wrapper,
 } from './style';
+import UserAuthContext from '../../contexts/UserAuthContext';
 
-export default function MyOffers() {
+export default function MyOffers({ props }) {
   const [myOffers, setMyOffers] = useState({
     loading: true,
     data: [],
   });
 
+  const {notifSocketIo} = useContext(UserAuthContext);
   const [error, setError] = useState(false);
-
+  useEffect(() => {
+    const state = props.location.state;
+    if(!!state){
+      if(state.sendNotif){
+        notifSocketIo.emit('send_notif', state.data);
+      }
+    }
+  }, []);
   useEffect(() => {
     (async function () {
       try {

@@ -1,5 +1,4 @@
 import db from '../../database/init';
-import logger from '../../utils/logger';
 
 async function createOffer(
   offer_by,
@@ -30,8 +29,7 @@ async function createOffer(
       notes,
     ]);
   }catch(err){
-    logger.error(`Create Offer (service) Error: ${err}`);
-    throw new Error('Create Offer Error');
+    throw new Error(err);
   }
 
 }

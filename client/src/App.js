@@ -26,6 +26,7 @@ import ErrorBoundary from './components/errorBoundary';
 import Error404 from './pages/404';
 import MyOffers from './pages/myOffers';
 import CreateTrip from './pages/createTrip';
+import initSocketIo from './utils/socketIo';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -60,7 +61,7 @@ function App() {
   return (
     <Router>
       {isLoggedOut && <Redirect to="/" />}
-      <UserAuthContext.Provider value={{ isLoggedIn }}>
+      <UserAuthContext.Provider value={{ isLoggedIn, notifSocketIo: initSocketIo('notifs') }}>
         {/* Start of Routes */}
         <NavBar onClickLogout={logoutHandler} />
         <createGlobalStyle />
@@ -120,13 +121,13 @@ function App() {
           <Route
             exact
             path="/my/offers"
-            component={() => {
+            component={(props) => {
               if (isLoggedIn.loading) {
                 return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
               } if (!isLoggedIn.status) {
                 return <Redirect to="/requests" />;
               }
-              return <MyOffers />;
+              return <MyOffers props={props} />;
             }}
           />
 

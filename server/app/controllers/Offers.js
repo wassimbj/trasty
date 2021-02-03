@@ -6,6 +6,8 @@ import deleteOffer from '../../services/offers/deleteOffer';
 import getMyOffers from '../../services/offers/getMyOffers';
 import getRequestOffers from '../../services/offers/getRequestOffers';
 import isOfferAccepted from "../../services/offers/isOfferAccepted";
+import createNotif from '../../services/notifications/createNotif';
+import getRequestBy from '../../services/requests/getRequestBy';
 import logger from '../../utils/logger';
 
 class Offers {
@@ -15,17 +17,21 @@ class Offers {
       const {
         requestId, deliveryDate, deliverFrom, deliveryReward, notes
       } = req.body;
-      const user_id = req.session.userid;
+      const userId = req.session.userid;
 
       await createOffer(
-        user_id,
+        userId,
         requestId,
         deliveryDate,
         deliverFrom,
         deliveryReward,
         notes
       );
-      
+
+      // insert notif
+      const notifTo = await getRequestBy(requestId);
+      await createNotif(notifTo, {traveler_id: userId, request_id: requestId}, null);
+
       return res.status(200).json('success');
     }catch(err){
       logger.error(`Create Offer Error: ${err}`);
@@ -39,7 +45,7 @@ class Offers {
       const user_id = req.session.userid;
       // if i get no requestId or no offerId or i get them both
       // if i get requestBy only, i know its the user who got the offer wants to delete the offer
-      // if i get offerBy only, i know its the user who offered want to delete his offer
+      // if i get offerBy only, i know its the user who created the offer wants to delete his offer
       if((!requestBy && !offerBy) || (requestBy && offerBy)){
         return res.status(401).json('Not Allowed');
       }
@@ -52,10 +58,13 @@ class Offers {
         return res.status(401).json('Not Allowed');
       }
 
-      // else perform the deletion
-      await deleteOffer(offerId);
-      
-      return res.status(200).json('success');
+      const isOfferAccepted = await isOfferAccepted(offerId);
+      if(!isOfferAccepted){
+        await deleteOffer(offerId);
+        return res.status(200).json('success');
+      } else {
+        return res.status(401).json('Cant delete this offer, its accepted.')
+      }
     }catch(err){
       logger.error(`Delete Offer Error: ${err}`);
       return res.status(500).json('Oops');

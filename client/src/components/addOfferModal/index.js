@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import DatePicker, { registerLocale } from 'react-datepicker';
 // import fr from 'date-fns/locale/fr';
+import {Redirect} from 'react-router-dom';
 import toast from 'react-hot-toast';
 import dayjs from 'dayjs';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../assets/styles/custom-date-picker.css';
+import UserAuthContext from '../../contexts/UserAuthContext'
 import Modal from '../modal';
 import constants from '../../constants';
 import {
@@ -21,13 +23,16 @@ import Spinner from '../spinner';
 import createOffer from '../../api/offers/createOffer';
 
 export default function AddOfferModal({
-  onClose, requestId, productUnitPrice, quantity,
+  onClose, requestId, requestBy,
+  productUnitPrice, quantity,
 }) {
   // registerLocale('fr', fr);
   const [fromRouteSearch, setFromRouteSearch] = useState({
     from: '', hasSelected: false,
   });
 
+  // to redirect user to his offers page when its created
+  const [offerCreated, setOfferCreated] = useState(false);
   const [isCreatingOffer, setIsCreatingOffer] = useState(false);
 
   const formik = useFormik({
@@ -68,8 +73,8 @@ export default function AddOfferModal({
           deliverFrom: newDeliverFromObj,
         });
         if (resp.success) {
-          toast.success('Your offer has been successfully added.');
-          window.location.reload();
+          toast.success('Your offer has been successfully added.', {duration: 9000});
+          setOfferCreated(true);
         }
       } catch (err) {
         toast.error('Something went wrong, try again later...');
@@ -77,6 +82,23 @@ export default function AddOfferModal({
       setIsCreatingOffer(false);
     },
   });
+
+  if(offerCreated){
+    return (
+      <Redirect
+        to={{
+          pathname: '/my/offers',
+          state: {
+            sendNotif: true,
+            data: {
+              notifTo: requestBy,
+              notifType: 'notif'
+            }
+          }
+        }}
+      />
+    )
+  }
 
   return (
     <Modal onClose={onClose}>

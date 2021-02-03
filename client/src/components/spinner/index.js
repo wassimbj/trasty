@@ -16,22 +16,22 @@ export default function Spinner({
   return (
     <Wrapper customStyle={customStyle}>
       <svg
-      width={width || '50px'}
-      height={width || '50px'}
-      version="1.1"
-      style={{margin: '0 auto', textAlign: 'center'}}
-      x="0px" y="0px" viewBox="0 0 50 100" enable-background="new 0 0 0 0"
-    >
-      <circle fill="#333" stroke="none" cx="6" cy="50" r="6">
-        <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"></animate>    
-      </circle>
-      <circle fill="#333" stroke="none" cx="26" cy="50" r="6">
-        <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"></animate>       
-      </circle>
-      <circle fill="#333" stroke="none" cx="46" cy="50" r="6">
-        <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"></animate>     
-      </circle>
-    </svg>
+        xmlns="http://www.w3.org/2000/svg"
+        width={width || '30'}
+        height={width || '30'}
+        viewBox="0 0 38 38"
+        style={{ margin: '0 auto' }}
+        stroke={spinnerColor || '#000'}
+      >
+        <g fill="none" fill-rule="evenodd">
+          <g transform="translate(1 1)" stroke-width="2">
+            <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+            <path d="M36 18c0-9.94-8.06-18-18-18">
+                <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/>
+            </path>
+          </g>
+        </g>
+      </svg>
     </Wrapper>
   );
 }

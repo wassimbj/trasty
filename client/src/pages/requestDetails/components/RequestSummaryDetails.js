@@ -17,7 +17,8 @@ import DeleteOfferModal from '../../../components/deleteOfferModal';
 import Spinner from '../../../components/spinner';
 
 export default function RequestAmountsDetails({
-  quantity, productPrice, requestId, isMyRequest, iAlreadyOffered,
+  quantity, productPrice, requestId,
+  isMyRequest, iAlreadyOffered, requestBy
 }) {
   const { isLoggedIn } = useContext(UserAuthContext);
   const [isAddOfferModalOpen, setIsAddOfferModalOpen] = useState(false);
@@ -91,26 +92,26 @@ export default function RequestAmountsDetails({
       </RequestAmountsDetailsWrapper>
       {
         !isMyRequest ? (
-          isAddOfferModalOpen && (
+          isAddOfferModalOpen ? (
             <AddOfferModal
               onClose={() => setIsAddOfferModalOpen(false)}
               requestId={requestId}
               productUnitPrice={productPrice}
               quantity={quantity}
+              requestBy={requestBy}
             />
-          )
+          ) : null
         ) : null
       }
-
       {
-        iAlreadyOffered ? (
+        iAlreadyOffered && (
           isDeleteOfferModalOpen && (
             <DeleteOfferModal
               onClose={() => setIsDeleteOfferModalOpen(false)}
               requestId={requestId}
             />
           )
-        ) : null
+        )
       }
     </>
   );

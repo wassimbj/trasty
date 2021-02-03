@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Icon from "@hackclub/icons";
 import Spinner from '../spinner';
 import timeAgo from '../../utils/timeAgo';
@@ -11,6 +11,7 @@ import {
   NotifsDropDownCard, NotifsTitle,
 } from "./style";
 import getAllNotifs from "../../api/notifs/getAll";
+import UserAuthContext from "../../contexts/UserAuthContext";
 
 export default function NotifsDropdown({ isOpen }) {
   const [notifs, setNotifs] = useState({
@@ -18,6 +19,7 @@ export default function NotifsDropdown({ isOpen }) {
     data: [],
   });
 
+  const {isLoggedIn} = useContext(UserAuthContext);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function NotifsDropdown({ isOpen }) {
                   notifs.data.map((notif) => {
                     if(notif.notif_type === 'new_offer'){
                       return (
-                        <NotifItem>
+                        <NotifItem to='/my/offers'>
                           <NotifItemContent>
                             <AcceptedOfferIcon>
                               <Icon glyph="checkmark" size={28} />
@@ -78,7 +80,7 @@ export default function NotifsDropdown({ isOpen }) {
                       )
                     } else {
                       return(
-                        <NotifItem>
+                        <NotifItem to={`/user/${isLoggedIn.userid}`}>
                           <NotifItemContent>
                             <GotNewOfferIcon>
                               <Icon glyph="message-simple" size={28} />
