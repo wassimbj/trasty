@@ -28,11 +28,10 @@ export default function AcceptOfferModal({
     try {
       const resp = await acceptOffer(offerId, offerBy, requestId, requestBy);
       if (resp.success) {
-        console.log(resp.data);
-        toast.success('Offer has been accepted.', { duration: 8000 });
+        toast.success('Offer has been accepted, chat more with the traveler...', { duration: 9000 });
         setSuccess({
           status: true,
-          chatRoomId: resp.data.chatRoomId,
+          chatRoomId: resp.data,
         });
       }
     } catch (err) {
@@ -42,7 +41,20 @@ export default function AcceptOfferModal({
   };
 
   if (success.status) {
-    return <Redirect to={`/messages/${success.chatRoomId}`} />;
+    return (
+      <Redirect
+        to={{
+          pathname: `/messages/${success.chatRoomId}`,
+          state: {
+            sendNotif: true,
+            data: {
+              notifTo: offerBy,
+              notifType: 'notif'
+            }
+          }
+        }}
+      />
+    );
   }
 
   return (

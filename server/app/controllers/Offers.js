@@ -112,7 +112,9 @@ class Offers {
         if(!isAlreadyAccepted){
           let chatRoomId = nanoid(30);
           await acceptOffer(offerId)
-          await createMessageRoom(chatRoomId, offerId, requestId, offerBy, requesterId)
+          await createMessageRoom(chatRoomId, offerId, requestId, offerBy, requesterId);
+          // insert notif
+          await createNotif(offerBy, null, {requester_id: requesterId, request_id: requestId});
           return res.status(200).json(chatRoomId)
         }else {
           return res.status(403).json("already accepted")

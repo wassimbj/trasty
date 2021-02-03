@@ -8,8 +8,8 @@ import {
 import RecentMessagesSide from './components/RecentMessagesSide';
 import DetailsSide from './components/DetailsSide';
 
-export default function Messages({ match }) {
-  const ROOM_ID = match.params.room;
+export default function Messages({props}) {
+  const ROOM_ID = props.match.params.room;
   const [isDetailsClosed, setIsDetailsClosed] = useState(false);
 
   return (
@@ -32,6 +32,7 @@ export default function Messages({ match }) {
             </ChatSideWrapper>
           ) : (
             <ChatSide
+              locationState={props.location.state}
               roomId={ROOM_ID}
               isDetailsClosed={isDetailsClosed}
               onOpenDetails={() => setIsDetailsClosed(false)}

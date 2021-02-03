@@ -57,11 +57,11 @@ function App() {
       setIsLoggedOut(true);
     }
   };
-
+  // , notifSocketIo: initSocketIo('notifs')
   return (
     <Router>
       {isLoggedOut && <Redirect to="/" />}
-      <UserAuthContext.Provider value={{ isLoggedIn, notifSocketIo: initSocketIo('notifs') }}>
+      <UserAuthContext.Provider value={{ isLoggedIn }}>
         {/* Start of Routes */}
         <NavBar onClickLogout={logoutHandler} />
         <createGlobalStyle />
@@ -134,7 +134,7 @@ function App() {
             <Route
               exact
               path={['/messages', '/messages/:room']}
-              component={({ match }) => {
+              component={(props) => {
                 if (isLoggedIn.loading) {
                   return (
                     <Spinner
@@ -147,7 +147,7 @@ function App() {
                 if (!isLoggedIn.status) {
                   return <Redirect to="/requests" />;
                 }
-                return <Messages match={match} />;
+                return <Messages props={props} />;
               }}
             />
 

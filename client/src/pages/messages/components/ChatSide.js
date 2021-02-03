@@ -10,8 +10,11 @@ import MessageTextarea from './MessageTextarea';
 import getMessages from '../../../api/messages/getMessages';
 import UserAuthContext from '../../../contexts/UserAuthContext';
 import initSocketIo from '../../../utils/socketIo';
+import sendNotif from '../../../events/sendNotif';
 
-export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
+export default function ChatSide({
+  isDetailsClosed, onOpenDetails, roomId, locationState
+}) {
   
   // get logged in user
   const { isLoggedIn } = useContext(UserAuthContext);
@@ -26,15 +29,25 @@ export default function ChatSide({ isDetailsClosed, onOpenDetails, roomId }) {
   const socketIo = initSocketIo('msgs', {
     query: { roomId }
   });
-
-  // when user send a new message
-  const handleNewMsgSent = () => socketIo.emit('new_msg_sent', { roomId });
-
+    
   // when we get a new message
   socketIo.on('new_msg', (msg) => {
     console.log('NEW MESSAGE', msg);
     setNewMsg(true);
   });
+
+  // when user send a new message
+  const handleNewMsgSent = () => socketIo.emit('new_msg_sent', { roomId });
+
+
+  // when user accept an offer he will be redirect to the chat room
+  useEffect(() => {
+    if(!!locationState){
+      if(locationState.sendNotif){
+        sendNotif(locationState.data.notifTo, locationState.data.notifType)
+      }
+    }
+  }, []);
 
   useEffect(() => {
     // scroll to bottom

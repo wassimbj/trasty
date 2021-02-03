@@ -33,6 +33,7 @@ export default function NotifsDropdown({ isOpen }) {
             data: resp.data,
           });
         } catch (err) {
+          setNotifs({loading: false, data: []})
           setError(true);
         }
       })();
@@ -46,9 +47,9 @@ export default function NotifsDropdown({ isOpen }) {
         <NotifsContent>
           {
             notifs.loading ? (
-              <Spinner center />
+              <Spinner center customStyle="margin-top: 3rem" width="25" />
             ) : (
-              error ? <p> Something went wrong... </p>
+              error ? <p style={{textAlign: 'center', padding: '1rem 0'}}> Something went wrong... </p>
               : (
                 !notifs.data.length ? (
                   <EmptyNotifs>
@@ -59,7 +60,7 @@ export default function NotifsDropdown({ isOpen }) {
                   </EmptyNotifs>
                 ) : (
                   notifs.data.map((notif) => {
-                    if(notif.notif_type === 'new_offer'){
+                    if(notif.notif_type === 'accepted_offer'){
                       return (
                         <NotifItem to='/my/offers'>
                           <NotifItemContent>

@@ -5,8 +5,10 @@ import { NewNotifDot, StyledLink } from '../style';
 import ProfileDropdown from '../../dropdown/ProfileDropdown';
 import NotifsDropdown from '../../dropdown/NotifsDropdown';
 import AddDropdown from '../../dropdown/AddDropdown';
-import UserAuthContext from '../../../contexts/UserAuthContext';
+// import UserAuthContext from '../../../contexts/UserAuthContext';
+// import initSocketIo from '../../../utils/socketIo'
 import getNewNotifsNum from '../../../api/notifs/getNewNotifsNum';
+import getNewNotif from '../../../events/getNewNotif';
 
 export default function AuthNavItems({ onClickLogout }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
@@ -14,11 +16,11 @@ export default function AuthNavItems({ onClickLogout }) {
     notifsDropdown: false,
     addDropdown: false,
   });
-  const { notifSocketIo } = useContext(UserAuthContext);
+  // const { notifSocketIo } = useContext(UserAuthContext);
 
   // for notifications
   const [newNotif, setNewNotif] = useState(false);
-  const [newMsg, setNewMsg] = useState(false);
+  const [newMsgNotif, setNewMsgNotif] = useState(false);
 
   useEffect(() => {
     (async function(){
@@ -27,9 +29,12 @@ export default function AuthNavItems({ onClickLogout }) {
         setNewNotif(true);
       }
     }());
-    notifSocketIo.on('new_notif', (data) => {
-      console.log('NEW NOTIF! ', data);
-      setNewNotif(true);
+    getNewNotif((notifType) => {
+      if(notifType === 'msg'){
+        setNewMsgNotif(true);
+      } else {
+        setNewNotif(true);
+      }
     });
   }, [])
 
@@ -86,7 +91,7 @@ export default function AuthNavItems({ onClickLogout }) {
     </Tip>
     <Tip content="Messages">
       <StyledLink to="/messages" activeClassName="active">
-        {newMsg && <NewNotifDot />}
+        {newMsgNotif && <NewNotifDot />}
         <Icon glyph="message" size={35} />
       </StyledLink>
     </Tip>

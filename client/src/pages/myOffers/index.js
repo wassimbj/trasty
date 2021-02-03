@@ -7,7 +7,7 @@ import {
   ContentContainer, HeaderWrapper, NoOffersMsg, OffersWrapper,
   RequestsLink, Title, Wrapper,
 } from './style';
-import UserAuthContext from '../../contexts/UserAuthContext';
+import sendNotif from '../../events/sendNotif';
 
 export default function MyOffers({ props }) {
   const [myOffers, setMyOffers] = useState({
@@ -15,13 +15,14 @@ export default function MyOffers({ props }) {
     data: [],
   });
 
-  const {notifSocketIo} = useContext(UserAuthContext);
+  // const {notifSocketIo} = useContext(UserAuthContext);
   const [error, setError] = useState(false);
   useEffect(() => {
     const state = props.location.state;
     if(!!state){
       if(state.sendNotif){
-        notifSocketIo.emit('send_notif', state.data);
+        sendNotif(state.data.notifTo, state.data.notifType)
+        // notifSocketIo.emit('send_notif', state.data);
       }
     }
   }, []);
@@ -29,13 +30,11 @@ export default function MyOffers({ props }) {
     (async function () {
       try {
         const respData = await getMyOffers();
-        console.log(respData);
         setMyOffers({
           loading: false,
           data: respData.resp,
         });
       } catch (err) {
-        console.error(err);
         setError(true);
       }
     }());
