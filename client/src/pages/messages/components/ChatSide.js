@@ -70,7 +70,7 @@ export default function ChatSide({
       }
     }());
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newMsg]);
+  }, [newMsg, roomId]);
 
   return (
     <ChatSideWrapper isDetailsClosed={isDetailsClosed}>

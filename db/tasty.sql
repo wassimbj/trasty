@@ -2,7 +2,7 @@
 
 \connect "trusty";
 
-CREATE SEQUENCE chat_rooms_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 7 CACHE 1;
+CREATE SEQUENCE chat_rooms_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 11 CACHE 1;
 
 CREATE TABLE "public"."chat_rooms" (
     "id" integer DEFAULT nextval('chat_rooms_id_seq') NOT NULL,
@@ -24,7 +24,7 @@ COMMENT ON COLUMN "public"."chat_rooms"."is_locked" IS 'in case something is wro
 COMMENT ON COLUMN "public"."chat_rooms"."is_success" IS 'when request is delivered';
 
 INSERT INTO "chat_rooms" ("id", "slug", "is_locked", "is_success", "request_id", "offer_id", "traveler_id", "requester_id") VALUES
-(7,	'p_3Yr_HwP2mHn70icugjA3B6-ztyhV',	'0',	'0',	24,	14,	7,	8);
+(11,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	'0',	'0',	24,	33,	7,	8);
 
 CREATE TABLE "public"."cities" (
     "id" integer NOT NULL,
@@ -48549,22 +48549,41 @@ INSERT INTO "countries" ("id", "sortname", "name", "phonecode") VALUES
 (245,	'ZM',	'Zambia',	260),
 (246,	'ZW',	'Zimbabwe',	263);
 
-CREATE SEQUENCE messages_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START  CACHE 1;
+CREATE SEQUENCE messages_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 77 CACHE 1;
 
 CREATE TABLE "public"."messages" (
     "id" integer DEFAULT nextval('messages_id_seq') NOT NULL,
-    "room_id" integer NOT NULL,
+    "room_id" character varying NOT NULL,
     "msg_from" integer NOT NULL,
-    "msg_to" integer NOT NULL,
-    "msg" character varying(500) NOT NULL,
+    "msg" character varying(2000) NOT NULL,
     "is_seen" boolean DEFAULT false NOT NULL,
     "created_at" timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL
 ) WITH (oids = false);
 
 COMMENT ON COLUMN "public"."messages"."is_seen" IS 'for notifications';
 
+INSERT INTO "messages" ("id", "room_id", "msg_from", "msg", "is_seen", "created_at") VALUES
+(75,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	8,	'HEY',	'0',	'2021-02-03 16:55:48.333007'),
+(76,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	7,	'TTT',	'0',	'2021-02-03 16:55:57.313229'),
+(77,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	8,	'NICE',	'0',	'2021-02-03 16:56:03.084484');
 
-CREATE SEQUENCE offers_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 14 CACHE 1;
+CREATE SEQUENCE notifs_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 28 CACHE 1;
+
+CREATE TABLE "public"."notifs" (
+    "id" integer DEFAULT nextval('notifs_id_seq') NOT NULL,
+    "new_offer" jsonb,
+    "accepted_offer" jsonb,
+    "is_seen" boolean DEFAULT false NOT NULL,
+    "created_at" timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "user_id" integer NOT NULL,
+    "notif_type" character varying(20)
+) WITH (oids = false);
+
+INSERT INTO "notifs" ("id", "new_offer", "accepted_offer", "is_seen", "created_at", "user_id", "notif_type") VALUES
+(27,	'{"request_id": 24, "traveler_id": 7}',	NULL,	'1',	'2021-02-03 16:55:31.860459',	8,	'new_offer'),
+(28,	NULL,	'{"request_id": 24, "requester_id": 8}',	'1',	'2021-02-03 16:55:41.782613',	7,	'accepted_offer');
+
+CREATE SEQUENCE offers_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 33 CACHE 1;
 
 CREATE TABLE "public"."offers" (
     "id" integer DEFAULT nextval('offers_id_seq') NOT NULL,
@@ -48576,11 +48595,12 @@ CREATE TABLE "public"."offers" (
     "notes" character varying(250) NOT NULL,
     "created_at" timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
     "is_accepted" boolean DEFAULT false NOT NULL,
-    CONSTRAINT "offers_id" PRIMARY KEY ("id")
+    CONSTRAINT "offers_id" PRIMARY KEY ("id"),
+    CONSTRAINT "offers_offer_by_offer_to" UNIQUE ("offer_by", "offer_to")
 ) WITH (oids = false);
 
 INSERT INTO "offers" ("id", "offer_by", "offer_to", "delivery_date", "delivery_from", "offer_reward", "notes", "created_at", "is_accepted") VALUES
-(14,	7,	24,	'2021-01-21',	'{"country_id":231,"state_id":0,"city_id":0,"nice_display":"United States, US"}',	100.00,	'',	'2021-01-14 16:07:04.771929',	'1');
+(33,	7,	24,	'2021-02-10',	'{"country_id":82,"state_id":0,"city_id":0,"nice_display":"Germany, DE"}',	107.43,	'',	'2021-02-03 16:55:31.820854',	'1');
 
 CREATE SEQUENCE requests_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 24 CACHE 1;
 
@@ -48599,7 +48619,7 @@ CREATE TABLE "public"."requests" (
     "deliver_from" json NOT NULL,
     "product_size" character varying(10) NOT NULL,
     "deliver_before" integer DEFAULT '0' NOT NULL,
-    "willing_to_pay" real,
+    "willing_to_pay" numeric,
     "category" character varying(20),
     CONSTRAINT "requests_slug" PRIMARY KEY ("slug")
 ) WITH (oids = false);
@@ -52662,6 +52682,22 @@ INSERT INTO "states" ("id", "name", "country_id") VALUES
 (3975,	'Washington D.C',	231),
 (3662,	'Kairawen',	222);
 
+CREATE SEQUENCE trips_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 9 CACHE 1;
+
+CREATE TABLE "public"."trips" (
+    "id" integer DEFAULT nextval('trips_id_seq') NOT NULL,
+    "slug" character varying(20) NOT NULL,
+    "travel_from" json NOT NULL,
+    "travel_to" json NOT NULL,
+    "type" smallint DEFAULT '1' NOT NULL,
+    "travel_date" date NOT NULL,
+    "back_date" date,
+    "travel_by" integer NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "trips" ("id", "slug", "travel_from", "travel_to", "type", "travel_date", "back_date", "travel_by") VALUES
+(9,	'ngJnTFjlgPcIV82uJbSZ',	'{"country_id":222,"state_id":3653,"city_id":0,"nice_display":"Tunisia, Sousse"}',	'{"country_id":229,"state_id":3798,"city_id":0,"nice_display":"United Arab Emirates, Dubai"}',	2,	'2021-02-03',	NULL,	8);
+
 CREATE SEQUENCE users_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 8 CACHE 1;
 
 CREATE TABLE "public"."users" (
@@ -52686,4 +52722,4 @@ INSERT INTO "users" ("id", "fullname", "image", "email", "password", "phone", "i
 (7,	'wasim',	'https://lh3.googleusercontent.com/a-/AOh14GgH2oCAiiWKLtgUeSXHUdEH0hJXljxAwjOQ-_VHkw=s96-c',	'wassimbenjdida@gmail.com',	NULL,	'20123456',	'0',	'1',	'292995',	'dHOJbjAC85yMUQpcuQmV',	'2020-12-02 22:25:51.848937',	'google'),
 (8,	'wassim ben jdida',	'https://lh3.googleusercontent.com/a-/AOh14GjVE-1UBzX1DdbZabIgDQIT7ABVsWMazPBOoqoM=s96-c',	'wassimjdida.dev@gmail.com',	NULL,	'20123456',	'0',	'1',	'301906',	'2Uh-sPe22Mgios8Zbu10',	'2020-12-15 14:01:22.761495',	'google');
 
--- 2021-01-17 12:49:02.793803+00
+-- 2021-02-03 16:57:45.88113+00
