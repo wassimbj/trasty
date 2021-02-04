@@ -81,7 +81,7 @@ export default function OfferCard({
           >
             <span span className={`statushint ${isAccepted ? 'accepted' : 'pending'}`}>{isAccepted ? 'Accepted' : 'Pending'}</span>
           </ToolTip>
-          { isAccepted ? <GoToChatBtn href="/messages/581"> Go to Chat </GoToChatBtn> : null }
+          { isAccepted ? <GoToChatBtn href="/messages"> Go to Chat </GoToChatBtn> : null }
         </Status>
       </OfferDetails>
       </OfferCardWrapper>

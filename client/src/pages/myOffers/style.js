@@ -132,10 +132,9 @@ export const GoToChatBtn = styled.a`
   display: block;
   background: rgb(38, 80, 255, 0.25);
   color: #2650ff;
-  max-width: 150px;
   margin: 1rem auto 0;
   border-radius: 3px;
-  padding: 5px 5px;
+  padding: 8px 5px;
   font-weight: 500;
   transition: 200ms;
   &:hover{background: rgb(38, 80, 255, 0.35);}
