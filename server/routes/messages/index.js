@@ -28,5 +28,11 @@ router.get(
   MessagesController.details
 );
 
+router.get(
+  "/messages/check/:roomId",
+  UserController.auth,
+  MessagesController.roomExists
+);
+
 
 export default router;
