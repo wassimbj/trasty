@@ -17,7 +17,6 @@ router.post(
 
 router.get(
   "/trips/user/:userid",
-  UserController.auth,
   TripsController.userTrips
 );
 
