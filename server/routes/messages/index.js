@@ -22,4 +22,11 @@ router.get(
 );
 
 
+router.get(
+  "/messages/details/:roomId",
+  UserController.auth,
+  MessagesController.details
+);
+
+
 export default router;

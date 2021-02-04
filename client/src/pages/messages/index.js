@@ -41,7 +41,7 @@ export default function Messages({props}) {
         }
         {/* Offer & Product Details */}
         {
-          !ROOM_ID ? null : (
+          !!ROOM_ID && (
             <DetailsSide
               roomId={ROOM_ID}
               isDetailsClosed={isDetailsClosed}

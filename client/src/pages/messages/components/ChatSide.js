@@ -11,6 +11,7 @@ import getMessages from '../../../api/messages/getMessages';
 import UserAuthContext from '../../../contexts/UserAuthContext';
 import initSocketIo from '../../../utils/socketIo';
 import sendNotif from '../../../events/sendNotif';
+import SomethingWrongMsg from '../../../components/somethingWrongMsg';
 
 export default function ChatSide({
   isDetailsClosed, onOpenDetails, roomId, locationState
@@ -24,6 +25,7 @@ export default function ChatSide({
     loading: true,
     data: [],
   });
+  const [error, setError] = useState(false);
 
   // init with the roomId to join the user.
   const socketIo = initSocketIo('msgs', {
@@ -60,10 +62,7 @@ export default function ChatSide({
           data: respData.data,
         });
       } catch (err) {
-        setMessages({
-          loading: false,
-          data: [],
-        });
+        setError(true)
       }
       if(newMsg){
         setNewMsg(false);
@@ -86,20 +85,30 @@ export default function ChatSide({
         }
       </ChattingWithHeader>
       <ChatContent ref={chatBox}>
-        { messages.data.map((msg, i) => (
-          <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
-            <div>
-              <MsgAvatar>
-                { isLoggedIn.userid === msg.msg_from ? null : <img src={msg.image} alt="" /> }
-              </MsgAvatar>
-              <MsgTextWrapper>
-                <MsgText>{msg.msg}</MsgText>
-                <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
-              </MsgTextWrapper>
-            </div>
-            <ClearFixFloat />
-          </MsgBubble>
-        )) }
+        {
+          error
+            ? <SomethingWrongMsg />
+            : (
+              messages.data.length === 0 ? (
+                <p>No messages</p>
+              ) : (
+                messages.data.map((msg, i) => (
+                  <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
+                    <div>
+                      <MsgAvatar>
+                        { isLoggedIn.userid === msg.msg_from ? null : <img src={msg.image} alt="" /> }
+                      </MsgAvatar>
+                      <MsgTextWrapper>
+                        <MsgText>{msg.msg}</MsgText>
+                        <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
+                      </MsgTextWrapper>
+                    </div>
+                    <ClearFixFloat />
+                  </MsgBubble>
+                ))
+              )
+            )
+        }
       </ChatContent>
       <MessageTextarea
         roomId={roomId}

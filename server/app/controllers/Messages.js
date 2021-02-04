@@ -2,6 +2,7 @@ import logger from '../../utils/logger';
 import createMessage from '../../services/messages/createMessage'
 import getUserChatRooms from '../../services/messages/getUserChatRooms'
 import getMessages from '../../services/messages/getMessages';
+import getDetails from '../../services/messages/getDetails';
 
 class Messages {
 
@@ -40,6 +41,9 @@ class Messages {
     try{
       // const userId = req.session.userid;
       const {roomId} = req.params;
+      if(!roomId){
+        return res.status(400).json('Invalid');
+      }
       const data = await getMessages(roomId)
 
       return res.status(200).json(data)
@@ -49,6 +53,20 @@ class Messages {
     }
   }
 
+  // get discussion details, offer and product
+  async details(req, res){
+    try{
+      const {roomId} = req.params;
+      if(!roomId){
+        return res.status(400).json('Invalid');
+      }
+      const data = await getDetails(roomId)
+      return res.status(200).json(data)
+    }catch(err){
+      logger.error(`Chat rooms ERROR: ${err}`)
+      return res.status(500).json("ooops")
+    }
+  }
 
 }
 

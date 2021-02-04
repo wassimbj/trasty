@@ -270,7 +270,7 @@ export const RecentMsgsTitle = styled.span`
   height: 70px;
 `;
 
-export const OfferDetailsSide = styled.div`
+export const DiscussDetailsSide = styled.div`
   position: relative;
   overflow: hidden;
   width: ${(props) => (props.isDetailsClosed ? '0' : '25%')};
@@ -284,7 +284,7 @@ export const OfferDetailsSide = styled.div`
   border-left: 1px solid rgba(0,0,0,0.1);
 `;
 
-export const OfferSideTitle = styled.div`
+export const DetailsSideTitle = styled.div`
   font-weight: 500;
   font-size: 17px;
   text-align: center;
@@ -323,5 +323,71 @@ export const NoMessagesMsg = styled.div`
   & .subtitle{
     color: #555;
     margin-top: 0.5rem;
+  }
+`;
+
+export const OfferCardWrapper = styled.div`
+  padding: 0.5rem;
+  border-radius: 10px;
+  // border: 1px solid rgba(0,0,0,0.15);
+  position: relative;
+`;
+
+export const ProductDetails = styled.div`
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  & .title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #999;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+`;
+
+export const ProductTitle = styled.a`
+  // display: flex;
+  // align-items: center;
+  display: inline-block;
+  & svg {display: inline-block;}
+  color: #333;
+  font-weight: 500;
+  font-size: 17px;
+  &:hover{ color: #000 }
+`;
+
+export const OfferDetails = styled.div`
+  padding-top: 1rem;
+  & .title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #999;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+`;
+
+export const DeliveryDetails = styled.div`
+  // display: flex;
+  // flex-wrap: wrap;
+  & span{ display: inline-block; margin-right: 0.5rem }
+  &:not(:last-child){ margin-bottom: 0.75rem }
+  & .icon{ margin-right 0; }
+  & .hint{ color: #5c5c5c; }
+  & .mark{
+    font-weight: 500;
+    color: #444;
+    &:hover{ color: #121212 }
+  }
+`;
+
+export const OfferReward = styled.div`
+  margin-top: 0.5rem;
+  & span{ display: inline-block; margin-right: 0.5rem }
+  & .icon{ margin-right 0; }
+  & .hint{ color: #5c5c5c; }
+  & .mark{
+    font-weight: 500;
+    color: #2650ff;
   }
 `;

@@ -15,6 +15,7 @@ import ToolTip from '../../../components/toolTip';
 import getEstimatedReward from '../../../utils/getEstimatedReward';
 import DeleteOfferModal from '../../../components/deleteOfferModal';
 import Spinner from '../../../components/spinner';
+import { Link } from 'react-router-dom';
 
 export default function RequestAmountsDetails({
   quantity, productPrice, requestId,
@@ -22,7 +23,6 @@ export default function RequestAmountsDetails({
 }) {
   const { isLoggedIn } = useContext(UserAuthContext);
   const [isAddOfferModalOpen, setIsAddOfferModalOpen] = useState(false);
-  const [isDeleteOfferModalOpen, setIsDeleteOfferModalOpen] = useState(false);
 
   const productTotalPrice = parseFloat(productPrice * quantity).toFixed(2);
   const reward = getEstimatedReward(productPrice, quantity);
@@ -84,9 +84,6 @@ export default function RequestAmountsDetails({
         {iAlreadyOffered ? (
           <AlreadyOfferedMsg>
             <p>Your offer is sent</p>
-            <DeleteOfferBtn onClick={() => setIsDeleteOfferModalOpen(true)}>
-              Delete Offer
-            </DeleteOfferBtn>
           </AlreadyOfferedMsg>
         ) : null}
       </RequestAmountsDetailsWrapper>
@@ -102,16 +99,6 @@ export default function RequestAmountsDetails({
             />
           ) : null
         ) : null
-      }
-      {
-        iAlreadyOffered && (
-          isDeleteOfferModalOpen && (
-            <DeleteOfferModal
-              onClose={() => setIsDeleteOfferModalOpen(false)}
-              requestId={requestId}
-            />
-          )
-        )
       }
     </>
   );
