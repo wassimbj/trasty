@@ -1,32 +1,33 @@
 /* eslint-disable no-alert */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // import MainContainer from './components/mainContainer';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
-} from 'react-router-dom';
-import getLoggedInUser from './api/user/getLoggedInUser';
-import logOut from './api/user/logOut';
+} from "react-router-dom";
+import getLoggedInUser from "./api/user/getLoggedInUser";
+import logOut from "./api/user/logOut";
 // Components
-import Spinner from './components/spinner';
+import Spinner from "./components/spinner";
 // Pages
-import NavBar from './components/navbar';
-import CreateRequest from './pages/createRequest';
-import HomePage from './pages/home';
-import RequestDetails from './pages/requestDetails';
-import RequestsList from './pages/requestsList';
-import UserProfile from './pages/userProfile';
+import NavBar from "./components/navbar";
+import CreateRequest from "./pages/createRequest";
+import HomePage from "./pages/home";
+import RequestDetails from "./pages/requestDetails";
+import RequestsList from "./pages/requestsList";
+import UserProfile from "./pages/userProfile";
 // import MyRequests from './pages/myRequests';
-import Messages from './pages/messages';
-import Login from './pages/auth/Login';
-import UserAuthContext from './contexts/UserAuthContext';
-import ErrorBoundary from './components/errorBoundary';
-import Error404 from './pages/404';
-import MyOffers from './pages/myOffers';
-import CreateTrip from './pages/createTrip';
-import initSocketIo from './utils/socketIo';
+import Messages from "./pages/messages";
+import Login from "./pages/auth/Login";
+import UserAuthContext from "./contexts/UserAuthContext";
+import ErrorBoundary from "./components/errorBoundary";
+import Error404 from "./pages/404";
+import MyOffers from "./pages/myOffers";
+import CreateTrip from "./pages/createTrip";
+import initSocketIo from "./utils/socketIo";
+import Notifs from "./pages/notifs";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -46,7 +47,7 @@ function App() {
         status: loggedInUser.isLoggedIn,
         userid: !loggedInUser.data ? 0 : loggedInUser.data.id,
       });
-    }());
+    })();
   }, []);
 
   const logoutHandler = async () => {
@@ -114,26 +115,55 @@ function App() {
 
             <Route
               exact
-              path={['/user/:id', '/user/:id/:tab']}
+              path={["/user/:id", "/user/:id/:tab"]}
               component={UserProfile}
             />
 
-          <Route
-            exact
-            path="/my/offers"
-            component={(props) => {
-              if (isLoggedIn.loading) {
-                return <Spinner width="30px" customStyle="margin-top: 5rem" center />;
-              } if (!isLoggedIn.status) {
-                return <Redirect to="/requests" />;
-              }
-              return <MyOffers props={props} />;
-            }}
-          />
-
             <Route
               exact
-              path={['/messages', '/messages/:room']}
+              path="/my/offers"
+              component={(props) => {
+                if (isLoggedIn.loading) {
+                  return (
+                    <Spinner
+                      width="30px"
+                      customStyle="margin-top: 5rem"
+                      center
+                    />
+                  );
+                }
+                if (!isLoggedIn.status) {
+                  return <Redirect to="/requests" />;
+                }
+                return <MyOffers props={props} />;
+              }}
+            />
+            {
+              window.innerWidth <= 450 ? (
+                <Route
+                  exact
+                  path="/notifs"
+                  component={(props) => {
+                    if (isLoggedIn.loading) {
+                      return (
+                        <Spinner
+                          width="30px"
+                          customStyle="margin-top: 5rem"
+                          center
+                        />
+                      );
+                    }
+                    if (!isLoggedIn.status) {
+                      return <Redirect to="/requests" />;
+                    }
+                    return <Notifs props={props} />;
+                  }}
+                />
+              ) : null
+            }
+            <Route
+              exact
+              path={["/messages", "/messages/:room"]}
               component={(props) => {
                 if (isLoggedIn.loading) {
                   return (

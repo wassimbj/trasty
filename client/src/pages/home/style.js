@@ -10,12 +10,23 @@ export const Banner = styled.div`
   }
 `;
 
+export const BannerContainer = styled.div`
+  margin: 0 auto;
+  padding: 0 1rem;
+  @media (min-width: 980px){
+    max-width: 1020px;
+  }
+  @media (min-width: 1320px){
+    max-width: 1300px;
+  }
+`;
+
 export const BannerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  @media (max-width: 912px) {
+  @media (max-width: 995px) {
     flex-direction: column-reverse;
   }
 `;

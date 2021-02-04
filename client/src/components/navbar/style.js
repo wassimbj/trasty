@@ -24,8 +24,8 @@ export const StyledLink = styled(NavLink)`
   @media(max-width: 400px){
     padding: 1px;
     & svg {
-      width: 32px;
-      height: 32px;
+      width: 33px;
+      height: 33px;
     }
   }
   

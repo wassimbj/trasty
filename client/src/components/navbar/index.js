@@ -24,8 +24,8 @@ export default function NavBar({ onClickLogout }) {
             <Link to="/">
               <Logo
                 color="#2650ff"
-                width={`${window.innerWidth > 400 ? '75pt' : '55pt'}`}
-                height={`${window.innerWidth > 400 ? '35pt' : '30pt'}`}
+                width={`${window.innerWidth > 400 ? '75pt' : '70pt'}`}
+                height="35pt"
               />
             </Link>
             <div className="leftSideItems">
