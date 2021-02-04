@@ -47,12 +47,13 @@ export default function DetailsSide({ roomId, onClose, isDetailsClosed }) {
             : (
               !!details.data && (
                 <OfferDetailsCard
-                    deliverDate={details.data.delivery_date}
-                    deliverFrom={details.data.delivery_from}
-                    deliverTo={details.data.deliver_to}
-                    deliverReward={details.data.offer_reward}
-                    productSlug={details.data.slug}
-                    productTitle={details.data.product_title}
+                  offerBy={details.data.offer_by}
+                  deliverDate={details.data.delivery_date}
+                  deliverFrom={details.data.delivery_from}
+                  deliverTo={details.data.deliver_to}
+                  deliverReward={details.data.offer_reward}
+                  productSlug={details.data.slug}
+                  productTitle={details.data.product_title}
                 />
               )
             )

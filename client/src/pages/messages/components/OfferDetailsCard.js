@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Icon from "@hackclub/icons";
 import Tip from "../../../components/tip";
 import ToolTip from "../../../components/toolTip";
@@ -12,8 +12,10 @@ import {
   ProductDetails,
   ProductTitle,
 } from "../style";
+import UserAuthContext from "../../../contexts/UserAuthContext";
 
 export default function OfferDetailsCard({
+  offerBy,
   productTitle,
   productSlug,
   deliverTo,
@@ -21,10 +23,13 @@ export default function OfferDetailsCard({
   deliverDate,
   deliverReward,
 }) {
+
+  const { isLoggedIn } = useContext(UserAuthContext);
+  const isMyOffer = offerBy === isLoggedIn.userid;
   return (
     <OfferCardWrapper>
       <ProductDetails>
-        <span className="title">Product</span>
+        <span className="title">{`${!isMyOffer ? 'Your' : ''} Product`}</span>
         <ToolTip content="view request details" inline width="130px">
           <ProductTitle
             href={`/request/view/${productSlug}`}
@@ -37,7 +42,7 @@ export default function OfferDetailsCard({
         </ToolTip>
       </ProductDetails>
       <OfferDetails>
-        <span className="title">Offer</span>
+        <span className="title">{`${isMyOffer ? 'Your' : ''} Offer`}</span>
         <DeliveryDetails>
           <span className="icon">
             <svg

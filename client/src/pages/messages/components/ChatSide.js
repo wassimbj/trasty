@@ -43,6 +43,7 @@ export default function ChatSide({
 
 
   // when user accept an offer he will be redirect to the chat room
+  // so, we send a notification when that happen.
   useEffect(() => {
     if(!!locationState){
       if(locationState.sendNotif){
