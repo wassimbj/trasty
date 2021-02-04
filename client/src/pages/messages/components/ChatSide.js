@@ -12,6 +12,7 @@ import UserAuthContext from '../../../contexts/UserAuthContext';
 import initSocketIo from '../../../utils/socketIo';
 import sendNotif from '../../../events/sendNotif';
 import SomethingWrongMsg from '../../../components/somethingWrongMsg';
+import EmptyMessagesMsg from './EmptyMessagesMsg';
 
 export default function ChatSide({
   isDetailsClosed, onOpenDetails, roomId, locationState
@@ -91,7 +92,7 @@ export default function ChatSide({
             ? <SomethingWrongMsg />
             : (
               messages.data.length === 0 ? (
-                <p>No messages</p>
+                <EmptyMessagesMsg />
               ) : (
                 messages.data.map((msg, i) => (
                   <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>

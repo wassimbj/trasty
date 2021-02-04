@@ -271,6 +271,7 @@ export const RecentMsgsTitle = styled.span`
 `;
 
 export const DiscussDetailsSide = styled.div`
+  overflow-y: auto;
   position: relative;
   overflow: hidden;
   width: ${(props) => (props.isDetailsClosed ? '0' : '25%')};
