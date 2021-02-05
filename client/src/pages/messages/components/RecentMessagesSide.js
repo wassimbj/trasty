@@ -6,7 +6,7 @@ import RecentMsgCard from './RecentMsgCard';
 import getChatRooms from '../../../api/messages/getChatRooms';
 import UserAuthContext from '../../../contexts/UserAuthContext';
 
-export default function RecentMessagesSide({ activeRoomId }) {
+export default function RecentMessagesSide({ activeRoomId, isVisible }) {
   const [chatRooms, setChatRooms] = useState({
     loading: true,
     data: [],
@@ -50,7 +50,7 @@ export default function RecentMessagesSide({ activeRoomId }) {
   };
 
   return (
-    <RecentMessagesContainer>
+    <RecentMessagesContainer isVisible={isVisible}>
       <RecentMsgsTitle> Discussions </RecentMsgsTitle>
       {
         chatRooms.loading ? (

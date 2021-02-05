@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 export const ChatSideWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  width: ${(props) => (props.isDetailsClosed ? '70%' : '45%')};
+  width: ${(props) => (props.isDetailsClosed && !props.isSmallScreen ? '70%' : '45%')};
   transition: 250ms;
-  @media(max-width: 900px){
-    width: 0%;
-    display: none;
-  }
+  ${(props) => (props.isSmallScreen && 'width: 100%' )};
 `;
 
 export const ChatContent = styled.div`
@@ -141,9 +138,17 @@ ${(props) => props.isMe && css`
 `;
 
 export const ChatTitle = styled.span`
-  display: block;
+  display: flex;
+  align-items: center;
   font-weight: 500;
 `;
+
+export const CloseChatIcon = styled(Link)`
+  display: inline-block;
+  background: #f3f5f7;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+` 
 
 export const CardLink = styled(Link)`
   padding: 0.5rem 1rem;
@@ -253,6 +258,9 @@ export const RecentMessagesContainer = styled.div`
 
   @media(max-width: 900px){
     width: 100%;
+    ${props => props.isVisible && css`
+      width: 0%;
+    `}
     border-right: none;
   }
   overflow-y: auto;
@@ -274,14 +282,23 @@ export const DiscussDetailsSide = styled.div`
   overflow-y: auto;
   position: relative;
   overflow: hidden;
-  width: ${(props) => (props.isDetailsClosed ? '0' : '25%')};
-  visibility: ${(props) => (props.isDetailsClosed ? 'hidden' : 'visible')};
+  width: ${(props) => (props.isDetailsClosed && !props.isSmallScreen ? '0' : '25%')};
+  visibility: ${(props) => (props.isDetailsClosed && !props.isSmallScreen ? 'hidden' : 'visible')};
   transition: 250ms;
   white-space: nowrap;
-  @media(max-width: 900px){
-    width: 0%;
-    display: none;
-  }
+  background: #fff;
+  ${props => props.isSmallScreen && `
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  `}
+  ${props => props.isSmallScreen && props.isDetailsClosed && `
+    bottom: -100%;
+  `}
+  
   border-left: 1px solid rgba(0,0,0,0.1);
 `;
 

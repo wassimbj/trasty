@@ -9,7 +9,7 @@ import OfferDetailsCard from './OfferDetailsCard';
 // import SomethingWrongMsg from '../../../components/somethingWrongMsg';
 import Spinner from '../../../components/spinner';
 
-export default function DetailsSide({ roomId, onClose, isDetailsClosed }) {
+export default function DetailsSide({ roomId, onClose, isDetailsClosed, isSmallScreen }) {
 
   const [details, setDetails] = useState({
     loading: true,
@@ -32,7 +32,7 @@ export default function DetailsSide({ roomId, onClose, isDetailsClosed }) {
   }, [roomId]);
   
   return (
-    <DiscussDetailsSide isDetailsClosed={isDetailsClosed}>
+    <DiscussDetailsSide isSmallScreen={isSmallScreen} isDetailsClosed={isDetailsClosed}>
       <DetailsSideTitle>
         Details
       <CloseDetailsBtn onClick={onClose}>

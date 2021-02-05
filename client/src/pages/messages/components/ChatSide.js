@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import Icon from '@hackclub/icons';
 import timeAgo from '../../../utils/timeAgo';
 import {
   ChatContent, ChatSideWrapper, ChattingWithHeader,
-  ChatTitle, ClearFixFloat, MsgAvatar, MsgBubble,
+  ChatTitle, ClearFixFloat, CloseChatIcon, MsgAvatar, MsgBubble,
   MsgDate, MsgText, MsgTextWrapper, OpenDetailsBtn
 } from '../style';
 import MessageTextarea from './MessageTextarea';
@@ -13,9 +14,10 @@ import initSocketIo from '../../../utils/socketIo';
 import sendNotif from '../../../events/sendNotif';
 import SomethingWrongMsg from '../../../components/somethingWrongMsg';
 import EmptyMessagesMsg from './EmptyMessagesMsg';
+import Spinner from '../../../components/spinner';
 
 export default function ChatSide({
-  isDetailsClosed, onOpenDetails, roomId, locationState
+  isDetailsClosed, onOpenDetails, roomId, locationState, isSmallScreen
 }) {
   
   // get logged in user
@@ -35,7 +37,6 @@ export default function ChatSide({
     
   // when we get a new message
   socketIo.on('new_msg', (msg) => {
-    console.log('NEW MESSAGE', msg);
     setNewMsg(true);
   });
 
@@ -74,9 +75,12 @@ export default function ChatSide({
   }, [newMsg, roomId]);
 
   return (
-    <ChatSideWrapper isDetailsClosed={isDetailsClosed}>
+    <ChatSideWrapper isDetailsClosed={isDetailsClosed} isSmallScreen={isSmallScreen}>
       <ChattingWithHeader>
-        <ChatTitle> Chat </ChatTitle>
+        <ChatTitle>
+          {isSmallScreen && <CloseChatIcon to="/messages"><Icon glyph="view-back" /></CloseChatIcon> }
+          Chat
+        </ChatTitle>
         {
           isDetailsClosed
             && (
@@ -91,23 +95,27 @@ export default function ChatSide({
           error
             ? <SomethingWrongMsg />
             : (
-              messages.data.length === 0 ? (
-                <EmptyMessagesMsg />
+              messages.loading ? (
+                <Spinner customStyle="margin: 3rem 0" />
               ) : (
-                messages.data.map((msg, i) => (
-                  <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
-                    <div>
-                      <MsgAvatar>
-                        { isLoggedIn.userid === msg.msg_from ? null : <img src={msg.image} alt="" /> }
-                      </MsgAvatar>
-                      <MsgTextWrapper>
-                        <MsgText>{msg.msg}</MsgText>
-                        <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
-                      </MsgTextWrapper>
-                    </div>
-                    <ClearFixFloat />
-                  </MsgBubble>
-                ))
+                messages.data.length === 0 ? (
+                  <EmptyMessagesMsg />
+                ) : (
+                  messages.data.map((msg, i) => (
+                    <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
+                      <div>
+                        <MsgAvatar>
+                          { isLoggedIn.userid === msg.msg_from ? null : <img src={msg.image} alt="" /> }
+                        </MsgAvatar>
+                        <MsgTextWrapper>
+                          <MsgText>{msg.msg}</MsgText>
+                          <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
+                        </MsgTextWrapper>
+                      </div>
+                      <ClearFixFloat />
+                    </MsgBubble>
+                  ))
+                )
               )
             )
         }
