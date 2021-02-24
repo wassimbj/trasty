@@ -3,9 +3,9 @@ version: "3"
 services:
   pg_db:
     build:
-      # context: ../
-      context: ./
-      dockerfile: ./Dockerfile.pgdb
+      context: ../
+      # context: ./
+      dockerfile: ./docker/Dockerfile.pgdb
     container_name: trusti_db
     env_file: ../.env
     restart: always
@@ -30,9 +30,9 @@ services:
 
   trusti_node_server:
     build:
-      # context: ../
-      context: ./
-      dockerfile: ./Dockerfile.server
+      context: ../
+      # context: ./
+      dockerfile: ./docker/Dockerfile.server
     container_name: trusti_server
     restart: always
     env_file: ../.env
