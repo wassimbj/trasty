@@ -1,8 +1,8 @@
 -- Adminer 4.7.7 PostgreSQL dump
 
-\connect "trusty";
-
-CREATE SEQUENCE chat_rooms_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 11 CACHE 1;
+DROP TABLE IF EXISTS "chat_rooms";
+DROP SEQUENCE IF EXISTS chat_rooms_id_seq;
+CREATE SEQUENCE chat_rooms_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."chat_rooms" (
     "id" integer DEFAULT nextval('chat_rooms_id_seq') NOT NULL,
@@ -24,8 +24,10 @@ COMMENT ON COLUMN "public"."chat_rooms"."is_locked" IS 'in case something is wro
 COMMENT ON COLUMN "public"."chat_rooms"."is_success" IS 'when request is delivered';
 
 INSERT INTO "chat_rooms" ("id", "slug", "is_locked", "is_success", "request_id", "offer_id", "traveler_id", "requester_id") VALUES
-(11,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	'0',	'0',	24,	33,	7,	8);
+(11,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	'0',	'0',	24,	33,	7,	8),
+(12,	'vKZFXdYyzBiiumEJKkyh8cGETz3_gR',	'0',	'0',	23,	34,	8,	7);
 
+DROP TABLE IF EXISTS "cities";
 CREATE TABLE "public"."cities" (
     "id" integer NOT NULL,
     "name" character varying(32),
@@ -48302,6 +48304,7 @@ INSERT INTO "cities" ("id", "name", "state_id") VALUES
 (48377,	'Kimberley',	664),
 (48378,	'Langford',	664);
 
+DROP TABLE IF EXISTS "countries";
 CREATE TABLE "public"."countries" (
     "id" integer NOT NULL,
     "sortname" character varying(2) NOT NULL,
@@ -48549,7 +48552,9 @@ INSERT INTO "countries" ("id", "sortname", "name", "phonecode") VALUES
 (245,	'ZM',	'Zambia',	260),
 (246,	'ZW',	'Zimbabwe',	263);
 
-CREATE SEQUENCE messages_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 77 CACHE 1;
+DROP TABLE IF EXISTS "messages";
+DROP SEQUENCE IF EXISTS messages_id_seq;
+CREATE SEQUENCE messages_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."messages" (
     "id" integer DEFAULT nextval('messages_id_seq') NOT NULL,
@@ -48563,11 +48568,19 @@ CREATE TABLE "public"."messages" (
 COMMENT ON COLUMN "public"."messages"."is_seen" IS 'for notifications';
 
 INSERT INTO "messages" ("id", "room_id", "msg_from", "msg", "is_seen", "created_at") VALUES
-(75,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	8,	'HEY',	'0',	'2021-02-03 16:55:48.333007'),
-(76,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	7,	'TTT',	'0',	'2021-02-03 16:55:57.313229'),
-(77,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	8,	'NICE',	'0',	'2021-02-03 16:56:03.084484');
+(96,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	7,	'hello world',	'0',	'2021-02-04 14:01:24.858094'),
+(97,	'vKZFXdYyzBiiumEJKkyh8cGETz3_gR',	7,	'WAAAAAA',	'0',	'2021-02-04 14:21:48.006247'),
+(98,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	7,	'DDDDDDDDD',	'0',	'2021-02-04 14:21:51.708347'),
+(99,	'vKZFXdYyzBiiumEJKkyh8cGETz3_gR',	8,	'SLM',	'0',	'2021-02-04 14:22:12.418454'),
+(100,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	7,	'slm ',	'0',	'2021-02-05 14:20:27.711314'),
+(101,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	8,	'HAHAYA',	'0',	'2021-02-05 14:20:55.370731'),
+(102,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	7,	'OKK',	'0',	'2021-02-05 14:21:12.455978'),
+(103,	'dfTqBjVZ0XID9_dDJyHqh9xsErUl34',	8,	'BHH',	'0',	'2021-02-05 14:21:33.016021'),
+(104,	'vKZFXdYyzBiiumEJKkyh8cGETz3_gR',	7,	'AZERRRRRRRR',	'0',	'2021-02-05 14:21:42.6527');
 
-CREATE SEQUENCE notifs_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 28 CACHE 1;
+DROP TABLE IF EXISTS "notifs";
+DROP SEQUENCE IF EXISTS notifs_id_seq;
+CREATE SEQUENCE notifs_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."notifs" (
     "id" integer DEFAULT nextval('notifs_id_seq') NOT NULL,
@@ -48580,10 +48593,14 @@ CREATE TABLE "public"."notifs" (
 ) WITH (oids = false);
 
 INSERT INTO "notifs" ("id", "new_offer", "accepted_offer", "is_seen", "created_at", "user_id", "notif_type") VALUES
+(28,	NULL,	'{"request_id": 24, "requester_id": 8}',	'1',	'2021-02-03 16:55:41.782613',	7,	'accepted_offer'),
+(29,	'{"request_id": 23, "traveler_id": 8}',	NULL,	'1',	'2021-02-03 16:58:42.836617',	7,	'new_offer'),
 (27,	'{"request_id": 24, "traveler_id": 7}',	NULL,	'1',	'2021-02-03 16:55:31.860459',	8,	'new_offer'),
-(28,	NULL,	'{"request_id": 24, "requester_id": 8}',	'1',	'2021-02-03 16:55:41.782613',	7,	'accepted_offer');
+(30,	NULL,	'{"request_id": 23, "requester_id": 7}',	'1',	'2021-02-03 16:59:06.955643',	8,	'accepted_offer');
 
-CREATE SEQUENCE offers_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 33 CACHE 1;
+DROP TABLE IF EXISTS "offers";
+DROP SEQUENCE IF EXISTS offers_id_seq;
+CREATE SEQUENCE offers_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."offers" (
     "id" integer DEFAULT nextval('offers_id_seq') NOT NULL,
@@ -48600,9 +48617,12 @@ CREATE TABLE "public"."offers" (
 ) WITH (oids = false);
 
 INSERT INTO "offers" ("id", "offer_by", "offer_to", "delivery_date", "delivery_from", "offer_reward", "notes", "created_at", "is_accepted") VALUES
-(33,	7,	24,	'2021-02-10',	'{"country_id":82,"state_id":0,"city_id":0,"nice_display":"Germany, DE"}',	107.43,	'',	'2021-02-03 16:55:31.820854',	'1');
+(33,	7,	24,	'2021-02-10',	'{"country_id":82,"state_id":0,"city_id":0,"nice_display":"Germany, DE"}',	107.43,	'',	'2021-02-03 16:55:31.820854',	'1'),
+(34,	8,	23,	'2021-02-10',	'{"country_id":70,"state_id":0,"city_id":0,"nice_display":"External Territories of Australia, XA"}',	0.20,	'',	'2021-02-03 16:58:42.793791',	'1');
 
-CREATE SEQUENCE requests_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 24 CACHE 1;
+DROP TABLE IF EXISTS "requests";
+DROP SEQUENCE IF EXISTS requests_id_seq;
+CREATE SEQUENCE requests_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."requests" (
     "id" integer DEFAULT nextval('requests_id_seq') NOT NULL,
@@ -48631,6 +48651,7 @@ INSERT INTO "requests" ("id", "slug", "product_unit_price", "product_img", "prod
 (20,	'PbCO0T065tlhsrhSUBdP-ugemUwPlr',	1200.00,	'https://res.cloudinary.com/dlzurlyxk/image/upload/v1608472643/nyxcpgvfpdznrdmgxfsv.jpg',	'',	1,	'',	8,	'Play 5',	'2020-12-20 13:57:24.778868',	'{"state_id":3653,"state_name":"Sousse","country_id":222,"country":"Tunisia","city_id":0,"nice_display":"Tunisia, Sousse"}',	'{"country_id":82,"name":"Germany","sortname":"DE","state_id":0,"city_id":0,"nice_display":"Germany, DE"}',	'medium',	0,	NULL,	NULL),
 (24,	'z91Cep_6TQ3JgJ9bQiOxBFGzdBQXAk',	1074.31,	'https://res.cloudinary.com/dlzurlyxk/image/upload/v1610276176/wtxe7j9r6fy7ohfl3u6l.jpg',	'',	1,	'https://store.huion.com/products/kamvas-pro-13',	8,	'Kamvas Pro 13',	'2021-01-10 10:56:17.349459',	'{"state_id":3653,"state_name":"Sousse","country_id":222,"country":"Tunisia","city_id":0,"nice_display":"Tunisia, Sousse"}',	'{"country_id":231,"name":"United States","sortname":"US","state_id":0,"city_id":0,"nice_display":"United States, US"}',	'medium',	0,	NULL,	NULL);
 
+DROP TABLE IF EXISTS "states";
 CREATE TABLE "public"."states" (
     "id" integer NOT NULL,
     "name" character varying(33) NOT NULL,
@@ -52682,7 +52703,9 @@ INSERT INTO "states" ("id", "name", "country_id") VALUES
 (3975,	'Washington D.C',	231),
 (3662,	'Kairawen',	222);
 
-CREATE SEQUENCE trips_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 9 CACHE 1;
+DROP TABLE IF EXISTS "trips";
+DROP SEQUENCE IF EXISTS trips_id_seq;
+CREATE SEQUENCE trips_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."trips" (
     "id" integer DEFAULT nextval('trips_id_seq') NOT NULL,
@@ -52698,7 +52721,9 @@ CREATE TABLE "public"."trips" (
 INSERT INTO "trips" ("id", "slug", "travel_from", "travel_to", "type", "travel_date", "back_date", "travel_by") VALUES
 (9,	'ngJnTFjlgPcIV82uJbSZ',	'{"country_id":222,"state_id":3653,"city_id":0,"nice_display":"Tunisia, Sousse"}',	'{"country_id":229,"state_id":3798,"city_id":0,"nice_display":"United Arab Emirates, Dubai"}',	2,	'2021-02-03',	NULL,	8);
 
-CREATE SEQUENCE users_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 8 CACHE 1;
+DROP TABLE IF EXISTS "users";
+DROP SEQUENCE IF EXISTS users_id_seq;
+CREATE SEQUENCE users_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 
 CREATE TABLE "public"."users" (
     "id" integer DEFAULT nextval('users_id_seq') NOT NULL,
@@ -52722,4 +52747,4 @@ INSERT INTO "users" ("id", "fullname", "image", "email", "password", "phone", "i
 (7,	'wasim',	'https://lh3.googleusercontent.com/a-/AOh14GgH2oCAiiWKLtgUeSXHUdEH0hJXljxAwjOQ-_VHkw=s96-c',	'wassimbenjdida@gmail.com',	NULL,	'20123456',	'0',	'1',	'292995',	'dHOJbjAC85yMUQpcuQmV',	'2020-12-02 22:25:51.848937',	'google'),
 (8,	'wassim ben jdida',	'https://lh3.googleusercontent.com/a-/AOh14GjVE-1UBzX1DdbZabIgDQIT7ABVsWMazPBOoqoM=s96-c',	'wassimjdida.dev@gmail.com',	NULL,	'20123456',	'0',	'1',	'301906',	'2Uh-sPe22Mgios8Zbu10',	'2020-12-15 14:01:22.761495',	'google');
 
--- 2021-02-03 16:57:45.88113+00
+-- 2021-02-24 09:40:02.520901+00
