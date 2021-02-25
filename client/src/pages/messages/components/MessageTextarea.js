@@ -5,7 +5,7 @@ import { DisabledSendButton, MsgInput, MsgInputWrapper, SendButton } from '../st
 import createMessage from '../../../api/messages/createMessage';
 import {string as yupStr, object as yupObj} from 'yup';
 
-export default function MessageTextarea({ roomId, onNewMsgSent }) {
+export default function MessageTextarea({ roomId, userChattingWithId, onNewMsgSent }) {
   const formik = useFormik({
     initialValues: {
       msg: '',
@@ -15,7 +15,7 @@ export default function MessageTextarea({ roomId, onNewMsgSent }) {
     }),
     onSubmit: async ({ msg }, { resetForm }) => {
       try{
-        await createMessage(roomId, msg);
+        await createMessage(roomId, userChattingWithId, msg);
         onNewMsgSent()
         resetForm({});
       }catch(err){

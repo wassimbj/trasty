@@ -163,7 +163,7 @@ function App() {
             }
             <Route
               exact
-              path={["/messages", "/messages/:room"]}
+              path={["/messages", "/messages/:room/:user"]}
               component={(props) => {
                 if (isLoggedIn.loading) {
                   return (

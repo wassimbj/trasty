@@ -43,7 +43,7 @@ export const DetailsWrapper = styled.div`
 
 export const ProductDetails = styled.div`
    display: flex;
-   align-items: end;
+   // align-items: end;
    white-space: nowrap;
    overflow: hidden;
 

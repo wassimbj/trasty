@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom';
 
 export default function Messages({props}) {
   const ROOM_ID = props.match.params.room;
+  const USER_ID = props.match.params.user; // user im chatting with
   const isSmallScreen = window.innerWidth <= 995;
   const [isDetailsClosed, setIsDetailsClosed] = useState(isSmallScreen);
   const [roomExist, setRoomExist] = useState({
@@ -22,8 +23,8 @@ export default function Messages({props}) {
     if(!!ROOM_ID){
       (async function () {
         try {
-          const resp = await isRoomExist(ROOM_ID);
-          console.log('ROOM_EXIST: ', resp.data);
+          const resp = await isRoomExist(ROOM_ID, USER_ID);
+          // console.log('ROOM_EXIST: ', resp.data);
           setRoomExist({
             loading: false,
             status: resp.data
@@ -67,6 +68,7 @@ export default function Messages({props}) {
               isSmallScreen={isSmallScreen}
               locationState={props.location.state}
               roomId={ROOM_ID}
+              userChattingWithId={USER_ID}
               isDetailsClosed={isDetailsClosed}
               onOpenDetails={() => setIsDetailsClosed(false)}
             />

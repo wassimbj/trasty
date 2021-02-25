@@ -23,13 +23,13 @@ class Messages {
 
   async create(req, res){
     try{
-      const {roomId, msg, isSeen} = req.body;
+      const {roomId, msg, isSeen, userChattingWithId} = req.body;
       const userId = req.session.userid; // msgFrom
       if(!roomId || !msg){
         return res.status(400).json('Invalid params');
       }
 
-      const roomExist = await isRoomExist(userId, roomId);
+      const roomExist = await isRoomExist(userId, userChattingWithId, roomId);
       if(roomExist){
         await createMessage(roomId, userId, msg, isSeen || false)
         return res.status(200).json('success')
@@ -77,13 +77,19 @@ class Messages {
 
   async roomExists(req, res){
     try{
-      const userId = req.session.userid;
+      const myUserId = req.session.userid;
       const {roomId} = req.params;
-      if(!roomId){
+      const {chatWithUserId} = req.query;
+      if(!roomId || !chatWithUserId){
         return res.status(400).json('Invalid');
       }
-      const data = await isRoomExist(userId, roomId)
-
+      
+      if(chatWithUserId === myUserId){
+        return res.status(200).json(false);
+      }
+      
+      const data = await isRoomExist(myUserId, chatWithUserId, roomId)
+      
       return res.status(200).json(data)
     }catch(err){
       logger.error(err)

@@ -17,7 +17,12 @@ import EmptyMessagesMsg from './EmptyMessagesMsg';
 import Spinner from '../../../components/spinner';
 
 export default function ChatSide({
-  isDetailsClosed, onOpenDetails, roomId, locationState, isSmallScreen
+  isDetailsClosed,
+  onOpenDetails,
+  roomId,
+  userChattingWithId,
+  locationState,
+  isSmallScreen
 }) {
   
   // get logged in user
@@ -41,8 +46,10 @@ export default function ChatSide({
   });
 
   // when user send a new message
-  const handleNewMsgSent = () => socketIo.emit('new_msg_sent', { roomId });
-
+  const handleNewMsgSent = () => {
+    socketIo.emit('new_msg_sent', { roomId })
+    sendNotif(parseInt(userChattingWithId), 'msg');
+  };
 
   // when user accept an offer he will be redirect to the chat room
   // so, we send a notification when that happen.
@@ -122,6 +129,7 @@ export default function ChatSide({
       </ChatContent>
       <MessageTextarea
         roomId={roomId}
+        userChattingWithId={userChattingWithId}
         onNewMsgSent={handleNewMsgSent}
       />
     </ChatSideWrapper>

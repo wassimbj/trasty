@@ -7,13 +7,14 @@ import {
 
 export default function RecentMsgCard({
   userImg,
+  userId,
   userName,
   roomId,
   isTraveler,
   isActive,
 }) {
   return (
-    <CardLink isActive={isActive} to={`/messages/${roomId}`}>
+    <CardLink isActive={isActive} to={`/messages/${roomId}/${userId}`}>
       <FlexBetween>
         <RecentMsgUserInfo>
           <UserImg src={userImg} alt="" />

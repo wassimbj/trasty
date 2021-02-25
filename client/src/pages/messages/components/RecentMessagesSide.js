@@ -34,8 +34,10 @@ export default function RecentMessagesSide({ activeRoomId, isVisible }) {
 
   const displayRightData = (chatRoom) => {
     // if im the traveler, display the requester data
+   // console.log('Chat room ', chatRoom)
     if (chatRoom.traveler_id === isLoggedIn.userid) {
       return {
+        id: chatRoom.requester_id,
         img: chatRoom.requester_img,
         name: chatRoom.requester_name,
         isTraveler: false,
@@ -43,6 +45,7 @@ export default function RecentMessagesSide({ activeRoomId, isVisible }) {
     }
     // else then im the requester, display the traveler info to talk with.
     return {
+      id: chatRoom.traveler_id,
       img: chatRoom.traveler_img,
       name: chatRoom.traveler_name,
       isTraveler: true,
@@ -68,6 +71,7 @@ export default function RecentMessagesSide({ activeRoomId, isVisible }) {
           ) : (
             chatRooms.data.map((room) => (
               <RecentMsgCard
+                userId={displayRightData(room).id}
                 isActive={activeRoomId === room.slug}
                 userImg={displayRightData(room).img}
                 userName={displayRightData(room).name}

@@ -29,7 +29,10 @@ export default function AuthNavItems({ onClickLogout }) {
         setNewNotif(true);
       }
     }());
+  }, [])
+  useEffect(() => {
     getNewNotif((notifType) => {
+      console.log(notifType)
       if(notifType === 'msg'){
         setNewMsgNotif(true);
       } else {
@@ -39,16 +42,6 @@ export default function AuthNavItems({ onClickLogout }) {
   }, [])
 
   // to close the dropdowns when clicking anywhere
-  window.onclick = (e) => {
-    if ((e.path[0].ariaLabel !== 'navElem') && (e.path[0].nodeName !== 'path')) {
-      setIsDropdownOpen({
-        profileDropdown: false,
-        notifsDropdown: false,
-        addDropdown: false,
-      });
-    }
-  };
-
   const handleDropdownToggle = (nav, isOpen) => () => {
     setIsDropdownOpen({
       profileDropdown: nav === 'profile' ? isOpen : false,
