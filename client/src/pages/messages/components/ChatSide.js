@@ -88,7 +88,10 @@ export default function ChatSide({
         <ChatTitle>
           {isSmallScreen && <CloseChatIcon to="/messages"><Icon glyph="view-back" /></CloseChatIcon> }
           Chat
-          <ChatSettingsButton chatWithUserId={userChattingWithId} roomId={roomId} />
+          <ChatSettingsButton
+            chatWithUserId={userChattingWithId}
+            roomId={roomId}
+          />
         </ChatTitle>
         {
           isDetailsClosed

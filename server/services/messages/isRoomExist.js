@@ -3,7 +3,7 @@ import db from '../../database/init';
 export default async function isRoomExist(myUserId, chatWithUserId, roomId){
   try{
     const {rowCount, rows} = await db.query(`
-      SELECT traveler_id, requester_id FROM chat_rooms WHERE  slug = $1
+      SELECT traveler_id, requester_id FROM chat_rooms WHERE slug = $1
     `, [roomId]);
     
     // console.log('ROWS: ', rowCount, rows)

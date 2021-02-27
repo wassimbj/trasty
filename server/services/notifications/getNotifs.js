@@ -13,7 +13,7 @@ export default async function getNotifs(userId){
           CAST(notifs.accepted_offer->>'request_id' AS INTEGER)
         )
       WHERE user_id = $1
-      ORDER BY notifs.created_at
+      ORDER BY notifs.created_at DESC
     `, [userId]);
 
      return rows;

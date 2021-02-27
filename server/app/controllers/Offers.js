@@ -58,8 +58,8 @@ class Offers {
         return res.status(401).json('Not Allowed');
       }
 
-      const isOfferAccepted = await isOfferAccepted(offerId);
-      if(!isOfferAccepted){
+      const offerAccepted = await isOfferAccepted(offerId);
+      if(!offerAccepted){
         await deleteOffer(offerId);
         return res.status(200).json('success');
       } else {

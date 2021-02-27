@@ -6,6 +6,8 @@ import getDetails from '../../services/messages/getDetails';
 import isRoomExist from '../../services/messages/isRoomExist';
 import deleteChatRoom from '../../services/messages/deleteChatRoom';
 import isRoomDatePassed from '../../services/messages/isRoomDatePassed';
+import getOfferFromRoom from '../../services/messages/getOfferFromRoom';
+import deleteOffer from '../../services/offers/deleteOffer';
 
 
 class Messages {
@@ -108,9 +110,11 @@ class Messages {
         return res.status(400).json('Invalid');
       }
       const roomExist = await isRoomExist(myId, chatWithUserId, roomId);
-      console.log(myId, chatWithUserId, roomExist)
       // const roomDatePassed = await isRoomDatePassed(roomId);
+
       if(roomExist){
+        const offerId = await getOfferFromRoom(roomId);
+        await deleteOffer(offerId);
         await deleteChatRoom(roomId);
         return res.status(200).json('OK')
       } else {
