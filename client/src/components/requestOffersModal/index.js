@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 // import { useFormik } from 'formik';
-import Modal from '../modal';
+import {Modal} from '../modal';
 import {
   Title, ModalBodyWrapper, ModalBody,
   ModalFooter, CancelButton, NoOffersMsg,

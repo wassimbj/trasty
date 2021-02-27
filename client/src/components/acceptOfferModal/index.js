@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 // import { useFormik } from 'formik';
 import { Redirect } from 'react-router-dom';
-import Modal from '../modal';
+import {Modal} from '../modal';
 import {
   Title, ModalBodyWrapper, ModalBody,
   ModalFooter, DeleteOfferButton, CancelButton,
@@ -44,7 +44,7 @@ export default function AcceptOfferModal({
     return (
       <Redirect
         to={{
-          pathname: `/messages/${success.chatRoomId}`,
+          pathname: `/messages/${success.chatRoomId}/${offerBy}`,
           state: {
             sendNotif: true,
             data: {

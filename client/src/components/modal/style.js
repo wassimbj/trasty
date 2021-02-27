@@ -60,3 +60,33 @@ export const ModalContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+
+export const Title = styled.span`
+display: block;
+text-align: center;
+font-weight: 500;
+padding: 1rem 0.5rem;
+border-bottom: 1px solid rgba(0,0,0,0.1);
+font-size: 19px;
+`;
+
+export const BodyWrapper = styled.div`
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+`;
+
+export const Body = styled.div`
+padding: 2.5rem 1rem;
+display: flex;
+flex-direction: column;
+`;
+
+export const Footer = styled.div`
+padding: 1rem 0.5rem;
+border-top: 1px solid rgba(0,0,0,0.1);
+display: flex;
+justify-content: space-between;
+`;

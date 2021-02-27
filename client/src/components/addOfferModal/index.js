@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../assets/styles/custom-date-picker.css';
 import UserAuthContext from '../../contexts/UserAuthContext'
-import Modal from '../modal';
+import {Modal} from '../modal';
 import constants from '../../constants';
 import {
   Title, ModalBodyWrapper, ModalBody,

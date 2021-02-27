@@ -96,7 +96,7 @@ export default function OfferCard({
           isAccepted
             ? (
               <>
-                <OfferAcceptedMsg href={`/messages/${chatRoom}`}>
+                <OfferAcceptedMsg href={`/messages/${chatRoom}/${userId}`}>
                   Chat more with the traveler...
                 </OfferAcceptedMsg>
                 <AcceptedBadge>Accepted</AcceptedBadge>

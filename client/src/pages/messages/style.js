@@ -15,14 +15,24 @@ export const ChatContent = styled.div`
   padding: 3rem 1rem;
 `;
 
+export const CloseRoomMsgContainer = styled.div`
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  height: 70px;
+`;
+
 export const ChattingWithHeader = styled.div`
-padding: 0 1rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-font-size: 17px;
-border-bottom: 1px solid rgba(0,0,0,0.1);
-height: 70px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  height: 70px;
 `;
 
 export const MsgInputWrapper = styled.div`
@@ -142,6 +152,17 @@ export const ChatTitle = styled.span`
   align-items: center;
   font-weight: 500;
 `;
+  
+export const ChatSettingsBtn = styled.span`
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  background: #f5f4f3;
+  transition: 250ms;
+  cursor: pointer;
+  &:hover{background: #ccc;  }
+  margin-left: 1rem;
+` 
 
 export const CloseChatIcon = styled(Link)`
   display: inline-block;
@@ -408,4 +429,33 @@ export const OfferReward = styled.div`
     font-weight: 500;
     color: #2650ff;
   }
+`;
+
+
+export const DeleteRoomButton = styled.button`
+  padding: 0.65rem 1.5rem;
+  background: #E91E63;
+  border-radius: 30px;
+  color: #fff;
+  transition: 250ms;
+  cursor: pointer;
+  &:focus{ outline: none; }
+  &:hover{ background: #d8064d; }
+  margin-right: 0.5rem;
+  font-weight: 500;
+  ${(props) => props.isDisabled && css`
+    opacity: 0.7;
+    pointer-events: none;
+  `}
+`;
+
+export const CancelButton = styled.span`
+  padding: 0.65rem 1.5rem;
+  background: #ececec;
+  color: #626262;
+  border-radius: 30px;
+  transition: 250ms;
+  cursor: pointer;
+  text-align: center;
+  &:hover{ background: #e3e3e3; }
 `;

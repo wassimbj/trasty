@@ -4,6 +4,8 @@ import getUserChatRooms from '../../services/messages/getUserChatRooms'
 import getMessages from '../../services/messages/getMessages';
 import getDetails from '../../services/messages/getDetails';
 import isRoomExist from '../../services/messages/isRoomExist';
+import deleteChatRoom from '../../services/messages/deleteChatRoom';
+import isRoomDatePassed from '../../services/messages/isRoomDatePassed';
 
 
 class Messages {
@@ -97,6 +99,28 @@ class Messages {
     }
   }
 
+  // delete chat room
+  async delete(req, res){
+    try{
+      const {roomId, chatWithUserId} = req.body;
+      const myId = req.session.userid;
+      if(!roomId){
+        return res.status(400).json('Invalid');
+      }
+      const roomExist = await isRoomExist(myId, chatWithUserId, roomId);
+      console.log(myId, chatWithUserId, roomExist)
+      // const roomDatePassed = await isRoomDatePassed(roomId);
+      if(roomExist){
+        await deleteChatRoom(roomId);
+        return res.status(200).json('OK')
+      } else {
+        return res.status(404).json('Room Not Found');
+      }
+    }catch(err){
+      logger.error(err)
+      return res.status(500).json("ooops")
+    }
+  }
 }
 
 export default new Messages();

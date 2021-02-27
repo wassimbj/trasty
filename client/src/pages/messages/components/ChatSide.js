@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import Icon from '@hackclub/icons';
 import timeAgo from '../../../utils/timeAgo';
 import {
-  ChatContent, ChatSideWrapper, ChattingWithHeader,
-  ChatTitle, ClearFixFloat, CloseChatIcon, MsgAvatar, MsgBubble,
+  ChatContent, ChatSettingsBtn, ChatSideWrapper, ChattingWithHeader,
+  ChatTitle, ClearFixFloat, CloseChatIcon, CloseRoomMsgContainer, MsgAvatar, MsgBubble,
   MsgDate, MsgText, MsgTextWrapper, OpenDetailsBtn
 } from '../style';
 import MessageTextarea from './MessageTextarea';
@@ -15,6 +15,7 @@ import sendNotif from '../../../events/sendNotif';
 import SomethingWrongMsg from '../../../components/somethingWrongMsg';
 import EmptyMessagesMsg from './EmptyMessagesMsg';
 import Spinner from '../../../components/spinner';
+import ChatSettingsButton from './ChatSettingsButton';
 
 export default function ChatSide({
   isDetailsClosed,
@@ -87,6 +88,7 @@ export default function ChatSide({
         <ChatTitle>
           {isSmallScreen && <CloseChatIcon to="/messages"><Icon glyph="view-back" /></CloseChatIcon> }
           Chat
+          <ChatSettingsButton chatWithUserId={userChattingWithId} roomId={roomId} />
         </ChatTitle>
         {
           isDetailsClosed

@@ -34,5 +34,10 @@ router.get(
   MessagesController.roomExists
 );
 
+router.post(
+  "/room/delete",
+  UserController.auth,
+  MessagesController.delete
+);
 
 export default router;
