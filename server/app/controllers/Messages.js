@@ -110,9 +110,8 @@ class Messages {
         return res.status(400).json('Invalid');
       }
       const roomExist = await isRoomExist(myId, chatWithUserId, roomId);
-      // const roomDatePassed = await isRoomDatePassed(roomId);
-
-      if(roomExist){
+      const roomDatePassed = await isRoomDatePassed(roomId);
+      if(roomExist && !roomDatePassed){
         const offerId = await getOfferFromRoom(roomId);
         await deleteOffer(offerId);
         await deleteChatRoom(roomId);

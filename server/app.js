@@ -6,6 +6,7 @@ import passport from 'passport';
 import session from './config/session';
 import cors from 'cors';
 import deleteNotifs from './cron-jobs/deleteNotifs';
+import deleteOldChatRooms from './cron-jobs/deleteOldChatRooms';
 
 // use helmet for basic security
 app.use(helmet());
@@ -42,6 +43,7 @@ require('./routes')(app);
 
 // call cron jobs
 deleteNotifs();
+deleteOldChatRooms()
 
 // 404 Catcher 
 app.use((req, res, next) => {

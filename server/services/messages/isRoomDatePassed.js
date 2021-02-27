@@ -13,7 +13,7 @@ export default async function isRoomDatePassed(roomId){
    }
    // offers.delivery_date format = YYYY/MM/DD
    const todayDate = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`
-   if(rows[0].delivery_date >= todayDate){
+   if(todayDate >= rows[0].delivery_date){
       return true;
    }
 
