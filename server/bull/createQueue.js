@@ -1,4 +1,4 @@
-import { Queue } from "bull";
+import Queue from "bull";
 import redis from '../config/redis'
 
 const client = redis
@@ -19,4 +19,10 @@ export default function createQueue(name) {
       }
     },
   });
+
+  queue.on("error", (err) => {
+   console.log(`Queue (${name}) Error: `, err)
+  })
+
+  return queue
 }

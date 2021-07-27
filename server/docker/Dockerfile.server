@@ -2,5 +2,5 @@ FROM node:12-slim
 WORKDIR /trasty/app
 COPY . .
 RUN npm install
-CMD node -r esm ./server/index.js --reload
+CMD node -r esm ./www/index.js --reload
 EXPOSE 5000
