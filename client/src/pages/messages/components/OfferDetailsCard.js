@@ -30,7 +30,7 @@ export default function OfferDetailsCard({
     <OfferCardWrapper>
       <ProductDetails>
         <span className="title">{`${!isMyOffer ? 'Your' : ''} Product`}</span>
-        <ToolTip content="view request details" inline width="130px">
+        <Tip content="view request details">
           <ProductTitle
             href={`/request/view/${productSlug}`}
             target="_blank"
@@ -39,7 +39,7 @@ export default function OfferDetailsCard({
             {productTitle}
             <Icon glyph="external" style={{ marginLeft: "0.5rem" }} size={20} />
           </ProductTitle>
-        </ToolTip>
+        </Tip>
       </ProductDetails>
       <OfferDetails>
         <span className="title">{`${isMyOffer ? 'Your' : ''} Offer`}</span>

@@ -53,9 +53,6 @@ export const BannerItem = styled.div`
 
   & img {
     margin: 0 auto;
-    // @media(max-width: 600px){
-    //   display: none;
-    // }
   }
 `;
 

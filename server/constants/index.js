@@ -4,7 +4,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 const constants = {
   IS_PROD,
   NODE_ENV: IS_PROD ? 'Production' : 'Development',
-  PORT: process.env.PORT || 5000,
+  PORT: process.env.PORT || 9999,
   REDIS_URL: process.env.REDIS_URL,
   SESSION_SECRET_KEY: process.env.SESSION_SECRET_KEY,
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,

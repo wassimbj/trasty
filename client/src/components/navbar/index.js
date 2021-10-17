@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@hackclub/icons';
 import { Logo } from '../logo';
@@ -31,7 +31,6 @@ export default function NavBar({ onClickLogout }) {
             <div className="leftSideItems">
             {
               isLoggedIn.loading ? (
-                // <Spinner width="22px" />
                 <LoadingShimmer width="30px" height="30px" customStyle="border-radius: 50%" />
               ) : (
                 !isLoggedIn.status ? (

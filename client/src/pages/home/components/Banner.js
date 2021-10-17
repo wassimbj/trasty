@@ -11,13 +11,13 @@ export default function HomeBanner() {
         <BannerWrapper>
           <BannerItem>
             <h1> Shop Anything, </h1>
-            <h1> To Anywhere. </h1>
+            <h1> From Anywhere. </h1>
             <p>Trasty connects shoppers and travelers who help each other access the world.</p>
             <BannerPostLink to="/start">Get Started</BannerPostLink>
             <BannerTravelLink to="/requests">Find Requests</BannerTravelLink>
           </BannerItem>
           <BannerItem>
-            <img src="/images/banner-img.png" alt="" />
+            <img src="/images/online-shop.png" alt="" />
           </BannerItem>
         </BannerWrapper>
       </BannerContainer>

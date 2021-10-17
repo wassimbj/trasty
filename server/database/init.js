@@ -2,7 +2,8 @@ import { Pool } from 'pg';
 import constants from '../constants';
 import logger from '../utils/logger';
 const db = new Pool({
-  connectionString: `${constants.PGDB_CONNECTION}`
+  connectionString: `${constants.PGDB_CONNECTION}`,
+  max: 5,
 });
 
 db.on('error', (err, client) => {

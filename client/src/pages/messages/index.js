@@ -34,6 +34,7 @@ export default function Messages({props}) {
         }
       }());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ROOM_ID]);
 
   if(!!ROOM_ID && !roomExist.loading && !roomExist.status){
@@ -70,7 +71,7 @@ export default function Messages({props}) {
               roomId={ROOM_ID}
               userChattingWithId={USER_ID}
               isDetailsClosed={isDetailsClosed}
-              onOpenDetails={() => setIsDetailsClosed(false)}
+              onOpenDetails={() => setIsDetailsClosed(!isDetailsClosed)}
             />
           )
         }

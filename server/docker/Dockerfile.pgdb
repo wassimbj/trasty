@@ -1,6 +1,0 @@
-FROM postgres:13
-
-# if you have an existing .sql file put it in /docker-dev-data/sql-data
-COPY ./sql-data ./docker-entrypoint-initdb.d
-
-EXPOSE 5432

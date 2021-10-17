@@ -3,4 +3,4 @@ WORKDIR /trasty/app
 COPY . .
 RUN npm install
 CMD node -r esm ./www/index.js --reload
-EXPOSE 5000
+EXPOSE 9999

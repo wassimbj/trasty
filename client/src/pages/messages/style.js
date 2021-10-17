@@ -1,18 +1,19 @@
-import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ChatSideWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  width: ${(props) => (props.isDetailsClosed && !props.isSmallScreen ? '70%' : '45%')};
+  width: ${(props) =>
+    props.isDetailsClosed && !props.isSmallScreen ? "70%" : "45%"};
   transition: 250ms;
-  ${(props) => (props.isSmallScreen && 'width: 100%' )};
+  ${(props) => props.isSmallScreen && "width: 100%"};
 `;
 
 export const ChatContent = styled.div`
   overflow-y: auto;
   height: 86%;
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 10rem;
 `;
 
 export const CloseRoomMsgContainer = styled.div`
@@ -21,7 +22,7 @@ export const CloseRoomMsgContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 17px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   height: 70px;
 `;
 
@@ -31,13 +32,13 @@ export const ChattingWithHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 17px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  height: 70px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 55px;
 `;
 
 export const MsgInputWrapper = styled.div`
   margin-top: 1rem;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   position: absolute;
   bottom: 0;
@@ -47,50 +48,63 @@ export const MsgInputWrapper = styled.div`
 `;
 
 export const MsgInput = styled.textarea`
-display: inline-block;
-padding: 0.5rem;
-resize: none;
-// border: 2px solid #f00;
-width: 100%;
-&:focus{ outline: none; }
+  display: inline-block;
+  padding: 0.5rem;
+  resize: none;
+  // border: 2px solid #f00;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const SendButton = styled.button`
   padding: 0.5rem 2rem;
   display: inline-block;
-  background: #2650ff; color: white;
+  background: #2650ff;
+  color: white;
   font-weight: 500;
   border-radius: 50px;
   margin-left: 0.5rem;
-  &:hover{ background: #0e36e1 }
+  &:hover {
+    background: #0e36e1;
+  }
 `;
 
 export const DisabledSendButton = styled.span`
   padding: 0.5rem 2rem;
   display: inline-block;
-  background: #ccc; color: #555;
+  background: #ccc;
+  color: #555;
   font-weight: 500;
   border-radius: 50px;
   margin-left: 0.5rem;
-`; 
+`;
 
 export const OpenDetailsBtn = styled.span`
-  padding: 0.35rem 1rem;
+  padding: 0.3rem;
   border-radius: 30px;
   cursor: pointer;
-  background: rgb(38,80,255,0.12);
+  background: rgb(38, 80, 255, 0.12);
   color: #2650ff;
   font-size: 14px;
   font-weight: 500;
   transition: 250ms;
-  &:hover{ background: rgb(38,80,255,0.15) }
+  &:hover {
+    background: rgb(38, 80, 255, 0.15);
+  }
 `;
 
 export const MsgAvatar = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  & img { width: 45px; height: 45px; object-fit: cover; border-radius: 50px; }
+  & img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
 `;
 
 export const MsgTextWrapper = styled.div`
@@ -117,34 +131,39 @@ export const MsgDate = styled.span`
 `;
 
 export const ClearFixFloat = styled.div`
-&:after{
-  display: block;
-  clear: both;
-  content: "";
-}
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
 `;
 
 export const MsgBubble = styled.div`
-display: block;
-position: relative;
-margin-bottom: 25px;
+  display: block;
+  position: relative;
+  margin-bottom: 25px;
 
-${(props) => props.isMe && css`
-  ${MsgAvatar}{ right: 0; left: auto; }
-  ${MsgTextWrapper}{
-    margin-left: 0;
-    margin-right: 10px;
-    float: right;
-  }
-  ${MsgText}{
-    background-color: #2650ff;
-    color: #fff;
-  }
+  ${(props) =>
+    props.isMe &&
+    css`
+      ${MsgAvatar} {
+        right: 0;
+        left: auto;
+      }
+      ${MsgTextWrapper} {
+        margin-left: 0;
+        margin-right: 10px;
+        float: right;
+      }
+      ${MsgText} {
+        background-color: #2650ff;
+        color: #fff;
+      }
 
-  ${MsgDate}{
-    text-align: right;
-  }
-`}
+      ${MsgDate} {
+        text-align: right;
+      }
+    `}
 `;
 
 export const ChatTitle = styled.span`
@@ -152,7 +171,34 @@ export const ChatTitle = styled.span`
   align-items: center;
   font-weight: 500;
 `;
-  
+
+export const ChatTimeLeft = styled.span`
+  display: inline-block;
+  border-radius: 50px;
+  padding: 5px 8px;
+  background: rgba(25, 28, 255, 0.05);
+  color: blue;
+  font-weight: 600;
+
+  box-shadow: 0 0 0 0 rgba(25, 28, 255, 1);
+  transform: scale(1);
+  animation: pulse 2s infinite;
+
+  // @keyframes pulse {
+  //   0% {
+  //     box-shadow: 0 0 0 0 rgba(25, 28, 255, 0.35);
+  //   }
+
+  //   70% {
+  //     box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  //   }
+
+  //   100% {
+  //     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  //   }
+  // }
+`;
+
 export const ChatSettingsBtn = styled.span`
   position: relative;
   display: inline-block;
@@ -160,40 +206,55 @@ export const ChatSettingsBtn = styled.span`
   background: #f5f4f3;
   transition: 250ms;
   cursor: pointer;
-  &:hover{background: #ccc;  }
+  &:hover {
+    background: #ccc;
+  }
   margin-left: 1rem;
-` 
+`;
 
 export const CloseChatIcon = styled(Link)`
   display: inline-block;
   background: #f3f5f7;
   border-radius: 50%;
   margin-right: 0.5rem;
-` 
+`;
 
 export const CardLink = styled(Link)`
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  // border-bottom: 1px solid rgba(0,0,0,0.1);
   display: block;
+  margin-bottom: 0.3rem;
+  position: relative;
   transition: 250ms;
-  &:hover{ background: rgba(0,0,0,0.05); }
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  border-radius: 7px;
 
-  ${(props) => props.isActive && css`
-    background: rgba(0,0,0,0.065);
-    &:hover{ background: rgba(0,0,0,0.065); }
-  `}
+  ${(props) =>
+    props.isActive &&
+    css`
+      background: rgba(38, 80, 255, 0.07);
+      &:hover {
+        background: rgba(38, 80, 255, 0.07);
+      }
+    `}
 `;
 
 export const RecentMsgUserInfo = styled.div`
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
 
-  & div { margin-left: 0.5rem; }
+  & div {
+    margin-left: 0.5rem;
+  }
 `;
 
 export const UserImg = styled.img`
-  width: 50px; height: 50px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  box-shadow: 0 0 2px rgba(0,0,0,0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   object-fit: cover;
 `;
 
@@ -216,7 +277,23 @@ export const RecentMsg = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  ${(props) => props.isNew && css` font-weight: 500; color: #333; `}
+  ${(props) =>
+    props.isNew &&
+    css`
+      font-weight: 500;
+      color: #333;
+    `}
+`;
+
+export const MoreBtn = styled.span`
+  display: inline-block;
+  border-radius: 50%;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.05);
+  color: black;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.45);
+  position: relative;
+  &:active{ transform: scale(0.95); }
 `;
 
 export const ChatBadge = styled.span`
@@ -234,7 +311,7 @@ export const NewMsgBadge = styled.span`
   font-size: 13px;
   font-weight: 500;
   border-radius: 50%;
-  color: #E91E63;
+  color: #e91e63;
   width: 20px;
   padding: 1px 0;
   text-align: center;
@@ -243,12 +320,12 @@ export const NewMsgBadge = styled.span`
 
 export const IsRequesterBadge = styled(ChatBadge)`
   background: #03a9f41c;
-  color: #03A9F4;
+  color: #03a9f4;
 `;
 
 export const IsTravelerBadge = styled(ChatBadge)`
   background: #4caf502e;
-  color: #4CAF50;
+  color: #4caf50;
 `;
 
 export const FlexBetween = styled.div`
@@ -259,12 +336,18 @@ export const FlexBetween = styled.div`
 
 export const Container = styled.div`
   position: fixed;
-  left: 0; right: 0;
-  top: 5%; bottom: 0;
+  left: 0;
+  right: 0;
+  top: 6%;
+  bottom: 0;
   margin: 0.5rem auto 0;
   // max-width: 1200px;
-  @media(max-width: 600px){ bottom: 0%; top: 8%; margin: 0rem; }
-  border: 1px solid rgba(0,0,0,0.1);
+  @media (max-width: 600px) {
+    bottom: 0%;
+    top: 8%;
+    margin: 0rem;
+  }
+  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 export const SidesWrapper = styled.div`
@@ -274,14 +357,16 @@ export const SidesWrapper = styled.div`
 
 export const RecentMessagesContainer = styled.div`
   // padding: 1rem;
-  border-right: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   width: 30%;
 
-  @media(max-width: 900px){
+  @media (max-width: 900px) {
     width: 100%;
-    ${props => props.isVisible && css`
-      width: 0%;
-    `}
+    ${(props) =>
+      props.isVisible &&
+      css`
+        width: 0%;
+      `}
     border-right: none;
   }
   overflow-y: auto;
@@ -295,20 +380,24 @@ export const RecentMsgsTitle = styled.span`
   align-items: center;
   // justify-content: center;
   padding: 0 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  height: 70px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 55px;
 `;
 
 export const DiscussDetailsSide = styled.div`
   overflow-y: auto;
   position: relative;
   overflow: hidden;
-  width: ${(props) => (props.isDetailsClosed && !props.isSmallScreen ? '0' : '25%')};
-  visibility: ${(props) => (props.isDetailsClosed && !props.isSmallScreen ? 'hidden' : 'visible')};
+  width: ${(props) =>
+    props.isDetailsClosed && !props.isSmallScreen ? "0" : "25%"};
+  visibility: ${(props) =>
+    props.isDetailsClosed && !props.isSmallScreen ? "hidden" : "visible"};
   transition: 250ms;
   white-space: nowrap;
   background: #fff;
-  ${props => props.isSmallScreen && `
+  ${(props) =>
+    props.isSmallScreen &&
+    `
     position: fixed;
     right: 0;
     bottom: 0;
@@ -316,7 +405,10 @@ export const DiscussDetailsSide = styled.div`
     height: 60%;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
   `}
-  ${props => props.isSmallScreen && props.isDetailsClosed && `
+  ${(props) =>
+    props.isSmallScreen &&
+    props.isDetailsClosed &&
+    `
     bottom: -100%;
   `}
   
@@ -331,8 +423,8 @@ export const DetailsSideTitle = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  height: 70px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 55px;
 `;
 
 export const CloseDetailsBtn = styled.span`
@@ -340,7 +432,9 @@ export const CloseDetailsBtn = styled.span`
   border-radius: 30px;
   cursor: pointer;
   // background: rgba(0,0,0,0.065);
-  &:hover{ background: rgba(0,0,0,0.065) }
+  &:hover {
+    background: rgba(0, 0, 0, 0.065);
+  }
 `;
 
 export const NoMessageSelectedMsg = styled.div`
@@ -354,12 +448,12 @@ export const NoMessagesMsg = styled.div`
   text-align: center;
   padding: 3rem 0.5rem;
 
-  & .title{
+  & .title {
     font-weight: 500;
     font-size: 18px;
   }
 
-  & .subtitle{
+  & .subtitle {
     color: #555;
     margin-top: 0.5rem;
   }
@@ -374,7 +468,7 @@ export const OfferCardWrapper = styled.div`
 
 export const ProductDetails = styled.div`
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   & .title {
     font-size: 13px;
     font-weight: 500;
@@ -388,11 +482,15 @@ export const ProductTitle = styled.a`
   // display: flex;
   // align-items: center;
   display: inline-block;
-  & svg {display: inline-block;}
+  & svg {
+    display: inline-block;
+  }
   color: #333;
   font-weight: 500;
   font-size: 17px;
-  &:hover{ color: #000 }
+  &:hover {
+    color: #000;
+  }
 `;
 
 export const OfferDetails = styled.div`
@@ -431,22 +529,27 @@ export const OfferReward = styled.div`
   }
 `;
 
-
 export const DeleteRoomButton = styled.button`
   padding: 0.65rem 1.5rem;
-  background: #E91E63;
+  background: #e91e63;
   border-radius: 30px;
   color: #fff;
   transition: 250ms;
   cursor: pointer;
-  &:focus{ outline: none; }
-  &:hover{ background: #d8064d; }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: #d8064d;
+  }
   margin-right: 0.5rem;
   font-weight: 500;
-  ${(props) => props.isDisabled && css`
-    opacity: 0.7;
-    pointer-events: none;
-  `}
+  ${(props) =>
+    props.isDisabled &&
+    css`
+      opacity: 0.7;
+      pointer-events: none;
+    `}
 `;
 
 export const CancelButton = styled.span`
@@ -457,5 +560,7 @@ export const CancelButton = styled.span`
   transition: 250ms;
   cursor: pointer;
   text-align: center;
-  &:hover{ background: #e3e3e3; }
+  &:hover {
+    background: #e3e3e3;
+  }
 `;

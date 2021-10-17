@@ -3,12 +3,12 @@ import Tippy from '@tippyjs/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'tippy.js/dist/tippy.css'; // optional
 
-function Tip({ content, rest, children }) {
+function Tip({ content, placement, rest, children }) {
   return (
     <Tippy
-      placement="top"
+      placement={!placement ? 'top' : placement}
       touch={false}
-      arrow
+      arrow={false}
       arrowType="round"
       content={content}
       // eslint-disable-next-line react/jsx-props-no-spreading

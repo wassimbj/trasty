@@ -1,21 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import Icon from '@hackclub/icons';
-import timeAgo from '../../../utils/timeAgo';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import Icon from "@hackclub/icons";
+import timeAgo from "../../../utils/timeAgo";
 import {
-  ChatContent, ChatSettingsBtn, ChatSideWrapper, ChattingWithHeader,
-  ChatTitle, ClearFixFloat, CloseChatIcon, CloseRoomMsgContainer, MsgAvatar, MsgBubble,
-  MsgDate, MsgText, MsgTextWrapper, OpenDetailsBtn
-} from '../style';
-import MessageTextarea from './MessageTextarea';
-import getMessages from '../../../api/messages/getMessages';
-import UserAuthContext from '../../../contexts/UserAuthContext';
-import initSocketIo from '../../../utils/socketIo';
-import sendNotif from '../../../events/sendNotif';
-import SomethingWrongMsg from '../../../components/somethingWrongMsg';
-import EmptyMessagesMsg from './EmptyMessagesMsg';
-import Spinner from '../../../components/spinner';
-import ChatSettingsButton from './ChatSettingsButton';
+  ChatContent,
+  // ChatSettingsBtn,
+  ChatSideWrapper,
+  ChatTimeLeft,
+  ChattingWithHeader,
+  ChatTitle,
+  ClearFixFloat,
+  CloseChatIcon,
+  // CloseRoomMsgContainer,
+  MsgAvatar,
+  MsgBubble,
+  MsgDate,
+  MsgText,
+  MsgTextWrapper,
+  OpenDetailsBtn,
+} from "../style";
+import MessageTextarea from "./MessageTextarea";
+import getMessages from "../../../api/messages/getMessages";
+import UserAuthContext from "../../../contexts/UserAuthContext";
+import initSocketIo from "../../../utils/socketIo";
+import sendNotif from "../../../events/sendNotif";
+import SomethingWrongMsg from "../../../components/somethingWrongMsg";
+import EmptyMessagesMsg from "./EmptyMessagesMsg";
+import Spinner from "../../../components/spinner";
+// import ChatSettingsButton from "./ChatSettingsButton";
+import Tip from "../../../components/tip";
+// import ToolTip from "../../../components/toolTip";
 
 export default function ChatSide({
   isDetailsClosed,
@@ -23,9 +37,8 @@ export default function ChatSide({
   roomId,
   userChattingWithId,
   locationState,
-  isSmallScreen
+  isSmallScreen,
 }) {
-  
   // get logged in user
   const { isLoggedIn } = useContext(UserAuthContext);
   const chatBox = useRef(null);
@@ -37,27 +50,27 @@ export default function ChatSide({
   const [error, setError] = useState(false);
 
   // init with the roomId to join the user.
-  const socketIo = initSocketIo('msgs', {
-    query: { roomId }
+  const socketIo = initSocketIo("msgs", {
+    query: { roomId },
   });
-    
+
   // when we get a new message
-  socketIo.on('new_msg', (msg) => {
+  socketIo.on("new_msg", (msg) => {
     setNewMsg(true);
   });
 
   // when user send a new message
   const handleNewMsgSent = () => {
-    socketIo.emit('new_msg_sent', { roomId })
-    sendNotif(parseInt(userChattingWithId), 'msg');
+    socketIo.emit("new_msg_sent", { roomId });
+    sendNotif(parseInt(userChattingWithId), "msg");
   };
 
   // when user accept an offer he will be redirect to the chat room
   // so, we send a notification when that happen.
   useEffect(() => {
-    if(!!locationState){
-      if(locationState.sendNotif){
-        sendNotif(locationState.data.notifTo, locationState.data.notifType)
+    if (!!locationState) {
+      if (locationState.sendNotif) {
+        sendNotif(locationState.data.notifTo, locationState.data.notifType);
       }
     }
   }, []);
@@ -73,64 +86,70 @@ export default function ChatSide({
           data: respData.data,
         });
       } catch (err) {
-        setError(true)
+        setError(true);
       }
-      if(newMsg){
+      if (newMsg) {
         setNewMsg(false);
       }
-    }());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newMsg, roomId]);
 
   return (
-    <ChatSideWrapper isDetailsClosed={isDetailsClosed} isSmallScreen={isSmallScreen}>
+    <ChatSideWrapper
+      isDetailsClosed={isDetailsClosed}
+      isSmallScreen={isSmallScreen}
+    >
       <ChattingWithHeader>
         <ChatTitle>
-          {isSmallScreen && <CloseChatIcon to="/messages"><Icon glyph="view-back" /></CloseChatIcon> }
+          {isSmallScreen && (
+            <CloseChatIcon to="/messages">
+              <Icon glyph="view-back" size={24} />
+            </CloseChatIcon>
+          )}
           Chat
-          <ChatSettingsButton
-            chatWithUserId={userChattingWithId}
-            roomId={roomId}
-          />
         </ChatTitle>
-        {
-          isDetailsClosed
-            && (
-              <OpenDetailsBtn onClick={onOpenDetails}>
-                See Details
-              </OpenDetailsBtn>
-            )
-        }
+        <Tip
+          rest={{maxWidth: "240px"}}
+          placement="bottom"
+          content="this room will be automatically closed after the delivery date pass."
+        >
+          <ChatTimeLeft>2 days left</ChatTimeLeft>
+        </Tip>
+        {/* {isDetailsClosed && ( */}
+        <Tip placement="bottom" content="Product details">
+          <OpenDetailsBtn onClick={onOpenDetails}>
+            <Icon glyph="info" size={23} />
+          </OpenDetailsBtn>
+        </Tip>
+        {/* // )} */}
       </ChattingWithHeader>
+      {/* <ChatSettingsButton chatWithUserId={userChattingWithId} roomId={roomId} /> */}
       <ChatContent ref={chatBox}>
-        {
-          error
-            ? <SomethingWrongMsg />
-            : (
-              messages.loading ? (
-                <Spinner customStyle="margin: 3rem 0" />
-              ) : (
-                messages.data.length === 0 ? (
-                  <EmptyMessagesMsg />
-                ) : (
-                  messages.data.map((msg, i) => (
-                    <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
-                      <div>
-                        <MsgAvatar>
-                          { isLoggedIn.userid === msg.msg_from ? null : <img src={msg.image} alt="" /> }
-                        </MsgAvatar>
-                        <MsgTextWrapper>
-                          <MsgText>{msg.msg}</MsgText>
-                          <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
-                        </MsgTextWrapper>
-                      </div>
-                      <ClearFixFloat />
-                    </MsgBubble>
-                  ))
-                )
-              )
-            )
-        }
+        {error ? (
+          <SomethingWrongMsg />
+        ) : messages.loading ? (
+          <Spinner customStyle="margin: 3rem 0" />
+        ) : messages.data.length === 0 ? (
+          <EmptyMessagesMsg />
+        ) : (
+          messages.data.map((msg, i) => (
+            <MsgBubble isMe={isLoggedIn.userid === msg.msg_from}>
+              <div>
+                <MsgAvatar>
+                  {isLoggedIn.userid === msg.msg_from ? null : (
+                    <img src={msg.image} alt="" />
+                  )}
+                </MsgAvatar>
+                <MsgTextWrapper>
+                  <MsgText>{msg.msg}</MsgText>
+                  <MsgDate>{timeAgo(msg.created_at)}</MsgDate>
+                </MsgTextWrapper>
+              </div>
+              <ClearFixFloat />
+            </MsgBubble>
+          ))
+        )}
       </ChatContent>
       <MessageTextarea
         roomId={roomId}

@@ -1,10 +1,14 @@
 /* eslint-disable no-nested-ternary */
-import React, { useContext, useEffect, useState } from 'react';
-import { RecentMsgsTitle, RecentMessagesContainer, NoMessagesMsg } from '../style';
-import Spinner from '../../../components/spinner';
-import RecentMsgCard from './RecentMsgCard';
-import getChatRooms from '../../../api/messages/getChatRooms';
-import UserAuthContext from '../../../contexts/UserAuthContext';
+import React, { useContext, useEffect, useState } from "react";
+import {
+  RecentMsgsTitle,
+  RecentMessagesContainer,
+  NoMessagesMsg,
+} from "../style";
+import Spinner from "../../../components/spinner";
+import RecentMsgCard from "./RecentMsgCard";
+import getChatRooms from "../../../api/messages/getChatRooms";
+import UserAuthContext from "../../../contexts/UserAuthContext";
 
 export default function RecentMessagesSide({ activeRoomId, isVisible }) {
   const [chatRooms, setChatRooms] = useState({
@@ -29,12 +33,12 @@ export default function RecentMessagesSide({ activeRoomId, isVisible }) {
           data: [],
         });
       }
-    }());
+    })();
   }, []);
 
   const displayRightData = (chatRoom) => {
     // if im the traveler, display the requester data
-   // console.log('Chat room ', chatRoom)
+    // console.log('Chat room ', chatRoom)
     if (chatRoom.traveler_id === isLoggedIn.userid) {
       return {
         id: chatRoom.requester_id,
@@ -55,33 +59,31 @@ export default function RecentMessagesSide({ activeRoomId, isVisible }) {
   return (
     <RecentMessagesContainer isVisible={isVisible}>
       <RecentMsgsTitle> Discussions </RecentMsgsTitle>
-      {
-        chatRooms.loading ? (
-          <Spinner center customStyle="padding: 5rem 0.5rem;" />
-        ) : (
-          chatRooms.data.length === 0 ? (
-            <NoMessagesMsg>
-              <p className="title"> You have no messages </p>
-              <p className="subtitle">
-                When you accept a help offer,
-                <br />
-                discussion room will show up here.
-              </p>
-            </NoMessagesMsg>
-          ) : (
-            chatRooms.data.map((room) => (
-              <RecentMsgCard
-                userId={displayRightData(room).id}
-                isActive={activeRoomId === room.slug}
-                userImg={displayRightData(room).img}
-                userName={displayRightData(room).name}
-                roomId={room.slug}
-                isTraveler={displayRightData(room).isTraveler}
-              />
-            ))
-          )
-        )
-      }
+      {chatRooms.loading ? (
+        <Spinner center customStyle="padding: 5rem 0.5rem;" />
+      ) : chatRooms.data.length === 0 ? (
+        <NoMessagesMsg>
+          <p className="title"> You have no messages </p>
+          <p className="subtitle">
+            When you accept a help offer,
+            <br />
+            discussion room will show up here.
+          </p>
+        </NoMessagesMsg>
+      ) : (
+        <div style={{padding: "0.2rem"}}>
+          {chatRooms.data.map((room) => (
+            <RecentMsgCard
+              userId={displayRightData(room).id}
+              isActive={activeRoomId === room.slug}
+              userImg={displayRightData(room).img}
+              userName={displayRightData(room).name}
+              roomId={room.slug}
+              isTraveler={displayRightData(room).isTraveler}
+            />
+          ))}
+        </div>
+      )}
     </RecentMessagesContainer>
   );
 }
