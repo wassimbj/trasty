@@ -6,7 +6,6 @@ export default async function isRoomExist(myUserId, chatWithUserId, roomId){
       SELECT traveler_id, requester_id FROM chat_rooms WHERE slug = $1
     `, [roomId]);
     
-    // console.log('ROWS: ', rowCount, rows)
     if(rowCount === 0){
       return false;
     }

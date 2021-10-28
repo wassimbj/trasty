@@ -7,7 +7,8 @@ import {
 } from './style';
 import RecentMessagesSide from './components/RecentMessagesSide';
 import DetailsSide from './components/DetailsSide';
-import isRoomExist from '../../api/messages/isRoomExist'
+// import isRoomExist from '../../api/messages/isRoomExist'
+import getRoomDetails from '../../api/messages/getRoomDetails'
 import { Redirect } from 'react-router-dom';
 
 export default function Messages({props}) {
@@ -15,29 +16,57 @@ export default function Messages({props}) {
   const USER_ID = props.match.params.user; // user im chatting with
   const isSmallScreen = window.innerWidth <= 995;
   const [isDetailsClosed, setIsDetailsClosed] = useState(isSmallScreen);
-  const [roomExist, setRoomExist] = useState({
+  const [roomDetails, setRoomDetails] = useState({
     loading: true,
-    status: false,
+    data: null
   });
+  // const [roomExist, setRoomExist] = useState({
+  //   loading: true,
+  //   status: false,
+  // });
+
   useEffect(() => {
     if(!!ROOM_ID){
       (async function () {
         try {
-          const resp = await isRoomExist(ROOM_ID, USER_ID);
+          const resp = await getRoomDetails(ROOM_ID);
+          console.log(resp)
           // console.log('ROOM_EXIST: ', resp.data);
-          setRoomExist({
+          setRoomDetails({
             loading: false,
-            status: resp.data
+            status: resp
           });
         } catch (err) {
-         setRoomExist({loading: false, status: false});
+         setRoomDetails({loading: false, status: false});
         }
       }());
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ROOM_ID]);
 
-  if(!!ROOM_ID && !roomExist.loading && !roomExist.status){
+  // useEffect(() => {
+  //   if(!!ROOM_ID){
+  //     (async function () {
+  //       try {
+  //         const resp = await isRoomExist(ROOM_ID, USER_ID);
+  //         // console.log('ROOM_EXIST: ', resp.data);
+  //         setRoomExist({
+  //           loading: false,
+  //           status: resp.data
+  //         });
+  //       } catch (err) {
+  //        setRoomExist({loading: false, status: false});
+  //       }
+  //     }());
+  //   }
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [ROOM_ID]);
+
+  // if(!!ROOM_ID && !roomExist.loading && !roomExist.status){
+  //   return <Redirect to="/messages" />
+  // }
+
+  if(!!ROOM_ID && !roomDetails.loading && roomDetails.data === null){
     return <Redirect to="/messages" />
   }
 

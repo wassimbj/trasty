@@ -30,7 +30,7 @@ export default function NotifsData({ isOpen }) {
       (async function () {
         try {
           const resp = await getAllNotifs();
-          console.log(resp);
+          // console.log(resp);
           setNotifs({
             loading: false,
             data: resp.data,

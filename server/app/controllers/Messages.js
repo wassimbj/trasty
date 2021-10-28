@@ -2,12 +2,13 @@ import logger from '../../utils/logger';
 import createMessage from '../../services/messages/createMessage'
 import getUserChatRooms from '../../services/messages/getUserChatRooms'
 import getMessages from '../../services/messages/getMessages';
-import getDetails from '../../services/messages/getDetails';
 import isRoomExist from '../../services/messages/isRoomExist';
 import deleteChatRoom from '../../services/messages/deleteChatRoom';
 import isRoomDatePassed from '../../services/messages/isRoomDatePassed';
 import getOfferFromRoom from '../../services/messages/getOfferFromRoom';
 import deleteOffer from '../../services/offers/deleteOffer';
+import getRequestDetails from '../../services/messages/getRequestDetails';
+import getChatRoomDetails from '../../services/messages/getChatRoomDetails';
 
 
 class Messages {
@@ -71,7 +72,7 @@ class Messages {
       if(!roomId){
         return res.status(400).json('Invalid');
       }
-      const data = await getDetails(roomId)
+      const data = await getRequestDetails(roomId)
       return res.status(200).json(data)
     }catch(err){
       logger.error(err)
@@ -93,6 +94,22 @@ class Messages {
       }
       
       const data = await isRoomExist(myUserId, chatWithUserId, roomId)
+      
+      return res.status(200).json(data)
+    }catch(err){
+      logger.error(err)
+      return res.status(500).json("ooops")
+    }
+  }
+
+  async roomDetails(req, res){
+    try{
+      const {roomId} = req.params;
+      if(!roomId){
+        return res.status(400).json('Invalid params');
+      }
+      
+      const data = await getChatRoomDetails(roomId)
       
       return res.status(200).json(data)
     }catch(err){

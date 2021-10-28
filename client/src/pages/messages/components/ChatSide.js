@@ -124,7 +124,7 @@ export default function ChatSide({
         </Tip>
         {/* // )} */}
       </ChattingWithHeader>
-      {/* <ChatSettingsButton chatWithUserId={userChattingWithId} roomId={roomId} /> */}
+
       <ChatContent ref={chatBox}>
         {error ? (
           <SomethingWrongMsg />

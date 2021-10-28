@@ -3,10 +3,12 @@
 service_name=app_server
 nginx_container_name=trasty_nginx
 env=$1 # prod | dev
-
 if [[ -z $env ]]; then
   env="dev"
 fi
+project_name="trasty"
+docker_file_path="../docker/$env/compose.yml"
+
 
 
 echo "running in $env mode"
@@ -36,14 +38,14 @@ deploy_server() {
 
   # if server doesn't exist start one
   if [[ -z $old_container_id ]]; then
-    docker-compose -f ../docker/$env/docker-compose.yml -p fintech-community up --build --no-deps -d $service_name
+    docker-compose -f $docker_file_path -p $project_name up --build --no-deps -d $service_name
     reload_nginx
     echo "DONE !"
     exit
   fi
 
   # create a new instance of the server
-  docker-compose -f ../docker/$env/docker-compose.yml -p fintech-community up --no-deps -d --build --scale $service_name=2 --no-recreate $service_name
+  docker-compose -f $docker_file_path -p $project_name up --no-deps -d --build --scale $service_name=2 --no-recreate $service_name
 
   # if something went wrong in one of the command above, exit
   if [ $? -ne 0 ]; then
@@ -79,7 +81,7 @@ deploy_server() {
   docker kill -s SIGTERM $old_container_id
   docker rm -f $old_container_id
 
-  docker-compose -f ../docker/$env/docker-compose.yml -p fintech-community up -d --no-deps --scale $service_name=1 --no-recreate $service_name
+  docker-compose -f $docker_file_path -p $project_name up -d --no-deps --scale $service_name=1 --no-recreate $service_name
 
   # reload ngnix, so it stops routing requests to the old instance
   reload_nginx

@@ -1,6 +1,6 @@
 import db from '../../database/init';
 
-export default async function getDetails(roomId){
+export default async function getRequestDetails(roomId){
   try{
     const {rows} = await db.query(`
       SELECT

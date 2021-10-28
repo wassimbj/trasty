@@ -23,9 +23,15 @@ router.get(
 
 
 router.get(
-  "/messages/details/:roomId",
+  "/messages/offer/details/:roomId",
   UserController.auth,
   MessagesController.details
+);
+
+router.get(
+  "/messages/room/details/:roomId",
+  UserController.auth,
+  MessagesController.roomDetails
 );
 
 router.get(

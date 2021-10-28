@@ -5,7 +5,7 @@ import {
   DiscussDetailsSide,
   DetailsSideTitle,
 } from "../style";
-import getDetails from "../../../api/messages/getDetails";
+import getRoomOfferDetails from "../../../api/messages/getRoomOfferDetails";
 import OfferDetailsCard from "./OfferDetailsCard";
 // import SomethingWrongMsg from '../../../components/somethingWrongMsg';
 import Spinner from "../../../components/spinner";
@@ -20,12 +20,11 @@ export default function DetailsSide({
     loading: true,
     data: null,
   });
-  // const [error, setError] = useState(false)
 
   useEffect(() => {
     (async function () {
       try {
-        const resp = await getDetails(roomId);
+        const resp = await getRoomOfferDetails(roomId);
         setDetails({
           loading: false,
           data: resp.data.length > 0 ? resp.data[0] : null,
