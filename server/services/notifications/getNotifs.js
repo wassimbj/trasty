@@ -1,5 +1,5 @@
 import db from '../../database/init';
-// "--" is a comment in DBs
+
 export default async function getNotifs(userId){
   try{
     const {rows} = await db.query(`
@@ -15,7 +15,7 @@ export default async function getNotifs(userId){
       WHERE user_id = $1
       ORDER BY notifs.created_at DESC
     `, [userId]);
-
+          
      return rows;
   
   }catch(err){

@@ -24,7 +24,7 @@ const ReadLink = styled.a`
 export default function SignAgreementText() {
   return (
     <Wrapper>
-      By using Trusti, you agree to our
+      By using Trasty, you agree to our
       {' '}
       <ReadLink href="https://github.com/withspectrum/code-of-conduct" target="_blank" rel="noopener noreferrer">
         Privacy Statement

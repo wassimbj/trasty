@@ -102,12 +102,12 @@ export default function AuthNavItems({ onClickLogout }) {
           <Icon glyph="notification" size={35} aria-label="navElem" />
         </StyledLink>
       </Tip>
-      <Tip content="Messages">
+      {/* <Tip content="Messages">
         <StyledLink to="/messages" activeClassName="active">
           {newMsgNotif && <NewNotifDot />}
           <Icon glyph="message" size={35} />
         </StyledLink>
-      </Tip>
+      </Tip> */}
       <Tip content="Profile">
         <StyledLink
           aria-label="navElem"

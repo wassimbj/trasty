@@ -1,5 +1,7 @@
-var getNotifs = require('../../services/notifications/getNotifs');
+import getNotifs from '../../services/notifications/getNotifs';
 
-test('get user notifs', () => {
-  expect(getNotifs(8)).toEqual([]);
+test('get user notifs', async () => {
+  const res = await getNotifs(1);
+  console.log(res)
+  expect(() => res).not.toThrow(Error);
 });

@@ -26,7 +26,7 @@ import ErrorBoundary from "./components/errorBoundary";
 import Error404 from "./pages/404";
 import MyOffers from "./pages/myOffers";
 import CreateTrip from "./pages/createTrip";
-import initSocketIo from "./utils/socketIo";
+// import initSocketIo from "./utils/socketIo";
 import Notifs from "./pages/notifs";
 
 function App() {

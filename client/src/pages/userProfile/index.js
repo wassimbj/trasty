@@ -91,7 +91,7 @@ export default function UserProfile({ match }) {
             <ProfileTabs>
               <Tab to={`/user/${userid}/requests`} className={`${!activeTab || activeTab === 'requests' ? 'active' : ''}`}> Requests </Tab>
               <Tab to={`/user/${userid}/trips`} className={`${activeTab === 'trips' ? 'active' : ''}`}> Upcoming trips </Tab>
-              <Tab to={`/user/${userid}/reviews`} className={`${activeTab === 'reviews' ? 'active' : ''}`}> Reviews </Tab>
+              {/* <Tab to={`/user/${userid}/reviews`} className={`${activeTab === 'reviews' ? 'active' : ''}`}> Reviews </Tab> */}
             </ProfileTabs>
             <TabContent>
               {
