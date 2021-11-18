@@ -28,6 +28,7 @@ import MyOffers from "./pages/myOffers";
 import CreateTrip from "./pages/createTrip";
 // import initSocketIo from "./utils/socketIo";
 import Notifs from "./pages/notifs";
+import UserSettings from "./pages/userSettings";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -45,6 +46,7 @@ function App() {
       setIsLoggedIn({
         loading: false,
         status: loggedInUser.isLoggedIn,
+        info: loggedInUser.data,
         userid: !loggedInUser.data ? 0 : loggedInUser.data.id,
       });
     })();
@@ -178,6 +180,26 @@ function App() {
                   return <Redirect to="/requests" />;
                 }
                 return <Messages props={props} />;
+              }}
+            />
+
+            <Route
+              exact
+              path="/my/settings"
+              component={(props) => {
+                if (isLoggedIn.loading) {
+                  return (
+                    <Spinner
+                      width="30px"
+                      customStyle="margin-top: 5rem"
+                      center
+                    />
+                  );
+                }
+                if (!isLoggedIn.status) {
+                  return <Redirect to="/" />;
+                }
+                return <UserSettings props={props} />;
               }}
             />
 

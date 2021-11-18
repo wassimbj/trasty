@@ -1,4 +1,4 @@
-import getNotifs from '../../services/notifications/getNotifs';
+import getNotifs from '../services/notifications/getNotifs';
 
 test('get user notifs', async () => {
   const res = await getNotifs(1);

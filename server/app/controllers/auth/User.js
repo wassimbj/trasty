@@ -1,18 +1,23 @@
-import db from '../../../database/init';
+import db from "../../../database/init";
 // import { validationResult } from 'express-validator';
 // const edge = require("edge.js");
 // const send_mail = require("../../helpers/sendMail");
-import logger from '../../../utils/logger';
+import logger from "../../../utils/logger";
 
 class User {
-
   async me(req, res) {
-    let { rows } = await db.query(
-      "SELECT id FROM users WHERE id = $1",
-      [req.session.userid]
-    );
-      // console.log('ME: ', rows);
-    return res.status(200).json({ me: rows[0] });
+    let { rows } = await db.query("SELECT id, phone, is_phone_verified FROM users WHERE id = $1", [
+      req.session.userid,
+    ]);
+    let data = {};
+    if (rows.length > 0) {
+      data.is_phone_set = !!rows[0].phone;
+      data.is_phone_verified = !!rows[0].is_phone_verified;
+      data.id = rows[0];
+    }
+
+    // console.log('ME: ', rows);
+    return res.status(200).json(data);
   }
 
   // Log out the user
@@ -34,7 +39,7 @@ class User {
       if (!req.session.userid) {
         return res.status(401).json("unauthorized");
       }
-      
+
       // ? check if user is in the DB
       // let logged_in_user = await db.query("SELECT id FROM users WHERE id = $1", [
       //   req.session.userid,
@@ -59,7 +64,6 @@ class User {
     // else
     next();
   }
-
 }
 
 export default new User();

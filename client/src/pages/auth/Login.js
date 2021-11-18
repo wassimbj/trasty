@@ -5,9 +5,9 @@ import LoginButtons from "./components/LoginButtons";
 import SignAgreementText from "../../components/signAgreementText";
 import Footer from "../../components/footer";
 import constants from "../../constants";
-import Input from "../../components/input";
-import { Button } from "../../components/button";
-import { useFormik } from "formik";
+// import Input from "../../components/input";
+// import { Button } from "../../components/button";
+// import { useFormik } from "formik";
 
 const Wrapper = styled.div`
   padding: 0 0.5rem;
@@ -47,15 +47,15 @@ const SubTitle = styled.span`
 `;
 
 export default function Login() {
-  const formik = useFormik({
-    initialValues: {
-      phone: "",
-      password: "",
-    },
-    onSubmit: (val) => {
-      console.log(val);
-    },
-  });
+  // const formik = useFormik({
+  //   initialValues: {
+  //     phone: "",
+  //     password: "",
+  //   },
+  //   onSubmit: (val) => {
+  //     console.log(val);
+  //   },
+  // });
 
   return (
     <>
@@ -68,7 +68,7 @@ export default function Login() {
               just click a button and start using {constants.APP_NAME}.
             </SubTitle>
           </TitleWrapper>
-          <form
+          {/* <form
             onSubmit={formik.handleSubmit}
             style={{ maxWidth: "400px", margin: "0 auto" }}
           >
@@ -89,8 +89,8 @@ export default function Login() {
             <br />
             <br />
             <Button> Get started </Button>
-          </form>
-          {/* <LoginButtons /> */}
+          </form> */}
+          <LoginButtons />
           <SignAgreementText />
         </LoginCard>
       </Wrapper>
