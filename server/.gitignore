@@ -3,3 +3,4 @@
 /docker-dev-data
 
 /logs
+.env
