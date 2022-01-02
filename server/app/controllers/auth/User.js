@@ -13,7 +13,7 @@ class User {
     if (rows.length > 0) {
       data.is_phone_set = !!rows[0].phone;
       data.is_phone_verified = !!rows[0].is_phone_verified;
-      data.id = rows[0];
+      data.id = rows[0].id;
     }
 
     // console.log('ME: ', rows);
