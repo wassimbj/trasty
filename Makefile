@@ -10,8 +10,5 @@ test_api:
 client_up: 
 	@cd client && npm start 
 
-deploy:
-	@cd server
-	git add .
-	git commit -m "deploy"
-	git push heroku master
+deploy_server:
+	@cd server && git add . && git commit -m "$(msg)" && git push heroku master
