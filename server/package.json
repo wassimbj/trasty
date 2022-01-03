@@ -1,9 +1,10 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "trusty api",
+  "description": "trasty api",
   "main": "app.js",
   "scripts": {
+    "start": "node -r esm ./www/index.js --reload",
     "test": "set TESTING=true && jest"
   },
   "author": "wassimbj",
