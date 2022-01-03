@@ -8,7 +8,7 @@ export default function WhatCanYouDo() {
   return (
     <WhatYouCanDoContainer>
       <MainContainer>
-        <WhatYouCanDoTitle> What you can do with Trusti </WhatYouCanDoTitle>
+        <WhatYouCanDoTitle> What you can do with Trasty </WhatYouCanDoTitle>
         <WhatYouCanDoWrapper>
           <WhatYouCanDoCard>
             <div className="col-head">

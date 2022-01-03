@@ -66,7 +66,6 @@ export default function Shops() {
           <img src="/images/logos/walmartlogo.png" width="100px" alt="walmart" />
           <img src="/images/logos/newbalancelogo.png" width="70px" alt="New Balance" />
           <img src="/images/logos/applelogo.png" width="70px" alt="Apple" />
-          <img src="/images/logos/tayaralogo.png" width="110px" alt="AliExpress" />
           <img src="/images/logos/aliexpresslogo.png" width="110px" alt="AliExpress" />
           <img src="/images/logos/guccilogo.png" width="50px" alt="Gucci" />
           <img src="/images/logos/bestbuylogo.png" width="80px" alt="BestBuy" />
