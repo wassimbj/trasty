@@ -26,13 +26,13 @@ export default function SignAgreementText() {
     <Wrapper>
       By using Trasty, you agree to our
       {' '}
-      <ReadLink href="https://github.com/withspectrum/code-of-conduct" target="_blank" rel="noopener noreferrer">
+      <ReadLink href="/privacy" target="_blank" rel="noopener noreferrer">
         Privacy Statement
       </ReadLink>
       {' '}
       and
       {' '}
-      <ReadLink href="https://github.com/withspectrum/code-of-conduct" target="_blank" rel="noopener noreferrer">
+      <ReadLink href="/terms" target="_blank" rel="noopener noreferrer">
         Terms of Service
       </ReadLink>
       .
