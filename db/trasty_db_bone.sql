@@ -138,6 +138,3 @@ CREATE TABLE "public"."users" (
 ) WITH (oids = false);
 
 CREATE INDEX "users_id" ON "public"."users" USING btree ("id");
-
-
--- 2021-02-24 11:38:11.374245+00

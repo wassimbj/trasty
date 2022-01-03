@@ -4,7 +4,9 @@ import logger from '../utils/logger';
 const db = new Pool({
   connectionString: `${constants.PGDB_CONNECTION}`,
   max: 5,
-  ssl: constants.IS_PROD
+  ssl: constants.IS_PROD ? {
+    rejectUnauthorized: false
+  }: {}
 });
 
 db.on('error', (err, client) => {
