@@ -19,7 +19,7 @@ const constants = {
     ? process.env.TEST_PGDB_CN
     : process.env.DEV_PGDB_CN,
   API_URL: IS_PROD ? process.env.API_URL : "http://localhost:5000",
-  CLIENT_URL: IS_PROD ? "https://www.trusty.tn" : "http://localhost:3000",
+  CLIENT_URL: IS_PROD ? "trasty.vercel.app" : "http://localhost:3000",
   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
@@ -27,6 +27,7 @@ const constants = {
     "http://localhost:3000",
     "http://192.168.1.12:3000",
     // 'https://trasty.netlify.app',
+    'https://trasty.vercel.app',
     "https://www.trasty.tn",
     "https://trasty.tn",
   ],
