@@ -14,8 +14,8 @@ function init() {
     saveUninitialized: true,
     unset: "destroy",
     cookie: {
-      secure: constants.IS_PROD,
-      httpOnly: constants.IS_PROD,
+      // secure: constants.IS_PROD,
+      // httpOnly: constants.IS_PROD,
       maxAge: 63072000000, // 2 years in ms
       // domain: process.env.WEBSITE_URL,
     },
